@@ -1,0 +1,73 @@
+name: NetBox
+description: NetBox is the leading solution for modeling and documenting modern networks. By combining the traditional disciplines of IP address management (IPAM) and datacenter infrastructure management (DCIM) with powerful APIs and extensions, NetBox provides the ideal "source of truth" to power network automation.
+image: https://netbox.dev/static/img/netbox-logo.svg
+created: '2024-01-15'
+modified: '2024-01-15'
+specificationVersion: '0.16'
+url: https://netbox.dev/apis.json
+apis:
+- name: NetBox REST API
+  description: A comprehensive REST API for programmatic access to all NetBox data and functionality. Supports full CRUD operations for all objects including devices, IP addresses, circuits, and more.
+  image: https://netbox.dev/static/img/netbox-logo.svg
+  humanURL: https://docs.netbox.dev/en/stable/
+  baseURL: https://demo.netbox.dev/api
+  tags:
+  - IPAM
+  - DCIM
+  - Infrastructure
+  - Network Management
+  - Automation
+  - Documentation
+  properties:
+  - type: Documentation
+    url: https://docs.netbox.dev/en/stable/integrations/rest-api/
+  - type: OpenAPI
+    url: https://demo.netbox.dev/api/schema/
+  - type: Authentication
+    url: https://docs.netbox.dev/en/stable/integrations/rest-api/#authentication
+  contact:
+  - type: Email
+    url: mailto:info@netbox.dev
+  - type: GitHub
+    url: https://github.com/netbox-community/netbox
+- name: NetBox GraphQL API
+  description: A GraphQL API providing flexible querying capabilities for NetBox data with support for nested queries and custom field selection.
+  image: https://netbox.dev/static/img/netbox-logo.svg
+  humanURL: https://docs.netbox.dev/en/stable/integrations/graphql-api/
+  baseURL: https://demo.netbox.dev/graphql
+  tags:
+  - GraphQL
+  - IPAM
+  - DCIM
+  - Query Language
+  properties:
+  - type: Documentation
+    url: https://docs.netbox.dev/en/stable/integrations/graphql-api/
+  - type: GraphiQL Interface
+    url: https://demo.netbox.dev/graphql
+common:
+- type: GitHub Organization
+  url: https://github.com/netbox-community
+- type: Slack Community
+  url: https://netdev.chat/
+- type: Blog
+  url: https://netbox.dev/blog/
+- type: Getting Started
+  url: https://docs.netbox.dev/en/stable/getting-started/
+- type: Plugins
+  url: https://netbox.dev/plugins/
+- type: Demo Instance
+  url: https://demo.netbox.dev/
+maintainers:
+- name: NetBox Labs
+  email: info@netbox.dev
+  url: https://netboxlabs.com/
+tags:
+- IPAM
+- DCIM
+- Network Management
+- Infrastructure as Code
+- Source of Truth
+- Data Center
+- Network Automation
+- Open Source
