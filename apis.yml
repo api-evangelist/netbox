@@ -2,7 +2,7 @@ name: NetBox
 description: NetBox is the leading solution for modeling and documenting modern networks. By combining the traditional disciplines of IP address management (IPAM) and datacenter infrastructure management (DCIM) with powerful APIs and extensions, NetBox provides the ideal "source of truth" to power network automation.
 image: https://netbox.dev/static/img/netbox-logo.svg
 created: '2024-01-15'
-modified: '2024-01-15'
+modified: '2026-03-16'
 specificationVersion: '0.16'
 url: https://netbox.dev/apis.json
 apis:
@@ -59,9 +59,8 @@ common:
 - type: Demo Instance
   url: https://demo.netbox.dev/
 maintainers:
-- name: NetBox Labs
-  email: info@netbox.dev
-  url: https://netboxlabs.com/
+- FN: Kin Lane
+  email: kin@apievangelist.com
 tags:
 - IPAM
 - DCIM
