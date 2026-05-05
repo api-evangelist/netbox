@@ -1,0 +1,23 @@
+---
+title: "NetBox Community Hits 20,000 GitHub Stars"
+url: "https://netboxlabs.com/blog/netbox-community-hits-20000-github-stars/"
+date: "Fri, 27 Mar 2026 15:55:36 +0000"
+author: "Kiley"
+feed_url: "https://netboxlabs.com/feed/"
+---
+<p>Four years ago, we celebrated NetBox crossing <a href="https://netboxlabs.com/blog/10k-github-stars/">10,000 GitHub stars</a>. That post closed with, “Now, on to 20,000 stars!” The netbox-community/netbox repo just crossed that mark.</p>
+<p>Later this summer, in June, NetBox will celebrate ten years of existence. When DigitalOcean released NetBox as open source in 2016, nobody was projecting 20,000 stars. The project found an audience because it solved a real problem, and the community that formed around it never let up.</p>
+<h2>By the Numbers</h2>
+<p>The history of the GitHub stars given to the NetBox repo tells a significant story.</p>
+<p>The first 10,000 stars took about six years. The second 10,000 took four. The project now has 391 contributors, 14,904 commits, and more than 3,000 forks. There have been 351 releases since v1.0, with the <a href="https://github.com/netbox-community/netbox/releases/tag/v4.5.4">latest, v4.5.4</a>, shipping on March 3. That works out to roughly one release every ten days, a pace that has held for years.</p>
+<h2>The Community Behind It</h2>
+<p>Those numbers come from real people. NetBox Community is the open source project, hosted at github.com/netbox-community/netbox under the Apache 2.0 license. NetBox Labs, as the commercial steward of NetBox, employs a core (and rapidly growing) team of engineers who maintain and develop it. In addition, nearly 400 community contributors have shaped the project over the past decade – filing issues, writing code, reviewing pull requests, and helping build an ecosystem of plugins and integrations around the core.</p>
+<p>Open source software like NetBox deserves sustained investment, and that investment comes from real product value delivered to real customers. NetBox Labs builds products for organizations managing complex, critical infrastructure on top of NetBox. When customers adopt those products, the revenue funds dedicated engineering teams who carry NetBox and other community projects forward full-time.</p>
+<h2>What the Community Built Makes What Comes Next Possible</h2>
+<p>Ten years of community contributions built the most widely adopted open source network source of truth in the world. That means a structured, consistent data model covering devices, interfaces, IP space, circuits, cabling, and the relationships between all of it. That data model is now the foundation for something the original contributors could have never anticipated, with AI agents that can understand your network and infrastructure.</p>
+<p><a href="https://netboxlabs.com/blog/netbox-copilot-now-generally-available/">NetBox Copilot</a> is an AI-powered assistant that understands your network and infrastructure. It uses the structured context in NetBox to let teams query, manage, and automate infrastructure through natural language, answering questions like “Which devices are missing management IPs?” in seconds because the community spent a decade making sure that data was modeled correctly. Copilot has also moved <a href="https://netboxlabs.com/blog/teaching-copilot-to-write-how-netbox-copilot-goes-beyond-read-only/">beyond read-only operations</a> for NetBox Labs customers to create, update, and delete records, with human approval on every write.</p>
+<p>The broader shift led to NetBox Labs becoming the system of record platform that makes AI-driven infrastructure operations possible. NetBox Labs is building the platform layer on top – from Copilot to Discovery to Assurance. The same structured knowledge graph that teams rely on for automation and compliance is now what makes AI agents trustworthy when they operate on production networks.</p>
+<h2>What’s Ahead</h2>
+<p>The growth is still accelerating. The contributor base is still expanding. The project shipped 351 releases in ten years, and that cadence has not slowed.</p>
+<p>To everyone who has starred, filed an issue, submitted a pull request, answered a question in Slack, or built a plugin: this milestone is yours. The community’s work is what made NetBox the system of record for network infrastructure, trusted by more than 10,000 teams worldwide. <a href="https://netboxlabs.com/newsletter/">Sign up for the NetBox Labs newsletter</a> to stay informed on where NetBox and NetBox Labs go next.</p>
+<p>The post <a href="https://netboxlabs.com/blog/netbox-community-hits-20000-github-stars/">NetBox Community Hits 20,000 GitHub Stars</a> appeared first on <a href="https://netboxlabs.com">NetBox Labs</a>.</p>
