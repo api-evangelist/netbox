@@ -3,11 +3,11 @@
   "feeds": [
     {
       "source": "https://netbox.dev/blog/",
-      "feed_url": "https://netboxlabs.com/feed/",
-      "saved": 10,
-      "title": "NetBox Labs"
+      "feed_url": "https://netbox.dev/rss/",
+      "title": "NetBox Labs",
+      "saved": 0
     }
   ],
   "post_count": 10,
-  "fetched": "2026-05-03T23:33:52Z"
+  "fetched": "2026-05-09T20:17:51Z"
 }
