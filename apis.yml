@@ -48,13 +48,13 @@ apis:
       - type: GraphiQL Interface
         url: https://demo.netbox.dev/graphql
 common:
-  - type: GitHub Organization
+  - type: GitHubOrganization
     url: https://github.com/netbox-community
   - type: Slack Community
     url: https://netdev.chat/
   - type: Blog
     url: https://netbox.dev/blog/
-  - type: Getting Started
+  - type: GettingStarted
     url: https://docs.netbox.dev/en/stable/getting-started/
   - type: Plugins
     url: https://netbox.dev/plugins/
