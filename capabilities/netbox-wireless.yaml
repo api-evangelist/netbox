@@ -1,0 +1,3078 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: NetBox REST API — wireless
+  description: 'NetBox REST API — wireless. 27 operations. Lead operation: wireless. Self-contained Naftiko capability covering
+    one Netbox business surface.'
+  tags:
+  - Netbox
+  - wireless
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    NETBOX_API_KEY: NETBOX_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: netbox-wireless
+    baseUri: ''
+    description: NetBox REST API — wireless business capability. Self-contained, no shared references.
+    resources:
+    - name: api-wireless-wireless-lan-groups
+      path: /api/wireless/wireless-lan-groups/
+      operations:
+      - name: wirelesswirelesslangroupslist
+        method: GET
+        description: Get a list of wireless LAN group objects.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ancestor
+          in: query
+          type: array
+        - name: ancestor__n
+          in: query
+          type: array
+        - name: ancestor_id
+          in: query
+          type: array
+        - name: ancestor_id__n
+          in: query
+          type: array
+        - name: created
+          in: query
+          type: array
+        - name: created__empty
+          in: query
+          type: array
+        - name: created__gt
+          in: query
+          type: array
+        - name: created__gte
+          in: query
+          type: array
+        - name: created__lt
+          in: query
+          type: array
+        - name: created__lte
+          in: query
+          type: array
+        - name: created__n
+          in: query
+          type: array
+        - name: created_by_request
+          in: query
+          type: string
+        - name: description
+          in: query
+          type: array
+        - name: description__empty
+          in: query
+          type: boolean
+        - name: description__ic
+          in: query
+          type: array
+        - name: description__ie
+          in: query
+          type: array
+        - name: description__iew
+          in: query
+          type: array
+        - name: description__iregex
+          in: query
+          type: array
+        - name: description__isw
+          in: query
+          type: array
+        - name: description__n
+          in: query
+          type: array
+        - name: description__nic
+          in: query
+          type: array
+        - name: description__nie
+          in: query
+          type: array
+        - name: description__niew
+          in: query
+          type: array
+        - name: description__nisw
+          in: query
+          type: array
+        - name: description__regex
+          in: query
+          type: array
+        - name: id
+          in: query
+          type: array
+        - name: id__empty
+          in: query
+          type: boolean
+        - name: id__gt
+          in: query
+          type: array
+        - name: id__gte
+          in: query
+          type: array
+        - name: id__lt
+          in: query
+          type: array
+        - name: id__lte
+          in: query
+          type: array
+        - name: id__n
+          in: query
+          type: array
+        - name: last_updated
+          in: query
+          type: array
+        - name: last_updated__empty
+          in: query
+          type: array
+        - name: last_updated__gt
+          in: query
+          type: array
+        - name: last_updated__gte
+          in: query
+          type: array
+        - name: last_updated__lt
+          in: query
+          type: array
+        - name: last_updated__lte
+          in: query
+          type: array
+        - name: last_updated__n
+          in: query
+          type: array
+        - name: limit
+          in: query
+          type: integer
+          description: Number of results to return per page.
+        - name: modified_by_request
+          in: query
+          type: string
+        - name: name
+          in: query
+          type: array
+        - name: name__empty
+          in: query
+          type: boolean
+        - name: name__ic
+          in: query
+          type: array
+        - name: name__ie
+          in: query
+          type: array
+        - name: name__iew
+          in: query
+          type: array
+        - name: name__iregex
+          in: query
+          type: array
+        - name: name__isw
+          in: query
+          type: array
+        - name: name__n
+          in: query
+          type: array
+        - name: name__nic
+          in: query
+          type: array
+        - name: name__nie
+          in: query
+          type: array
+        - name: name__niew
+          in: query
+          type: array
+        - name: name__nisw
+          in: query
+          type: array
+        - name: name__regex
+          in: query
+          type: array
+        - name: offset
+          in: query
+          type: integer
+          description: The initial index from which to return the results.
+        - name: ordering
+          in: query
+          type: string
+          description: Which field to use when ordering the results.
+        - name: owner
+          in: query
+          type: array
+          description: Owner (name)
+        - name: owner__n
+          in: query
+          type: array
+          description: Owner (name)
+        - name: owner_group
+          in: query
+          type: array
+          description: Owner Group (name)
+        - name: owner_group__n
+          in: query
+          type: array
+          description: Owner Group (name)
+        - name: owner_group_id
+          in: query
+          type: array
+          description: Owner Group (ID)
+        - name: owner_group_id__n
+          in: query
+          type: array
+          description: Owner Group (ID)
+        - name: owner_id
+          in: query
+          type: array
+          description: Owner (ID)
+        - name: owner_id__n
+          in: query
+          type: array
+          description: Owner (ID)
+        - name: parent
+          in: query
+          type: array
+        - name: parent__n
+          in: query
+          type: array
+        - name: parent_id
+          in: query
+          type: array
+        - name: parent_id__n
+          in: query
+          type: array
+        - name: q
+          in: query
+          type: string
+          description: Search
+        - name: slug
+          in: query
+          type: array
+        - name: slug__empty
+          in: query
+          type: boolean
+        - name: slug__ic
+          in: query
+          type: array
+        - name: slug__ie
+          in: query
+          type: array
+        - name: slug__iew
+          in: query
+          type: array
+        - name: slug__iregex
+          in: query
+          type: array
+        - name: slug__isw
+          in: query
+          type: array
+        - name: slug__n
+          in: query
+          type: array
+        - name: slug__nic
+          in: query
+          type: array
+        - name: slug__nie
+          in: query
+          type: array
+        - name: slug__niew
+          in: query
+          type: array
+        - name: slug__nisw
+          in: query
+          type: array
+        - name: slug__regex
+          in: query
+          type: array
+        - name: tag
+          in: query
+          type: array
+        - name: tag__n
+          in: query
+          type: array
+        - name: tag_id
+          in: query
+          type: array
+        - name: tag_id__n
+          in: query
+          type: array
+        - name: updated_by_request
+          in: query
+          type: string
+      - name: wirelesswirelesslangroupscreate
+        method: POST
+        description: Post a list of wireless LAN group objects.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: wirelesswirelesslangroupsbulkupdate
+        method: PUT
+        description: Put a list of wireless LAN group objects.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: wirelesswirelesslangroupsbulkpartialupdate
+        method: PATCH
+        description: Patch a list of wireless LAN group objects.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: wirelesswirelesslangroupsbulkdestroy
+        method: DELETE
+        description: Delete a list of wireless LAN group objects.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-wireless-wireless-lan-groups-id
+      path: /api/wireless/wireless-lan-groups/{id}/
+      operations:
+      - name: wirelesswirelesslangroupsretrieve
+        method: GET
+        description: Get a wireless LAN group object.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: A unique integer value identifying this wireless LAN group.
+          required: true
+      - name: wirelesswirelesslangroupsupdate
+        method: PUT
+        description: Put a wireless LAN group object.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: A unique integer value identifying this wireless LAN group.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: wirelesswirelesslangroupspartialupdate
+        method: PATCH
+        description: Patch a wireless LAN group object.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: A unique integer value identifying this wireless LAN group.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: wirelesswirelesslangroupsdestroy
+        method: DELETE
+        description: Delete a wireless LAN group object.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: A unique integer value identifying this wireless LAN group.
+          required: true
+    - name: api-wireless-wireless-lans
+      path: /api/wireless/wireless-lans/
+      operations:
+      - name: wirelesswirelesslanslist
+        method: GET
+        description: Get a list of wireless LAN objects.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: auth_cipher
+          in: query
+          type: array
+        - name: auth_cipher__empty
+          in: query
+          type: boolean
+        - name: auth_cipher__ic
+          in: query
+          type: array
+        - name: auth_cipher__ie
+          in: query
+          type: array
+        - name: auth_cipher__iew
+          in: query
+          type: array
+        - name: auth_cipher__iregex
+          in: query
+          type: array
+        - name: auth_cipher__isw
+          in: query
+          type: array
+        - name: auth_cipher__n
+          in: query
+          type: array
+        - name: auth_cipher__nic
+          in: query
+          type: array
+        - name: auth_cipher__nie
+          in: query
+          type: array
+        - name: auth_cipher__niew
+          in: query
+          type: array
+        - name: auth_cipher__nisw
+          in: query
+          type: array
+        - name: auth_cipher__regex
+          in: query
+          type: array
+        - name: auth_psk
+          in: query
+          type: array
+        - name: auth_psk__empty
+          in: query
+          type: boolean
+        - name: auth_psk__ic
+          in: query
+          type: array
+        - name: auth_psk__ie
+          in: query
+          type: array
+        - name: auth_psk__iew
+          in: query
+          type: array
+        - name: auth_psk__iregex
+          in: query
+          type: array
+        - name: auth_psk__isw
+          in: query
+          type: array
+        - name: auth_psk__n
+          in: query
+          type: array
+        - name: auth_psk__nic
+          in: query
+          type: array
+        - name: auth_psk__nie
+          in: query
+          type: array
+        - name: auth_psk__niew
+          in: query
+          type: array
+        - name: auth_psk__nisw
+          in: query
+          type: array
+        - name: auth_psk__regex
+          in: query
+          type: array
+        - name: auth_type
+          in: query
+          type: array
+        - name: auth_type__empty
+          in: query
+          type: boolean
+        - name: auth_type__ic
+          in: query
+          type: array
+        - name: auth_type__ie
+          in: query
+          type: array
+        - name: auth_type__iew
+          in: query
+          type: array
+        - name: auth_type__iregex
+          in: query
+          type: array
+        - name: auth_type__isw
+          in: query
+          type: array
+        - name: auth_type__n
+          in: query
+          type: array
+        - name: auth_type__nic
+          in: query
+          type: array
+        - name: auth_type__nie
+          in: query
+          type: array
+        - name: auth_type__niew
+          in: query
+          type: array
+        - name: auth_type__nisw
+          in: query
+          type: array
+        - name: auth_type__regex
+          in: query
+          type: array
+        - name: created
+          in: query
+          type: array
+        - name: created__empty
+          in: query
+          type: array
+        - name: created__gt
+          in: query
+          type: array
+        - name: created__gte
+          in: query
+          type: array
+        - name: created__lt
+          in: query
+          type: array
+        - name: created__lte
+          in: query
+          type: array
+        - name: created__n
+          in: query
+          type: array
+        - name: created_by_request
+          in: query
+          type: string
+        - name: description
+          in: query
+          type: array
+        - name: description__empty
+          in: query
+          type: boolean
+        - name: description__ic
+          in: query
+          type: array
+        - name: description__ie
+          in: query
+          type: array
+        - name: description__iew
+          in: query
+          type: array
+        - name: description__iregex
+          in: query
+          type: array
+        - name: description__isw
+          in: query
+          type: array
+        - name: description__n
+          in: query
+          type: array
+        - name: description__nic
+          in: query
+          type: array
+        - name: description__nie
+          in: query
+          type: array
+        - name: description__niew
+          in: query
+          type: array
+        - name: description__nisw
+          in: query
+          type: array
+        - name: description__regex
+          in: query
+          type: array
+        - name: group
+          in: query
+          type: array
+        - name: group__n
+          in: query
+          type: array
+        - name: group_id
+          in: query
+          type: array
+        - name: group_id__n
+          in: query
+          type: array
+        - name: id
+          in: query
+          type: array
+        - name: id__empty
+          in: query
+          type: boolean
+        - name: id__gt
+          in: query
+          type: array
+        - name: id__gte
+          in: query
+          type: array
+        - name: id__lt
+          in: query
+          type: array
+        - name: id__lte
+          in: query
+          type: array
+        - name: id__n
+          in: query
+          type: array
+        - name: interface_id
+          in: query
+          type: array
+        - name: interface_id__n
+          in: query
+          type: array
+        - name: last_updated
+          in: query
+          type: array
+        - name: last_updated__empty
+          in: query
+          type: array
+        - name: last_updated__gt
+          in: query
+          type: array
+        - name: last_updated__gte
+          in: query
+          type: array
+        - name: last_updated__lt
+          in: query
+          type: array
+        - name: last_updated__lte
+          in: query
+          type: array
+        - name: last_updated__n
+          in: query
+          type: array
+        - name: limit
+          in: query
+          type: integer
+          description: Number of results to return per page.
+        - name: location
+          in: query
+          type: array
+        - name: location__n
+          in: query
+          type: array
+        - name: location_id
+          in: query
+          type: array
+        - name: location_id__n
+          in: query
+          type: array
+        - name: modified_by_request
+          in: query
+          type: string
+        - name: offset
+          in: query
+          type: integer
+          description: The initial index from which to return the results.
+        - name: ordering
+          in: query
+          type: string
+          description: Which field to use when ordering the results.
+        - name: owner
+          in: query
+          type: array
+          description: Owner (name)
+        - name: owner__n
+          in: query
+          type: array
+          description: Owner (name)
+        - name: owner_group
+          in: query
+          type: array
+          description: Owner Group (name)
+        - name: owner_group__n
+          in: query
+          type: array
+          description: Owner Group (name)
+        - name: owner_group_id
+          in: query
+          type: array
+          description: Owner Group (ID)
+        - name: owner_group_id__n
+          in: query
+          type: array
+          description: Owner Group (ID)
+        - name: owner_id
+          in: query
+          type: array
+          description: Owner (ID)
+        - name: owner_id__n
+          in: query
+          type: array
+          description: Owner (ID)
+        - name: q
+          in: query
+          type: string
+          description: Search
+        - name: region
+          in: query
+          type: array
+        - name: region__n
+          in: query
+          type: array
+        - name: region_id
+          in: query
+          type: array
+        - name: region_id__n
+          in: query
+          type: array
+        - name: scope_id
+          in: query
+          type: array
+        - name: scope_id__empty
+          in: query
+          type: boolean
+        - name: scope_id__gt
+          in: query
+          type: array
+        - name: scope_id__gte
+          in: query
+          type: array
+        - name: scope_id__lt
+          in: query
+          type: array
+        - name: scope_id__lte
+          in: query
+          type: array
+        - name: scope_id__n
+          in: query
+          type: array
+        - name: scope_type
+          in: query
+          type: array
+        - name: scope_type__n
+          in: query
+          type: array
+        - name: site
+          in: query
+          type: array
+          description: Site (slug)
+        - name: site__n
+          in: query
+          type: array
+          description: Site (slug)
+        - name: site_group
+          in: query
+          type: array
+        - name: site_group__n
+          in: query
+          type: array
+        - name: site_group_id
+          in: query
+          type: array
+        - name: site_group_id__n
+          in: query
+          type: array
+        - name: site_id
+          in: query
+          type: array
+          description: Site (ID)
+        - name: site_id__n
+          in: query
+          type: array
+          description: Site (ID)
+        - name: ssid
+          in: query
+          type: array
+        - name: ssid__empty
+          in: query
+          type: boolean
+        - name: ssid__ic
+          in: query
+          type: array
+        - name: ssid__ie
+          in: query
+          type: array
+        - name: ssid__iew
+          in: query
+          type: array
+        - name: ssid__iregex
+          in: query
+          type: array
+        - name: ssid__isw
+          in: query
+          type: array
+        - name: ssid__n
+          in: query
+          type: array
+        - name: ssid__nic
+          in: query
+          type: array
+        - name: ssid__nie
+          in: query
+          type: array
+        - name: ssid__niew
+          in: query
+          type: array
+        - name: ssid__nisw
+          in: query
+          type: array
+        - name: ssid__regex
+          in: query
+          type: array
+        - name: status
+          in: query
+          type: array
+        - name: status__empty
+          in: query
+          type: boolean
+        - name: status__ic
+          in: query
+          type: array
+        - name: status__ie
+          in: query
+          type: array
+        - name: status__iew
+          in: query
+          type: array
+        - name: status__iregex
+          in: query
+          type: array
+        - name: status__isw
+          in: query
+          type: array
+        - name: status__n
+          in: query
+          type: array
+        - name: status__nic
+          in: query
+          type: array
+        - name: status__nie
+          in: query
+          type: array
+        - name: status__niew
+          in: query
+          type: array
+        - name: status__nisw
+          in: query
+          type: array
+        - name: status__regex
+          in: query
+          type: array
+        - name: tag
+          in: query
+          type: array
+        - name: tag__n
+          in: query
+          type: array
+        - name: tag_id
+          in: query
+          type: array
+        - name: tag_id__n
+          in: query
+          type: array
+        - name: tenant
+          in: query
+          type: array
+          description: Tenant (slug)
+        - name: tenant__n
+          in: query
+          type: array
+          description: Tenant (slug)
+        - name: tenant_group
+          in: query
+          type: array
+        - name: tenant_group__n
+          in: query
+          type: array
+        - name: tenant_group_id
+          in: query
+          type: array
+        - name: tenant_group_id__n
+          in: query
+          type: array
+        - name: tenant_id
+          in: query
+          type: array
+          description: Tenant (ID)
+        - name: tenant_id__n
+          in: query
+          type: array
+          description: Tenant (ID)
+        - name: updated_by_request
+          in: query
+          type: string
+        - name: vlan_id
+          in: query
+          type: array
+        - name: vlan_id__n
+          in: query
+          type: array
+      - name: wirelesswirelesslanscreate
+        method: POST
+        description: Post a list of wireless LAN objects.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: wirelesswirelesslansbulkupdate
+        method: PUT
+        description: Put a list of wireless LAN objects.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: wirelesswirelesslansbulkpartialupdate
+        method: PATCH
+        description: Patch a list of wireless LAN objects.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: wirelesswirelesslansbulkdestroy
+        method: DELETE
+        description: Delete a list of wireless LAN objects.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-wireless-wireless-lans-id
+      path: /api/wireless/wireless-lans/{id}/
+      operations:
+      - name: wirelesswirelesslansretrieve
+        method: GET
+        description: Get a wireless LAN object.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: A unique integer value identifying this wireless LAN.
+          required: true
+      - name: wirelesswirelesslansupdate
+        method: PUT
+        description: Put a wireless LAN object.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: A unique integer value identifying this wireless LAN.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: wirelesswirelesslanspartialupdate
+        method: PATCH
+        description: Patch a wireless LAN object.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: A unique integer value identifying this wireless LAN.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: wirelesswirelesslansdestroy
+        method: DELETE
+        description: Delete a wireless LAN object.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: A unique integer value identifying this wireless LAN.
+          required: true
+    - name: api-wireless-wireless-links
+      path: /api/wireless/wireless-links/
+      operations:
+      - name: wirelesswirelesslinkslist
+        method: GET
+        description: Get a list of wireless link objects.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: auth_cipher
+          in: query
+          type: array
+        - name: auth_cipher__empty
+          in: query
+          type: boolean
+        - name: auth_cipher__ic
+          in: query
+          type: array
+        - name: auth_cipher__ie
+          in: query
+          type: array
+        - name: auth_cipher__iew
+          in: query
+          type: array
+        - name: auth_cipher__iregex
+          in: query
+          type: array
+        - name: auth_cipher__isw
+          in: query
+          type: array
+        - name: auth_cipher__n
+          in: query
+          type: array
+        - name: auth_cipher__nic
+          in: query
+          type: array
+        - name: auth_cipher__nie
+          in: query
+          type: array
+        - name: auth_cipher__niew
+          in: query
+          type: array
+        - name: auth_cipher__nisw
+          in: query
+          type: array
+        - name: auth_cipher__regex
+          in: query
+          type: array
+        - name: auth_psk
+          in: query
+          type: array
+        - name: auth_psk__empty
+          in: query
+          type: boolean
+        - name: auth_psk__ic
+          in: query
+          type: array
+        - name: auth_psk__ie
+          in: query
+          type: array
+        - name: auth_psk__iew
+          in: query
+          type: array
+        - name: auth_psk__iregex
+          in: query
+          type: array
+        - name: auth_psk__isw
+          in: query
+          type: array
+        - name: auth_psk__n
+          in: query
+          type: array
+        - name: auth_psk__nic
+          in: query
+          type: array
+        - name: auth_psk__nie
+          in: query
+          type: array
+        - name: auth_psk__niew
+          in: query
+          type: array
+        - name: auth_psk__nisw
+          in: query
+          type: array
+        - name: auth_psk__regex
+          in: query
+          type: array
+        - name: auth_type
+          in: query
+          type: array
+        - name: auth_type__empty
+          in: query
+          type: boolean
+        - name: auth_type__ic
+          in: query
+          type: array
+        - name: auth_type__ie
+          in: query
+          type: array
+        - name: auth_type__iew
+          in: query
+          type: array
+        - name: auth_type__iregex
+          in: query
+          type: array
+        - name: auth_type__isw
+          in: query
+          type: array
+        - name: auth_type__n
+          in: query
+          type: array
+        - name: auth_type__nic
+          in: query
+          type: array
+        - name: auth_type__nie
+          in: query
+          type: array
+        - name: auth_type__niew
+          in: query
+          type: array
+        - name: auth_type__nisw
+          in: query
+          type: array
+        - name: auth_type__regex
+          in: query
+          type: array
+        - name: created
+          in: query
+          type: array
+        - name: created__empty
+          in: query
+          type: array
+        - name: created__gt
+          in: query
+          type: array
+        - name: created__gte
+          in: query
+          type: array
+        - name: created__lt
+          in: query
+          type: array
+        - name: created__lte
+          in: query
+          type: array
+        - name: created__n
+          in: query
+          type: array
+        - name: created_by_request
+          in: query
+          type: string
+        - name: description
+          in: query
+          type: array
+        - name: description__empty
+          in: query
+          type: boolean
+        - name: description__ic
+          in: query
+          type: array
+        - name: description__ie
+          in: query
+          type: array
+        - name: description__iew
+          in: query
+          type: array
+        - name: description__iregex
+          in: query
+          type: array
+        - name: description__isw
+          in: query
+          type: array
+        - name: description__n
+          in: query
+          type: array
+        - name: description__nic
+          in: query
+          type: array
+        - name: description__nie
+          in: query
+          type: array
+        - name: description__niew
+          in: query
+          type: array
+        - name: description__nisw
+          in: query
+          type: array
+        - name: description__regex
+          in: query
+          type: array
+        - name: distance
+          in: query
+          type: array
+        - name: distance__empty
+          in: query
+          type: boolean
+        - name: distance__gt
+          in: query
+          type: array
+        - name: distance__gte
+          in: query
+          type: array
+        - name: distance__lt
+          in: query
+          type: array
+        - name: distance__lte
+          in: query
+          type: array
+        - name: distance__n
+          in: query
+          type: array
+        - name: distance_unit
+          in: query
+          type: string
+          description: '* `km` - Kilometers'
+        - name: distance_unit__empty
+          in: query
+          type: boolean
+        - name: distance_unit__ic
+          in: query
+          type: array
+        - name: distance_unit__ie
+          in: query
+          type: array
+        - name: distance_unit__iew
+          in: query
+          type: array
+        - name: distance_unit__iregex
+          in: query
+          type: array
+        - name: distance_unit__isw
+          in: query
+          type: array
+        - name: distance_unit__n
+          in: query
+          type: string
+          description: '* `km` - Kilometers'
+        - name: distance_unit__nic
+          in: query
+          type: array
+        - name: distance_unit__nie
+          in: query
+          type: array
+        - name: distance_unit__niew
+          in: query
+          type: array
+        - name: distance_unit__nisw
+          in: query
+          type: array
+        - name: distance_unit__regex
+          in: query
+          type: array
+        - name: id
+          in: query
+          type: array
+        - name: id__empty
+          in: query
+          type: boolean
+        - name: id__gt
+          in: query
+          type: array
+        - name: id__gte
+          in: query
+          type: array
+        - name: id__lt
+          in: query
+          type: array
+        - name: id__lte
+          in: query
+          type: array
+        - name: id__n
+          in: query
+          type: array
+        - name: interface_a_id
+          in: query
+          type: array
+        - name: interface_a_id__n
+          in: query
+          type: array
+        - name: interface_b_id
+          in: query
+          type: array
+        - name: interface_b_id__n
+          in: query
+          type: array
+        - name: last_updated
+          in: query
+          type: array
+        - name: last_updated__empty
+          in: query
+          type: array
+        - name: last_updated__gt
+          in: query
+          type: array
+        - name: last_updated__gte
+          in: query
+          type: array
+        - name: last_updated__lt
+          in: query
+          type: array
+        - name: last_updated__lte
+          in: query
+          type: array
+        - name: last_updated__n
+          in: query
+          type: array
+        - name: limit
+          in: query
+          type: integer
+          description: Number of results to return per page.
+        - name: modified_by_request
+          in: query
+          type: string
+        - name: offset
+          in: query
+          type: integer
+          description: The initial index from which to return the results.
+        - name: ordering
+          in: query
+          type: string
+          description: Which field to use when ordering the results.
+        - name: owner
+          in: query
+          type: array
+          description: Owner (name)
+        - name: owner__n
+          in: query
+          type: array
+          description: Owner (name)
+        - name: owner_group
+          in: query
+          type: array
+          description: Owner Group (name)
+        - name: owner_group__n
+          in: query
+          type: array
+          description: Owner Group (name)
+        - name: owner_group_id
+          in: query
+          type: array
+          description: Owner Group (ID)
+        - name: owner_group_id__n
+          in: query
+          type: array
+          description: Owner Group (ID)
+        - name: owner_id
+          in: query
+          type: array
+          description: Owner (ID)
+        - name: owner_id__n
+          in: query
+          type: array
+          description: Owner (ID)
+        - name: q
+          in: query
+          type: string
+          description: Search
+        - name: ssid
+          in: query
+          type: array
+        - name: ssid__empty
+          in: query
+          type: boolean
+        - name: ssid__ic
+          in: query
+          type: array
+        - name: ssid__ie
+          in: query
+          type: array
+        - name: ssid__iew
+          in: query
+          type: array
+        - name: ssid__iregex
+          in: query
+          type: array
+        - name: ssid__isw
+          in: query
+          type: array
+        - name: ssid__n
+          in: query
+          type: array
+        - name: ssid__nic
+          in: query
+          type: array
+        - name: ssid__nie
+          in: query
+          type: array
+        - name: ssid__niew
+          in: query
+          type: array
+        - name: ssid__nisw
+          in: query
+          type: array
+        - name: ssid__regex
+          in: query
+          type: array
+        - name: status
+          in: query
+          type: array
+        - name: status__empty
+          in: query
+          type: boolean
+        - name: status__ic
+          in: query
+          type: array
+        - name: status__ie
+          in: query
+          type: array
+        - name: status__iew
+          in: query
+          type: array
+        - name: status__iregex
+          in: query
+          type: array
+        - name: status__isw
+          in: query
+          type: array
+        - name: status__n
+          in: query
+          type: array
+        - name: status__nic
+          in: query
+          type: array
+        - name: status__nie
+          in: query
+          type: array
+        - name: status__niew
+          in: query
+          type: array
+        - name: status__nisw
+          in: query
+          type: array
+        - name: status__regex
+          in: query
+          type: array
+        - name: tag
+          in: query
+          type: array
+        - name: tag__n
+          in: query
+          type: array
+        - name: tag_id
+          in: query
+          type: array
+        - name: tag_id__n
+          in: query
+          type: array
+        - name: tenant
+          in: query
+          type: array
+          description: Tenant (slug)
+        - name: tenant__n
+          in: query
+          type: array
+          description: Tenant (slug)
+        - name: tenant_group
+          in: query
+          type: array
+        - name: tenant_group__n
+          in: query
+          type: array
+        - name: tenant_group_id
+          in: query
+          type: array
+        - name: tenant_group_id__n
+          in: query
+          type: array
+        - name: tenant_id
+          in: query
+          type: array
+          description: Tenant (ID)
+        - name: tenant_id__n
+          in: query
+          type: array
+          description: Tenant (ID)
+        - name: updated_by_request
+          in: query
+          type: string
+      - name: wirelesswirelesslinkscreate
+        method: POST
+        description: Post a list of wireless link objects.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: wirelesswirelesslinksbulkupdate
+        method: PUT
+        description: Put a list of wireless link objects.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: wirelesswirelesslinksbulkpartialupdate
+        method: PATCH
+        description: Patch a list of wireless link objects.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: wirelesswirelesslinksbulkdestroy
+        method: DELETE
+        description: Delete a list of wireless link objects.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-wireless-wireless-links-id
+      path: /api/wireless/wireless-links/{id}/
+      operations:
+      - name: wirelesswirelesslinksretrieve
+        method: GET
+        description: Get a wireless link object.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: A unique integer value identifying this wireless link.
+          required: true
+      - name: wirelesswirelesslinksupdate
+        method: PUT
+        description: Put a wireless link object.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: A unique integer value identifying this wireless link.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: wirelesswirelesslinkspartialupdate
+        method: PATCH
+        description: Patch a wireless link object.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: A unique integer value identifying this wireless link.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: wirelesswirelesslinksdestroy
+        method: DELETE
+        description: Delete a wireless link object.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: A unique integer value identifying this wireless link.
+          required: true
+    authentication:
+      type: apikey
+      key: sessionid
+      value: '{{env.NETBOX_API_KEY}}'
+      placement: cookie
+  exposes:
+  - type: rest
+    namespace: netbox-wireless-rest
+    port: 8080
+    description: REST adapter for NetBox REST API — wireless. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/api/wireless/wireless-lan-groups
+      name: api-wireless-wireless-lan-groups
+      description: REST surface for api-wireless-wireless-lan-groups.
+      operations:
+      - method: GET
+        name: wirelesswirelesslangroupslist
+        description: Get a list of wireless LAN group objects.
+        call: netbox-wireless.wirelesswirelesslangroupslist
+        with:
+          ancestor: rest.ancestor
+          ancestor__n: rest.ancestor__n
+          ancestor_id: rest.ancestor_id
+          ancestor_id__n: rest.ancestor_id__n
+          created: rest.created
+          created__empty: rest.created__empty
+          created__gt: rest.created__gt
+          created__gte: rest.created__gte
+          created__lt: rest.created__lt
+          created__lte: rest.created__lte
+          created__n: rest.created__n
+          created_by_request: rest.created_by_request
+          description: rest.description
+          description__empty: rest.description__empty
+          description__ic: rest.description__ic
+          description__ie: rest.description__ie
+          description__iew: rest.description__iew
+          description__iregex: rest.description__iregex
+          description__isw: rest.description__isw
+          description__n: rest.description__n
+          description__nic: rest.description__nic
+          description__nie: rest.description__nie
+          description__niew: rest.description__niew
+          description__nisw: rest.description__nisw
+          description__regex: rest.description__regex
+          id: rest.id
+          id__empty: rest.id__empty
+          id__gt: rest.id__gt
+          id__gte: rest.id__gte
+          id__lt: rest.id__lt
+          id__lte: rest.id__lte
+          id__n: rest.id__n
+          last_updated: rest.last_updated
+          last_updated__empty: rest.last_updated__empty
+          last_updated__gt: rest.last_updated__gt
+          last_updated__gte: rest.last_updated__gte
+          last_updated__lt: rest.last_updated__lt
+          last_updated__lte: rest.last_updated__lte
+          last_updated__n: rest.last_updated__n
+          limit: rest.limit
+          modified_by_request: rest.modified_by_request
+          name: rest.name
+          name__empty: rest.name__empty
+          name__ic: rest.name__ic
+          name__ie: rest.name__ie
+          name__iew: rest.name__iew
+          name__iregex: rest.name__iregex
+          name__isw: rest.name__isw
+          name__n: rest.name__n
+          name__nic: rest.name__nic
+          name__nie: rest.name__nie
+          name__niew: rest.name__niew
+          name__nisw: rest.name__nisw
+          name__regex: rest.name__regex
+          offset: rest.offset
+          ordering: rest.ordering
+          owner: rest.owner
+          owner__n: rest.owner__n
+          owner_group: rest.owner_group
+          owner_group__n: rest.owner_group__n
+          owner_group_id: rest.owner_group_id
+          owner_group_id__n: rest.owner_group_id__n
+          owner_id: rest.owner_id
+          owner_id__n: rest.owner_id__n
+          parent: rest.parent
+          parent__n: rest.parent__n
+          parent_id: rest.parent_id
+          parent_id__n: rest.parent_id__n
+          q: rest.q
+          slug: rest.slug
+          slug__empty: rest.slug__empty
+          slug__ic: rest.slug__ic
+          slug__ie: rest.slug__ie
+          slug__iew: rest.slug__iew
+          slug__iregex: rest.slug__iregex
+          slug__isw: rest.slug__isw
+          slug__n: rest.slug__n
+          slug__nic: rest.slug__nic
+          slug__nie: rest.slug__nie
+          slug__niew: rest.slug__niew
+          slug__nisw: rest.slug__nisw
+          slug__regex: rest.slug__regex
+          tag: rest.tag
+          tag__n: rest.tag__n
+          tag_id: rest.tag_id
+          tag_id__n: rest.tag_id__n
+          updated_by_request: rest.updated_by_request
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: wirelesswirelesslangroupscreate
+        description: Post a list of wireless LAN group objects.
+        call: netbox-wireless.wirelesswirelesslangroupscreate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: wirelesswirelesslangroupsbulkupdate
+        description: Put a list of wireless LAN group objects.
+        call: netbox-wireless.wirelesswirelesslangroupsbulkupdate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: wirelesswirelesslangroupsbulkpartialupdate
+        description: Patch a list of wireless LAN group objects.
+        call: netbox-wireless.wirelesswirelesslangroupsbulkpartialupdate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: wirelesswirelesslangroupsbulkdestroy
+        description: Delete a list of wireless LAN group objects.
+        call: netbox-wireless.wirelesswirelesslangroupsbulkdestroy
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/wireless/wireless-lan-groups/{id}
+      name: api-wireless-wireless-lan-groups-id
+      description: REST surface for api-wireless-wireless-lan-groups-id.
+      operations:
+      - method: GET
+        name: wirelesswirelesslangroupsretrieve
+        description: Get a wireless LAN group object.
+        call: netbox-wireless.wirelesswirelesslangroupsretrieve
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: wirelesswirelesslangroupsupdate
+        description: Put a wireless LAN group object.
+        call: netbox-wireless.wirelesswirelesslangroupsupdate
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: wirelesswirelesslangroupspartialupdate
+        description: Patch a wireless LAN group object.
+        call: netbox-wireless.wirelesswirelesslangroupspartialupdate
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: wirelesswirelesslangroupsdestroy
+        description: Delete a wireless LAN group object.
+        call: netbox-wireless.wirelesswirelesslangroupsdestroy
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/wireless/wireless-lans
+      name: api-wireless-wireless-lans
+      description: REST surface for api-wireless-wireless-lans.
+      operations:
+      - method: GET
+        name: wirelesswirelesslanslist
+        description: Get a list of wireless LAN objects.
+        call: netbox-wireless.wirelesswirelesslanslist
+        with:
+          auth_cipher: rest.auth_cipher
+          auth_cipher__empty: rest.auth_cipher__empty
+          auth_cipher__ic: rest.auth_cipher__ic
+          auth_cipher__ie: rest.auth_cipher__ie
+          auth_cipher__iew: rest.auth_cipher__iew
+          auth_cipher__iregex: rest.auth_cipher__iregex
+          auth_cipher__isw: rest.auth_cipher__isw
+          auth_cipher__n: rest.auth_cipher__n
+          auth_cipher__nic: rest.auth_cipher__nic
+          auth_cipher__nie: rest.auth_cipher__nie
+          auth_cipher__niew: rest.auth_cipher__niew
+          auth_cipher__nisw: rest.auth_cipher__nisw
+          auth_cipher__regex: rest.auth_cipher__regex
+          auth_psk: rest.auth_psk
+          auth_psk__empty: rest.auth_psk__empty
+          auth_psk__ic: rest.auth_psk__ic
+          auth_psk__ie: rest.auth_psk__ie
+          auth_psk__iew: rest.auth_psk__iew
+          auth_psk__iregex: rest.auth_psk__iregex
+          auth_psk__isw: rest.auth_psk__isw
+          auth_psk__n: rest.auth_psk__n
+          auth_psk__nic: rest.auth_psk__nic
+          auth_psk__nie: rest.auth_psk__nie
+          auth_psk__niew: rest.auth_psk__niew
+          auth_psk__nisw: rest.auth_psk__nisw
+          auth_psk__regex: rest.auth_psk__regex
+          auth_type: rest.auth_type
+          auth_type__empty: rest.auth_type__empty
+          auth_type__ic: rest.auth_type__ic
+          auth_type__ie: rest.auth_type__ie
+          auth_type__iew: rest.auth_type__iew
+          auth_type__iregex: rest.auth_type__iregex
+          auth_type__isw: rest.auth_type__isw
+          auth_type__n: rest.auth_type__n
+          auth_type__nic: rest.auth_type__nic
+          auth_type__nie: rest.auth_type__nie
+          auth_type__niew: rest.auth_type__niew
+          auth_type__nisw: rest.auth_type__nisw
+          auth_type__regex: rest.auth_type__regex
+          created: rest.created
+          created__empty: rest.created__empty
+          created__gt: rest.created__gt
+          created__gte: rest.created__gte
+          created__lt: rest.created__lt
+          created__lte: rest.created__lte
+          created__n: rest.created__n
+          created_by_request: rest.created_by_request
+          description: rest.description
+          description__empty: rest.description__empty
+          description__ic: rest.description__ic
+          description__ie: rest.description__ie
+          description__iew: rest.description__iew
+          description__iregex: rest.description__iregex
+          description__isw: rest.description__isw
+          description__n: rest.description__n
+          description__nic: rest.description__nic
+          description__nie: rest.description__nie
+          description__niew: rest.description__niew
+          description__nisw: rest.description__nisw
+          description__regex: rest.description__regex
+          group: rest.group
+          group__n: rest.group__n
+          group_id: rest.group_id
+          group_id__n: rest.group_id__n
+          id: rest.id
+          id__empty: rest.id__empty
+          id__gt: rest.id__gt
+          id__gte: rest.id__gte
+          id__lt: rest.id__lt
+          id__lte: rest.id__lte
+          id__n: rest.id__n
+          interface_id: rest.interface_id
+          interface_id__n: rest.interface_id__n
+          last_updated: rest.last_updated
+          last_updated__empty: rest.last_updated__empty
+          last_updated__gt: rest.last_updated__gt
+          last_updated__gte: rest.last_updated__gte
+          last_updated__lt: rest.last_updated__lt
+          last_updated__lte: rest.last_updated__lte
+          last_updated__n: rest.last_updated__n
+          limit: rest.limit
+          location: rest.location
+          location__n: rest.location__n
+          location_id: rest.location_id
+          location_id__n: rest.location_id__n
+          modified_by_request: rest.modified_by_request
+          offset: rest.offset
+          ordering: rest.ordering
+          owner: rest.owner
+          owner__n: rest.owner__n
+          owner_group: rest.owner_group
+          owner_group__n: rest.owner_group__n
+          owner_group_id: rest.owner_group_id
+          owner_group_id__n: rest.owner_group_id__n
+          owner_id: rest.owner_id
+          owner_id__n: rest.owner_id__n
+          q: rest.q
+          region: rest.region
+          region__n: rest.region__n
+          region_id: rest.region_id
+          region_id__n: rest.region_id__n
+          scope_id: rest.scope_id
+          scope_id__empty: rest.scope_id__empty
+          scope_id__gt: rest.scope_id__gt
+          scope_id__gte: rest.scope_id__gte
+          scope_id__lt: rest.scope_id__lt
+          scope_id__lte: rest.scope_id__lte
+          scope_id__n: rest.scope_id__n
+          scope_type: rest.scope_type
+          scope_type__n: rest.scope_type__n
+          site: rest.site
+          site__n: rest.site__n
+          site_group: rest.site_group
+          site_group__n: rest.site_group__n
+          site_group_id: rest.site_group_id
+          site_group_id__n: rest.site_group_id__n
+          site_id: rest.site_id
+          site_id__n: rest.site_id__n
+          ssid: rest.ssid
+          ssid__empty: rest.ssid__empty
+          ssid__ic: rest.ssid__ic
+          ssid__ie: rest.ssid__ie
+          ssid__iew: rest.ssid__iew
+          ssid__iregex: rest.ssid__iregex
+          ssid__isw: rest.ssid__isw
+          ssid__n: rest.ssid__n
+          ssid__nic: rest.ssid__nic
+          ssid__nie: rest.ssid__nie
+          ssid__niew: rest.ssid__niew
+          ssid__nisw: rest.ssid__nisw
+          ssid__regex: rest.ssid__regex
+          status: rest.status
+          status__empty: rest.status__empty
+          status__ic: rest.status__ic
+          status__ie: rest.status__ie
+          status__iew: rest.status__iew
+          status__iregex: rest.status__iregex
+          status__isw: rest.status__isw
+          status__n: rest.status__n
+          status__nic: rest.status__nic
+          status__nie: rest.status__nie
+          status__niew: rest.status__niew
+          status__nisw: rest.status__nisw
+          status__regex: rest.status__regex
+          tag: rest.tag
+          tag__n: rest.tag__n
+          tag_id: rest.tag_id
+          tag_id__n: rest.tag_id__n
+          tenant: rest.tenant
+          tenant__n: rest.tenant__n
+          tenant_group: rest.tenant_group
+          tenant_group__n: rest.tenant_group__n
+          tenant_group_id: rest.tenant_group_id
+          tenant_group_id__n: rest.tenant_group_id__n
+          tenant_id: rest.tenant_id
+          tenant_id__n: rest.tenant_id__n
+          updated_by_request: rest.updated_by_request
+          vlan_id: rest.vlan_id
+          vlan_id__n: rest.vlan_id__n
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: wirelesswirelesslanscreate
+        description: Post a list of wireless LAN objects.
+        call: netbox-wireless.wirelesswirelesslanscreate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: wirelesswirelesslansbulkupdate
+        description: Put a list of wireless LAN objects.
+        call: netbox-wireless.wirelesswirelesslansbulkupdate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: wirelesswirelesslansbulkpartialupdate
+        description: Patch a list of wireless LAN objects.
+        call: netbox-wireless.wirelesswirelesslansbulkpartialupdate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: wirelesswirelesslansbulkdestroy
+        description: Delete a list of wireless LAN objects.
+        call: netbox-wireless.wirelesswirelesslansbulkdestroy
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/wireless/wireless-lans/{id}
+      name: api-wireless-wireless-lans-id
+      description: REST surface for api-wireless-wireless-lans-id.
+      operations:
+      - method: GET
+        name: wirelesswirelesslansretrieve
+        description: Get a wireless LAN object.
+        call: netbox-wireless.wirelesswirelesslansretrieve
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: wirelesswirelesslansupdate
+        description: Put a wireless LAN object.
+        call: netbox-wireless.wirelesswirelesslansupdate
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: wirelesswirelesslanspartialupdate
+        description: Patch a wireless LAN object.
+        call: netbox-wireless.wirelesswirelesslanspartialupdate
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: wirelesswirelesslansdestroy
+        description: Delete a wireless LAN object.
+        call: netbox-wireless.wirelesswirelesslansdestroy
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/wireless/wireless-links
+      name: api-wireless-wireless-links
+      description: REST surface for api-wireless-wireless-links.
+      operations:
+      - method: GET
+        name: wirelesswirelesslinkslist
+        description: Get a list of wireless link objects.
+        call: netbox-wireless.wirelesswirelesslinkslist
+        with:
+          auth_cipher: rest.auth_cipher
+          auth_cipher__empty: rest.auth_cipher__empty
+          auth_cipher__ic: rest.auth_cipher__ic
+          auth_cipher__ie: rest.auth_cipher__ie
+          auth_cipher__iew: rest.auth_cipher__iew
+          auth_cipher__iregex: rest.auth_cipher__iregex
+          auth_cipher__isw: rest.auth_cipher__isw
+          auth_cipher__n: rest.auth_cipher__n
+          auth_cipher__nic: rest.auth_cipher__nic
+          auth_cipher__nie: rest.auth_cipher__nie
+          auth_cipher__niew: rest.auth_cipher__niew
+          auth_cipher__nisw: rest.auth_cipher__nisw
+          auth_cipher__regex: rest.auth_cipher__regex
+          auth_psk: rest.auth_psk
+          auth_psk__empty: rest.auth_psk__empty
+          auth_psk__ic: rest.auth_psk__ic
+          auth_psk__ie: rest.auth_psk__ie
+          auth_psk__iew: rest.auth_psk__iew
+          auth_psk__iregex: rest.auth_psk__iregex
+          auth_psk__isw: rest.auth_psk__isw
+          auth_psk__n: rest.auth_psk__n
+          auth_psk__nic: rest.auth_psk__nic
+          auth_psk__nie: rest.auth_psk__nie
+          auth_psk__niew: rest.auth_psk__niew
+          auth_psk__nisw: rest.auth_psk__nisw
+          auth_psk__regex: rest.auth_psk__regex
+          auth_type: rest.auth_type
+          auth_type__empty: rest.auth_type__empty
+          auth_type__ic: rest.auth_type__ic
+          auth_type__ie: rest.auth_type__ie
+          auth_type__iew: rest.auth_type__iew
+          auth_type__iregex: rest.auth_type__iregex
+          auth_type__isw: rest.auth_type__isw
+          auth_type__n: rest.auth_type__n
+          auth_type__nic: rest.auth_type__nic
+          auth_type__nie: rest.auth_type__nie
+          auth_type__niew: rest.auth_type__niew
+          auth_type__nisw: rest.auth_type__nisw
+          auth_type__regex: rest.auth_type__regex
+          created: rest.created
+          created__empty: rest.created__empty
+          created__gt: rest.created__gt
+          created__gte: rest.created__gte
+          created__lt: rest.created__lt
+          created__lte: rest.created__lte
+          created__n: rest.created__n
+          created_by_request: rest.created_by_request
+          description: rest.description
+          description__empty: rest.description__empty
+          description__ic: rest.description__ic
+          description__ie: rest.description__ie
+          description__iew: rest.description__iew
+          description__iregex: rest.description__iregex
+          description__isw: rest.description__isw
+          description__n: rest.description__n
+          description__nic: rest.description__nic
+          description__nie: rest.description__nie
+          description__niew: rest.description__niew
+          description__nisw: rest.description__nisw
+          description__regex: rest.description__regex
+          distance: rest.distance
+          distance__empty: rest.distance__empty
+          distance__gt: rest.distance__gt
+          distance__gte: rest.distance__gte
+          distance__lt: rest.distance__lt
+          distance__lte: rest.distance__lte
+          distance__n: rest.distance__n
+          distance_unit: rest.distance_unit
+          distance_unit__empty: rest.distance_unit__empty
+          distance_unit__ic: rest.distance_unit__ic
+          distance_unit__ie: rest.distance_unit__ie
+          distance_unit__iew: rest.distance_unit__iew
+          distance_unit__iregex: rest.distance_unit__iregex
+          distance_unit__isw: rest.distance_unit__isw
+          distance_unit__n: rest.distance_unit__n
+          distance_unit__nic: rest.distance_unit__nic
+          distance_unit__nie: rest.distance_unit__nie
+          distance_unit__niew: rest.distance_unit__niew
+          distance_unit__nisw: rest.distance_unit__nisw
+          distance_unit__regex: rest.distance_unit__regex
+          id: rest.id
+          id__empty: rest.id__empty
+          id__gt: rest.id__gt
+          id__gte: rest.id__gte
+          id__lt: rest.id__lt
+          id__lte: rest.id__lte
+          id__n: rest.id__n
+          interface_a_id: rest.interface_a_id
+          interface_a_id__n: rest.interface_a_id__n
+          interface_b_id: rest.interface_b_id
+          interface_b_id__n: rest.interface_b_id__n
+          last_updated: rest.last_updated
+          last_updated__empty: rest.last_updated__empty
+          last_updated__gt: rest.last_updated__gt
+          last_updated__gte: rest.last_updated__gte
+          last_updated__lt: rest.last_updated__lt
+          last_updated__lte: rest.last_updated__lte
+          last_updated__n: rest.last_updated__n
+          limit: rest.limit
+          modified_by_request: rest.modified_by_request
+          offset: rest.offset
+          ordering: rest.ordering
+          owner: rest.owner
+          owner__n: rest.owner__n
+          owner_group: rest.owner_group
+          owner_group__n: rest.owner_group__n
+          owner_group_id: rest.owner_group_id
+          owner_group_id__n: rest.owner_group_id__n
+          owner_id: rest.owner_id
+          owner_id__n: rest.owner_id__n
+          q: rest.q
+          ssid: rest.ssid
+          ssid__empty: rest.ssid__empty
+          ssid__ic: rest.ssid__ic
+          ssid__ie: rest.ssid__ie
+          ssid__iew: rest.ssid__iew
+          ssid__iregex: rest.ssid__iregex
+          ssid__isw: rest.ssid__isw
+          ssid__n: rest.ssid__n
+          ssid__nic: rest.ssid__nic
+          ssid__nie: rest.ssid__nie
+          ssid__niew: rest.ssid__niew
+          ssid__nisw: rest.ssid__nisw
+          ssid__regex: rest.ssid__regex
+          status: rest.status
+          status__empty: rest.status__empty
+          status__ic: rest.status__ic
+          status__ie: rest.status__ie
+          status__iew: rest.status__iew
+          status__iregex: rest.status__iregex
+          status__isw: rest.status__isw
+          status__n: rest.status__n
+          status__nic: rest.status__nic
+          status__nie: rest.status__nie
+          status__niew: rest.status__niew
+          status__nisw: rest.status__nisw
+          status__regex: rest.status__regex
+          tag: rest.tag
+          tag__n: rest.tag__n
+          tag_id: rest.tag_id
+          tag_id__n: rest.tag_id__n
+          tenant: rest.tenant
+          tenant__n: rest.tenant__n
+          tenant_group: rest.tenant_group
+          tenant_group__n: rest.tenant_group__n
+          tenant_group_id: rest.tenant_group_id
+          tenant_group_id__n: rest.tenant_group_id__n
+          tenant_id: rest.tenant_id
+          tenant_id__n: rest.tenant_id__n
+          updated_by_request: rest.updated_by_request
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: wirelesswirelesslinkscreate
+        description: Post a list of wireless link objects.
+        call: netbox-wireless.wirelesswirelesslinkscreate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: wirelesswirelesslinksbulkupdate
+        description: Put a list of wireless link objects.
+        call: netbox-wireless.wirelesswirelesslinksbulkupdate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: wirelesswirelesslinksbulkpartialupdate
+        description: Patch a list of wireless link objects.
+        call: netbox-wireless.wirelesswirelesslinksbulkpartialupdate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: wirelesswirelesslinksbulkdestroy
+        description: Delete a list of wireless link objects.
+        call: netbox-wireless.wirelesswirelesslinksbulkdestroy
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/wireless/wireless-links/{id}
+      name: api-wireless-wireless-links-id
+      description: REST surface for api-wireless-wireless-links-id.
+      operations:
+      - method: GET
+        name: wirelesswirelesslinksretrieve
+        description: Get a wireless link object.
+        call: netbox-wireless.wirelesswirelesslinksretrieve
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: wirelesswirelesslinksupdate
+        description: Put a wireless link object.
+        call: netbox-wireless.wirelesswirelesslinksupdate
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: wirelesswirelesslinkspartialupdate
+        description: Patch a wireless link object.
+        call: netbox-wireless.wirelesswirelesslinkspartialupdate
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: wirelesswirelesslinksdestroy
+        description: Delete a wireless link object.
+        call: netbox-wireless.wirelesswirelesslinksdestroy
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: netbox-wireless-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for NetBox REST API — wireless. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: get-list-wireless-lan-group
+      description: Get a list of wireless LAN group objects.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: netbox-wireless.wirelesswirelesslangroupslist
+      with:
+        ancestor: tools.ancestor
+        ancestor__n: tools.ancestor__n
+        ancestor_id: tools.ancestor_id
+        ancestor_id__n: tools.ancestor_id__n
+        created: tools.created
+        created__empty: tools.created__empty
+        created__gt: tools.created__gt
+        created__gte: tools.created__gte
+        created__lt: tools.created__lt
+        created__lte: tools.created__lte
+        created__n: tools.created__n
+        created_by_request: tools.created_by_request
+        description: tools.description
+        description__empty: tools.description__empty
+        description__ic: tools.description__ic
+        description__ie: tools.description__ie
+        description__iew: tools.description__iew
+        description__iregex: tools.description__iregex
+        description__isw: tools.description__isw
+        description__n: tools.description__n
+        description__nic: tools.description__nic
+        description__nie: tools.description__nie
+        description__niew: tools.description__niew
+        description__nisw: tools.description__nisw
+        description__regex: tools.description__regex
+        id: tools.id
+        id__empty: tools.id__empty
+        id__gt: tools.id__gt
+        id__gte: tools.id__gte
+        id__lt: tools.id__lt
+        id__lte: tools.id__lte
+        id__n: tools.id__n
+        last_updated: tools.last_updated
+        last_updated__empty: tools.last_updated__empty
+        last_updated__gt: tools.last_updated__gt
+        last_updated__gte: tools.last_updated__gte
+        last_updated__lt: tools.last_updated__lt
+        last_updated__lte: tools.last_updated__lte
+        last_updated__n: tools.last_updated__n
+        limit: tools.limit
+        modified_by_request: tools.modified_by_request
+        name: tools.name
+        name__empty: tools.name__empty
+        name__ic: tools.name__ic
+        name__ie: tools.name__ie
+        name__iew: tools.name__iew
+        name__iregex: tools.name__iregex
+        name__isw: tools.name__isw
+        name__n: tools.name__n
+        name__nic: tools.name__nic
+        name__nie: tools.name__nie
+        name__niew: tools.name__niew
+        name__nisw: tools.name__nisw
+        name__regex: tools.name__regex
+        offset: tools.offset
+        ordering: tools.ordering
+        owner: tools.owner
+        owner__n: tools.owner__n
+        owner_group: tools.owner_group
+        owner_group__n: tools.owner_group__n
+        owner_group_id: tools.owner_group_id
+        owner_group_id__n: tools.owner_group_id__n
+        owner_id: tools.owner_id
+        owner_id__n: tools.owner_id__n
+        parent: tools.parent
+        parent__n: tools.parent__n
+        parent_id: tools.parent_id
+        parent_id__n: tools.parent_id__n
+        q: tools.q
+        slug: tools.slug
+        slug__empty: tools.slug__empty
+        slug__ic: tools.slug__ic
+        slug__ie: tools.slug__ie
+        slug__iew: tools.slug__iew
+        slug__iregex: tools.slug__iregex
+        slug__isw: tools.slug__isw
+        slug__n: tools.slug__n
+        slug__nic: tools.slug__nic
+        slug__nie: tools.slug__nie
+        slug__niew: tools.slug__niew
+        slug__nisw: tools.slug__nisw
+        slug__regex: tools.slug__regex
+        tag: tools.tag
+        tag__n: tools.tag__n
+        tag_id: tools.tag_id
+        tag_id__n: tools.tag_id__n
+        updated_by_request: tools.updated_by_request
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: post-list-wireless-lan-group
+      description: Post a list of wireless LAN group objects.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: netbox-wireless.wirelesswirelesslangroupscreate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: put-list-wireless-lan-group
+      description: Put a list of wireless LAN group objects.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: netbox-wireless.wirelesswirelesslangroupsbulkupdate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: patch-list-wireless-lan-group
+      description: Patch a list of wireless LAN group objects.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: netbox-wireless.wirelesswirelesslangroupsbulkpartialupdate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-list-wireless-lan-group
+      description: Delete a list of wireless LAN group objects.
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: netbox-wireless.wirelesswirelesslangroupsbulkdestroy
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-wireless-lan-group-object
+      description: Get a wireless LAN group object.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: netbox-wireless.wirelesswirelesslangroupsretrieve
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: put-wireless-lan-group-object
+      description: Put a wireless LAN group object.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: netbox-wireless.wirelesswirelesslangroupsupdate
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: patch-wireless-lan-group-object
+      description: Patch a wireless LAN group object.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: netbox-wireless.wirelesswirelesslangroupspartialupdate
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-wireless-lan-group-object
+      description: Delete a wireless LAN group object.
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: netbox-wireless.wirelesswirelesslangroupsdestroy
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-list-wireless-lan-objects
+      description: Get a list of wireless LAN objects.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: netbox-wireless.wirelesswirelesslanslist
+      with:
+        auth_cipher: tools.auth_cipher
+        auth_cipher__empty: tools.auth_cipher__empty
+        auth_cipher__ic: tools.auth_cipher__ic
+        auth_cipher__ie: tools.auth_cipher__ie
+        auth_cipher__iew: tools.auth_cipher__iew
+        auth_cipher__iregex: tools.auth_cipher__iregex
+        auth_cipher__isw: tools.auth_cipher__isw
+        auth_cipher__n: tools.auth_cipher__n
+        auth_cipher__nic: tools.auth_cipher__nic
+        auth_cipher__nie: tools.auth_cipher__nie
+        auth_cipher__niew: tools.auth_cipher__niew
+        auth_cipher__nisw: tools.auth_cipher__nisw
+        auth_cipher__regex: tools.auth_cipher__regex
+        auth_psk: tools.auth_psk
+        auth_psk__empty: tools.auth_psk__empty
+        auth_psk__ic: tools.auth_psk__ic
+        auth_psk__ie: tools.auth_psk__ie
+        auth_psk__iew: tools.auth_psk__iew
+        auth_psk__iregex: tools.auth_psk__iregex
+        auth_psk__isw: tools.auth_psk__isw
+        auth_psk__n: tools.auth_psk__n
+        auth_psk__nic: tools.auth_psk__nic
+        auth_psk__nie: tools.auth_psk__nie
+        auth_psk__niew: tools.auth_psk__niew
+        auth_psk__nisw: tools.auth_psk__nisw
+        auth_psk__regex: tools.auth_psk__regex
+        auth_type: tools.auth_type
+        auth_type__empty: tools.auth_type__empty
+        auth_type__ic: tools.auth_type__ic
+        auth_type__ie: tools.auth_type__ie
+        auth_type__iew: tools.auth_type__iew
+        auth_type__iregex: tools.auth_type__iregex
+        auth_type__isw: tools.auth_type__isw
+        auth_type__n: tools.auth_type__n
+        auth_type__nic: tools.auth_type__nic
+        auth_type__nie: tools.auth_type__nie
+        auth_type__niew: tools.auth_type__niew
+        auth_type__nisw: tools.auth_type__nisw
+        auth_type__regex: tools.auth_type__regex
+        created: tools.created
+        created__empty: tools.created__empty
+        created__gt: tools.created__gt
+        created__gte: tools.created__gte
+        created__lt: tools.created__lt
+        created__lte: tools.created__lte
+        created__n: tools.created__n
+        created_by_request: tools.created_by_request
+        description: tools.description
+        description__empty: tools.description__empty
+        description__ic: tools.description__ic
+        description__ie: tools.description__ie
+        description__iew: tools.description__iew
+        description__iregex: tools.description__iregex
+        description__isw: tools.description__isw
+        description__n: tools.description__n
+        description__nic: tools.description__nic
+        description__nie: tools.description__nie
+        description__niew: tools.description__niew
+        description__nisw: tools.description__nisw
+        description__regex: tools.description__regex
+        group: tools.group
+        group__n: tools.group__n
+        group_id: tools.group_id
+        group_id__n: tools.group_id__n
+        id: tools.id
+        id__empty: tools.id__empty
+        id__gt: tools.id__gt
+        id__gte: tools.id__gte
+        id__lt: tools.id__lt
+        id__lte: tools.id__lte
+        id__n: tools.id__n
+        interface_id: tools.interface_id
+        interface_id__n: tools.interface_id__n
+        last_updated: tools.last_updated
+        last_updated__empty: tools.last_updated__empty
+        last_updated__gt: tools.last_updated__gt
+        last_updated__gte: tools.last_updated__gte
+        last_updated__lt: tools.last_updated__lt
+        last_updated__lte: tools.last_updated__lte
+        last_updated__n: tools.last_updated__n
+        limit: tools.limit
+        location: tools.location
+        location__n: tools.location__n
+        location_id: tools.location_id
+        location_id__n: tools.location_id__n
+        modified_by_request: tools.modified_by_request
+        offset: tools.offset
+        ordering: tools.ordering
+        owner: tools.owner
+        owner__n: tools.owner__n
+        owner_group: tools.owner_group
+        owner_group__n: tools.owner_group__n
+        owner_group_id: tools.owner_group_id
+        owner_group_id__n: tools.owner_group_id__n
+        owner_id: tools.owner_id
+        owner_id__n: tools.owner_id__n
+        q: tools.q
+        region: tools.region
+        region__n: tools.region__n
+        region_id: tools.region_id
+        region_id__n: tools.region_id__n
+        scope_id: tools.scope_id
+        scope_id__empty: tools.scope_id__empty
+        scope_id__gt: tools.scope_id__gt
+        scope_id__gte: tools.scope_id__gte
+        scope_id__lt: tools.scope_id__lt
+        scope_id__lte: tools.scope_id__lte
+        scope_id__n: tools.scope_id__n
+        scope_type: tools.scope_type
+        scope_type__n: tools.scope_type__n
+        site: tools.site
+        site__n: tools.site__n
+        site_group: tools.site_group
+        site_group__n: tools.site_group__n
+        site_group_id: tools.site_group_id
+        site_group_id__n: tools.site_group_id__n
+        site_id: tools.site_id
+        site_id__n: tools.site_id__n
+        ssid: tools.ssid
+        ssid__empty: tools.ssid__empty
+        ssid__ic: tools.ssid__ic
+        ssid__ie: tools.ssid__ie
+        ssid__iew: tools.ssid__iew
+        ssid__iregex: tools.ssid__iregex
+        ssid__isw: tools.ssid__isw
+        ssid__n: tools.ssid__n
+        ssid__nic: tools.ssid__nic
+        ssid__nie: tools.ssid__nie
+        ssid__niew: tools.ssid__niew
+        ssid__nisw: tools.ssid__nisw
+        ssid__regex: tools.ssid__regex
+        status: tools.status
+        status__empty: tools.status__empty
+        status__ic: tools.status__ic
+        status__ie: tools.status__ie
+        status__iew: tools.status__iew
+        status__iregex: tools.status__iregex
+        status__isw: tools.status__isw
+        status__n: tools.status__n
+        status__nic: tools.status__nic
+        status__nie: tools.status__nie
+        status__niew: tools.status__niew
+        status__nisw: tools.status__nisw
+        status__regex: tools.status__regex
+        tag: tools.tag
+        tag__n: tools.tag__n
+        tag_id: tools.tag_id
+        tag_id__n: tools.tag_id__n
+        tenant: tools.tenant
+        tenant__n: tools.tenant__n
+        tenant_group: tools.tenant_group
+        tenant_group__n: tools.tenant_group__n
+        tenant_group_id: tools.tenant_group_id
+        tenant_group_id__n: tools.tenant_group_id__n
+        tenant_id: tools.tenant_id
+        tenant_id__n: tools.tenant_id__n
+        updated_by_request: tools.updated_by_request
+        vlan_id: tools.vlan_id
+        vlan_id__n: tools.vlan_id__n
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: post-list-wireless-lan-objects
+      description: Post a list of wireless LAN objects.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: netbox-wireless.wirelesswirelesslanscreate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: put-list-wireless-lan-objects
+      description: Put a list of wireless LAN objects.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: netbox-wireless.wirelesswirelesslansbulkupdate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: patch-list-wireless-lan-objects
+      description: Patch a list of wireless LAN objects.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: netbox-wireless.wirelesswirelesslansbulkpartialupdate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-list-wireless-lan-objects
+      description: Delete a list of wireless LAN objects.
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: netbox-wireless.wirelesswirelesslansbulkdestroy
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-wireless-lan-object
+      description: Get a wireless LAN object.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: netbox-wireless.wirelesswirelesslansretrieve
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: put-wireless-lan-object
+      description: Put a wireless LAN object.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: netbox-wireless.wirelesswirelesslansupdate
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: patch-wireless-lan-object
+      description: Patch a wireless LAN object.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: netbox-wireless.wirelesswirelesslanspartialupdate
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-wireless-lan-object
+      description: Delete a wireless LAN object.
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: netbox-wireless.wirelesswirelesslansdestroy
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-list-wireless-link-objects
+      description: Get a list of wireless link objects.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: netbox-wireless.wirelesswirelesslinkslist
+      with:
+        auth_cipher: tools.auth_cipher
+        auth_cipher__empty: tools.auth_cipher__empty
+        auth_cipher__ic: tools.auth_cipher__ic
+        auth_cipher__ie: tools.auth_cipher__ie
+        auth_cipher__iew: tools.auth_cipher__iew
+        auth_cipher__iregex: tools.auth_cipher__iregex
+        auth_cipher__isw: tools.auth_cipher__isw
+        auth_cipher__n: tools.auth_cipher__n
+        auth_cipher__nic: tools.auth_cipher__nic
+        auth_cipher__nie: tools.auth_cipher__nie
+        auth_cipher__niew: tools.auth_cipher__niew
+        auth_cipher__nisw: tools.auth_cipher__nisw
+        auth_cipher__regex: tools.auth_cipher__regex
+        auth_psk: tools.auth_psk
+        auth_psk__empty: tools.auth_psk__empty
+        auth_psk__ic: tools.auth_psk__ic
+        auth_psk__ie: tools.auth_psk__ie
+        auth_psk__iew: tools.auth_psk__iew
+        auth_psk__iregex: tools.auth_psk__iregex
+        auth_psk__isw: tools.auth_psk__isw
+        auth_psk__n: tools.auth_psk__n
+        auth_psk__nic: tools.auth_psk__nic
+        auth_psk__nie: tools.auth_psk__nie
+        auth_psk__niew: tools.auth_psk__niew
+        auth_psk__nisw: tools.auth_psk__nisw
+        auth_psk__regex: tools.auth_psk__regex
+        auth_type: tools.auth_type
+        auth_type__empty: tools.auth_type__empty
+        auth_type__ic: tools.auth_type__ic
+        auth_type__ie: tools.auth_type__ie
+        auth_type__iew: tools.auth_type__iew
+        auth_type__iregex: tools.auth_type__iregex
+        auth_type__isw: tools.auth_type__isw
+        auth_type__n: tools.auth_type__n
+        auth_type__nic: tools.auth_type__nic
+        auth_type__nie: tools.auth_type__nie
+        auth_type__niew: tools.auth_type__niew
+        auth_type__nisw: tools.auth_type__nisw
+        auth_type__regex: tools.auth_type__regex
+        created: tools.created
+        created__empty: tools.created__empty
+        created__gt: tools.created__gt
+        created__gte: tools.created__gte
+        created__lt: tools.created__lt
+        created__lte: tools.created__lte
+        created__n: tools.created__n
+        created_by_request: tools.created_by_request
+        description: tools.description
+        description__empty: tools.description__empty
+        description__ic: tools.description__ic
+        description__ie: tools.description__ie
+        description__iew: tools.description__iew
+        description__iregex: tools.description__iregex
+        description__isw: tools.description__isw
+        description__n: tools.description__n
+        description__nic: tools.description__nic
+        description__nie: tools.description__nie
+        description__niew: tools.description__niew
+        description__nisw: tools.description__nisw
+        description__regex: tools.description__regex
+        distance: tools.distance
+        distance__empty: tools.distance__empty
+        distance__gt: tools.distance__gt
+        distance__gte: tools.distance__gte
+        distance__lt: tools.distance__lt
+        distance__lte: tools.distance__lte
+        distance__n: tools.distance__n
+        distance_unit: tools.distance_unit
+        distance_unit__empty: tools.distance_unit__empty
+        distance_unit__ic: tools.distance_unit__ic
+        distance_unit__ie: tools.distance_unit__ie
+        distance_unit__iew: tools.distance_unit__iew
+        distance_unit__iregex: tools.distance_unit__iregex
+        distance_unit__isw: tools.distance_unit__isw
+        distance_unit__n: tools.distance_unit__n
+        distance_unit__nic: tools.distance_unit__nic
+        distance_unit__nie: tools.distance_unit__nie
+        distance_unit__niew: tools.distance_unit__niew
+        distance_unit__nisw: tools.distance_unit__nisw
+        distance_unit__regex: tools.distance_unit__regex
+        id: tools.id
+        id__empty: tools.id__empty
+        id__gt: tools.id__gt
+        id__gte: tools.id__gte
+        id__lt: tools.id__lt
+        id__lte: tools.id__lte
+        id__n: tools.id__n
+        interface_a_id: tools.interface_a_id
+        interface_a_id__n: tools.interface_a_id__n
+        interface_b_id: tools.interface_b_id
+        interface_b_id__n: tools.interface_b_id__n
+        last_updated: tools.last_updated
+        last_updated__empty: tools.last_updated__empty
+        last_updated__gt: tools.last_updated__gt
+        last_updated__gte: tools.last_updated__gte
+        last_updated__lt: tools.last_updated__lt
+        last_updated__lte: tools.last_updated__lte
+        last_updated__n: tools.last_updated__n
+        limit: tools.limit
+        modified_by_request: tools.modified_by_request
+        offset: tools.offset
+        ordering: tools.ordering
+        owner: tools.owner
+        owner__n: tools.owner__n
+        owner_group: tools.owner_group
+        owner_group__n: tools.owner_group__n
+        owner_group_id: tools.owner_group_id
+        owner_group_id__n: tools.owner_group_id__n
+        owner_id: tools.owner_id
+        owner_id__n: tools.owner_id__n
+        q: tools.q
+        ssid: tools.ssid
+        ssid__empty: tools.ssid__empty
+        ssid__ic: tools.ssid__ic
+        ssid__ie: tools.ssid__ie
+        ssid__iew: tools.ssid__iew
+        ssid__iregex: tools.ssid__iregex
+        ssid__isw: tools.ssid__isw
+        ssid__n: tools.ssid__n
+        ssid__nic: tools.ssid__nic
+        ssid__nie: tools.ssid__nie
+        ssid__niew: tools.ssid__niew
+        ssid__nisw: tools.ssid__nisw
+        ssid__regex: tools.ssid__regex
+        status: tools.status
+        status__empty: tools.status__empty
+        status__ic: tools.status__ic
+        status__ie: tools.status__ie
+        status__iew: tools.status__iew
+        status__iregex: tools.status__iregex
+        status__isw: tools.status__isw
+        status__n: tools.status__n
+        status__nic: tools.status__nic
+        status__nie: tools.status__nie
+        status__niew: tools.status__niew
+        status__nisw: tools.status__nisw
+        status__regex: tools.status__regex
+        tag: tools.tag
+        tag__n: tools.tag__n
+        tag_id: tools.tag_id
+        tag_id__n: tools.tag_id__n
+        tenant: tools.tenant
+        tenant__n: tools.tenant__n
+        tenant_group: tools.tenant_group
+        tenant_group__n: tools.tenant_group__n
+        tenant_group_id: tools.tenant_group_id
+        tenant_group_id__n: tools.tenant_group_id__n
+        tenant_id: tools.tenant_id
+        tenant_id__n: tools.tenant_id__n
+        updated_by_request: tools.updated_by_request
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: post-list-wireless-link-objects
+      description: Post a list of wireless link objects.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: netbox-wireless.wirelesswirelesslinkscreate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: put-list-wireless-link-objects
+      description: Put a list of wireless link objects.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: netbox-wireless.wirelesswirelesslinksbulkupdate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: patch-list-wireless-link-objects
+      description: Patch a list of wireless link objects.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: netbox-wireless.wirelesswirelesslinksbulkpartialupdate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-list-wireless-link-objects
+      description: Delete a list of wireless link objects.
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: netbox-wireless.wirelesswirelesslinksbulkdestroy
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-wireless-link-object
+      description: Get a wireless link object.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: netbox-wireless.wirelesswirelesslinksretrieve
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: put-wireless-link-object
+      description: Put a wireless link object.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: netbox-wireless.wirelesswirelesslinksupdate
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: patch-wireless-link-object
+      description: Patch a wireless link object.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: netbox-wireless.wirelesswirelesslinkspartialupdate
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-wireless-link-object
+      description: Delete a wireless link object.
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: netbox-wireless.wirelesswirelesslinksdestroy
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,85 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: NetBox REST API — schema
+  description: 'NetBox REST API — schema. 1 operations. Lead operation: schema. Self-contained Naftiko capability covering
+    one Netbox business surface.'
+  tags:
+  - Netbox
+  - schema
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    NETBOX_API_KEY: NETBOX_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: netbox-schema
+    baseUri: ''
+    description: NetBox REST API — schema business capability. Self-contained, no shared references.
+    resources:
+    - name: api-schema
+      path: /api/schema/
+      operations:
+      - name: schemaretrieve
+        method: GET
+        description: OpenApi3 schema for this API. Format can be selected via content negotiation.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: format
+          in: query
+          type: string
+        - name: lang
+          in: query
+          type: string
+    authentication:
+      type: apikey
+      key: sessionid
+      value: '{{env.NETBOX_API_KEY}}'
+      placement: cookie
+  exposes:
+  - type: rest
+    namespace: netbox-schema-rest
+    port: 8080
+    description: REST adapter for NetBox REST API — schema. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/api/schema
+      name: api-schema
+      description: REST surface for api-schema.
+      operations:
+      - method: GET
+        name: schemaretrieve
+        description: OpenApi3 schema for this API. Format can be selected via content negotiation.
+        call: netbox-schema.schemaretrieve
+        with:
+          format: rest.format
+          lang: rest.lang
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: netbox-schema-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for NetBox REST API — schema. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: openapi3-schema-this-api-format
+      description: OpenApi3 schema for this API. Format can be selected via content negotiation.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: netbox-schema.schemaretrieve
+      with:
+        format: tools.format
+        lang: tools.lang
+      outputParameters:
+      - type: object
+        mapping: $.

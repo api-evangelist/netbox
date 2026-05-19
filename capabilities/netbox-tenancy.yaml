@@ -1,0 +1,4867 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: NetBox REST API — tenancy
+  description: 'NetBox REST API — tenancy. 54 operations. Lead operation: tenancy. Self-contained Naftiko capability covering
+    one Netbox business surface.'
+  tags:
+  - Netbox
+  - tenancy
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    NETBOX_API_KEY: NETBOX_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: netbox-tenancy
+    baseUri: ''
+    description: NetBox REST API — tenancy business capability. Self-contained, no shared references.
+    resources:
+    - name: api-tenancy-contact-assignments
+      path: /api/tenancy/contact-assignments/
+      operations:
+      - name: tenancycontactassignmentslist
+        method: GET
+        description: Get a list of contact assignment objects.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: contact_id
+          in: query
+          type: array
+          description: Contact (ID)
+        - name: contact_id__n
+          in: query
+          type: array
+          description: Contact (ID)
+        - name: created
+          in: query
+          type: array
+        - name: created__empty
+          in: query
+          type: array
+        - name: created__gt
+          in: query
+          type: array
+        - name: created__gte
+          in: query
+          type: array
+        - name: created__lt
+          in: query
+          type: array
+        - name: created__lte
+          in: query
+          type: array
+        - name: created__n
+          in: query
+          type: array
+        - name: created_by_request
+          in: query
+          type: string
+        - name: group
+          in: query
+          type: array
+        - name: group__n
+          in: query
+          type: array
+        - name: group_id
+          in: query
+          type: array
+        - name: group_id__n
+          in: query
+          type: array
+        - name: id
+          in: query
+          type: array
+        - name: id__empty
+          in: query
+          type: boolean
+        - name: id__gt
+          in: query
+          type: array
+        - name: id__gte
+          in: query
+          type: array
+        - name: id__lt
+          in: query
+          type: array
+        - name: id__lte
+          in: query
+          type: array
+        - name: id__n
+          in: query
+          type: array
+        - name: last_updated
+          in: query
+          type: array
+        - name: last_updated__empty
+          in: query
+          type: array
+        - name: last_updated__gt
+          in: query
+          type: array
+        - name: last_updated__gte
+          in: query
+          type: array
+        - name: last_updated__lt
+          in: query
+          type: array
+        - name: last_updated__lte
+          in: query
+          type: array
+        - name: last_updated__n
+          in: query
+          type: array
+        - name: limit
+          in: query
+          type: integer
+          description: Number of results to return per page.
+        - name: modified_by_request
+          in: query
+          type: string
+        - name: object_id
+          in: query
+          type: array
+        - name: object_id__empty
+          in: query
+          type: boolean
+        - name: object_id__gt
+          in: query
+          type: array
+        - name: object_id__gte
+          in: query
+          type: array
+        - name: object_id__lt
+          in: query
+          type: array
+        - name: object_id__lte
+          in: query
+          type: array
+        - name: object_id__n
+          in: query
+          type: array
+        - name: object_type
+          in: query
+          type: array
+        - name: object_type__n
+          in: query
+          type: array
+        - name: object_type_id
+          in: query
+          type: integer
+        - name: object_type_id__n
+          in: query
+          type: integer
+        - name: offset
+          in: query
+          type: integer
+          description: The initial index from which to return the results.
+        - name: ordering
+          in: query
+          type: string
+          description: Which field to use when ordering the results.
+        - name: priority
+          in: query
+          type: string
+          description: '* `primary` - Primary'
+        - name: priority__empty
+          in: query
+          type: boolean
+        - name: priority__ic
+          in: query
+          type: array
+        - name: priority__ie
+          in: query
+          type: array
+        - name: priority__iew
+          in: query
+          type: array
+        - name: priority__iregex
+          in: query
+          type: array
+        - name: priority__isw
+          in: query
+          type: array
+        - name: priority__n
+          in: query
+          type: string
+          description: '* `primary` - Primary'
+        - name: priority__nic
+          in: query
+          type: array
+        - name: priority__nie
+          in: query
+          type: array
+        - name: priority__niew
+          in: query
+          type: array
+        - name: priority__nisw
+          in: query
+          type: array
+        - name: priority__regex
+          in: query
+          type: array
+        - name: q
+          in: query
+          type: string
+          description: Search
+        - name: role
+          in: query
+          type: array
+          description: Contact role (slug)
+        - name: role__n
+          in: query
+          type: array
+          description: Contact role (slug)
+        - name: role_id
+          in: query
+          type: array
+          description: Contact role (ID)
+        - name: role_id__n
+          in: query
+          type: array
+          description: Contact role (ID)
+        - name: tag
+          in: query
+          type: array
+        - name: tag__n
+          in: query
+          type: array
+        - name: tag_id
+          in: query
+          type: array
+        - name: tag_id__n
+          in: query
+          type: array
+        - name: updated_by_request
+          in: query
+          type: string
+      - name: tenancycontactassignmentscreate
+        method: POST
+        description: Post a list of contact assignment objects.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: tenancycontactassignmentsbulkupdate
+        method: PUT
+        description: Put a list of contact assignment objects.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: tenancycontactassignmentsbulkpartialupdate
+        method: PATCH
+        description: Patch a list of contact assignment objects.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: tenancycontactassignmentsbulkdestroy
+        method: DELETE
+        description: Delete a list of contact assignment objects.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-tenancy-contact-assignments-id
+      path: /api/tenancy/contact-assignments/{id}/
+      operations:
+      - name: tenancycontactassignmentsretrieve
+        method: GET
+        description: Get a contact assignment object.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: A unique integer value identifying this contact assignment.
+          required: true
+      - name: tenancycontactassignmentsupdate
+        method: PUT
+        description: Put a contact assignment object.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: A unique integer value identifying this contact assignment.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: tenancycontactassignmentspartialupdate
+        method: PATCH
+        description: Patch a contact assignment object.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: A unique integer value identifying this contact assignment.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: tenancycontactassignmentsdestroy
+        method: DELETE
+        description: Delete a contact assignment object.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: A unique integer value identifying this contact assignment.
+          required: true
+    - name: api-tenancy-contact-groups
+      path: /api/tenancy/contact-groups/
+      operations:
+      - name: tenancycontactgroupslist
+        method: GET
+        description: Get a list of contact group objects.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ancestor
+          in: query
+          type: array
+        - name: ancestor__n
+          in: query
+          type: array
+        - name: ancestor_id
+          in: query
+          type: array
+        - name: ancestor_id__n
+          in: query
+          type: array
+        - name: contact_id
+          in: query
+          type: array
+          description: Contact (ID)
+        - name: contact_id__n
+          in: query
+          type: array
+          description: Contact (ID)
+        - name: created
+          in: query
+          type: array
+        - name: created__empty
+          in: query
+          type: array
+        - name: created__gt
+          in: query
+          type: array
+        - name: created__gte
+          in: query
+          type: array
+        - name: created__lt
+          in: query
+          type: array
+        - name: created__lte
+          in: query
+          type: array
+        - name: created__n
+          in: query
+          type: array
+        - name: created_by_request
+          in: query
+          type: string
+        - name: description
+          in: query
+          type: array
+        - name: description__empty
+          in: query
+          type: boolean
+        - name: description__ic
+          in: query
+          type: array
+        - name: description__ie
+          in: query
+          type: array
+        - name: description__iew
+          in: query
+          type: array
+        - name: description__iregex
+          in: query
+          type: array
+        - name: description__isw
+          in: query
+          type: array
+        - name: description__n
+          in: query
+          type: array
+        - name: description__nic
+          in: query
+          type: array
+        - name: description__nie
+          in: query
+          type: array
+        - name: description__niew
+          in: query
+          type: array
+        - name: description__nisw
+          in: query
+          type: array
+        - name: description__regex
+          in: query
+          type: array
+        - name: id
+          in: query
+          type: array
+        - name: id__empty
+          in: query
+          type: boolean
+        - name: id__gt
+          in: query
+          type: array
+        - name: id__gte
+          in: query
+          type: array
+        - name: id__lt
+          in: query
+          type: array
+        - name: id__lte
+          in: query
+          type: array
+        - name: id__n
+          in: query
+          type: array
+        - name: last_updated
+          in: query
+          type: array
+        - name: last_updated__empty
+          in: query
+          type: array
+        - name: last_updated__gt
+          in: query
+          type: array
+        - name: last_updated__gte
+          in: query
+          type: array
+        - name: last_updated__lt
+          in: query
+          type: array
+        - name: last_updated__lte
+          in: query
+          type: array
+        - name: last_updated__n
+          in: query
+          type: array
+        - name: limit
+          in: query
+          type: integer
+          description: Number of results to return per page.
+        - name: modified_by_request
+          in: query
+          type: string
+        - name: name
+          in: query
+          type: array
+        - name: name__empty
+          in: query
+          type: boolean
+        - name: name__ic
+          in: query
+          type: array
+        - name: name__ie
+          in: query
+          type: array
+        - name: name__iew
+          in: query
+          type: array
+        - name: name__iregex
+          in: query
+          type: array
+        - name: name__isw
+          in: query
+          type: array
+        - name: name__n
+          in: query
+          type: array
+        - name: name__nic
+          in: query
+          type: array
+        - name: name__nie
+          in: query
+          type: array
+        - name: name__niew
+          in: query
+          type: array
+        - name: name__nisw
+          in: query
+          type: array
+        - name: name__regex
+          in: query
+          type: array
+        - name: offset
+          in: query
+          type: integer
+          description: The initial index from which to return the results.
+        - name: ordering
+          in: query
+          type: string
+          description: Which field to use when ordering the results.
+        - name: owner
+          in: query
+          type: array
+          description: Owner (name)
+        - name: owner__n
+          in: query
+          type: array
+          description: Owner (name)
+        - name: owner_group
+          in: query
+          type: array
+          description: Owner Group (name)
+        - name: owner_group__n
+          in: query
+          type: array
+          description: Owner Group (name)
+        - name: owner_group_id
+          in: query
+          type: array
+          description: Owner Group (ID)
+        - name: owner_group_id__n
+          in: query
+          type: array
+          description: Owner Group (ID)
+        - name: owner_id
+          in: query
+          type: array
+          description: Owner (ID)
+        - name: owner_id__n
+          in: query
+          type: array
+          description: Owner (ID)
+        - name: parent
+          in: query
+          type: array
+          description: Parent contact group (slug)
+        - name: parent__n
+          in: query
+          type: array
+          description: Parent contact group (slug)
+        - name: parent_id
+          in: query
+          type: array
+          description: Parent contact group (ID)
+        - name: parent_id__n
+          in: query
+          type: array
+          description: Parent contact group (ID)
+        - name: q
+          in: query
+          type: string
+          description: Search
+        - name: slug
+          in: query
+          type: array
+        - name: slug__empty
+          in: query
+          type: boolean
+        - name: slug__ic
+          in: query
+          type: array
+        - name: slug__ie
+          in: query
+          type: array
+        - name: slug__iew
+          in: query
+          type: array
+        - name: slug__iregex
+          in: query
+          type: array
+        - name: slug__isw
+          in: query
+          type: array
+        - name: slug__n
+          in: query
+          type: array
+        - name: slug__nic
+          in: query
+          type: array
+        - name: slug__nie
+          in: query
+          type: array
+        - name: slug__niew
+          in: query
+          type: array
+        - name: slug__nisw
+          in: query
+          type: array
+        - name: slug__regex
+          in: query
+          type: array
+        - name: tag
+          in: query
+          type: array
+        - name: tag__n
+          in: query
+          type: array
+        - name: tag_id
+          in: query
+          type: array
+        - name: tag_id__n
+          in: query
+          type: array
+        - name: updated_by_request
+          in: query
+          type: string
+      - name: tenancycontactgroupscreate
+        method: POST
+        description: Post a list of contact group objects.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: tenancycontactgroupsbulkupdate
+        method: PUT
+        description: Put a list of contact group objects.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: tenancycontactgroupsbulkpartialupdate
+        method: PATCH
+        description: Patch a list of contact group objects.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: tenancycontactgroupsbulkdestroy
+        method: DELETE
+        description: Delete a list of contact group objects.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-tenancy-contact-groups-id
+      path: /api/tenancy/contact-groups/{id}/
+      operations:
+      - name: tenancycontactgroupsretrieve
+        method: GET
+        description: Get a contact group object.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: A unique integer value identifying this contact group.
+          required: true
+      - name: tenancycontactgroupsupdate
+        method: PUT
+        description: Put a contact group object.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: A unique integer value identifying this contact group.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: tenancycontactgroupspartialupdate
+        method: PATCH
+        description: Patch a contact group object.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: A unique integer value identifying this contact group.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: tenancycontactgroupsdestroy
+        method: DELETE
+        description: Delete a contact group object.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: A unique integer value identifying this contact group.
+          required: true
+    - name: api-tenancy-contact-roles
+      path: /api/tenancy/contact-roles/
+      operations:
+      - name: tenancycontactroleslist
+        method: GET
+        description: Get a list of contact role objects.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: created
+          in: query
+          type: array
+        - name: created__empty
+          in: query
+          type: array
+        - name: created__gt
+          in: query
+          type: array
+        - name: created__gte
+          in: query
+          type: array
+        - name: created__lt
+          in: query
+          type: array
+        - name: created__lte
+          in: query
+          type: array
+        - name: created__n
+          in: query
+          type: array
+        - name: created_by_request
+          in: query
+          type: string
+        - name: description
+          in: query
+          type: array
+        - name: description__empty
+          in: query
+          type: boolean
+        - name: description__ic
+          in: query
+          type: array
+        - name: description__ie
+          in: query
+          type: array
+        - name: description__iew
+          in: query
+          type: array
+        - name: description__iregex
+          in: query
+          type: array
+        - name: description__isw
+          in: query
+          type: array
+        - name: description__n
+          in: query
+          type: array
+        - name: description__nic
+          in: query
+          type: array
+        - name: description__nie
+          in: query
+          type: array
+        - name: description__niew
+          in: query
+          type: array
+        - name: description__nisw
+          in: query
+          type: array
+        - name: description__regex
+          in: query
+          type: array
+        - name: id
+          in: query
+          type: array
+        - name: id__empty
+          in: query
+          type: boolean
+        - name: id__gt
+          in: query
+          type: array
+        - name: id__gte
+          in: query
+          type: array
+        - name: id__lt
+          in: query
+          type: array
+        - name: id__lte
+          in: query
+          type: array
+        - name: id__n
+          in: query
+          type: array
+        - name: last_updated
+          in: query
+          type: array
+        - name: last_updated__empty
+          in: query
+          type: array
+        - name: last_updated__gt
+          in: query
+          type: array
+        - name: last_updated__gte
+          in: query
+          type: array
+        - name: last_updated__lt
+          in: query
+          type: array
+        - name: last_updated__lte
+          in: query
+          type: array
+        - name: last_updated__n
+          in: query
+          type: array
+        - name: limit
+          in: query
+          type: integer
+          description: Number of results to return per page.
+        - name: modified_by_request
+          in: query
+          type: string
+        - name: name
+          in: query
+          type: array
+        - name: name__empty
+          in: query
+          type: boolean
+        - name: name__ic
+          in: query
+          type: array
+        - name: name__ie
+          in: query
+          type: array
+        - name: name__iew
+          in: query
+          type: array
+        - name: name__iregex
+          in: query
+          type: array
+        - name: name__isw
+          in: query
+          type: array
+        - name: name__n
+          in: query
+          type: array
+        - name: name__nic
+          in: query
+          type: array
+        - name: name__nie
+          in: query
+          type: array
+        - name: name__niew
+          in: query
+          type: array
+        - name: name__nisw
+          in: query
+          type: array
+        - name: name__regex
+          in: query
+          type: array
+        - name: offset
+          in: query
+          type: integer
+          description: The initial index from which to return the results.
+        - name: ordering
+          in: query
+          type: string
+          description: Which field to use when ordering the results.
+        - name: owner
+          in: query
+          type: array
+          description: Owner (name)
+        - name: owner__n
+          in: query
+          type: array
+          description: Owner (name)
+        - name: owner_group
+          in: query
+          type: array
+          description: Owner Group (name)
+        - name: owner_group__n
+          in: query
+          type: array
+          description: Owner Group (name)
+        - name: owner_group_id
+          in: query
+          type: array
+          description: Owner Group (ID)
+        - name: owner_group_id__n
+          in: query
+          type: array
+          description: Owner Group (ID)
+        - name: owner_id
+          in: query
+          type: array
+          description: Owner (ID)
+        - name: owner_id__n
+          in: query
+          type: array
+          description: Owner (ID)
+        - name: q
+          in: query
+          type: string
+          description: Search
+        - name: slug
+          in: query
+          type: array
+        - name: slug__empty
+          in: query
+          type: boolean
+        - name: slug__ic
+          in: query
+          type: array
+        - name: slug__ie
+          in: query
+          type: array
+        - name: slug__iew
+          in: query
+          type: array
+        - name: slug__iregex
+          in: query
+          type: array
+        - name: slug__isw
+          in: query
+          type: array
+        - name: slug__n
+          in: query
+          type: array
+        - name: slug__nic
+          in: query
+          type: array
+        - name: slug__nie
+          in: query
+          type: array
+        - name: slug__niew
+          in: query
+          type: array
+        - name: slug__nisw
+          in: query
+          type: array
+        - name: slug__regex
+          in: query
+          type: array
+        - name: tag
+          in: query
+          type: array
+        - name: tag__n
+          in: query
+          type: array
+        - name: tag_id
+          in: query
+          type: array
+        - name: tag_id__n
+          in: query
+          type: array
+        - name: updated_by_request
+          in: query
+          type: string
+      - name: tenancycontactrolescreate
+        method: POST
+        description: Post a list of contact role objects.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: tenancycontactrolesbulkupdate
+        method: PUT
+        description: Put a list of contact role objects.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: tenancycontactrolesbulkpartialupdate
+        method: PATCH
+        description: Patch a list of contact role objects.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: tenancycontactrolesbulkdestroy
+        method: DELETE
+        description: Delete a list of contact role objects.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-tenancy-contact-roles-id
+      path: /api/tenancy/contact-roles/{id}/
+      operations:
+      - name: tenancycontactrolesretrieve
+        method: GET
+        description: Get a contact role object.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: A unique integer value identifying this contact role.
+          required: true
+      - name: tenancycontactrolesupdate
+        method: PUT
+        description: Put a contact role object.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: A unique integer value identifying this contact role.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: tenancycontactrolespartialupdate
+        method: PATCH
+        description: Patch a contact role object.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: A unique integer value identifying this contact role.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: tenancycontactrolesdestroy
+        method: DELETE
+        description: Delete a contact role object.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: A unique integer value identifying this contact role.
+          required: true
+    - name: api-tenancy-contacts
+      path: /api/tenancy/contacts/
+      operations:
+      - name: tenancycontactslist
+        method: GET
+        description: Get a list of contact objects.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: address
+          in: query
+          type: array
+        - name: address__empty
+          in: query
+          type: boolean
+        - name: address__ic
+          in: query
+          type: array
+        - name: address__ie
+          in: query
+          type: array
+        - name: address__iew
+          in: query
+          type: array
+        - name: address__iregex
+          in: query
+          type: array
+        - name: address__isw
+          in: query
+          type: array
+        - name: address__n
+          in: query
+          type: array
+        - name: address__nic
+          in: query
+          type: array
+        - name: address__nie
+          in: query
+          type: array
+        - name: address__niew
+          in: query
+          type: array
+        - name: address__nisw
+          in: query
+          type: array
+        - name: address__regex
+          in: query
+          type: array
+        - name: created
+          in: query
+          type: array
+        - name: created__empty
+          in: query
+          type: array
+        - name: created__gt
+          in: query
+          type: array
+        - name: created__gte
+          in: query
+          type: array
+        - name: created__lt
+          in: query
+          type: array
+        - name: created__lte
+          in: query
+          type: array
+        - name: created__n
+          in: query
+          type: array
+        - name: created_by_request
+          in: query
+          type: string
+        - name: description
+          in: query
+          type: array
+        - name: description__empty
+          in: query
+          type: boolean
+        - name: description__ic
+          in: query
+          type: array
+        - name: description__ie
+          in: query
+          type: array
+        - name: description__iew
+          in: query
+          type: array
+        - name: description__iregex
+          in: query
+          type: array
+        - name: description__isw
+          in: query
+          type: array
+        - name: description__n
+          in: query
+          type: array
+        - name: description__nic
+          in: query
+          type: array
+        - name: description__nie
+          in: query
+          type: array
+        - name: description__niew
+          in: query
+          type: array
+        - name: description__nisw
+          in: query
+          type: array
+        - name: description__regex
+          in: query
+          type: array
+        - name: email
+          in: query
+          type: array
+        - name: email__empty
+          in: query
+          type: boolean
+        - name: email__ic
+          in: query
+          type: array
+        - name: email__ie
+          in: query
+          type: array
+        - name: email__iew
+          in: query
+          type: array
+        - name: email__iregex
+          in: query
+          type: array
+        - name: email__isw
+          in: query
+          type: array
+        - name: email__n
+          in: query
+          type: array
+        - name: email__nic
+          in: query
+          type: array
+        - name: email__nie
+          in: query
+          type: array
+        - name: email__niew
+          in: query
+          type: array
+        - name: email__nisw
+          in: query
+          type: array
+        - name: email__regex
+          in: query
+          type: array
+        - name: group
+          in: query
+          type: array
+        - name: group__n
+          in: query
+          type: array
+        - name: group_id
+          in: query
+          type: array
+        - name: group_id__n
+          in: query
+          type: array
+        - name: id
+          in: query
+          type: array
+        - name: id__empty
+          in: query
+          type: boolean
+        - name: id__gt
+          in: query
+          type: array
+        - name: id__gte
+          in: query
+          type: array
+        - name: id__lt
+          in: query
+          type: array
+        - name: id__lte
+          in: query
+          type: array
+        - name: id__n
+          in: query
+          type: array
+        - name: last_updated
+          in: query
+          type: array
+        - name: last_updated__empty
+          in: query
+          type: array
+        - name: last_updated__gt
+          in: query
+          type: array
+        - name: last_updated__gte
+          in: query
+          type: array
+        - name: last_updated__lt
+          in: query
+          type: array
+        - name: last_updated__lte
+          in: query
+          type: array
+        - name: last_updated__n
+          in: query
+          type: array
+        - name: limit
+          in: query
+          type: integer
+          description: Number of results to return per page.
+        - name: link
+          in: query
+          type: array
+        - name: link__empty
+          in: query
+          type: boolean
+        - name: link__ic
+          in: query
+          type: array
+        - name: link__ie
+          in: query
+          type: array
+        - name: link__iew
+          in: query
+          type: array
+        - name: link__iregex
+          in: query
+          type: array
+        - name: link__isw
+          in: query
+          type: array
+        - name: link__n
+          in: query
+          type: array
+        - name: link__nic
+          in: query
+          type: array
+        - name: link__nie
+          in: query
+          type: array
+        - name: link__niew
+          in: query
+          type: array
+        - name: link__nisw
+          in: query
+          type: array
+        - name: link__regex
+          in: query
+          type: array
+        - name: modified_by_request
+          in: query
+          type: string
+        - name: name
+          in: query
+          type: array
+        - name: name__empty
+          in: query
+          type: boolean
+        - name: name__ic
+          in: query
+          type: array
+        - name: name__ie
+          in: query
+          type: array
+        - name: name__iew
+          in: query
+          type: array
+        - name: name__iregex
+          in: query
+          type: array
+        - name: name__isw
+          in: query
+          type: array
+        - name: name__n
+          in: query
+          type: array
+        - name: name__nic
+          in: query
+          type: array
+        - name: name__nie
+          in: query
+          type: array
+        - name: name__niew
+          in: query
+          type: array
+        - name: name__nisw
+          in: query
+          type: array
+        - name: name__regex
+          in: query
+          type: array
+        - name: offset
+          in: query
+          type: integer
+          description: The initial index from which to return the results.
+        - name: ordering
+          in: query
+          type: string
+          description: Which field to use when ordering the results.
+        - name: owner
+          in: query
+          type: array
+          description: Owner (name)
+        - name: owner__n
+          in: query
+          type: array
+          description: Owner (name)
+        - name: owner_group
+          in: query
+          type: array
+          description: Owner Group (name)
+        - name: owner_group__n
+          in: query
+          type: array
+          description: Owner Group (name)
+        - name: owner_group_id
+          in: query
+          type: array
+          description: Owner Group (ID)
+        - name: owner_group_id__n
+          in: query
+          type: array
+          description: Owner Group (ID)
+        - name: owner_id
+          in: query
+          type: array
+          description: Owner (ID)
+        - name: owner_id__n
+          in: query
+          type: array
+          description: Owner (ID)
+        - name: phone
+          in: query
+          type: array
+        - name: phone__empty
+          in: query
+          type: boolean
+        - name: phone__ic
+          in: query
+          type: array
+        - name: phone__ie
+          in: query
+          type: array
+        - name: phone__iew
+          in: query
+          type: array
+        - name: phone__iregex
+          in: query
+          type: array
+        - name: phone__isw
+          in: query
+          type: array
+        - name: phone__n
+          in: query
+          type: array
+        - name: phone__nic
+          in: query
+          type: array
+        - name: phone__nie
+          in: query
+          type: array
+        - name: phone__niew
+          in: query
+          type: array
+        - name: phone__nisw
+          in: query
+          type: array
+        - name: phone__regex
+          in: query
+          type: array
+        - name: q
+          in: query
+          type: string
+          description: Search
+        - name: tag
+          in: query
+          type: array
+        - name: tag__n
+          in: query
+          type: array
+        - name: tag_id
+          in: query
+          type: array
+        - name: tag_id__n
+          in: query
+          type: array
+        - name: title
+          in: query
+          type: array
+        - name: title__empty
+          in: query
+          type: boolean
+        - name: title__ic
+          in: query
+          type: array
+        - name: title__ie
+          in: query
+          type: array
+        - name: title__iew
+          in: query
+          type: array
+        - name: title__iregex
+          in: query
+          type: array
+        - name: title__isw
+          in: query
+          type: array
+        - name: title__n
+          in: query
+          type: array
+        - name: title__nic
+          in: query
+          type: array
+        - name: title__nie
+          in: query
+          type: array
+        - name: title__niew
+          in: query
+          type: array
+        - name: title__nisw
+          in: query
+          type: array
+        - name: title__regex
+          in: query
+          type: array
+        - name: updated_by_request
+          in: query
+          type: string
+      - name: tenancycontactscreate
+        method: POST
+        description: Post a list of contact objects.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: tenancycontactsbulkupdate
+        method: PUT
+        description: Put a list of contact objects.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: tenancycontactsbulkpartialupdate
+        method: PATCH
+        description: Patch a list of contact objects.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: tenancycontactsbulkdestroy
+        method: DELETE
+        description: Delete a list of contact objects.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-tenancy-contacts-id
+      path: /api/tenancy/contacts/{id}/
+      operations:
+      - name: tenancycontactsretrieve
+        method: GET
+        description: Get a contact object.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: A unique integer value identifying this contact.
+          required: true
+      - name: tenancycontactsupdate
+        method: PUT
+        description: Put a contact object.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: A unique integer value identifying this contact.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: tenancycontactspartialupdate
+        method: PATCH
+        description: Patch a contact object.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: A unique integer value identifying this contact.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: tenancycontactsdestroy
+        method: DELETE
+        description: Delete a contact object.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: A unique integer value identifying this contact.
+          required: true
+    - name: api-tenancy-tenant-groups
+      path: /api/tenancy/tenant-groups/
+      operations:
+      - name: tenancytenantgroupslist
+        method: GET
+        description: Get a list of tenant group objects.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ancestor
+          in: query
+          type: array
+        - name: ancestor__n
+          in: query
+          type: array
+        - name: ancestor_id
+          in: query
+          type: array
+        - name: ancestor_id__n
+          in: query
+          type: array
+        - name: created
+          in: query
+          type: array
+        - name: created__empty
+          in: query
+          type: array
+        - name: created__gt
+          in: query
+          type: array
+        - name: created__gte
+          in: query
+          type: array
+        - name: created__lt
+          in: query
+          type: array
+        - name: created__lte
+          in: query
+          type: array
+        - name: created__n
+          in: query
+          type: array
+        - name: created_by_request
+          in: query
+          type: string
+        - name: description
+          in: query
+          type: array
+        - name: description__empty
+          in: query
+          type: boolean
+        - name: description__ic
+          in: query
+          type: array
+        - name: description__ie
+          in: query
+          type: array
+        - name: description__iew
+          in: query
+          type: array
+        - name: description__iregex
+          in: query
+          type: array
+        - name: description__isw
+          in: query
+          type: array
+        - name: description__n
+          in: query
+          type: array
+        - name: description__nic
+          in: query
+          type: array
+        - name: description__nie
+          in: query
+          type: array
+        - name: description__niew
+          in: query
+          type: array
+        - name: description__nisw
+          in: query
+          type: array
+        - name: description__regex
+          in: query
+          type: array
+        - name: id
+          in: query
+          type: array
+        - name: id__empty
+          in: query
+          type: boolean
+        - name: id__gt
+          in: query
+          type: array
+        - name: id__gte
+          in: query
+          type: array
+        - name: id__lt
+          in: query
+          type: array
+        - name: id__lte
+          in: query
+          type: array
+        - name: id__n
+          in: query
+          type: array
+        - name: last_updated
+          in: query
+          type: array
+        - name: last_updated__empty
+          in: query
+          type: array
+        - name: last_updated__gt
+          in: query
+          type: array
+        - name: last_updated__gte
+          in: query
+          type: array
+        - name: last_updated__lt
+          in: query
+          type: array
+        - name: last_updated__lte
+          in: query
+          type: array
+        - name: last_updated__n
+          in: query
+          type: array
+        - name: limit
+          in: query
+          type: integer
+          description: Number of results to return per page.
+        - name: modified_by_request
+          in: query
+          type: string
+        - name: name
+          in: query
+          type: array
+        - name: name__empty
+          in: query
+          type: boolean
+        - name: name__ic
+          in: query
+          type: array
+        - name: name__ie
+          in: query
+          type: array
+        - name: name__iew
+          in: query
+          type: array
+        - name: name__iregex
+          in: query
+          type: array
+        - name: name__isw
+          in: query
+          type: array
+        - name: name__n
+          in: query
+          type: array
+        - name: name__nic
+          in: query
+          type: array
+        - name: name__nie
+          in: query
+          type: array
+        - name: name__niew
+          in: query
+          type: array
+        - name: name__nisw
+          in: query
+          type: array
+        - name: name__regex
+          in: query
+          type: array
+        - name: offset
+          in: query
+          type: integer
+          description: The initial index from which to return the results.
+        - name: ordering
+          in: query
+          type: string
+          description: Which field to use when ordering the results.
+        - name: owner
+          in: query
+          type: array
+          description: Owner (name)
+        - name: owner__n
+          in: query
+          type: array
+          description: Owner (name)
+        - name: owner_group
+          in: query
+          type: array
+          description: Owner Group (name)
+        - name: owner_group__n
+          in: query
+          type: array
+          description: Owner Group (name)
+        - name: owner_group_id
+          in: query
+          type: array
+          description: Owner Group (ID)
+        - name: owner_group_id__n
+          in: query
+          type: array
+          description: Owner Group (ID)
+        - name: owner_id
+          in: query
+          type: array
+          description: Owner (ID)
+        - name: owner_id__n
+          in: query
+          type: array
+          description: Owner (ID)
+        - name: parent
+          in: query
+          type: array
+          description: Parent tenant group (slug)
+        - name: parent__n
+          in: query
+          type: array
+          description: Parent tenant group (slug)
+        - name: parent_id
+          in: query
+          type: array
+          description: Parent tenant group (ID)
+        - name: parent_id__n
+          in: query
+          type: array
+          description: Parent tenant group (ID)
+        - name: q
+          in: query
+          type: string
+          description: Search
+        - name: slug
+          in: query
+          type: array
+        - name: slug__empty
+          in: query
+          type: boolean
+        - name: slug__ic
+          in: query
+          type: array
+        - name: slug__ie
+          in: query
+          type: array
+        - name: slug__iew
+          in: query
+          type: array
+        - name: slug__iregex
+          in: query
+          type: array
+        - name: slug__isw
+          in: query
+          type: array
+        - name: slug__n
+          in: query
+          type: array
+        - name: slug__nic
+          in: query
+          type: array
+        - name: slug__nie
+          in: query
+          type: array
+        - name: slug__niew
+          in: query
+          type: array
+        - name: slug__nisw
+          in: query
+          type: array
+        - name: slug__regex
+          in: query
+          type: array
+        - name: tag
+          in: query
+          type: array
+        - name: tag__n
+          in: query
+          type: array
+        - name: tag_id
+          in: query
+          type: array
+        - name: tag_id__n
+          in: query
+          type: array
+        - name: updated_by_request
+          in: query
+          type: string
+      - name: tenancytenantgroupscreate
+        method: POST
+        description: Post a list of tenant group objects.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: tenancytenantgroupsbulkupdate
+        method: PUT
+        description: Put a list of tenant group objects.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: tenancytenantgroupsbulkpartialupdate
+        method: PATCH
+        description: Patch a list of tenant group objects.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: tenancytenantgroupsbulkdestroy
+        method: DELETE
+        description: Delete a list of tenant group objects.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-tenancy-tenant-groups-id
+      path: /api/tenancy/tenant-groups/{id}/
+      operations:
+      - name: tenancytenantgroupsretrieve
+        method: GET
+        description: Get a tenant group object.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: A unique integer value identifying this tenant group.
+          required: true
+      - name: tenancytenantgroupsupdate
+        method: PUT
+        description: Put a tenant group object.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: A unique integer value identifying this tenant group.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: tenancytenantgroupspartialupdate
+        method: PATCH
+        description: Patch a tenant group object.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: A unique integer value identifying this tenant group.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: tenancytenantgroupsdestroy
+        method: DELETE
+        description: Delete a tenant group object.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: A unique integer value identifying this tenant group.
+          required: true
+    - name: api-tenancy-tenants
+      path: /api/tenancy/tenants/
+      operations:
+      - name: tenancytenantslist
+        method: GET
+        description: Get a list of tenant objects.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: contact
+          in: query
+          type: array
+          description: Contact
+        - name: contact__n
+          in: query
+          type: array
+          description: Contact
+        - name: contact_group
+          in: query
+          type: array
+        - name: contact_group__n
+          in: query
+          type: array
+        - name: contact_role
+          in: query
+          type: array
+          description: Contact Role
+        - name: contact_role__n
+          in: query
+          type: array
+          description: Contact Role
+        - name: created
+          in: query
+          type: array
+        - name: created__empty
+          in: query
+          type: array
+        - name: created__gt
+          in: query
+          type: array
+        - name: created__gte
+          in: query
+          type: array
+        - name: created__lt
+          in: query
+          type: array
+        - name: created__lte
+          in: query
+          type: array
+        - name: created__n
+          in: query
+          type: array
+        - name: created_by_request
+          in: query
+          type: string
+        - name: description
+          in: query
+          type: array
+        - name: description__empty
+          in: query
+          type: boolean
+        - name: description__ic
+          in: query
+          type: array
+        - name: description__ie
+          in: query
+          type: array
+        - name: description__iew
+          in: query
+          type: array
+        - name: description__iregex
+          in: query
+          type: array
+        - name: description__isw
+          in: query
+          type: array
+        - name: description__n
+          in: query
+          type: array
+        - name: description__nic
+          in: query
+          type: array
+        - name: description__nie
+          in: query
+          type: array
+        - name: description__niew
+          in: query
+          type: array
+        - name: description__nisw
+          in: query
+          type: array
+        - name: description__regex
+          in: query
+          type: array
+        - name: group
+          in: query
+          type: array
+        - name: group__n
+          in: query
+          type: array
+        - name: group_id
+          in: query
+          type: array
+        - name: group_id__n
+          in: query
+          type: array
+        - name: id
+          in: query
+          type: array
+        - name: id__empty
+          in: query
+          type: boolean
+        - name: id__gt
+          in: query
+          type: array
+        - name: id__gte
+          in: query
+          type: array
+        - name: id__lt
+          in: query
+          type: array
+        - name: id__lte
+          in: query
+          type: array
+        - name: id__n
+          in: query
+          type: array
+        - name: last_updated
+          in: query
+          type: array
+        - name: last_updated__empty
+          in: query
+          type: array
+        - name: last_updated__gt
+          in: query
+          type: array
+        - name: last_updated__gte
+          in: query
+          type: array
+        - name: last_updated__lt
+          in: query
+          type: array
+        - name: last_updated__lte
+          in: query
+          type: array
+        - name: last_updated__n
+          in: query
+          type: array
+        - name: limit
+          in: query
+          type: integer
+          description: Number of results to return per page.
+        - name: modified_by_request
+          in: query
+          type: string
+        - name: name
+          in: query
+          type: array
+        - name: name__empty
+          in: query
+          type: boolean
+        - name: name__ic
+          in: query
+          type: array
+        - name: name__ie
+          in: query
+          type: array
+        - name: name__iew
+          in: query
+          type: array
+        - name: name__iregex
+          in: query
+          type: array
+        - name: name__isw
+          in: query
+          type: array
+        - name: name__n
+          in: query
+          type: array
+        - name: name__nic
+          in: query
+          type: array
+        - name: name__nie
+          in: query
+          type: array
+        - name: name__niew
+          in: query
+          type: array
+        - name: name__nisw
+          in: query
+          type: array
+        - name: name__regex
+          in: query
+          type: array
+        - name: offset
+          in: query
+          type: integer
+          description: The initial index from which to return the results.
+        - name: ordering
+          in: query
+          type: string
+          description: Which field to use when ordering the results.
+        - name: owner
+          in: query
+          type: array
+          description: Owner (name)
+        - name: owner__n
+          in: query
+          type: array
+          description: Owner (name)
+        - name: owner_group
+          in: query
+          type: array
+          description: Owner Group (name)
+        - name: owner_group__n
+          in: query
+          type: array
+          description: Owner Group (name)
+        - name: owner_group_id
+          in: query
+          type: array
+          description: Owner Group (ID)
+        - name: owner_group_id__n
+          in: query
+          type: array
+          description: Owner Group (ID)
+        - name: owner_id
+          in: query
+          type: array
+          description: Owner (ID)
+        - name: owner_id__n
+          in: query
+          type: array
+          description: Owner (ID)
+        - name: q
+          in: query
+          type: string
+          description: Search
+        - name: slug
+          in: query
+          type: array
+        - name: slug__empty
+          in: query
+          type: boolean
+        - name: slug__ic
+          in: query
+          type: array
+        - name: slug__ie
+          in: query
+          type: array
+        - name: slug__iew
+          in: query
+          type: array
+        - name: slug__iregex
+          in: query
+          type: array
+        - name: slug__isw
+          in: query
+          type: array
+        - name: slug__n
+          in: query
+          type: array
+        - name: slug__nic
+          in: query
+          type: array
+        - name: slug__nie
+          in: query
+          type: array
+        - name: slug__niew
+          in: query
+          type: array
+        - name: slug__nisw
+          in: query
+          type: array
+        - name: slug__regex
+          in: query
+          type: array
+        - name: tag
+          in: query
+          type: array
+        - name: tag__n
+          in: query
+          type: array
+        - name: tag_id
+          in: query
+          type: array
+        - name: tag_id__n
+          in: query
+          type: array
+        - name: updated_by_request
+          in: query
+          type: string
+      - name: tenancytenantscreate
+        method: POST
+        description: Post a list of tenant objects.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: tenancytenantsbulkupdate
+        method: PUT
+        description: Put a list of tenant objects.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: tenancytenantsbulkpartialupdate
+        method: PATCH
+        description: Patch a list of tenant objects.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: tenancytenantsbulkdestroy
+        method: DELETE
+        description: Delete a list of tenant objects.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-tenancy-tenants-id
+      path: /api/tenancy/tenants/{id}/
+      operations:
+      - name: tenancytenantsretrieve
+        method: GET
+        description: Get a tenant object.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: A unique integer value identifying this tenant.
+          required: true
+      - name: tenancytenantsupdate
+        method: PUT
+        description: Put a tenant object.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: A unique integer value identifying this tenant.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: tenancytenantspartialupdate
+        method: PATCH
+        description: Patch a tenant object.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: A unique integer value identifying this tenant.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: tenancytenantsdestroy
+        method: DELETE
+        description: Delete a tenant object.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: A unique integer value identifying this tenant.
+          required: true
+    authentication:
+      type: apikey
+      key: sessionid
+      value: '{{env.NETBOX_API_KEY}}'
+      placement: cookie
+  exposes:
+  - type: rest
+    namespace: netbox-tenancy-rest
+    port: 8080
+    description: REST adapter for NetBox REST API — tenancy. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/api/tenancy/contact-assignments
+      name: api-tenancy-contact-assignments
+      description: REST surface for api-tenancy-contact-assignments.
+      operations:
+      - method: GET
+        name: tenancycontactassignmentslist
+        description: Get a list of contact assignment objects.
+        call: netbox-tenancy.tenancycontactassignmentslist
+        with:
+          contact_id: rest.contact_id
+          contact_id__n: rest.contact_id__n
+          created: rest.created
+          created__empty: rest.created__empty
+          created__gt: rest.created__gt
+          created__gte: rest.created__gte
+          created__lt: rest.created__lt
+          created__lte: rest.created__lte
+          created__n: rest.created__n
+          created_by_request: rest.created_by_request
+          group: rest.group
+          group__n: rest.group__n
+          group_id: rest.group_id
+          group_id__n: rest.group_id__n
+          id: rest.id
+          id__empty: rest.id__empty
+          id__gt: rest.id__gt
+          id__gte: rest.id__gte
+          id__lt: rest.id__lt
+          id__lte: rest.id__lte
+          id__n: rest.id__n
+          last_updated: rest.last_updated
+          last_updated__empty: rest.last_updated__empty
+          last_updated__gt: rest.last_updated__gt
+          last_updated__gte: rest.last_updated__gte
+          last_updated__lt: rest.last_updated__lt
+          last_updated__lte: rest.last_updated__lte
+          last_updated__n: rest.last_updated__n
+          limit: rest.limit
+          modified_by_request: rest.modified_by_request
+          object_id: rest.object_id
+          object_id__empty: rest.object_id__empty
+          object_id__gt: rest.object_id__gt
+          object_id__gte: rest.object_id__gte
+          object_id__lt: rest.object_id__lt
+          object_id__lte: rest.object_id__lte
+          object_id__n: rest.object_id__n
+          object_type: rest.object_type
+          object_type__n: rest.object_type__n
+          object_type_id: rest.object_type_id
+          object_type_id__n: rest.object_type_id__n
+          offset: rest.offset
+          ordering: rest.ordering
+          priority: rest.priority
+          priority__empty: rest.priority__empty
+          priority__ic: rest.priority__ic
+          priority__ie: rest.priority__ie
+          priority__iew: rest.priority__iew
+          priority__iregex: rest.priority__iregex
+          priority__isw: rest.priority__isw
+          priority__n: rest.priority__n
+          priority__nic: rest.priority__nic
+          priority__nie: rest.priority__nie
+          priority__niew: rest.priority__niew
+          priority__nisw: rest.priority__nisw
+          priority__regex: rest.priority__regex
+          q: rest.q
+          role: rest.role
+          role__n: rest.role__n
+          role_id: rest.role_id
+          role_id__n: rest.role_id__n
+          tag: rest.tag
+          tag__n: rest.tag__n
+          tag_id: rest.tag_id
+          tag_id__n: rest.tag_id__n
+          updated_by_request: rest.updated_by_request
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: tenancycontactassignmentscreate
+        description: Post a list of contact assignment objects.
+        call: netbox-tenancy.tenancycontactassignmentscreate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: tenancycontactassignmentsbulkupdate
+        description: Put a list of contact assignment objects.
+        call: netbox-tenancy.tenancycontactassignmentsbulkupdate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: tenancycontactassignmentsbulkpartialupdate
+        description: Patch a list of contact assignment objects.
+        call: netbox-tenancy.tenancycontactassignmentsbulkpartialupdate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: tenancycontactassignmentsbulkdestroy
+        description: Delete a list of contact assignment objects.
+        call: netbox-tenancy.tenancycontactassignmentsbulkdestroy
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/tenancy/contact-assignments/{id}
+      name: api-tenancy-contact-assignments-id
+      description: REST surface for api-tenancy-contact-assignments-id.
+      operations:
+      - method: GET
+        name: tenancycontactassignmentsretrieve
+        description: Get a contact assignment object.
+        call: netbox-tenancy.tenancycontactassignmentsretrieve
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: tenancycontactassignmentsupdate
+        description: Put a contact assignment object.
+        call: netbox-tenancy.tenancycontactassignmentsupdate
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: tenancycontactassignmentspartialupdate
+        description: Patch a contact assignment object.
+        call: netbox-tenancy.tenancycontactassignmentspartialupdate
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: tenancycontactassignmentsdestroy
+        description: Delete a contact assignment object.
+        call: netbox-tenancy.tenancycontactassignmentsdestroy
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/tenancy/contact-groups
+      name: api-tenancy-contact-groups
+      description: REST surface for api-tenancy-contact-groups.
+      operations:
+      - method: GET
+        name: tenancycontactgroupslist
+        description: Get a list of contact group objects.
+        call: netbox-tenancy.tenancycontactgroupslist
+        with:
+          ancestor: rest.ancestor
+          ancestor__n: rest.ancestor__n
+          ancestor_id: rest.ancestor_id
+          ancestor_id__n: rest.ancestor_id__n
+          contact_id: rest.contact_id
+          contact_id__n: rest.contact_id__n
+          created: rest.created
+          created__empty: rest.created__empty
+          created__gt: rest.created__gt
+          created__gte: rest.created__gte
+          created__lt: rest.created__lt
+          created__lte: rest.created__lte
+          created__n: rest.created__n
+          created_by_request: rest.created_by_request
+          description: rest.description
+          description__empty: rest.description__empty
+          description__ic: rest.description__ic
+          description__ie: rest.description__ie
+          description__iew: rest.description__iew
+          description__iregex: rest.description__iregex
+          description__isw: rest.description__isw
+          description__n: rest.description__n
+          description__nic: rest.description__nic
+          description__nie: rest.description__nie
+          description__niew: rest.description__niew
+          description__nisw: rest.description__nisw
+          description__regex: rest.description__regex
+          id: rest.id
+          id__empty: rest.id__empty
+          id__gt: rest.id__gt
+          id__gte: rest.id__gte
+          id__lt: rest.id__lt
+          id__lte: rest.id__lte
+          id__n: rest.id__n
+          last_updated: rest.last_updated
+          last_updated__empty: rest.last_updated__empty
+          last_updated__gt: rest.last_updated__gt
+          last_updated__gte: rest.last_updated__gte
+          last_updated__lt: rest.last_updated__lt
+          last_updated__lte: rest.last_updated__lte
+          last_updated__n: rest.last_updated__n
+          limit: rest.limit
+          modified_by_request: rest.modified_by_request
+          name: rest.name
+          name__empty: rest.name__empty
+          name__ic: rest.name__ic
+          name__ie: rest.name__ie
+          name__iew: rest.name__iew
+          name__iregex: rest.name__iregex
+          name__isw: rest.name__isw
+          name__n: rest.name__n
+          name__nic: rest.name__nic
+          name__nie: rest.name__nie
+          name__niew: rest.name__niew
+          name__nisw: rest.name__nisw
+          name__regex: rest.name__regex
+          offset: rest.offset
+          ordering: rest.ordering
+          owner: rest.owner
+          owner__n: rest.owner__n
+          owner_group: rest.owner_group
+          owner_group__n: rest.owner_group__n
+          owner_group_id: rest.owner_group_id
+          owner_group_id__n: rest.owner_group_id__n
+          owner_id: rest.owner_id
+          owner_id__n: rest.owner_id__n
+          parent: rest.parent
+          parent__n: rest.parent__n
+          parent_id: rest.parent_id
+          parent_id__n: rest.parent_id__n
+          q: rest.q
+          slug: rest.slug
+          slug__empty: rest.slug__empty
+          slug__ic: rest.slug__ic
+          slug__ie: rest.slug__ie
+          slug__iew: rest.slug__iew
+          slug__iregex: rest.slug__iregex
+          slug__isw: rest.slug__isw
+          slug__n: rest.slug__n
+          slug__nic: rest.slug__nic
+          slug__nie: rest.slug__nie
+          slug__niew: rest.slug__niew
+          slug__nisw: rest.slug__nisw
+          slug__regex: rest.slug__regex
+          tag: rest.tag
+          tag__n: rest.tag__n
+          tag_id: rest.tag_id
+          tag_id__n: rest.tag_id__n
+          updated_by_request: rest.updated_by_request
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: tenancycontactgroupscreate
+        description: Post a list of contact group objects.
+        call: netbox-tenancy.tenancycontactgroupscreate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: tenancycontactgroupsbulkupdate
+        description: Put a list of contact group objects.
+        call: netbox-tenancy.tenancycontactgroupsbulkupdate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: tenancycontactgroupsbulkpartialupdate
+        description: Patch a list of contact group objects.
+        call: netbox-tenancy.tenancycontactgroupsbulkpartialupdate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: tenancycontactgroupsbulkdestroy
+        description: Delete a list of contact group objects.
+        call: netbox-tenancy.tenancycontactgroupsbulkdestroy
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/tenancy/contact-groups/{id}
+      name: api-tenancy-contact-groups-id
+      description: REST surface for api-tenancy-contact-groups-id.
+      operations:
+      - method: GET
+        name: tenancycontactgroupsretrieve
+        description: Get a contact group object.
+        call: netbox-tenancy.tenancycontactgroupsretrieve
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: tenancycontactgroupsupdate
+        description: Put a contact group object.
+        call: netbox-tenancy.tenancycontactgroupsupdate
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: tenancycontactgroupspartialupdate
+        description: Patch a contact group object.
+        call: netbox-tenancy.tenancycontactgroupspartialupdate
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: tenancycontactgroupsdestroy
+        description: Delete a contact group object.
+        call: netbox-tenancy.tenancycontactgroupsdestroy
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/tenancy/contact-roles
+      name: api-tenancy-contact-roles
+      description: REST surface for api-tenancy-contact-roles.
+      operations:
+      - method: GET
+        name: tenancycontactroleslist
+        description: Get a list of contact role objects.
+        call: netbox-tenancy.tenancycontactroleslist
+        with:
+          created: rest.created
+          created__empty: rest.created__empty
+          created__gt: rest.created__gt
+          created__gte: rest.created__gte
+          created__lt: rest.created__lt
+          created__lte: rest.created__lte
+          created__n: rest.created__n
+          created_by_request: rest.created_by_request
+          description: rest.description
+          description__empty: rest.description__empty
+          description__ic: rest.description__ic
+          description__ie: rest.description__ie
+          description__iew: rest.description__iew
+          description__iregex: rest.description__iregex
+          description__isw: rest.description__isw
+          description__n: rest.description__n
+          description__nic: rest.description__nic
+          description__nie: rest.description__nie
+          description__niew: rest.description__niew
+          description__nisw: rest.description__nisw
+          description__regex: rest.description__regex
+          id: rest.id
+          id__empty: rest.id__empty
+          id__gt: rest.id__gt
+          id__gte: rest.id__gte
+          id__lt: rest.id__lt
+          id__lte: rest.id__lte
+          id__n: rest.id__n
+          last_updated: rest.last_updated
+          last_updated__empty: rest.last_updated__empty
+          last_updated__gt: rest.last_updated__gt
+          last_updated__gte: rest.last_updated__gte
+          last_updated__lt: rest.last_updated__lt
+          last_updated__lte: rest.last_updated__lte
+          last_updated__n: rest.last_updated__n
+          limit: rest.limit
+          modified_by_request: rest.modified_by_request
+          name: rest.name
+          name__empty: rest.name__empty
+          name__ic: rest.name__ic
+          name__ie: rest.name__ie
+          name__iew: rest.name__iew
+          name__iregex: rest.name__iregex
+          name__isw: rest.name__isw
+          name__n: rest.name__n
+          name__nic: rest.name__nic
+          name__nie: rest.name__nie
+          name__niew: rest.name__niew
+          name__nisw: rest.name__nisw
+          name__regex: rest.name__regex
+          offset: rest.offset
+          ordering: rest.ordering
+          owner: rest.owner
+          owner__n: rest.owner__n
+          owner_group: rest.owner_group
+          owner_group__n: rest.owner_group__n
+          owner_group_id: rest.owner_group_id
+          owner_group_id__n: rest.owner_group_id__n
+          owner_id: rest.owner_id
+          owner_id__n: rest.owner_id__n
+          q: rest.q
+          slug: rest.slug
+          slug__empty: rest.slug__empty
+          slug__ic: rest.slug__ic
+          slug__ie: rest.slug__ie
+          slug__iew: rest.slug__iew
+          slug__iregex: rest.slug__iregex
+          slug__isw: rest.slug__isw
+          slug__n: rest.slug__n
+          slug__nic: rest.slug__nic
+          slug__nie: rest.slug__nie
+          slug__niew: rest.slug__niew
+          slug__nisw: rest.slug__nisw
+          slug__regex: rest.slug__regex
+          tag: rest.tag
+          tag__n: rest.tag__n
+          tag_id: rest.tag_id
+          tag_id__n: rest.tag_id__n
+          updated_by_request: rest.updated_by_request
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: tenancycontactrolescreate
+        description: Post a list of contact role objects.
+        call: netbox-tenancy.tenancycontactrolescreate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: tenancycontactrolesbulkupdate
+        description: Put a list of contact role objects.
+        call: netbox-tenancy.tenancycontactrolesbulkupdate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: tenancycontactrolesbulkpartialupdate
+        description: Patch a list of contact role objects.
+        call: netbox-tenancy.tenancycontactrolesbulkpartialupdate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: tenancycontactrolesbulkdestroy
+        description: Delete a list of contact role objects.
+        call: netbox-tenancy.tenancycontactrolesbulkdestroy
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/tenancy/contact-roles/{id}
+      name: api-tenancy-contact-roles-id
+      description: REST surface for api-tenancy-contact-roles-id.
+      operations:
+      - method: GET
+        name: tenancycontactrolesretrieve
+        description: Get a contact role object.
+        call: netbox-tenancy.tenancycontactrolesretrieve
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: tenancycontactrolesupdate
+        description: Put a contact role object.
+        call: netbox-tenancy.tenancycontactrolesupdate
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: tenancycontactrolespartialupdate
+        description: Patch a contact role object.
+        call: netbox-tenancy.tenancycontactrolespartialupdate
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: tenancycontactrolesdestroy
+        description: Delete a contact role object.
+        call: netbox-tenancy.tenancycontactrolesdestroy
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/tenancy/contacts
+      name: api-tenancy-contacts
+      description: REST surface for api-tenancy-contacts.
+      operations:
+      - method: GET
+        name: tenancycontactslist
+        description: Get a list of contact objects.
+        call: netbox-tenancy.tenancycontactslist
+        with:
+          address: rest.address
+          address__empty: rest.address__empty
+          address__ic: rest.address__ic
+          address__ie: rest.address__ie
+          address__iew: rest.address__iew
+          address__iregex: rest.address__iregex
+          address__isw: rest.address__isw
+          address__n: rest.address__n
+          address__nic: rest.address__nic
+          address__nie: rest.address__nie
+          address__niew: rest.address__niew
+          address__nisw: rest.address__nisw
+          address__regex: rest.address__regex
+          created: rest.created
+          created__empty: rest.created__empty
+          created__gt: rest.created__gt
+          created__gte: rest.created__gte
+          created__lt: rest.created__lt
+          created__lte: rest.created__lte
+          created__n: rest.created__n
+          created_by_request: rest.created_by_request
+          description: rest.description
+          description__empty: rest.description__empty
+          description__ic: rest.description__ic
+          description__ie: rest.description__ie
+          description__iew: rest.description__iew
+          description__iregex: rest.description__iregex
+          description__isw: rest.description__isw
+          description__n: rest.description__n
+          description__nic: rest.description__nic
+          description__nie: rest.description__nie
+          description__niew: rest.description__niew
+          description__nisw: rest.description__nisw
+          description__regex: rest.description__regex
+          email: rest.email
+          email__empty: rest.email__empty
+          email__ic: rest.email__ic
+          email__ie: rest.email__ie
+          email__iew: rest.email__iew
+          email__iregex: rest.email__iregex
+          email__isw: rest.email__isw
+          email__n: rest.email__n
+          email__nic: rest.email__nic
+          email__nie: rest.email__nie
+          email__niew: rest.email__niew
+          email__nisw: rest.email__nisw
+          email__regex: rest.email__regex
+          group: rest.group
+          group__n: rest.group__n
+          group_id: rest.group_id
+          group_id__n: rest.group_id__n
+          id: rest.id
+          id__empty: rest.id__empty
+          id__gt: rest.id__gt
+          id__gte: rest.id__gte
+          id__lt: rest.id__lt
+          id__lte: rest.id__lte
+          id__n: rest.id__n
+          last_updated: rest.last_updated
+          last_updated__empty: rest.last_updated__empty
+          last_updated__gt: rest.last_updated__gt
+          last_updated__gte: rest.last_updated__gte
+          last_updated__lt: rest.last_updated__lt
+          last_updated__lte: rest.last_updated__lte
+          last_updated__n: rest.last_updated__n
+          limit: rest.limit
+          link: rest.link
+          link__empty: rest.link__empty
+          link__ic: rest.link__ic
+          link__ie: rest.link__ie
+          link__iew: rest.link__iew
+          link__iregex: rest.link__iregex
+          link__isw: rest.link__isw
+          link__n: rest.link__n
+          link__nic: rest.link__nic
+          link__nie: rest.link__nie
+          link__niew: rest.link__niew
+          link__nisw: rest.link__nisw
+          link__regex: rest.link__regex
+          modified_by_request: rest.modified_by_request
+          name: rest.name
+          name__empty: rest.name__empty
+          name__ic: rest.name__ic
+          name__ie: rest.name__ie
+          name__iew: rest.name__iew
+          name__iregex: rest.name__iregex
+          name__isw: rest.name__isw
+          name__n: rest.name__n
+          name__nic: rest.name__nic
+          name__nie: rest.name__nie
+          name__niew: rest.name__niew
+          name__nisw: rest.name__nisw
+          name__regex: rest.name__regex
+          offset: rest.offset
+          ordering: rest.ordering
+          owner: rest.owner
+          owner__n: rest.owner__n
+          owner_group: rest.owner_group
+          owner_group__n: rest.owner_group__n
+          owner_group_id: rest.owner_group_id
+          owner_group_id__n: rest.owner_group_id__n
+          owner_id: rest.owner_id
+          owner_id__n: rest.owner_id__n
+          phone: rest.phone
+          phone__empty: rest.phone__empty
+          phone__ic: rest.phone__ic
+          phone__ie: rest.phone__ie
+          phone__iew: rest.phone__iew
+          phone__iregex: rest.phone__iregex
+          phone__isw: rest.phone__isw
+          phone__n: rest.phone__n
+          phone__nic: rest.phone__nic
+          phone__nie: rest.phone__nie
+          phone__niew: rest.phone__niew
+          phone__nisw: rest.phone__nisw
+          phone__regex: rest.phone__regex
+          q: rest.q
+          tag: rest.tag
+          tag__n: rest.tag__n
+          tag_id: rest.tag_id
+          tag_id__n: rest.tag_id__n
+          title: rest.title
+          title__empty: rest.title__empty
+          title__ic: rest.title__ic
+          title__ie: rest.title__ie
+          title__iew: rest.title__iew
+          title__iregex: rest.title__iregex
+          title__isw: rest.title__isw
+          title__n: rest.title__n
+          title__nic: rest.title__nic
+          title__nie: rest.title__nie
+          title__niew: rest.title__niew
+          title__nisw: rest.title__nisw
+          title__regex: rest.title__regex
+          updated_by_request: rest.updated_by_request
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: tenancycontactscreate
+        description: Post a list of contact objects.
+        call: netbox-tenancy.tenancycontactscreate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: tenancycontactsbulkupdate
+        description: Put a list of contact objects.
+        call: netbox-tenancy.tenancycontactsbulkupdate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: tenancycontactsbulkpartialupdate
+        description: Patch a list of contact objects.
+        call: netbox-tenancy.tenancycontactsbulkpartialupdate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: tenancycontactsbulkdestroy
+        description: Delete a list of contact objects.
+        call: netbox-tenancy.tenancycontactsbulkdestroy
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/tenancy/contacts/{id}
+      name: api-tenancy-contacts-id
+      description: REST surface for api-tenancy-contacts-id.
+      operations:
+      - method: GET
+        name: tenancycontactsretrieve
+        description: Get a contact object.
+        call: netbox-tenancy.tenancycontactsretrieve
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: tenancycontactsupdate
+        description: Put a contact object.
+        call: netbox-tenancy.tenancycontactsupdate
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: tenancycontactspartialupdate
+        description: Patch a contact object.
+        call: netbox-tenancy.tenancycontactspartialupdate
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: tenancycontactsdestroy
+        description: Delete a contact object.
+        call: netbox-tenancy.tenancycontactsdestroy
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/tenancy/tenant-groups
+      name: api-tenancy-tenant-groups
+      description: REST surface for api-tenancy-tenant-groups.
+      operations:
+      - method: GET
+        name: tenancytenantgroupslist
+        description: Get a list of tenant group objects.
+        call: netbox-tenancy.tenancytenantgroupslist
+        with:
+          ancestor: rest.ancestor
+          ancestor__n: rest.ancestor__n
+          ancestor_id: rest.ancestor_id
+          ancestor_id__n: rest.ancestor_id__n
+          created: rest.created
+          created__empty: rest.created__empty
+          created__gt: rest.created__gt
+          created__gte: rest.created__gte
+          created__lt: rest.created__lt
+          created__lte: rest.created__lte
+          created__n: rest.created__n
+          created_by_request: rest.created_by_request
+          description: rest.description
+          description__empty: rest.description__empty
+          description__ic: rest.description__ic
+          description__ie: rest.description__ie
+          description__iew: rest.description__iew
+          description__iregex: rest.description__iregex
+          description__isw: rest.description__isw
+          description__n: rest.description__n
+          description__nic: rest.description__nic
+          description__nie: rest.description__nie
+          description__niew: rest.description__niew
+          description__nisw: rest.description__nisw
+          description__regex: rest.description__regex
+          id: rest.id
+          id__empty: rest.id__empty
+          id__gt: rest.id__gt
+          id__gte: rest.id__gte
+          id__lt: rest.id__lt
+          id__lte: rest.id__lte
+          id__n: rest.id__n
+          last_updated: rest.last_updated
+          last_updated__empty: rest.last_updated__empty
+          last_updated__gt: rest.last_updated__gt
+          last_updated__gte: rest.last_updated__gte
+          last_updated__lt: rest.last_updated__lt
+          last_updated__lte: rest.last_updated__lte
+          last_updated__n: rest.last_updated__n
+          limit: rest.limit
+          modified_by_request: rest.modified_by_request
+          name: rest.name
+          name__empty: rest.name__empty
+          name__ic: rest.name__ic
+          name__ie: rest.name__ie
+          name__iew: rest.name__iew
+          name__iregex: rest.name__iregex
+          name__isw: rest.name__isw
+          name__n: rest.name__n
+          name__nic: rest.name__nic
+          name__nie: rest.name__nie
+          name__niew: rest.name__niew
+          name__nisw: rest.name__nisw
+          name__regex: rest.name__regex
+          offset: rest.offset
+          ordering: rest.ordering
+          owner: rest.owner
+          owner__n: rest.owner__n
+          owner_group: rest.owner_group
+          owner_group__n: rest.owner_group__n
+          owner_group_id: rest.owner_group_id
+          owner_group_id__n: rest.owner_group_id__n
+          owner_id: rest.owner_id
+          owner_id__n: rest.owner_id__n
+          parent: rest.parent
+          parent__n: rest.parent__n
+          parent_id: rest.parent_id
+          parent_id__n: rest.parent_id__n
+          q: rest.q
+          slug: rest.slug
+          slug__empty: rest.slug__empty
+          slug__ic: rest.slug__ic
+          slug__ie: rest.slug__ie
+          slug__iew: rest.slug__iew
+          slug__iregex: rest.slug__iregex
+          slug__isw: rest.slug__isw
+          slug__n: rest.slug__n
+          slug__nic: rest.slug__nic
+          slug__nie: rest.slug__nie
+          slug__niew: rest.slug__niew
+          slug__nisw: rest.slug__nisw
+          slug__regex: rest.slug__regex
+          tag: rest.tag
+          tag__n: rest.tag__n
+          tag_id: rest.tag_id
+          tag_id__n: rest.tag_id__n
+          updated_by_request: rest.updated_by_request
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: tenancytenantgroupscreate
+        description: Post a list of tenant group objects.
+        call: netbox-tenancy.tenancytenantgroupscreate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: tenancytenantgroupsbulkupdate
+        description: Put a list of tenant group objects.
+        call: netbox-tenancy.tenancytenantgroupsbulkupdate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: tenancytenantgroupsbulkpartialupdate
+        description: Patch a list of tenant group objects.
+        call: netbox-tenancy.tenancytenantgroupsbulkpartialupdate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: tenancytenantgroupsbulkdestroy
+        description: Delete a list of tenant group objects.
+        call: netbox-tenancy.tenancytenantgroupsbulkdestroy
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/tenancy/tenant-groups/{id}
+      name: api-tenancy-tenant-groups-id
+      description: REST surface for api-tenancy-tenant-groups-id.
+      operations:
+      - method: GET
+        name: tenancytenantgroupsretrieve
+        description: Get a tenant group object.
+        call: netbox-tenancy.tenancytenantgroupsretrieve
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: tenancytenantgroupsupdate
+        description: Put a tenant group object.
+        call: netbox-tenancy.tenancytenantgroupsupdate
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: tenancytenantgroupspartialupdate
+        description: Patch a tenant group object.
+        call: netbox-tenancy.tenancytenantgroupspartialupdate
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: tenancytenantgroupsdestroy
+        description: Delete a tenant group object.
+        call: netbox-tenancy.tenancytenantgroupsdestroy
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/tenancy/tenants
+      name: api-tenancy-tenants
+      description: REST surface for api-tenancy-tenants.
+      operations:
+      - method: GET
+        name: tenancytenantslist
+        description: Get a list of tenant objects.
+        call: netbox-tenancy.tenancytenantslist
+        with:
+          contact: rest.contact
+          contact__n: rest.contact__n
+          contact_group: rest.contact_group
+          contact_group__n: rest.contact_group__n
+          contact_role: rest.contact_role
+          contact_role__n: rest.contact_role__n
+          created: rest.created
+          created__empty: rest.created__empty
+          created__gt: rest.created__gt
+          created__gte: rest.created__gte
+          created__lt: rest.created__lt
+          created__lte: rest.created__lte
+          created__n: rest.created__n
+          created_by_request: rest.created_by_request
+          description: rest.description
+          description__empty: rest.description__empty
+          description__ic: rest.description__ic
+          description__ie: rest.description__ie
+          description__iew: rest.description__iew
+          description__iregex: rest.description__iregex
+          description__isw: rest.description__isw
+          description__n: rest.description__n
+          description__nic: rest.description__nic
+          description__nie: rest.description__nie
+          description__niew: rest.description__niew
+          description__nisw: rest.description__nisw
+          description__regex: rest.description__regex
+          group: rest.group
+          group__n: rest.group__n
+          group_id: rest.group_id
+          group_id__n: rest.group_id__n
+          id: rest.id
+          id__empty: rest.id__empty
+          id__gt: rest.id__gt
+          id__gte: rest.id__gte
+          id__lt: rest.id__lt
+          id__lte: rest.id__lte
+          id__n: rest.id__n
+          last_updated: rest.last_updated
+          last_updated__empty: rest.last_updated__empty
+          last_updated__gt: rest.last_updated__gt
+          last_updated__gte: rest.last_updated__gte
+          last_updated__lt: rest.last_updated__lt
+          last_updated__lte: rest.last_updated__lte
+          last_updated__n: rest.last_updated__n
+          limit: rest.limit
+          modified_by_request: rest.modified_by_request
+          name: rest.name
+          name__empty: rest.name__empty
+          name__ic: rest.name__ic
+          name__ie: rest.name__ie
+          name__iew: rest.name__iew
+          name__iregex: rest.name__iregex
+          name__isw: rest.name__isw
+          name__n: rest.name__n
+          name__nic: rest.name__nic
+          name__nie: rest.name__nie
+          name__niew: rest.name__niew
+          name__nisw: rest.name__nisw
+          name__regex: rest.name__regex
+          offset: rest.offset
+          ordering: rest.ordering
+          owner: rest.owner
+          owner__n: rest.owner__n
+          owner_group: rest.owner_group
+          owner_group__n: rest.owner_group__n
+          owner_group_id: rest.owner_group_id
+          owner_group_id__n: rest.owner_group_id__n
+          owner_id: rest.owner_id
+          owner_id__n: rest.owner_id__n
+          q: rest.q
+          slug: rest.slug
+          slug__empty: rest.slug__empty
+          slug__ic: rest.slug__ic
+          slug__ie: rest.slug__ie
+          slug__iew: rest.slug__iew
+          slug__iregex: rest.slug__iregex
+          slug__isw: rest.slug__isw
+          slug__n: rest.slug__n
+          slug__nic: rest.slug__nic
+          slug__nie: rest.slug__nie
+          slug__niew: rest.slug__niew
+          slug__nisw: rest.slug__nisw
+          slug__regex: rest.slug__regex
+          tag: rest.tag
+          tag__n: rest.tag__n
+          tag_id: rest.tag_id
+          tag_id__n: rest.tag_id__n
+          updated_by_request: rest.updated_by_request
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: tenancytenantscreate
+        description: Post a list of tenant objects.
+        call: netbox-tenancy.tenancytenantscreate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: tenancytenantsbulkupdate
+        description: Put a list of tenant objects.
+        call: netbox-tenancy.tenancytenantsbulkupdate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: tenancytenantsbulkpartialupdate
+        description: Patch a list of tenant objects.
+        call: netbox-tenancy.tenancytenantsbulkpartialupdate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: tenancytenantsbulkdestroy
+        description: Delete a list of tenant objects.
+        call: netbox-tenancy.tenancytenantsbulkdestroy
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/tenancy/tenants/{id}
+      name: api-tenancy-tenants-id
+      description: REST surface for api-tenancy-tenants-id.
+      operations:
+      - method: GET
+        name: tenancytenantsretrieve
+        description: Get a tenant object.
+        call: netbox-tenancy.tenancytenantsretrieve
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: tenancytenantsupdate
+        description: Put a tenant object.
+        call: netbox-tenancy.tenancytenantsupdate
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: tenancytenantspartialupdate
+        description: Patch a tenant object.
+        call: netbox-tenancy.tenancytenantspartialupdate
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: tenancytenantsdestroy
+        description: Delete a tenant object.
+        call: netbox-tenancy.tenancytenantsdestroy
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: netbox-tenancy-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for NetBox REST API — tenancy. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: get-list-contact-assignment-objects
+      description: Get a list of contact assignment objects.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: netbox-tenancy.tenancycontactassignmentslist
+      with:
+        contact_id: tools.contact_id
+        contact_id__n: tools.contact_id__n
+        created: tools.created
+        created__empty: tools.created__empty
+        created__gt: tools.created__gt
+        created__gte: tools.created__gte
+        created__lt: tools.created__lt
+        created__lte: tools.created__lte
+        created__n: tools.created__n
+        created_by_request: tools.created_by_request
+        group: tools.group
+        group__n: tools.group__n
+        group_id: tools.group_id
+        group_id__n: tools.group_id__n
+        id: tools.id
+        id__empty: tools.id__empty
+        id__gt: tools.id__gt
+        id__gte: tools.id__gte
+        id__lt: tools.id__lt
+        id__lte: tools.id__lte
+        id__n: tools.id__n
+        last_updated: tools.last_updated
+        last_updated__empty: tools.last_updated__empty
+        last_updated__gt: tools.last_updated__gt
+        last_updated__gte: tools.last_updated__gte
+        last_updated__lt: tools.last_updated__lt
+        last_updated__lte: tools.last_updated__lte
+        last_updated__n: tools.last_updated__n
+        limit: tools.limit
+        modified_by_request: tools.modified_by_request
+        object_id: tools.object_id
+        object_id__empty: tools.object_id__empty
+        object_id__gt: tools.object_id__gt
+        object_id__gte: tools.object_id__gte
+        object_id__lt: tools.object_id__lt
+        object_id__lte: tools.object_id__lte
+        object_id__n: tools.object_id__n
+        object_type: tools.object_type
+        object_type__n: tools.object_type__n
+        object_type_id: tools.object_type_id
+        object_type_id__n: tools.object_type_id__n
+        offset: tools.offset
+        ordering: tools.ordering
+        priority: tools.priority
+        priority__empty: tools.priority__empty
+        priority__ic: tools.priority__ic
+        priority__ie: tools.priority__ie
+        priority__iew: tools.priority__iew
+        priority__iregex: tools.priority__iregex
+        priority__isw: tools.priority__isw
+        priority__n: tools.priority__n
+        priority__nic: tools.priority__nic
+        priority__nie: tools.priority__nie
+        priority__niew: tools.priority__niew
+        priority__nisw: tools.priority__nisw
+        priority__regex: tools.priority__regex
+        q: tools.q
+        role: tools.role
+        role__n: tools.role__n
+        role_id: tools.role_id
+        role_id__n: tools.role_id__n
+        tag: tools.tag
+        tag__n: tools.tag__n
+        tag_id: tools.tag_id
+        tag_id__n: tools.tag_id__n
+        updated_by_request: tools.updated_by_request
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: post-list-contact-assignment-objects
+      description: Post a list of contact assignment objects.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: netbox-tenancy.tenancycontactassignmentscreate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: put-list-contact-assignment-objects
+      description: Put a list of contact assignment objects.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: netbox-tenancy.tenancycontactassignmentsbulkupdate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: patch-list-contact-assignment-objects
+      description: Patch a list of contact assignment objects.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: netbox-tenancy.tenancycontactassignmentsbulkpartialupdate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-list-contact-assignment-objects
+      description: Delete a list of contact assignment objects.
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: netbox-tenancy.tenancycontactassignmentsbulkdestroy
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-contact-assignment-object
+      description: Get a contact assignment object.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: netbox-tenancy.tenancycontactassignmentsretrieve
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: put-contact-assignment-object
+      description: Put a contact assignment object.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: netbox-tenancy.tenancycontactassignmentsupdate
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: patch-contact-assignment-object
+      description: Patch a contact assignment object.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: netbox-tenancy.tenancycontactassignmentspartialupdate
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-contact-assignment-object
+      description: Delete a contact assignment object.
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: netbox-tenancy.tenancycontactassignmentsdestroy
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-list-contact-group-objects
+      description: Get a list of contact group objects.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: netbox-tenancy.tenancycontactgroupslist
+      with:
+        ancestor: tools.ancestor
+        ancestor__n: tools.ancestor__n
+        ancestor_id: tools.ancestor_id
+        ancestor_id__n: tools.ancestor_id__n
+        contact_id: tools.contact_id
+        contact_id__n: tools.contact_id__n
+        created: tools.created
+        created__empty: tools.created__empty
+        created__gt: tools.created__gt
+        created__gte: tools.created__gte
+        created__lt: tools.created__lt
+        created__lte: tools.created__lte
+        created__n: tools.created__n
+        created_by_request: tools.created_by_request
+        description: tools.description
+        description__empty: tools.description__empty
+        description__ic: tools.description__ic
+        description__ie: tools.description__ie
+        description__iew: tools.description__iew
+        description__iregex: tools.description__iregex
+        description__isw: tools.description__isw
+        description__n: tools.description__n
+        description__nic: tools.description__nic
+        description__nie: tools.description__nie
+        description__niew: tools.description__niew
+        description__nisw: tools.description__nisw
+        description__regex: tools.description__regex
+        id: tools.id
+        id__empty: tools.id__empty
+        id__gt: tools.id__gt
+        id__gte: tools.id__gte
+        id__lt: tools.id__lt
+        id__lte: tools.id__lte
+        id__n: tools.id__n
+        last_updated: tools.last_updated
+        last_updated__empty: tools.last_updated__empty
+        last_updated__gt: tools.last_updated__gt
+        last_updated__gte: tools.last_updated__gte
+        last_updated__lt: tools.last_updated__lt
+        last_updated__lte: tools.last_updated__lte
+        last_updated__n: tools.last_updated__n
+        limit: tools.limit
+        modified_by_request: tools.modified_by_request
+        name: tools.name
+        name__empty: tools.name__empty
+        name__ic: tools.name__ic
+        name__ie: tools.name__ie
+        name__iew: tools.name__iew
+        name__iregex: tools.name__iregex
+        name__isw: tools.name__isw
+        name__n: tools.name__n
+        name__nic: tools.name__nic
+        name__nie: tools.name__nie
+        name__niew: tools.name__niew
+        name__nisw: tools.name__nisw
+        name__regex: tools.name__regex
+        offset: tools.offset
+        ordering: tools.ordering
+        owner: tools.owner
+        owner__n: tools.owner__n
+        owner_group: tools.owner_group
+        owner_group__n: tools.owner_group__n
+        owner_group_id: tools.owner_group_id
+        owner_group_id__n: tools.owner_group_id__n
+        owner_id: tools.owner_id
+        owner_id__n: tools.owner_id__n
+        parent: tools.parent
+        parent__n: tools.parent__n
+        parent_id: tools.parent_id
+        parent_id__n: tools.parent_id__n
+        q: tools.q
+        slug: tools.slug
+        slug__empty: tools.slug__empty
+        slug__ic: tools.slug__ic
+        slug__ie: tools.slug__ie
+        slug__iew: tools.slug__iew
+        slug__iregex: tools.slug__iregex
+        slug__isw: tools.slug__isw
+        slug__n: tools.slug__n
+        slug__nic: tools.slug__nic
+        slug__nie: tools.slug__nie
+        slug__niew: tools.slug__niew
+        slug__nisw: tools.slug__nisw
+        slug__regex: tools.slug__regex
+        tag: tools.tag
+        tag__n: tools.tag__n
+        tag_id: tools.tag_id
+        tag_id__n: tools.tag_id__n
+        updated_by_request: tools.updated_by_request
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: post-list-contact-group-objects
+      description: Post a list of contact group objects.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: netbox-tenancy.tenancycontactgroupscreate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: put-list-contact-group-objects
+      description: Put a list of contact group objects.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: netbox-tenancy.tenancycontactgroupsbulkupdate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: patch-list-contact-group-objects
+      description: Patch a list of contact group objects.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: netbox-tenancy.tenancycontactgroupsbulkpartialupdate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-list-contact-group-objects
+      description: Delete a list of contact group objects.
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: netbox-tenancy.tenancycontactgroupsbulkdestroy
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-contact-group-object
+      description: Get a contact group object.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: netbox-tenancy.tenancycontactgroupsretrieve
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: put-contact-group-object
+      description: Put a contact group object.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: netbox-tenancy.tenancycontactgroupsupdate
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: patch-contact-group-object
+      description: Patch a contact group object.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: netbox-tenancy.tenancycontactgroupspartialupdate
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-contact-group-object
+      description: Delete a contact group object.
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: netbox-tenancy.tenancycontactgroupsdestroy
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-list-contact-role-objects
+      description: Get a list of contact role objects.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: netbox-tenancy.tenancycontactroleslist
+      with:
+        created: tools.created
+        created__empty: tools.created__empty
+        created__gt: tools.created__gt
+        created__gte: tools.created__gte
+        created__lt: tools.created__lt
+        created__lte: tools.created__lte
+        created__n: tools.created__n
+        created_by_request: tools.created_by_request
+        description: tools.description
+        description__empty: tools.description__empty
+        description__ic: tools.description__ic
+        description__ie: tools.description__ie
+        description__iew: tools.description__iew
+        description__iregex: tools.description__iregex
+        description__isw: tools.description__isw
+        description__n: tools.description__n
+        description__nic: tools.description__nic
+        description__nie: tools.description__nie
+        description__niew: tools.description__niew
+        description__nisw: tools.description__nisw
+        description__regex: tools.description__regex
+        id: tools.id
+        id__empty: tools.id__empty
+        id__gt: tools.id__gt
+        id__gte: tools.id__gte
+        id__lt: tools.id__lt
+        id__lte: tools.id__lte
+        id__n: tools.id__n
+        last_updated: tools.last_updated
+        last_updated__empty: tools.last_updated__empty
+        last_updated__gt: tools.last_updated__gt
+        last_updated__gte: tools.last_updated__gte
+        last_updated__lt: tools.last_updated__lt
+        last_updated__lte: tools.last_updated__lte
+        last_updated__n: tools.last_updated__n
+        limit: tools.limit
+        modified_by_request: tools.modified_by_request
+        name: tools.name
+        name__empty: tools.name__empty
+        name__ic: tools.name__ic
+        name__ie: tools.name__ie
+        name__iew: tools.name__iew
+        name__iregex: tools.name__iregex
+        name__isw: tools.name__isw
+        name__n: tools.name__n
+        name__nic: tools.name__nic
+        name__nie: tools.name__nie
+        name__niew: tools.name__niew
+        name__nisw: tools.name__nisw
+        name__regex: tools.name__regex
+        offset: tools.offset
+        ordering: tools.ordering
+        owner: tools.owner
+        owner__n: tools.owner__n
+        owner_group: tools.owner_group
+        owner_group__n: tools.owner_group__n
+        owner_group_id: tools.owner_group_id
+        owner_group_id__n: tools.owner_group_id__n
+        owner_id: tools.owner_id
+        owner_id__n: tools.owner_id__n
+        q: tools.q
+        slug: tools.slug
+        slug__empty: tools.slug__empty
+        slug__ic: tools.slug__ic
+        slug__ie: tools.slug__ie
+        slug__iew: tools.slug__iew
+        slug__iregex: tools.slug__iregex
+        slug__isw: tools.slug__isw
+        slug__n: tools.slug__n
+        slug__nic: tools.slug__nic
+        slug__nie: tools.slug__nie
+        slug__niew: tools.slug__niew
+        slug__nisw: tools.slug__nisw
+        slug__regex: tools.slug__regex
+        tag: tools.tag
+        tag__n: tools.tag__n
+        tag_id: tools.tag_id
+        tag_id__n: tools.tag_id__n
+        updated_by_request: tools.updated_by_request
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: post-list-contact-role-objects
+      description: Post a list of contact role objects.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: netbox-tenancy.tenancycontactrolescreate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: put-list-contact-role-objects
+      description: Put a list of contact role objects.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: netbox-tenancy.tenancycontactrolesbulkupdate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: patch-list-contact-role-objects
+      description: Patch a list of contact role objects.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: netbox-tenancy.tenancycontactrolesbulkpartialupdate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-list-contact-role-objects
+      description: Delete a list of contact role objects.
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: netbox-tenancy.tenancycontactrolesbulkdestroy
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-contact-role-object
+      description: Get a contact role object.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: netbox-tenancy.tenancycontactrolesretrieve
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: put-contact-role-object
+      description: Put a contact role object.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: netbox-tenancy.tenancycontactrolesupdate
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: patch-contact-role-object
+      description: Patch a contact role object.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: netbox-tenancy.tenancycontactrolespartialupdate
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-contact-role-object
+      description: Delete a contact role object.
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: netbox-tenancy.tenancycontactrolesdestroy
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-list-contact-objects
+      description: Get a list of contact objects.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: netbox-tenancy.tenancycontactslist
+      with:
+        address: tools.address
+        address__empty: tools.address__empty
+        address__ic: tools.address__ic
+        address__ie: tools.address__ie
+        address__iew: tools.address__iew
+        address__iregex: tools.address__iregex
+        address__isw: tools.address__isw
+        address__n: tools.address__n
+        address__nic: tools.address__nic
+        address__nie: tools.address__nie
+        address__niew: tools.address__niew
+        address__nisw: tools.address__nisw
+        address__regex: tools.address__regex
+        created: tools.created
+        created__empty: tools.created__empty
+        created__gt: tools.created__gt
+        created__gte: tools.created__gte
+        created__lt: tools.created__lt
+        created__lte: tools.created__lte
+        created__n: tools.created__n
+        created_by_request: tools.created_by_request
+        description: tools.description
+        description__empty: tools.description__empty
+        description__ic: tools.description__ic
+        description__ie: tools.description__ie
+        description__iew: tools.description__iew
+        description__iregex: tools.description__iregex
+        description__isw: tools.description__isw
+        description__n: tools.description__n
+        description__nic: tools.description__nic
+        description__nie: tools.description__nie
+        description__niew: tools.description__niew
+        description__nisw: tools.description__nisw
+        description__regex: tools.description__regex
+        email: tools.email
+        email__empty: tools.email__empty
+        email__ic: tools.email__ic
+        email__ie: tools.email__ie
+        email__iew: tools.email__iew
+        email__iregex: tools.email__iregex
+        email__isw: tools.email__isw
+        email__n: tools.email__n
+        email__nic: tools.email__nic
+        email__nie: tools.email__nie
+        email__niew: tools.email__niew
+        email__nisw: tools.email__nisw
+        email__regex: tools.email__regex
+        group: tools.group
+        group__n: tools.group__n
+        group_id: tools.group_id
+        group_id__n: tools.group_id__n
+        id: tools.id
+        id__empty: tools.id__empty
+        id__gt: tools.id__gt
+        id__gte: tools.id__gte
+        id__lt: tools.id__lt
+        id__lte: tools.id__lte
+        id__n: tools.id__n
+        last_updated: tools.last_updated
+        last_updated__empty: tools.last_updated__empty
+        last_updated__gt: tools.last_updated__gt
+        last_updated__gte: tools.last_updated__gte
+        last_updated__lt: tools.last_updated__lt
+        last_updated__lte: tools.last_updated__lte
+        last_updated__n: tools.last_updated__n
+        limit: tools.limit
+        link: tools.link
+        link__empty: tools.link__empty
+        link__ic: tools.link__ic
+        link__ie: tools.link__ie
+        link__iew: tools.link__iew
+        link__iregex: tools.link__iregex
+        link__isw: tools.link__isw
+        link__n: tools.link__n
+        link__nic: tools.link__nic
+        link__nie: tools.link__nie
+        link__niew: tools.link__niew
+        link__nisw: tools.link__nisw
+        link__regex: tools.link__regex
+        modified_by_request: tools.modified_by_request
+        name: tools.name
+        name__empty: tools.name__empty
+        name__ic: tools.name__ic
+        name__ie: tools.name__ie
+        name__iew: tools.name__iew
+        name__iregex: tools.name__iregex
+        name__isw: tools.name__isw
+        name__n: tools.name__n
+        name__nic: tools.name__nic
+        name__nie: tools.name__nie
+        name__niew: tools.name__niew
+        name__nisw: tools.name__nisw
+        name__regex: tools.name__regex
+        offset: tools.offset
+        ordering: tools.ordering
+        owner: tools.owner
+        owner__n: tools.owner__n
+        owner_group: tools.owner_group
+        owner_group__n: tools.owner_group__n
+        owner_group_id: tools.owner_group_id
+        owner_group_id__n: tools.owner_group_id__n
+        owner_id: tools.owner_id
+        owner_id__n: tools.owner_id__n
+        phone: tools.phone
+        phone__empty: tools.phone__empty
+        phone__ic: tools.phone__ic
+        phone__ie: tools.phone__ie
+        phone__iew: tools.phone__iew
+        phone__iregex: tools.phone__iregex
+        phone__isw: tools.phone__isw
+        phone__n: tools.phone__n
+        phone__nic: tools.phone__nic
+        phone__nie: tools.phone__nie
+        phone__niew: tools.phone__niew
+        phone__nisw: tools.phone__nisw
+        phone__regex: tools.phone__regex
+        q: tools.q
+        tag: tools.tag
+        tag__n: tools.tag__n
+        tag_id: tools.tag_id
+        tag_id__n: tools.tag_id__n
+        title: tools.title
+        title__empty: tools.title__empty
+        title__ic: tools.title__ic
+        title__ie: tools.title__ie
+        title__iew: tools.title__iew
+        title__iregex: tools.title__iregex
+        title__isw: tools.title__isw
+        title__n: tools.title__n
+        title__nic: tools.title__nic
+        title__nie: tools.title__nie
+        title__niew: tools.title__niew
+        title__nisw: tools.title__nisw
+        title__regex: tools.title__regex
+        updated_by_request: tools.updated_by_request
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: post-list-contact-objects
+      description: Post a list of contact objects.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: netbox-tenancy.tenancycontactscreate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: put-list-contact-objects
+      description: Put a list of contact objects.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: netbox-tenancy.tenancycontactsbulkupdate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: patch-list-contact-objects
+      description: Patch a list of contact objects.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: netbox-tenancy.tenancycontactsbulkpartialupdate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-list-contact-objects
+      description: Delete a list of contact objects.
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: netbox-tenancy.tenancycontactsbulkdestroy
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-contact-object
+      description: Get a contact object.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: netbox-tenancy.tenancycontactsretrieve
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: put-contact-object
+      description: Put a contact object.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: netbox-tenancy.tenancycontactsupdate
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: patch-contact-object
+      description: Patch a contact object.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: netbox-tenancy.tenancycontactspartialupdate
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-contact-object
+      description: Delete a contact object.
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: netbox-tenancy.tenancycontactsdestroy
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-list-tenant-group-objects
+      description: Get a list of tenant group objects.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: netbox-tenancy.tenancytenantgroupslist
+      with:
+        ancestor: tools.ancestor
+        ancestor__n: tools.ancestor__n
+        ancestor_id: tools.ancestor_id
+        ancestor_id__n: tools.ancestor_id__n
+        created: tools.created
+        created__empty: tools.created__empty
+        created__gt: tools.created__gt
+        created__gte: tools.created__gte
+        created__lt: tools.created__lt
+        created__lte: tools.created__lte
+        created__n: tools.created__n
+        created_by_request: tools.created_by_request
+        description: tools.description
+        description__empty: tools.description__empty
+        description__ic: tools.description__ic
+        description__ie: tools.description__ie
+        description__iew: tools.description__iew
+        description__iregex: tools.description__iregex
+        description__isw: tools.description__isw
+        description__n: tools.description__n
+        description__nic: tools.description__nic
+        description__nie: tools.description__nie
+        description__niew: tools.description__niew
+        description__nisw: tools.description__nisw
+        description__regex: tools.description__regex
+        id: tools.id
+        id__empty: tools.id__empty
+        id__gt: tools.id__gt
+        id__gte: tools.id__gte
+        id__lt: tools.id__lt
+        id__lte: tools.id__lte
+        id__n: tools.id__n
+        last_updated: tools.last_updated
+        last_updated__empty: tools.last_updated__empty
+        last_updated__gt: tools.last_updated__gt
+        last_updated__gte: tools.last_updated__gte
+        last_updated__lt: tools.last_updated__lt
+        last_updated__lte: tools.last_updated__lte
+        last_updated__n: tools.last_updated__n
+        limit: tools.limit
+        modified_by_request: tools.modified_by_request
+        name: tools.name
+        name__empty: tools.name__empty
+        name__ic: tools.name__ic
+        name__ie: tools.name__ie
+        name__iew: tools.name__iew
+        name__iregex: tools.name__iregex
+        name__isw: tools.name__isw
+        name__n: tools.name__n
+        name__nic: tools.name__nic
+        name__nie: tools.name__nie
+        name__niew: tools.name__niew
+        name__nisw: tools.name__nisw
+        name__regex: tools.name__regex
+        offset: tools.offset
+        ordering: tools.ordering
+        owner: tools.owner
+        owner__n: tools.owner__n
+        owner_group: tools.owner_group
+        owner_group__n: tools.owner_group__n
+        owner_group_id: tools.owner_group_id
+        owner_group_id__n: tools.owner_group_id__n
+        owner_id: tools.owner_id
+        owner_id__n: tools.owner_id__n
+        parent: tools.parent
+        parent__n: tools.parent__n
+        parent_id: tools.parent_id
+        parent_id__n: tools.parent_id__n
+        q: tools.q
+        slug: tools.slug
+        slug__empty: tools.slug__empty
+        slug__ic: tools.slug__ic
+        slug__ie: tools.slug__ie
+        slug__iew: tools.slug__iew
+        slug__iregex: tools.slug__iregex
+        slug__isw: tools.slug__isw
+        slug__n: tools.slug__n
+        slug__nic: tools.slug__nic
+        slug__nie: tools.slug__nie
+        slug__niew: tools.slug__niew
+        slug__nisw: tools.slug__nisw
+        slug__regex: tools.slug__regex
+        tag: tools.tag
+        tag__n: tools.tag__n
+        tag_id: tools.tag_id
+        tag_id__n: tools.tag_id__n
+        updated_by_request: tools.updated_by_request
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: post-list-tenant-group-objects
+      description: Post a list of tenant group objects.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: netbox-tenancy.tenancytenantgroupscreate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: put-list-tenant-group-objects
+      description: Put a list of tenant group objects.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: netbox-tenancy.tenancytenantgroupsbulkupdate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: patch-list-tenant-group-objects
+      description: Patch a list of tenant group objects.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: netbox-tenancy.tenancytenantgroupsbulkpartialupdate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-list-tenant-group-objects
+      description: Delete a list of tenant group objects.
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: netbox-tenancy.tenancytenantgroupsbulkdestroy
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-tenant-group-object
+      description: Get a tenant group object.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: netbox-tenancy.tenancytenantgroupsretrieve
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: put-tenant-group-object
+      description: Put a tenant group object.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: netbox-tenancy.tenancytenantgroupsupdate
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: patch-tenant-group-object
+      description: Patch a tenant group object.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: netbox-tenancy.tenancytenantgroupspartialupdate
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-tenant-group-object
+      description: Delete a tenant group object.
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: netbox-tenancy.tenancytenantgroupsdestroy
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-list-tenant-objects
+      description: Get a list of tenant objects.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: netbox-tenancy.tenancytenantslist
+      with:
+        contact: tools.contact
+        contact__n: tools.contact__n
+        contact_group: tools.contact_group
+        contact_group__n: tools.contact_group__n
+        contact_role: tools.contact_role
+        contact_role__n: tools.contact_role__n
+        created: tools.created
+        created__empty: tools.created__empty
+        created__gt: tools.created__gt
+        created__gte: tools.created__gte
+        created__lt: tools.created__lt
+        created__lte: tools.created__lte
+        created__n: tools.created__n
+        created_by_request: tools.created_by_request
+        description: tools.description
+        description__empty: tools.description__empty
+        description__ic: tools.description__ic
+        description__ie: tools.description__ie
+        description__iew: tools.description__iew
+        description__iregex: tools.description__iregex
+        description__isw: tools.description__isw
+        description__n: tools.description__n
+        description__nic: tools.description__nic
+        description__nie: tools.description__nie
+        description__niew: tools.description__niew
+        description__nisw: tools.description__nisw
+        description__regex: tools.description__regex
+        group: tools.group
+        group__n: tools.group__n
+        group_id: tools.group_id
+        group_id__n: tools.group_id__n
+        id: tools.id
+        id__empty: tools.id__empty
+        id__gt: tools.id__gt
+        id__gte: tools.id__gte
+        id__lt: tools.id__lt
+        id__lte: tools.id__lte
+        id__n: tools.id__n
+        last_updated: tools.last_updated
+        last_updated__empty: tools.last_updated__empty
+        last_updated__gt: tools.last_updated__gt
+        last_updated__gte: tools.last_updated__gte
+        last_updated__lt: tools.last_updated__lt
+        last_updated__lte: tools.last_updated__lte
+        last_updated__n: tools.last_updated__n
+        limit: tools.limit
+        modified_by_request: tools.modified_by_request
+        name: tools.name
+        name__empty: tools.name__empty
+        name__ic: tools.name__ic
+        name__ie: tools.name__ie
+        name__iew: tools.name__iew
+        name__iregex: tools.name__iregex
+        name__isw: tools.name__isw
+        name__n: tools.name__n
+        name__nic: tools.name__nic
+        name__nie: tools.name__nie
+        name__niew: tools.name__niew
+        name__nisw: tools.name__nisw
+        name__regex: tools.name__regex
+        offset: tools.offset
+        ordering: tools.ordering
+        owner: tools.owner
+        owner__n: tools.owner__n
+        owner_group: tools.owner_group
+        owner_group__n: tools.owner_group__n
+        owner_group_id: tools.owner_group_id
+        owner_group_id__n: tools.owner_group_id__n
+        owner_id: tools.owner_id
+        owner_id__n: tools.owner_id__n
+        q: tools.q
+        slug: tools.slug
+        slug__empty: tools.slug__empty
+        slug__ic: tools.slug__ic
+        slug__ie: tools.slug__ie
+        slug__iew: tools.slug__iew
+        slug__iregex: tools.slug__iregex
+        slug__isw: tools.slug__isw
+        slug__n: tools.slug__n
+        slug__nic: tools.slug__nic
+        slug__nie: tools.slug__nie
+        slug__niew: tools.slug__niew
+        slug__nisw: tools.slug__nisw
+        slug__regex: tools.slug__regex
+        tag: tools.tag
+        tag__n: tools.tag__n
+        tag_id: tools.tag_id
+        tag_id__n: tools.tag_id__n
+        updated_by_request: tools.updated_by_request
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: post-list-tenant-objects
+      description: Post a list of tenant objects.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: netbox-tenancy.tenancytenantscreate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: put-list-tenant-objects
+      description: Put a list of tenant objects.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: netbox-tenancy.tenancytenantsbulkupdate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: patch-list-tenant-objects
+      description: Patch a list of tenant objects.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: netbox-tenancy.tenancytenantsbulkpartialupdate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-list-tenant-objects
+      description: Delete a list of tenant objects.
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: netbox-tenancy.tenancytenantsbulkdestroy
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-tenant-object
+      description: Get a tenant object.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: netbox-tenancy.tenancytenantsretrieve
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: put-tenant-object
+      description: Put a tenant object.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: netbox-tenancy.tenancytenantsupdate
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: patch-tenant-object
+      description: Patch a tenant object.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: netbox-tenancy.tenancytenantspartialupdate
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-tenant-object
+      description: Delete a tenant object.
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: netbox-tenancy.tenancytenantsdestroy
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
