@@ -2,12 +2,17 @@
   "repo": "netbox",
   "feeds": [
     {
-      "source": "https://netbox.dev/blog/",
-      "feed_url": "https://netbox.dev/rss/",
-      "title": "NetBox Labs",
-      "saved": 5
+      "source": "https://netbox.dev/rss/",
+      "error": "HTTPError"
+    },
+    {
+      "source": "https://netdev.chat/",
+      "feed_url": "https://netdev.chat/",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     }
   ],
   "post_count": 15,
-  "fetched": "2026-05-17T20:20:35Z"
+  "fetched": "2026-06-01T23:35:02Z"
 }
