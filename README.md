@@ -2,7 +2,7 @@
 
 NetBox is the leading solution for modeling and documenting modern networks. By combining the traditional disciplines of IP address management (IPAM) and datacenter infrastructure management (DCIM) with powerful APIs and extensions, NetBox provides the ideal "source of truth" to power network automation.
 
-**URL:** [Visit APIs.yml URL](https://raw.githubusercontent.com/api-evangelist/netbox/refs/heads/main/apis.yml)
+**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/netbox/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/netbox/refs/heads/main/apis.yml)
 
 ## Tags
 
@@ -18,7 +18,7 @@ NetBox is the leading solution for modeling and documenting modern networks. By 
 ## Timestamps
 
 - **Created:** 2024-01-15
-- **Modified:** 2026-04-28
+- **Modified:** 2026-05-19
 
 ## APIs
 
@@ -26,9 +26,8 @@ NetBox is the leading solution for modeling and documenting modern networks. By 
 
 A comprehensive REST API for programmatic access to all NetBox data and functionality. Supports full CRUD operations for all objects including devices, IP addresses, circuits, and more.
 
-**Human URL:** [https://docs.netbox.dev/en/stable/](https://docs.netbox.dev/en/stable/)
-
-**Base URL:** `https://demo.netbox.dev/api`
+- **Human URL:** [https://docs.netbox.dev/en/stable/](https://docs.netbox.dev/en/stable/)
+- **Base URL:** `https://demo.netbox.dev/api`
 
 #### Tags
 
@@ -42,16 +41,17 @@ A comprehensive REST API for programmatic access to all NetBox data and function
 #### Properties
 
 - [Documentation](https://docs.netbox.dev/en/stable/integrations/rest-api/)
-- [OpenAPI](openapi/netbox-openapi.yml)
+- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/netbox/refs/heads/main/openapi/netbox-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
 - [Authentication](https://docs.netbox.dev/en/stable/integrations/rest-api/#authentication)
+- [Postman Collection](collections/netbox.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/netbox.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
 
 ### NetBox GraphQL API
 
 A GraphQL API providing flexible querying capabilities for NetBox data with support for nested queries and custom field selection.
 
-**Human URL:** [https://docs.netbox.dev/en/stable/integrations/graphql-api/](https://docs.netbox.dev/en/stable/integrations/graphql-api/)
-
-**Base URL:** `https://demo.netbox.dev/graphql`
+- **Human URL:** [https://docs.netbox.dev/en/stable/integrations/graphql-api/](https://docs.netbox.dev/en/stable/integrations/graphql-api/)
+- **Base URL:** `https://demo.netbox.dev/graphql`
 
 #### Tags
 
@@ -63,19 +63,21 @@ A GraphQL API providing flexible querying capabilities for NetBox data with supp
 #### Properties
 
 - [Documentation](https://docs.netbox.dev/en/stable/integrations/graphql-api/)
-- [GraphiQL Interface](https://demo.netbox.dev/graphql)
+- [Graphi Q L  Interface](https://demo.netbox.dev/graphql)
+- [Postman Collection](collections/netbox.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/netbox.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
 
 ## Common Properties
 
+- [LinkedIn](https://www.linkedin.com/company/netboxlabs)
 - [GitHub Organization](https://github.com/netbox-community)
-- [Slack Community](https://netdev.chat/)
+- [Slack  Community](https://netdev.chat/)
 - [Blog](https://netbox.dev/blog/)
 - [Getting Started](https://docs.netbox.dev/en/stable/getting-started/)
 - [Plugins](https://netbox.dev/plugins/)
-- [Demo Instance](https://demo.netbox.dev/)
+- [Demo  Instance](https://demo.netbox.dev/)
 
 ## Maintainers
 
 **FN:** Kin Lane
-
 **Email:** kin@apievangelist.com
