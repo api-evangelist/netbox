@@ -2,11 +2,10 @@
   "repo": "netbox",
   "feeds": [
     {
-      "source": "https://netboxlabs.com/blog/",
-      "feed_url": "https://netboxlabs.com/blog/",
-      "title": "",
+      "source": "https://netbox.dev/blog/",
+      "feed_url": "",
       "saved": 0,
-      "method": "none"
+      "method": "agent-scrape"
     },
     {
       "source": "https://netdev.chat/",
@@ -16,6 +15,7 @@
       "method": "none"
     }
   ],
-  "post_count": 16,
-  "fetched": "2026-06-14T20:42:17Z"
+  "post_count": 17,
+  "fetched": "2026-06-27T12:55:39Z",
+  "agent_pulled": "2026-06-27"
 }
