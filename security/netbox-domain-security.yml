@@ -1,0 +1,21 @@
+generated: '2026-07-11'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: docs.netbox.dev
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Aug 11 14:51:48 2026 GMT
+  hsts: true
+  hsts_max_age: 63072000
+- host: demo.netbox.dev
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 15 23:39:56 2026 GMT
+  hsts: false
+domains:
+- domain: netbox.dev
+  dnssec: false
+  caa: []
+  spf: false
+  dmarc: false

@@ -57,6 +57,10 @@ apis:
   - url: graphql/netbox-graphql.md
     type: GraphQL
 common:
+- type: DomainSecurity
+  url: security/netbox-domain-security.yml
+- type: Authentication
+  url: authentication/netbox-authentication.yml
 - type: LinkedIn
   url: https://www.linkedin.com/company/netboxlabs
 - type: GitHubOrganization

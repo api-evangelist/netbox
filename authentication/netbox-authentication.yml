@@ -1,0 +1,23 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/netbox-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - cookie
+  - header
+schemes:
+- name: cookieAuth
+  type: apiKey
+  in: cookie
+  parameter: sessionid
+  sources:
+  - openapi/netbox-openapi.yml
+- name: tokenAuth
+  type: apiKey
+  in: header
+  parameter: Authorization
+  description: '`Token <token>` (v1) or `Bearer <key>.<token>` (v2)'
+  sources:
+  - openapi/netbox-openapi.yml
