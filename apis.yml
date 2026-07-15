@@ -57,6 +57,8 @@ apis:
   - url: graphql/netbox-graphql.md
     type: GraphQL
 common:
+- type: AgenticAccess
+  url: agentic-access/netbox-agentic-access.yml
 - type: DomainSecurity
   url: security/netbox-domain-security.yml
 - type: Authentication
