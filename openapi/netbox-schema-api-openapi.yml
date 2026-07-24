@@ -1,0 +1,87 @@
+openapi: 3.0.3
+info:
+  title: NetBox REST authentication-check schema API
+  version: 4.5.9 (4.5)
+  license:
+    name: Apache v2 License
+servers:
+- url: ''
+  description: NetBox
+tags:
+- name: schema
+paths:
+  /api/schema/:
+    get:
+      operationId: schema_retrieve
+      description: 'OpenApi3 schema for this API. Format can be selected via content negotiation.
+
+
+        - YAML: application/vnd.oai.openapi
+
+        - JSON: application/vnd.oai.openapi+json'
+      parameters:
+      - in: query
+        name: format
+        schema:
+          type: string
+          enum:
+          - json
+          - yaml
+      - in: query
+        name: lang
+        schema:
+          type: string
+          enum:
+          - cs
+          - da
+          - de
+          - en
+          - es
+          - fr
+          - it
+          - ja
+          - lv
+          - nl
+          - pl
+          - pt
+          - ru
+          - tr
+          - uk
+          - zh
+      tags:
+      - schema
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/vnd.oai.openapi:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/yaml:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/vnd.oai.openapi+json:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+components:
+  securitySchemes:
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: '`Token <token>` (v1) or `Bearer <key>.<token>` (v2)'

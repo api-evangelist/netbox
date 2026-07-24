@@ -1,0 +1,5389 @@
+openapi: 3.0.3
+info:
+  title: NetBox REST authentication-check users API
+  version: 4.5.9 (4.5)
+  license:
+    name: Apache v2 License
+servers:
+- url: ''
+  description: NetBox
+tags:
+- name: users
+paths:
+  /api/users/config/:
+    get:
+      operationId: users_config_retrieve
+      description: An API endpoint via which a user can update his or her own UserConfig data (but no one else's).
+      tags:
+      - users
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/users/groups/:
+    get:
+      operationId: users_groups_list
+      description: Get a list of group objects.
+      parameters:
+      - in: query
+        name: description
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__empty
+        schema:
+          type: boolean
+      - in: query
+        name: description__ic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__ie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__iew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__iregex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__isw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__nic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__nie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__niew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__nisw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__regex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: id
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__empty
+        schema:
+          type: boolean
+      - in: query
+        name: id__gt
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__gte
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__lt
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__lte
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__n
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - in: query
+        name: name
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__empty
+        schema:
+          type: boolean
+      - in: query
+        name: name__ic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__ie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__iew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__iregex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__isw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__nic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__nie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__niew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__nisw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__regex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: notification_group_id
+        schema:
+          type: array
+          items:
+            type: integer
+        description: Notification group (ID)
+        explode: true
+        style: form
+      - in: query
+        name: notification_group_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+        description: Notification group (ID)
+        explode: true
+        style: form
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - in: query
+        name: owner
+        schema:
+          type: array
+          items:
+            type: string
+        description: Owner (name)
+        explode: true
+        style: form
+      - in: query
+        name: owner__n
+        schema:
+          type: array
+          items:
+            type: string
+        description: Owner (name)
+        explode: true
+        style: form
+      - in: query
+        name: owner_id
+        schema:
+          type: array
+          items:
+            type: integer
+        description: Owner (ID)
+        explode: true
+        style: form
+      - in: query
+        name: owner_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+        description: Owner (ID)
+        explode: true
+        style: form
+      - in: query
+        name: permission_id
+        schema:
+          type: array
+          items:
+            type: integer
+        description: Permission (ID)
+        explode: true
+        style: form
+      - in: query
+        name: permission_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+        description: Permission (ID)
+        explode: true
+        style: form
+      - in: query
+        name: q
+        schema:
+          type: string
+        description: Search
+      - in: query
+        name: user_id
+        schema:
+          type: array
+          items:
+            type: integer
+        description: User (ID)
+        explode: true
+        style: form
+      - in: query
+        name: user_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+        description: User (ID)
+        explode: true
+        style: form
+      tags:
+      - users
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedGroupList'
+          description: ''
+    post:
+      operationId: users_groups_create
+      description: Post a list of group objects.
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+              - $ref: '#/components/schemas/GroupRequest'
+              - type: array
+                items:
+                  $ref: '#/components/schemas/GroupRequest'
+          multipart/form-data:
+            schema:
+              oneOf:
+              - $ref: '#/components/schemas/GroupRequest'
+              - type: array
+                items:
+                  $ref: '#/components/schemas/GroupRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Group'
+          description: ''
+    put:
+      operationId: users_groups_bulk_update
+      description: Put a list of group objects.
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/GroupRequest'
+          multipart/form-data:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/GroupRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Group'
+          description: ''
+    patch:
+      operationId: users_groups_bulk_partial_update
+      description: Patch a list of group objects.
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/GroupRequest'
+          multipart/form-data:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/GroupRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Group'
+          description: ''
+    delete:
+      operationId: users_groups_bulk_destroy
+      description: Delete a list of group objects.
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/GroupRequest'
+          multipart/form-data:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/GroupRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/users/groups/{id}/:
+    get:
+      operationId: users_groups_retrieve
+      description: Get a group object.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this group.
+        required: true
+      tags:
+      - users
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Group'
+          description: ''
+    put:
+      operationId: users_groups_update
+      description: Put a group object.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this group.
+        required: true
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/GroupRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Group'
+          description: ''
+    patch:
+      operationId: users_groups_partial_update
+      description: Patch a group object.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this group.
+        required: true
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedGroupRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedGroupRequest'
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Group'
+          description: ''
+    delete:
+      operationId: users_groups_destroy
+      description: Delete a group object.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this group.
+        required: true
+      tags:
+      - users
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/users/owner-groups/:
+    get:
+      operationId: users_owner_groups_list
+      description: Get a list of owner group objects.
+      parameters:
+      - in: query
+        name: description
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__empty
+        schema:
+          type: boolean
+      - in: query
+        name: description__ic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__ie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__iew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__iregex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__isw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__nic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__nie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__niew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__nisw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__regex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: id
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__empty
+        schema:
+          type: boolean
+      - in: query
+        name: id__gt
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__gte
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__lt
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__lte
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__n
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - in: query
+        name: name
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__empty
+        schema:
+          type: boolean
+      - in: query
+        name: name__ic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__ie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__iew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__iregex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__isw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__nic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__nie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__niew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__nisw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__regex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - in: query
+        name: q
+        schema:
+          type: string
+        description: Search
+      tags:
+      - users
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedOwnerGroupList'
+          description: ''
+    post:
+      operationId: users_owner_groups_create
+      description: Post a list of owner group objects.
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+              - $ref: '#/components/schemas/OwnerGroupRequest'
+              - type: array
+                items:
+                  $ref: '#/components/schemas/OwnerGroupRequest'
+          multipart/form-data:
+            schema:
+              oneOf:
+              - $ref: '#/components/schemas/OwnerGroupRequest'
+              - type: array
+                items:
+                  $ref: '#/components/schemas/OwnerGroupRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OwnerGroup'
+          description: ''
+    put:
+      operationId: users_owner_groups_bulk_update
+      description: Put a list of owner group objects.
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/OwnerGroupRequest'
+          multipart/form-data:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/OwnerGroupRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OwnerGroup'
+          description: ''
+    patch:
+      operationId: users_owner_groups_bulk_partial_update
+      description: Patch a list of owner group objects.
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/OwnerGroupRequest'
+          multipart/form-data:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/OwnerGroupRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OwnerGroup'
+          description: ''
+    delete:
+      operationId: users_owner_groups_bulk_destroy
+      description: Delete a list of owner group objects.
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/OwnerGroupRequest'
+          multipart/form-data:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/OwnerGroupRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/users/owner-groups/{id}/:
+    get:
+      operationId: users_owner_groups_retrieve
+      description: Get a owner group object.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this owner group.
+        required: true
+      tags:
+      - users
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OwnerGroup'
+          description: ''
+    put:
+      operationId: users_owner_groups_update
+      description: Put a owner group object.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this owner group.
+        required: true
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OwnerGroupRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/OwnerGroupRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OwnerGroup'
+          description: ''
+    patch:
+      operationId: users_owner_groups_partial_update
+      description: Patch a owner group object.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this owner group.
+        required: true
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedOwnerGroupRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedOwnerGroupRequest'
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OwnerGroup'
+          description: ''
+    delete:
+      operationId: users_owner_groups_destroy
+      description: Delete a owner group object.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this owner group.
+        required: true
+      tags:
+      - users
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/users/owners/:
+    get:
+      operationId: users_owners_list
+      description: Get a list of owner objects.
+      parameters:
+      - in: query
+        name: description
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__empty
+        schema:
+          type: boolean
+      - in: query
+        name: description__ic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__ie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__iew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__iregex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__isw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__nic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__nie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__niew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__nisw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__regex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: group
+        schema:
+          type: array
+          items:
+            type: string
+        description: Group (name)
+        explode: true
+        style: form
+      - in: query
+        name: group__n
+        schema:
+          type: array
+          items:
+            type: string
+        description: Group (name)
+        explode: true
+        style: form
+      - in: query
+        name: group_id
+        schema:
+          type: array
+          items:
+            type: integer
+            nullable: true
+        description: Group (ID)
+        explode: true
+        style: form
+      - in: query
+        name: group_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+            nullable: true
+        description: Group (ID)
+        explode: true
+        style: form
+      - in: query
+        name: id
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__empty
+        schema:
+          type: boolean
+      - in: query
+        name: id__gt
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__gte
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__lt
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__lte
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__n
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - in: query
+        name: name
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__empty
+        schema:
+          type: boolean
+      - in: query
+        name: name__ic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__ie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__iew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__iregex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__isw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__nic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__nie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__niew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__nisw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__regex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - in: query
+        name: q
+        schema:
+          type: string
+        description: Search
+      - in: query
+        name: user
+        schema:
+          type: array
+          items:
+            type: string
+        description: User (username)
+        explode: true
+        style: form
+      - in: query
+        name: user__n
+        schema:
+          type: array
+          items:
+            type: string
+        description: User (username)
+        explode: true
+        style: form
+      - in: query
+        name: user_group
+        schema:
+          type: array
+          items:
+            type: string
+        description: User group (name)
+        explode: true
+        style: form
+      - in: query
+        name: user_group__n
+        schema:
+          type: array
+          items:
+            type: string
+        description: User group (name)
+        explode: true
+        style: form
+      - in: query
+        name: user_group_id
+        schema:
+          type: array
+          items:
+            type: integer
+        description: User group (ID)
+        explode: true
+        style: form
+      - in: query
+        name: user_group_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+        description: User group (ID)
+        explode: true
+        style: form
+      - in: query
+        name: user_id
+        schema:
+          type: array
+          items:
+            type: integer
+        description: User (ID)
+        explode: true
+        style: form
+      - in: query
+        name: user_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+        description: User (ID)
+        explode: true
+        style: form
+      tags:
+      - users
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedOwnerList'
+          description: ''
+    post:
+      operationId: users_owners_create
+      description: Post a list of owner objects.
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+              - $ref: '#/components/schemas/OwnerRequest'
+              - type: array
+                items:
+                  $ref: '#/components/schemas/OwnerRequest'
+          multipart/form-data:
+            schema:
+              oneOf:
+              - $ref: '#/components/schemas/OwnerRequest'
+              - type: array
+                items:
+                  $ref: '#/components/schemas/OwnerRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Owner'
+          description: ''
+    put:
+      operationId: users_owners_bulk_update
+      description: Put a list of owner objects.
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/OwnerRequest'
+          multipart/form-data:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/OwnerRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Owner'
+          description: ''
+    patch:
+      operationId: users_owners_bulk_partial_update
+      description: Patch a list of owner objects.
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/OwnerRequest'
+          multipart/form-data:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/OwnerRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Owner'
+          description: ''
+    delete:
+      operationId: users_owners_bulk_destroy
+      description: Delete a list of owner objects.
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/OwnerRequest'
+          multipart/form-data:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/OwnerRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/users/owners/{id}/:
+    get:
+      operationId: users_owners_retrieve
+      description: Get a owner object.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this owner.
+        required: true
+      tags:
+      - users
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Owner'
+          description: ''
+    put:
+      operationId: users_owners_update
+      description: Put a owner object.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this owner.
+        required: true
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OwnerRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/OwnerRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Owner'
+          description: ''
+    patch:
+      operationId: users_owners_partial_update
+      description: Patch a owner object.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this owner.
+        required: true
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedOwnerRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedOwnerRequest'
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Owner'
+          description: ''
+    delete:
+      operationId: users_owners_destroy
+      description: Delete a owner object.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this owner.
+        required: true
+      tags:
+      - users
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/users/permissions/:
+    get:
+      operationId: users_permissions_list
+      description: Get a list of permission objects.
+      parameters:
+      - in: query
+        name: can_add
+        schema:
+          type: boolean
+      - in: query
+        name: can_change
+        schema:
+          type: boolean
+      - in: query
+        name: can_delete
+        schema:
+          type: boolean
+      - in: query
+        name: can_view
+        schema:
+          type: boolean
+      - in: query
+        name: description
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__empty
+        schema:
+          type: boolean
+      - in: query
+        name: description__ic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__ie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__iew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__iregex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__isw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__nic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__nie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__niew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__nisw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__regex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: enabled
+        schema:
+          type: boolean
+      - in: query
+        name: group
+        schema:
+          type: array
+          items:
+            type: string
+        description: Group (name)
+        explode: true
+        style: form
+      - in: query
+        name: group__n
+        schema:
+          type: array
+          items:
+            type: string
+        description: Group (name)
+        explode: true
+        style: form
+      - in: query
+        name: group_id
+        schema:
+          type: array
+          items:
+            type: integer
+        description: Group
+        explode: true
+        style: form
+      - in: query
+        name: group_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+        description: Group
+        explode: true
+        style: form
+      - in: query
+        name: id
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__empty
+        schema:
+          type: boolean
+      - in: query
+        name: id__gt
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__gte
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__lt
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__lte
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__n
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - in: query
+        name: name
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__empty
+        schema:
+          type: boolean
+      - in: query
+        name: name__ic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__ie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__iew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__iregex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__isw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__nic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__nie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__niew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__nisw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__regex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: object_type
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: object_type__ic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: object_type__ie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: object_type__iew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: object_type__iregex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: object_type__isw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: object_type__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: object_type__nic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: object_type__nie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: object_type__niew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: object_type__nisw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: object_type__regex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: object_type_id
+        schema:
+          type: array
+          items:
+            type: integer
+        explode: true
+        style: form
+      - in: query
+        name: object_type_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+        explode: true
+        style: form
+      - in: query
+        name: object_types
+        schema:
+          type: array
+          items:
+            type: integer
+        explode: true
+        style: form
+      - in: query
+        name: object_types__n
+        schema:
+          type: array
+          items:
+            type: integer
+        explode: true
+        style: form
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - in: query
+        name: q
+        schema:
+          type: string
+        description: Search
+      - in: query
+        name: user
+        schema:
+          type: array
+          items:
+            type: string
+        description: User (name)
+        explode: true
+        style: form
+      - in: query
+        name: user__n
+        schema:
+          type: array
+          items:
+            type: string
+        description: User (name)
+        explode: true
+        style: form
+      - in: query
+        name: user_id
+        schema:
+          type: array
+          items:
+            type: integer
+        description: User
+        explode: true
+        style: form
+      - in: query
+        name: user_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+        description: User
+        explode: true
+        style: form
+      tags:
+      - users
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedObjectPermissionList'
+          description: ''
+    post:
+      operationId: users_permissions_create
+      description: Post a list of permission objects.
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+              - $ref: '#/components/schemas/ObjectPermissionRequest'
+              - type: array
+                items:
+                  $ref: '#/components/schemas/ObjectPermissionRequest'
+          multipart/form-data:
+            schema:
+              oneOf:
+              - $ref: '#/components/schemas/ObjectPermissionRequest'
+              - type: array
+                items:
+                  $ref: '#/components/schemas/ObjectPermissionRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectPermission'
+          description: ''
+    put:
+      operationId: users_permissions_bulk_update
+      description: Put a list of permission objects.
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ObjectPermissionRequest'
+          multipart/form-data:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ObjectPermissionRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ObjectPermission'
+          description: ''
+    patch:
+      operationId: users_permissions_bulk_partial_update
+      description: Patch a list of permission objects.
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ObjectPermissionRequest'
+          multipart/form-data:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ObjectPermissionRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ObjectPermission'
+          description: ''
+    delete:
+      operationId: users_permissions_bulk_destroy
+      description: Delete a list of permission objects.
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ObjectPermissionRequest'
+          multipart/form-data:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ObjectPermissionRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/users/permissions/{id}/:
+    get:
+      operationId: users_permissions_retrieve
+      description: Get a permission object.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this permission.
+        required: true
+      tags:
+      - users
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectPermission'
+          description: ''
+    put:
+      operationId: users_permissions_update
+      description: Put a permission object.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this permission.
+        required: true
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ObjectPermissionRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ObjectPermissionRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectPermission'
+          description: ''
+    patch:
+      operationId: users_permissions_partial_update
+      description: Patch a permission object.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this permission.
+        required: true
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedObjectPermissionRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedObjectPermissionRequest'
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectPermission'
+          description: ''
+    delete:
+      operationId: users_permissions_destroy
+      description: Delete a permission object.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this permission.
+        required: true
+      tags:
+      - users
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/users/tokens/:
+    get:
+      operationId: users_tokens_list
+      description: Get a list of token objects.
+      parameters:
+      - in: query
+        name: created
+        schema:
+          type: string
+          format: date-time
+      - in: query
+        name: created__gte
+        schema:
+          type: string
+          format: date-time
+      - in: query
+        name: created__lte
+        schema:
+          type: string
+          format: date-time
+      - in: query
+        name: description
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__empty
+        schema:
+          type: boolean
+      - in: query
+        name: description__ic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__ie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__iew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__iregex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__isw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__nic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__nie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__niew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__nisw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__regex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: enabled
+        schema:
+          type: boolean
+      - in: query
+        name: expires
+        schema:
+          type: string
+          format: date-time
+      - in: query
+        name: expires__gte
+        schema:
+          type: string
+          format: date-time
+      - in: query
+        name: expires__lte
+        schema:
+          type: string
+          format: date-time
+      - in: query
+        name: id
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__empty
+        schema:
+          type: boolean
+      - in: query
+        name: id__gt
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__gte
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__lt
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__lte
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__n
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: key
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: key__empty
+        schema:
+          type: boolean
+      - in: query
+        name: key__ic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: key__ie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: key__iew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: key__iregex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: key__isw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: key__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: key__nic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: key__nie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: key__niew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: key__nisw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: key__regex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: last_used
+        schema:
+          type: string
+          format: date-time
+      - in: query
+        name: last_used__gte
+        schema:
+          type: string
+          format: date-time
+      - in: query
+        name: last_used__lte
+        schema:
+          type: string
+          format: date-time
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - in: query
+        name: pepper_id
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: pepper_id__empty
+        schema:
+          type: boolean
+      - in: query
+        name: pepper_id__gt
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: pepper_id__gte
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: pepper_id__lt
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: pepper_id__lte
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: pepper_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: q
+        schema:
+          type: string
+        description: Search
+      - in: query
+        name: user
+        schema:
+          type: array
+          items:
+            type: string
+        description: User (name)
+        explode: true
+        style: form
+      - in: query
+        name: user__n
+        schema:
+          type: array
+          items:
+            type: string
+        description: User (name)
+        explode: true
+        style: form
+      - in: query
+        name: user_id
+        schema:
+          type: array
+          items:
+            type: integer
+        description: User
+        explode: true
+        style: form
+      - in: query
+        name: user_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+        description: User
+        explode: true
+        style: form
+      - in: query
+        name: version
+        schema:
+          type: integer
+          x-spec-enum-id: b5df70f0bffd12cb
+          enum:
+          - 1
+          - 2
+          - 'null'
+        description: '* `1` - v1
+
+          * `2` - v2'
+      - in: query
+        name: version__ic
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: version__ie
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: version__iew
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: version__iregex
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: version__isw
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: version__n
+        schema:
+          type: integer
+          x-spec-enum-id: b5df70f0bffd12cb
+          enum:
+          - 1
+          - 2
+          - 'null'
+        description: '* `1` - v1
+
+          * `2` - v2'
+      - in: query
+        name: version__nic
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: version__nie
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: version__niew
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: version__nisw
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: version__regex
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: write_enabled
+        schema:
+          type: boolean
+      tags:
+      - users
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedTokenList'
+          description: ''
+    post:
+      operationId: users_tokens_create
+      description: Post a list of token objects.
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+              - $ref: '#/components/schemas/TokenRequest'
+              - type: array
+                items:
+                  $ref: '#/components/schemas/TokenRequest'
+          multipart/form-data:
+            schema:
+              oneOf:
+              - $ref: '#/components/schemas/TokenRequest'
+              - type: array
+                items:
+                  $ref: '#/components/schemas/TokenRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Token'
+          description: ''
+    put:
+      operationId: users_tokens_bulk_update
+      description: Put a list of token objects.
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/TokenRequest'
+          multipart/form-data:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/TokenRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Token'
+          description: ''
+    patch:
+      operationId: users_tokens_bulk_partial_update
+      description: Patch a list of token objects.
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/TokenRequest'
+          multipart/form-data:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/TokenRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Token'
+          description: ''
+    delete:
+      operationId: users_tokens_bulk_destroy
+      description: Delete a list of token objects.
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/TokenRequest'
+          multipart/form-data:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/TokenRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/users/tokens/{id}/:
+    get:
+      operationId: users_tokens_retrieve
+      description: Get a token object.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this token.
+        required: true
+      tags:
+      - users
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Token'
+          description: ''
+    put:
+      operationId: users_tokens_update
+      description: Put a token object.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this token.
+        required: true
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TokenRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Token'
+          description: ''
+    patch:
+      operationId: users_tokens_partial_update
+      description: Patch a token object.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this token.
+        required: true
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedTokenRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedTokenRequest'
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Token'
+          description: ''
+    delete:
+      operationId: users_tokens_destroy
+      description: Delete a token object.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this token.
+        required: true
+      tags:
+      - users
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/users/tokens/provision/:
+    post:
+      operationId: users_tokens_provision_create
+      description: Non-authenticated REST API endpoint via which a user may create a Token.
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenProvisionRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TokenProvisionRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenProvision'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/users/users/:
+    get:
+      operationId: users_users_list
+      description: Get a list of user objects.
+      parameters:
+      - in: query
+        name: date_joined
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: date_joined__empty
+        schema:
+          type: boolean
+      - in: query
+        name: date_joined__gt
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: date_joined__gte
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: date_joined__lt
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: date_joined__lte
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: date_joined__n
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: email
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: email__empty
+        schema:
+          type: boolean
+      - in: query
+        name: email__ic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: email__ie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: email__iew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: email__iregex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: email__isw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: email__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: email__nic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: email__nie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: email__niew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: email__nisw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: email__regex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: first_name
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: first_name__empty
+        schema:
+          type: boolean
+      - in: query
+        name: first_name__ic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: first_name__ie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: first_name__iew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: first_name__iregex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: first_name__isw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: first_name__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: first_name__nic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: first_name__nie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: first_name__niew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: first_name__nisw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: first_name__regex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: group
+        schema:
+          type: array
+          items:
+            type: string
+        description: Group (name)
+        explode: true
+        style: form
+      - in: query
+        name: group__n
+        schema:
+          type: array
+          items:
+            type: string
+        description: Group (name)
+        explode: true
+        style: form
+      - in: query
+        name: group_id
+        schema:
+          type: array
+          items:
+            type: integer
+        description: Group
+        explode: true
+        style: form
+      - in: query
+        name: group_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+        description: Group
+        explode: true
+        style: form
+      - in: query
+        name: id
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__empty
+        schema:
+          type: boolean
+      - in: query
+        name: id__gt
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__gte
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__lt
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__lte
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__n
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: is_active
+        schema:
+          type: boolean
+      - in: query
+        name: is_superuser
+        schema:
+          type: boolean
+      - in: query
+        name: last_login
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_login__empty
+        schema:
+          type: boolean
+      - in: query
+        name: last_login__gt
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_login__gte
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_login__lt
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_login__lte
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_login__n
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_name
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: last_name__empty
+        schema:
+          type: boolean
+      - in: query
+        name: last_name__ic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: last_name__ie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: last_name__iew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: last_name__iregex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: last_name__isw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: last_name__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: last_name__nic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: last_name__nie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: last_name__niew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: last_name__nisw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: last_name__regex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - in: query
+        name: notification_group_id
+        schema:
+          type: array
+          items:
+            type: integer
+        description: Notification group (ID)
+        explode: true
+        style: form
+      - in: query
+        name: notification_group_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+        description: Notification group (ID)
+        explode: true
+        style: form
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - in: query
+        name: owner
+        schema:
+          type: array
+          items:
+            type: string
+        description: Owner (name)
+        explode: true
+        style: form
+      - in: query
+        name: owner__n
+        schema:
+          type: array
+          items:
+            type: string
+        description: Owner (name)
+        explode: true
+        style: form
+      - in: query
+        name: owner_id
+        schema:
+          type: array
+          items:
+            type: integer
+        description: Owner (ID)
+        explode: true
+        style: form
+      - in: query
+        name: owner_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+        description: Owner (ID)
+        explode: true
+        style: form
+      - in: query
+        name: permission_id
+        schema:
+          type: array
+          items:
+            type: integer
+        description: Permission (ID)
+        explode: true
+        style: form
+      - in: query
+        name: permission_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+        description: Permission (ID)
+        explode: true
+        style: form
+      - in: query
+        name: q
+        schema:
+          type: string
+        description: Search
+      - in: query
+        name: username
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: username__empty
+        schema:
+          type: boolean
+      - in: query
+        name: username__ic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: username__ie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: username__iew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: username__iregex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: username__isw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: username__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: username__nic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: username__nie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: username__niew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: username__nisw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: username__regex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      tags:
+      - users
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedUserList'
+          description: ''
+    post:
+      operationId: users_users_create
+      description: Post a list of user objects.
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+              - $ref: '#/components/schemas/UserRequest'
+              - type: array
+                items:
+                  $ref: '#/components/schemas/UserRequest'
+          multipart/form-data:
+            schema:
+              oneOf:
+              - $ref: '#/components/schemas/UserRequest'
+              - type: array
+                items:
+                  $ref: '#/components/schemas/UserRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+    put:
+      operationId: users_users_bulk_update
+      description: Put a list of user objects.
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/UserRequest'
+          multipart/form-data:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/UserRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+          description: ''
+    patch:
+      operationId: users_users_bulk_partial_update
+      description: Patch a list of user objects.
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/UserRequest'
+          multipart/form-data:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/UserRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+          description: ''
+    delete:
+      operationId: users_users_bulk_destroy
+      description: Delete a list of user objects.
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/UserRequest'
+          multipart/form-data:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/UserRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/users/users/{id}/:
+    get:
+      operationId: users_users_retrieve
+      description: Get a user object.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this user.
+        required: true
+      tags:
+      - users
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+    put:
+      operationId: users_users_update
+      description: Put a user object.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this user.
+        required: true
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UserRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+    patch:
+      operationId: users_users_partial_update
+      description: Patch a user object.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this user.
+        required: true
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedUserRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedUserRequest'
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+    delete:
+      operationId: users_users_destroy
+      description: Delete a user object.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this user.
+        required: true
+      tags:
+      - users
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+components:
+  schemas:
+    PaginatedObjectPermissionList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ObjectPermission'
+    Token:
+      type: object
+      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
+
+        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        version:
+          enum:
+          - 1
+          - 2
+          type: integer
+          description: '* `1` - v1
+
+            * `2` - v2'
+          x-spec-enum-id: b5df70f0bffd12cb
+          minimum: 0
+          maximum: 32767
+        key:
+          type: string
+          readOnly: true
+          nullable: true
+          description: v2 token identification key
+        user:
+          $ref: '#/components/schemas/BriefUser'
+        description:
+          type: string
+          maxLength: 200
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        expires:
+          type: string
+          format: date-time
+          nullable: true
+        last_used:
+          type: string
+          format: date-time
+          nullable: true
+        enabled:
+          type: boolean
+          description: Disable to temporarily revoke this token without deleting it.
+        write_enabled:
+          type: boolean
+          description: Permit create/update/delete operations using this token
+        pepper_id:
+          type: integer
+          maximum: 32767
+          minimum: 0
+          nullable: true
+          description: ID of the cryptographic pepper used to hash the token (v2 only)
+        token:
+          type: string
+      required:
+      - created
+      - display
+      - display_url
+      - id
+      - key
+      - url
+      - user
+    OwnerGroupRequest:
+      type: object
+      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
+
+        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - name
+    BriefOwnerGroup:
+      type: object
+      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
+
+        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - display
+      - id
+      - name
+      - url
+    PatchedOwnerRequest:
+      type: object
+      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
+
+        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        group:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerGroupRequest'
+            nullable: true
+          nullable: true
+        description:
+          type: string
+          maxLength: 200
+        user_groups:
+          type: array
+          items:
+            type: integer
+        users:
+          type: array
+          items:
+            type: integer
+    BriefUserRequest:
+      type: object
+      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
+
+        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
+      properties:
+        username:
+          type: string
+          minLength: 1
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
+          pattern: ^[\w.@+-]+$
+          maxLength: 150
+      required:
+      - username
+    PaginatedOwnerGroupList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/OwnerGroup'
+    PatchedGroupRequest:
+      type: object
+      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
+
+        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 150
+        description:
+          type: string
+          maxLength: 200
+        permissions:
+          type: array
+          items:
+            type: integer
+    PaginatedTokenList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Token'
+    PaginatedOwnerList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Owner'
+    NestedGroup:
+      type: object
+      description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
+
+        dictionary of attributes which can be used to uniquely identify the related object. This class should be
+
+        subclassed to return a full representation of the related object on read.'
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 150
+      required:
+      - display
+      - display_url
+      - id
+      - name
+      - url
+    UserRequest:
+      type: object
+      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
+
+        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
+      properties:
+        username:
+          type: string
+          minLength: 1
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
+          pattern: ^[\w.@+-]+$
+          maxLength: 150
+        password:
+          type: string
+          writeOnly: true
+          minLength: 1
+          maxLength: 128
+        first_name:
+          type: string
+          maxLength: 150
+        last_name:
+          type: string
+          maxLength: 150
+        email:
+          type: string
+          format: email
+          title: Email address
+          maxLength: 254
+        is_active:
+          type: boolean
+          title: Active
+          description: Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
+        date_joined:
+          type: string
+          format: date-time
+        last_login:
+          type: string
+          format: date-time
+          nullable: true
+        groups:
+          type: array
+          items:
+            type: integer
+        permissions:
+          type: array
+          items:
+            type: integer
+      required:
+      - password
+      - username
+    TokenProvision:
+      type: object
+      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
+
+        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        version:
+          enum:
+          - 1
+          - 2
+          type: integer
+          description: '* `1` - v1
+
+            * `2` - v2'
+          x-spec-enum-id: b5df70f0bffd12cb
+          minimum: 0
+          maximum: 32767
+        user:
+          allOf:
+          - $ref: '#/components/schemas/BriefUser'
+          readOnly: true
+        key:
+          type: string
+          readOnly: true
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        expires:
+          type: string
+          format: date-time
+          nullable: true
+        last_used:
+          type: string
+          format: date-time
+          readOnly: true
+        enabled:
+          type: boolean
+          description: Disable to temporarily revoke this token without deleting it.
+        write_enabled:
+          type: boolean
+          description: Permit create/update/delete operations using this token
+        description:
+          type: string
+          maxLength: 200
+        token:
+          type: string
+      required:
+      - created
+      - display
+      - display_url
+      - id
+      - key
+      - last_used
+      - url
+      - user
+    ObjectPermissionRequest:
+      type: object
+      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
+
+        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+        enabled:
+          type: boolean
+        object_types:
+          type: array
+          items:
+            type: string
+        actions:
+          type: array
+          items:
+            type: string
+            minLength: 1
+            maxLength: 30
+          description: The list of actions granted by this permission
+        constraints:
+          nullable: true
+          description: Queryset filter matching the applicable objects of the selected type(s)
+        groups:
+          type: array
+          items:
+            type: integer
+        users:
+          type: array
+          items:
+            type: integer
+      required:
+      - actions
+      - name
+      - object_types
+    PatchedObjectPermissionRequest:
+      type: object
+      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
+
+        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+        enabled:
+          type: boolean
+        object_types:
+          type: array
+          items:
+            type: string
+        actions:
+          type: array
+          items:
+            type: string
+            minLength: 1
+            maxLength: 30
+          description: The list of actions granted by this permission
+        constraints:
+          nullable: true
+          description: Queryset filter matching the applicable objects of the selected type(s)
+        groups:
+          type: array
+          items:
+            type: integer
+        users:
+          type: array
+          items:
+            type: integer
+    PatchedOwnerGroupRequest:
+      type: object
+      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
+
+        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+    BriefUser:
+      type: object
+      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
+
+        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        username:
+          type: string
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
+          pattern: ^[\w.@+-]+$
+          maxLength: 150
+      required:
+      - display
+      - id
+      - url
+      - username
+    PaginatedUserList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+    ObjectPermission:
+      type: object
+      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
+
+        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+        enabled:
+          type: boolean
+        object_types:
+          type: array
+          items:
+            type: string
+        actions:
+          type: array
+          items:
+            type: string
+            maxLength: 30
+          description: The list of actions granted by this permission
+        constraints:
+          nullable: true
+          description: Queryset filter matching the applicable objects of the selected type(s)
+        groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedGroup'
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedUser'
+      required:
+      - actions
+      - display
+      - display_url
+      - id
+      - name
+      - object_types
+      - url
+    PatchedUserRequest:
+      type: object
+      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
+
+        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
+      properties:
+        username:
+          type: string
+          minLength: 1
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
+          pattern: ^[\w.@+-]+$
+          maxLength: 150
+        password:
+          type: string
+          writeOnly: true
+          minLength: 1
+          maxLength: 128
+        first_name:
+          type: string
+          maxLength: 150
+        last_name:
+          type: string
+          maxLength: 150
+        email:
+          type: string
+          format: email
+          title: Email address
+          maxLength: 254
+        is_active:
+          type: boolean
+          title: Active
+          description: Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
+        date_joined:
+          type: string
+          format: date-time
+        last_login:
+          type: string
+          format: date-time
+          nullable: true
+        groups:
+          type: array
+          items:
+            type: integer
+        permissions:
+          type: array
+          items:
+            type: integer
+    PaginatedGroupList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Group'
+    GroupRequest:
+      type: object
+      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
+
+        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 150
+        description:
+          type: string
+          maxLength: 200
+        permissions:
+          type: array
+          items:
+            type: integer
+      required:
+      - name
+    Group:
+      type: object
+      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
+
+        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 150
+        description:
+          type: string
+          maxLength: 200
+        permissions:
+          type: array
+          items:
+            $ref: '#/components/schemas/ObjectPermission'
+        user_count:
+          type: integer
+          readOnly: true
+      required:
+      - display
+      - display_url
+      - id
+      - name
+      - url
+      - user_count
+    OwnerRequest:
+      type: object
+      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
+
+        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        group:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerGroupRequest'
+            nullable: true
+          nullable: true
+        description:
+          type: string
+          maxLength: 200
+        user_groups:
+          type: array
+          items:
+            type: integer
+        users:
+          type: array
+          items:
+            type: integer
+      required:
+      - group
+      - name
+    OwnerGroup:
+      type: object
+      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
+
+        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+        member_count:
+          type: integer
+          format: int64
+          readOnly: true
+      required:
+      - display
+      - display_url
+      - id
+      - member_count
+      - name
+      - url
+    User:
+      type: object
+      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
+
+        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        username:
+          type: string
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
+          pattern: ^[\w.@+-]+$
+          maxLength: 150
+        first_name:
+          type: string
+          maxLength: 150
+        last_name:
+          type: string
+          maxLength: 150
+        email:
+          type: string
+          format: email
+          title: Email address
+          maxLength: 254
+        is_active:
+          type: boolean
+          title: Active
+          description: Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
+        date_joined:
+          type: string
+          format: date-time
+        last_login:
+          type: string
+          format: date-time
+          nullable: true
+        groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/Group'
+        permissions:
+          type: array
+          items:
+            $ref: '#/components/schemas/ObjectPermission'
+      required:
+      - display
+      - display_url
+      - id
+      - url
+      - username
+    TokenProvisionRequest:
+      type: object
+      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
+
+        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
+      properties:
+        version:
+          enum:
+          - 1
+          - 2
+          type: integer
+          description: '* `1` - v1
+
+            * `2` - v2'
+          x-spec-enum-id: b5df70f0bffd12cb
+          minimum: 0
+          maximum: 32767
+        expires:
+          type: string
+          format: date-time
+          nullable: true
+        enabled:
+          type: boolean
+          description: Disable to temporarily revoke this token without deleting it.
+        write_enabled:
+          type: boolean
+          description: Permit create/update/delete operations using this token
+        description:
+          type: string
+          maxLength: 200
+        username:
+          type: string
+          writeOnly: true
+          minLength: 1
+        password:
+          type: string
+          writeOnly: true
+          minLength: 1
+        token:
+          type: string
+          minLength: 1
+      required:
+      - password
+      - username
+    TokenRequest:
+      type: object
+      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
+
+        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
+      properties:
+        version:
+          enum:
+          - 1
+          - 2
+          type: integer
+          description: '* `1` - v1
+
+            * `2` - v2'
+          x-spec-enum-id: b5df70f0bffd12cb
+          minimum: 0
+          maximum: 32767
+        user:
+          oneOf:
+          - type: integer
+          - $ref: '#/components/schemas/BriefUserRequest'
+        description:
+          type: string
+          maxLength: 200
+        expires:
+          type: string
+          format: date-time
+          nullable: true
+        last_used:
+          type: string
+          format: date-time
+          nullable: true
+        enabled:
+          type: boolean
+          description: Disable to temporarily revoke this token without deleting it.
+        write_enabled:
+          type: boolean
+          description: Permit create/update/delete operations using this token
+        pepper_id:
+          type: integer
+          maximum: 32767
+          minimum: 0
+          nullable: true
+          description: ID of the cryptographic pepper used to hash the token (v2 only)
+        token:
+          type: string
+          minLength: 1
+      required:
+      - user
+    NestedUser:
+      type: object
+      description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
+
+        dictionary of attributes which can be used to uniquely identify the related object. This class should be
+
+        subclassed to return a full representation of the related object on read.'
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        username:
+          type: string
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
+          pattern: ^[\w.@+-]+$
+          maxLength: 150
+      required:
+      - display
+      - display_url
+      - id
+      - url
+      - username
+    BriefOwnerGroupRequest:
+      type: object
+      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
+
+        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - name
+    PatchedTokenRequest:
+      type: object
+      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
+
+        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
+      properties:
+        version:
+          enum:
+          - 1
+          - 2
+          type: integer
+          description: '* `1` - v1
+
+            * `2` - v2'
+          x-spec-enum-id: b5df70f0bffd12cb
+          minimum: 0
+          maximum: 32767
+        user:
+          oneOf:
+          - type: integer
+          - $ref: '#/components/schemas/BriefUserRequest'
+        description:
+          type: string
+          maxLength: 200
+        expires:
+          type: string
+          format: date-time
+          nullable: true
+        last_used:
+          type: string
+          format: date-time
+          nullable: true
+        enabled:
+          type: boolean
+          description: Disable to temporarily revoke this token without deleting it.
+        write_enabled:
+          type: boolean
+          description: Permit create/update/delete operations using this token
+        pepper_id:
+          type: integer
+          maximum: 32767
+          minimum: 0
+          nullable: true
+          description: ID of the cryptographic pepper used to hash the token (v2 only)
+        token:
+          type: string
+          minLength: 1
+    Owner:
+      type: object
+      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
+
+        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        group:
+          allOf:
+          - $ref: '#/components/schemas/BriefOwnerGroup'
+          nullable: true
+        description:
+          type: string
+          maxLength: 200
+        user_groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/Group'
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+      required:
+      - display
+      - display_url
+      - group
+      - id
+      - name
+      - url
+  securitySchemes:
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: '`Token <token>` (v1) or `Bearer <key>.<token>` (v2)'

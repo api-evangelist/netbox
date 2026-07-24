@@ -1,0 +1,7403 @@
+openapi: 3.0.3
+info:
+  title: NetBox REST authentication-check tenancy API
+  version: 4.5.9 (4.5)
+  license:
+    name: Apache v2 License
+servers:
+- url: ''
+  description: NetBox
+tags:
+- name: tenancy
+paths:
+  /api/tenancy/contact-assignments/:
+    get:
+      operationId: tenancy_contact_assignments_list
+      description: Get a list of contact assignment objects.
+      parameters:
+      - in: query
+        name: contact_id
+        schema:
+          type: array
+          items:
+            type: integer
+        description: Contact (ID)
+        explode: true
+        style: form
+      - in: query
+        name: contact_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+        description: Contact (ID)
+        explode: true
+        style: form
+      - in: query
+        name: created
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__empty
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__gt
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__gte
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__lt
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__lte
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__n
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created_by_request
+        schema:
+          type: string
+          format: uuid
+      - in: query
+        name: group
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: group__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: group_id
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: group_id__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: id
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__empty
+        schema:
+          type: boolean
+      - in: query
+        name: id__gt
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__gte
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__lt
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__lte
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__n
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: last_updated
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__empty
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__gt
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__gte
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__lt
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__lte
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__n
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - in: query
+        name: modified_by_request
+        schema:
+          type: string
+          format: uuid
+      - in: query
+        name: object_id
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: object_id__empty
+        schema:
+          type: boolean
+      - in: query
+        name: object_id__gt
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: object_id__gte
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: object_id__lt
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: object_id__lte
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: object_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: object_type
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: object_type__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: object_type_id
+        schema:
+          type: integer
+      - in: query
+        name: object_type_id__n
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - in: query
+        name: priority
+        schema:
+          type: string
+          x-spec-enum-id: 0548fc537440bf9d
+          nullable: true
+          enum:
+          - inactive
+          - 'null'
+          - primary
+          - secondary
+          - tertiary
+        description: '* `primary` - Primary
+
+          * `secondary` - Secondary
+
+          * `tertiary` - Tertiary
+
+          * `inactive` - Inactive'
+      - in: query
+        name: priority__empty
+        schema:
+          type: boolean
+      - in: query
+        name: priority__ic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: priority__ie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: priority__iew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: priority__iregex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: priority__isw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: priority__n
+        schema:
+          type: string
+          x-spec-enum-id: 0548fc537440bf9d
+          nullable: true
+          enum:
+          - inactive
+          - 'null'
+          - primary
+          - secondary
+          - tertiary
+        description: '* `primary` - Primary
+
+          * `secondary` - Secondary
+
+          * `tertiary` - Tertiary
+
+          * `inactive` - Inactive'
+      - in: query
+        name: priority__nic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: priority__nie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: priority__niew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: priority__nisw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: priority__regex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: q
+        schema:
+          type: string
+        description: Search
+      - in: query
+        name: role
+        schema:
+          type: array
+          items:
+            type: string
+        description: Contact role (slug)
+        explode: true
+        style: form
+      - in: query
+        name: role__n
+        schema:
+          type: array
+          items:
+            type: string
+        description: Contact role (slug)
+        explode: true
+        style: form
+      - in: query
+        name: role_id
+        schema:
+          type: array
+          items:
+            type: integer
+        description: Contact role (ID)
+        explode: true
+        style: form
+      - in: query
+        name: role_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+        description: Contact role (ID)
+        explode: true
+        style: form
+      - in: query
+        name: tag
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: tag__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: tag_id
+        schema:
+          type: array
+          items:
+            type: integer
+        explode: true
+        style: form
+      - in: query
+        name: tag_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+        explode: true
+        style: form
+      - in: query
+        name: updated_by_request
+        schema:
+          type: string
+          format: uuid
+      tags:
+      - tenancy
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedContactAssignmentList'
+          description: ''
+    post:
+      operationId: tenancy_contact_assignments_create
+      description: Post a list of contact assignment objects.
+      tags:
+      - tenancy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+              - $ref: '#/components/schemas/WritableContactAssignmentRequest'
+              - type: array
+                items:
+                  $ref: '#/components/schemas/WritableContactAssignmentRequest'
+          multipart/form-data:
+            schema:
+              oneOf:
+              - $ref: '#/components/schemas/WritableContactAssignmentRequest'
+              - type: array
+                items:
+                  $ref: '#/components/schemas/WritableContactAssignmentRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactAssignment'
+          description: ''
+    put:
+      operationId: tenancy_contact_assignments_bulk_update
+      description: Put a list of contact assignment objects.
+      tags:
+      - tenancy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactAssignmentRequest'
+          multipart/form-data:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactAssignmentRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ContactAssignment'
+          description: ''
+    patch:
+      operationId: tenancy_contact_assignments_bulk_partial_update
+      description: Patch a list of contact assignment objects.
+      tags:
+      - tenancy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactAssignmentRequest'
+          multipart/form-data:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactAssignmentRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ContactAssignment'
+          description: ''
+    delete:
+      operationId: tenancy_contact_assignments_bulk_destroy
+      description: Delete a list of contact assignment objects.
+      tags:
+      - tenancy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactAssignmentRequest'
+          multipart/form-data:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactAssignmentRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/tenancy/contact-assignments/{id}/:
+    get:
+      operationId: tenancy_contact_assignments_retrieve
+      description: Get a contact assignment object.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this contact assignment.
+        required: true
+      tags:
+      - tenancy
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactAssignment'
+          description: ''
+    put:
+      operationId: tenancy_contact_assignments_update
+      description: Put a contact assignment object.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this contact assignment.
+        required: true
+      tags:
+      - tenancy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WritableContactAssignmentRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/WritableContactAssignmentRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactAssignment'
+          description: ''
+    patch:
+      operationId: tenancy_contact_assignments_partial_update
+      description: Patch a contact assignment object.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this contact assignment.
+        required: true
+      tags:
+      - tenancy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedWritableContactAssignmentRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedWritableContactAssignmentRequest'
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactAssignment'
+          description: ''
+    delete:
+      operationId: tenancy_contact_assignments_destroy
+      description: Delete a contact assignment object.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this contact assignment.
+        required: true
+      tags:
+      - tenancy
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/tenancy/contact-groups/:
+    get:
+      operationId: tenancy_contact_groups_list
+      description: Get a list of contact group objects.
+      parameters:
+      - in: query
+        name: ancestor
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: ancestor__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: ancestor_id
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: ancestor_id__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: contact_id
+        schema:
+          type: array
+          items:
+            type: integer
+        description: Contact (ID)
+        explode: true
+        style: form
+      - in: query
+        name: contact_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+        description: Contact (ID)
+        explode: true
+        style: form
+      - in: query
+        name: created
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__empty
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__gt
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__gte
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__lt
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__lte
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__n
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created_by_request
+        schema:
+          type: string
+          format: uuid
+      - in: query
+        name: description
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__empty
+        schema:
+          type: boolean
+      - in: query
+        name: description__ic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__ie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__iew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__iregex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__isw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__nic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__nie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__niew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__nisw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__regex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: id
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__empty
+        schema:
+          type: boolean
+      - in: query
+        name: id__gt
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__gte
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__lt
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__lte
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__n
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: last_updated
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__empty
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__gt
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__gte
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__lt
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__lte
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__n
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - in: query
+        name: modified_by_request
+        schema:
+          type: string
+          format: uuid
+      - in: query
+        name: name
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__empty
+        schema:
+          type: boolean
+      - in: query
+        name: name__ic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__ie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__iew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__iregex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__isw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__nic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__nie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__niew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__nisw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__regex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - in: query
+        name: owner
+        schema:
+          type: array
+          items:
+            type: string
+        description: Owner (name)
+        explode: true
+        style: form
+      - in: query
+        name: owner__n
+        schema:
+          type: array
+          items:
+            type: string
+        description: Owner (name)
+        explode: true
+        style: form
+      - in: query
+        name: owner_group
+        schema:
+          type: array
+          items:
+            type: string
+        description: Owner Group (name)
+        explode: true
+        style: form
+      - in: query
+        name: owner_group__n
+        schema:
+          type: array
+          items:
+            type: string
+        description: Owner Group (name)
+        explode: true
+        style: form
+      - in: query
+        name: owner_group_id
+        schema:
+          type: array
+          items:
+            type: integer
+        description: Owner Group (ID)
+        explode: true
+        style: form
+      - in: query
+        name: owner_group_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+        description: Owner Group (ID)
+        explode: true
+        style: form
+      - in: query
+        name: owner_id
+        schema:
+          type: array
+          items:
+            type: integer
+            nullable: true
+        description: Owner (ID)
+        explode: true
+        style: form
+      - in: query
+        name: owner_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+            nullable: true
+        description: Owner (ID)
+        explode: true
+        style: form
+      - in: query
+        name: parent
+        schema:
+          type: array
+          items:
+            type: string
+        description: Parent contact group (slug)
+        explode: true
+        style: form
+      - in: query
+        name: parent__n
+        schema:
+          type: array
+          items:
+            type: string
+        description: Parent contact group (slug)
+        explode: true
+        style: form
+      - in: query
+        name: parent_id
+        schema:
+          type: array
+          items:
+            type: integer
+            nullable: true
+        description: Parent contact group (ID)
+        explode: true
+        style: form
+      - in: query
+        name: parent_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+            nullable: true
+        description: Parent contact group (ID)
+        explode: true
+        style: form
+      - in: query
+        name: q
+        schema:
+          type: string
+        description: Search
+      - in: query
+        name: slug
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: slug__empty
+        schema:
+          type: boolean
+      - in: query
+        name: slug__ic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: slug__ie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: slug__iew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: slug__iregex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: slug__isw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: slug__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: slug__nic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: slug__nie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: slug__niew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: slug__nisw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: slug__regex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: tag
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: tag__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: tag_id
+        schema:
+          type: array
+          items:
+            type: integer
+        explode: true
+        style: form
+      - in: query
+        name: tag_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+        explode: true
+        style: form
+      - in: query
+        name: updated_by_request
+        schema:
+          type: string
+          format: uuid
+      tags:
+      - tenancy
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedContactGroupList'
+          description: ''
+    post:
+      operationId: tenancy_contact_groups_create
+      description: Post a list of contact group objects.
+      tags:
+      - tenancy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+              - $ref: '#/components/schemas/WritableContactGroupRequest'
+              - type: array
+                items:
+                  $ref: '#/components/schemas/WritableContactGroupRequest'
+          multipart/form-data:
+            schema:
+              oneOf:
+              - $ref: '#/components/schemas/WritableContactGroupRequest'
+              - type: array
+                items:
+                  $ref: '#/components/schemas/WritableContactGroupRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactGroup'
+          description: ''
+    put:
+      operationId: tenancy_contact_groups_bulk_update
+      description: Put a list of contact group objects.
+      tags:
+      - tenancy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactGroupRequest'
+          multipart/form-data:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactGroupRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ContactGroup'
+          description: ''
+    patch:
+      operationId: tenancy_contact_groups_bulk_partial_update
+      description: Patch a list of contact group objects.
+      tags:
+      - tenancy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactGroupRequest'
+          multipart/form-data:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactGroupRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ContactGroup'
+          description: ''
+    delete:
+      operationId: tenancy_contact_groups_bulk_destroy
+      description: Delete a list of contact group objects.
+      tags:
+      - tenancy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactGroupRequest'
+          multipart/form-data:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactGroupRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/tenancy/contact-groups/{id}/:
+    get:
+      operationId: tenancy_contact_groups_retrieve
+      description: Get a contact group object.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this contact group.
+        required: true
+      tags:
+      - tenancy
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactGroup'
+          description: ''
+    put:
+      operationId: tenancy_contact_groups_update
+      description: Put a contact group object.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this contact group.
+        required: true
+      tags:
+      - tenancy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WritableContactGroupRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/WritableContactGroupRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactGroup'
+          description: ''
+    patch:
+      operationId: tenancy_contact_groups_partial_update
+      description: Patch a contact group object.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this contact group.
+        required: true
+      tags:
+      - tenancy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedWritableContactGroupRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedWritableContactGroupRequest'
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactGroup'
+          description: ''
+    delete:
+      operationId: tenancy_contact_groups_destroy
+      description: Delete a contact group object.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this contact group.
+        required: true
+      tags:
+      - tenancy
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/tenancy/contact-roles/:
+    get:
+      operationId: tenancy_contact_roles_list
+      description: Get a list of contact role objects.
+      parameters:
+      - in: query
+        name: created
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__empty
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__gt
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__gte
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__lt
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__lte
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__n
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created_by_request
+        schema:
+          type: string
+          format: uuid
+      - in: query
+        name: description
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__empty
+        schema:
+          type: boolean
+      - in: query
+        name: description__ic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__ie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__iew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__iregex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__isw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__nic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__nie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__niew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__nisw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__regex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: id
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__empty
+        schema:
+          type: boolean
+      - in: query
+        name: id__gt
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__gte
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__lt
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__lte
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__n
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: last_updated
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__empty
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__gt
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__gte
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__lt
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__lte
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__n
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - in: query
+        name: modified_by_request
+        schema:
+          type: string
+          format: uuid
+      - in: query
+        name: name
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__empty
+        schema:
+          type: boolean
+      - in: query
+        name: name__ic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__ie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__iew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__iregex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__isw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__nic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__nie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__niew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__nisw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__regex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - in: query
+        name: owner
+        schema:
+          type: array
+          items:
+            type: string
+        description: Owner (name)
+        explode: true
+        style: form
+      - in: query
+        name: owner__n
+        schema:
+          type: array
+          items:
+            type: string
+        description: Owner (name)
+        explode: true
+        style: form
+      - in: query
+        name: owner_group
+        schema:
+          type: array
+          items:
+            type: string
+        description: Owner Group (name)
+        explode: true
+        style: form
+      - in: query
+        name: owner_group__n
+        schema:
+          type: array
+          items:
+            type: string
+        description: Owner Group (name)
+        explode: true
+        style: form
+      - in: query
+        name: owner_group_id
+        schema:
+          type: array
+          items:
+            type: integer
+        description: Owner Group (ID)
+        explode: true
+        style: form
+      - in: query
+        name: owner_group_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+        description: Owner Group (ID)
+        explode: true
+        style: form
+      - in: query
+        name: owner_id
+        schema:
+          type: array
+          items:
+            type: integer
+            nullable: true
+        description: Owner (ID)
+        explode: true
+        style: form
+      - in: query
+        name: owner_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+            nullable: true
+        description: Owner (ID)
+        explode: true
+        style: form
+      - in: query
+        name: q
+        schema:
+          type: string
+        description: Search
+      - in: query
+        name: slug
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: slug__empty
+        schema:
+          type: boolean
+      - in: query
+        name: slug__ic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: slug__ie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: slug__iew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: slug__iregex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: slug__isw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: slug__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: slug__nic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: slug__nie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: slug__niew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: slug__nisw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: slug__regex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: tag
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: tag__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: tag_id
+        schema:
+          type: array
+          items:
+            type: integer
+        explode: true
+        style: form
+      - in: query
+        name: tag_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+        explode: true
+        style: form
+      - in: query
+        name: updated_by_request
+        schema:
+          type: string
+          format: uuid
+      tags:
+      - tenancy
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedContactRoleList'
+          description: ''
+    post:
+      operationId: tenancy_contact_roles_create
+      description: Post a list of contact role objects.
+      tags:
+      - tenancy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+              - $ref: '#/components/schemas/ContactRoleRequest'
+              - type: array
+                items:
+                  $ref: '#/components/schemas/ContactRoleRequest'
+          multipart/form-data:
+            schema:
+              oneOf:
+              - $ref: '#/components/schemas/ContactRoleRequest'
+              - type: array
+                items:
+                  $ref: '#/components/schemas/ContactRoleRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactRole'
+          description: ''
+    put:
+      operationId: tenancy_contact_roles_bulk_update
+      description: Put a list of contact role objects.
+      tags:
+      - tenancy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactRoleRequest'
+          multipart/form-data:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactRoleRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ContactRole'
+          description: ''
+    patch:
+      operationId: tenancy_contact_roles_bulk_partial_update
+      description: Patch a list of contact role objects.
+      tags:
+      - tenancy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactRoleRequest'
+          multipart/form-data:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactRoleRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ContactRole'
+          description: ''
+    delete:
+      operationId: tenancy_contact_roles_bulk_destroy
+      description: Delete a list of contact role objects.
+      tags:
+      - tenancy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactRoleRequest'
+          multipart/form-data:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactRoleRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/tenancy/contact-roles/{id}/:
+    get:
+      operationId: tenancy_contact_roles_retrieve
+      description: Get a contact role object.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this contact role.
+        required: true
+      tags:
+      - tenancy
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactRole'
+          description: ''
+    put:
+      operationId: tenancy_contact_roles_update
+      description: Put a contact role object.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this contact role.
+        required: true
+      tags:
+      - tenancy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContactRoleRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ContactRoleRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactRole'
+          description: ''
+    patch:
+      operationId: tenancy_contact_roles_partial_update
+      description: Patch a contact role object.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this contact role.
+        required: true
+      tags:
+      - tenancy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedContactRoleRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedContactRoleRequest'
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactRole'
+          description: ''
+    delete:
+      operationId: tenancy_contact_roles_destroy
+      description: Delete a contact role object.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this contact role.
+        required: true
+      tags:
+      - tenancy
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/tenancy/contacts/:
+    get:
+      operationId: tenancy_contacts_list
+      description: Get a list of contact objects.
+      parameters:
+      - in: query
+        name: address
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: address__empty
+        schema:
+          type: boolean
+      - in: query
+        name: address__ic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: address__ie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: address__iew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: address__iregex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: address__isw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: address__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: address__nic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: address__nie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: address__niew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: address__nisw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: address__regex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: created
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__empty
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__gt
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__gte
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__lt
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__lte
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__n
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created_by_request
+        schema:
+          type: string
+          format: uuid
+      - in: query
+        name: description
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__empty
+        schema:
+          type: boolean
+      - in: query
+        name: description__ic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__ie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__iew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__iregex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__isw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__nic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__nie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__niew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__nisw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__regex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: email
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: email__empty
+        schema:
+          type: boolean
+      - in: query
+        name: email__ic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: email__ie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: email__iew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: email__iregex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: email__isw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: email__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: email__nic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: email__nie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: email__niew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: email__nisw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: email__regex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: group
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: group__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: group_id
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: group_id__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: id
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__empty
+        schema:
+          type: boolean
+      - in: query
+        name: id__gt
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__gte
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__lt
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__lte
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__n
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: last_updated
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__empty
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__gt
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__gte
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__lt
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__lte
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__n
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - in: query
+        name: link
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: link__empty
+        schema:
+          type: boolean
+      - in: query
+        name: link__ic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: link__ie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: link__iew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: link__iregex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: link__isw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: link__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: link__nic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: link__nie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: link__niew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: link__nisw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: link__regex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: modified_by_request
+        schema:
+          type: string
+          format: uuid
+      - in: query
+        name: name
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__empty
+        schema:
+          type: boolean
+      - in: query
+        name: name__ic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__ie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__iew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__iregex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__isw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__nic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__nie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__niew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__nisw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__regex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - in: query
+        name: owner
+        schema:
+          type: array
+          items:
+            type: string
+        description: Owner (name)
+        explode: true
+        style: form
+      - in: query
+        name: owner__n
+        schema:
+          type: array
+          items:
+            type: string
+        description: Owner (name)
+        explode: true
+        style: form
+      - in: query
+        name: owner_group
+        schema:
+          type: array
+          items:
+            type: string
+        description: Owner Group (name)
+        explode: true
+        style: form
+      - in: query
+        name: owner_group__n
+        schema:
+          type: array
+          items:
+            type: string
+        description: Owner Group (name)
+        explode: true
+        style: form
+      - in: query
+        name: owner_group_id
+        schema:
+          type: array
+          items:
+            type: integer
+        description: Owner Group (ID)
+        explode: true
+        style: form
+      - in: query
+        name: owner_group_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+        description: Owner Group (ID)
+        explode: true
+        style: form
+      - in: query
+        name: owner_id
+        schema:
+          type: array
+          items:
+            type: integer
+            nullable: true
+        description: Owner (ID)
+        explode: true
+        style: form
+      - in: query
+        name: owner_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+            nullable: true
+        description: Owner (ID)
+        explode: true
+        style: form
+      - in: query
+        name: phone
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: phone__empty
+        schema:
+          type: boolean
+      - in: query
+        name: phone__ic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: phone__ie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: phone__iew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: phone__iregex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: phone__isw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: phone__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: phone__nic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: phone__nie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: phone__niew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: phone__nisw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: phone__regex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: q
+        schema:
+          type: string
+        description: Search
+      - in: query
+        name: tag
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: tag__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: tag_id
+        schema:
+          type: array
+          items:
+            type: integer
+        explode: true
+        style: form
+      - in: query
+        name: tag_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+        explode: true
+        style: form
+      - in: query
+        name: title
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: title__empty
+        schema:
+          type: boolean
+      - in: query
+        name: title__ic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: title__ie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: title__iew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: title__iregex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: title__isw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: title__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: title__nic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: title__nie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: title__niew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: title__nisw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: title__regex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: updated_by_request
+        schema:
+          type: string
+          format: uuid
+      tags:
+      - tenancy
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedContactList'
+          description: ''
+    post:
+      operationId: tenancy_contacts_create
+      description: Post a list of contact objects.
+      tags:
+      - tenancy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+              - $ref: '#/components/schemas/ContactRequest'
+              - type: array
+                items:
+                  $ref: '#/components/schemas/ContactRequest'
+          multipart/form-data:
+            schema:
+              oneOf:
+              - $ref: '#/components/schemas/ContactRequest'
+              - type: array
+                items:
+                  $ref: '#/components/schemas/ContactRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contact'
+          description: ''
+    put:
+      operationId: tenancy_contacts_bulk_update
+      description: Put a list of contact objects.
+      tags:
+      - tenancy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactRequest'
+          multipart/form-data:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Contact'
+          description: ''
+    patch:
+      operationId: tenancy_contacts_bulk_partial_update
+      description: Patch a list of contact objects.
+      tags:
+      - tenancy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactRequest'
+          multipart/form-data:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Contact'
+          description: ''
+    delete:
+      operationId: tenancy_contacts_bulk_destroy
+      description: Delete a list of contact objects.
+      tags:
+      - tenancy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactRequest'
+          multipart/form-data:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/tenancy/contacts/{id}/:
+    get:
+      operationId: tenancy_contacts_retrieve
+      description: Get a contact object.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this contact.
+        required: true
+      tags:
+      - tenancy
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contact'
+          description: ''
+    put:
+      operationId: tenancy_contacts_update
+      description: Put a contact object.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this contact.
+        required: true
+      tags:
+      - tenancy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContactRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ContactRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contact'
+          description: ''
+    patch:
+      operationId: tenancy_contacts_partial_update
+      description: Patch a contact object.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this contact.
+        required: true
+      tags:
+      - tenancy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedContactRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedContactRequest'
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contact'
+          description: ''
+    delete:
+      operationId: tenancy_contacts_destroy
+      description: Delete a contact object.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this contact.
+        required: true
+      tags:
+      - tenancy
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/tenancy/tenant-groups/:
+    get:
+      operationId: tenancy_tenant_groups_list
+      description: Get a list of tenant group objects.
+      parameters:
+      - in: query
+        name: ancestor
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: ancestor__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: ancestor_id
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: ancestor_id__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: created
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__empty
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__gt
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__gte
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__lt
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__lte
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__n
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created_by_request
+        schema:
+          type: string
+          format: uuid
+      - in: query
+        name: description
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__empty
+        schema:
+          type: boolean
+      - in: query
+        name: description__ic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__ie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__iew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__iregex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__isw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__nic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__nie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__niew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__nisw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__regex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: id
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__empty
+        schema:
+          type: boolean
+      - in: query
+        name: id__gt
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__gte
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__lt
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__lte
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__n
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: last_updated
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__empty
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__gt
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__gte
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__lt
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__lte
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__n
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - in: query
+        name: modified_by_request
+        schema:
+          type: string
+          format: uuid
+      - in: query
+        name: name
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__empty
+        schema:
+          type: boolean
+      - in: query
+        name: name__ic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__ie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__iew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__iregex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__isw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__nic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__nie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__niew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__nisw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__regex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - in: query
+        name: owner
+        schema:
+          type: array
+          items:
+            type: string
+        description: Owner (name)
+        explode: true
+        style: form
+      - in: query
+        name: owner__n
+        schema:
+          type: array
+          items:
+            type: string
+        description: Owner (name)
+        explode: true
+        style: form
+      - in: query
+        name: owner_group
+        schema:
+          type: array
+          items:
+            type: string
+        description: Owner Group (name)
+        explode: true
+        style: form
+      - in: query
+        name: owner_group__n
+        schema:
+          type: array
+          items:
+            type: string
+        description: Owner Group (name)
+        explode: true
+        style: form
+      - in: query
+        name: owner_group_id
+        schema:
+          type: array
+          items:
+            type: integer
+        description: Owner Group (ID)
+        explode: true
+        style: form
+      - in: query
+        name: owner_group_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+        description: Owner Group (ID)
+        explode: true
+        style: form
+      - in: query
+        name: owner_id
+        schema:
+          type: array
+          items:
+            type: integer
+            nullable: true
+        description: Owner (ID)
+        explode: true
+        style: form
+      - in: query
+        name: owner_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+            nullable: true
+        description: Owner (ID)
+        explode: true
+        style: form
+      - in: query
+        name: parent
+        schema:
+          type: array
+          items:
+            type: string
+        description: Parent tenant group (slug)
+        explode: true
+        style: form
+      - in: query
+        name: parent__n
+        schema:
+          type: array
+          items:
+            type: string
+        description: Parent tenant group (slug)
+        explode: true
+        style: form
+      - in: query
+        name: parent_id
+        schema:
+          type: array
+          items:
+            type: integer
+            nullable: true
+        description: Parent tenant group (ID)
+        explode: true
+        style: form
+      - in: query
+        name: parent_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+            nullable: true
+        description: Parent tenant group (ID)
+        explode: true
+        style: form
+      - in: query
+        name: q
+        schema:
+          type: string
+        description: Search
+      - in: query
+        name: slug
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: slug__empty
+        schema:
+          type: boolean
+      - in: query
+        name: slug__ic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: slug__ie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: slug__iew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: slug__iregex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: slug__isw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: slug__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: slug__nic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: slug__nie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: slug__niew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: slug__nisw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: slug__regex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: tag
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: tag__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: tag_id
+        schema:
+          type: array
+          items:
+            type: integer
+        explode: true
+        style: form
+      - in: query
+        name: tag_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+        explode: true
+        style: form
+      - in: query
+        name: updated_by_request
+        schema:
+          type: string
+          format: uuid
+      tags:
+      - tenancy
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedTenantGroupList'
+          description: ''
+    post:
+      operationId: tenancy_tenant_groups_create
+      description: Post a list of tenant group objects.
+      tags:
+      - tenancy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+              - $ref: '#/components/schemas/WritableTenantGroupRequest'
+              - type: array
+                items:
+                  $ref: '#/components/schemas/WritableTenantGroupRequest'
+          multipart/form-data:
+            schema:
+              oneOf:
+              - $ref: '#/components/schemas/WritableTenantGroupRequest'
+              - type: array
+                items:
+                  $ref: '#/components/schemas/WritableTenantGroupRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TenantGroup'
+          description: ''
+    put:
+      operationId: tenancy_tenant_groups_bulk_update
+      description: Put a list of tenant group objects.
+      tags:
+      - tenancy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/TenantGroupRequest'
+          multipart/form-data:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/TenantGroupRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TenantGroup'
+          description: ''
+    patch:
+      operationId: tenancy_tenant_groups_bulk_partial_update
+      description: Patch a list of tenant group objects.
+      tags:
+      - tenancy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/TenantGroupRequest'
+          multipart/form-data:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/TenantGroupRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TenantGroup'
+          description: ''
+    delete:
+      operationId: tenancy_tenant_groups_bulk_destroy
+      description: Delete a list of tenant group objects.
+      tags:
+      - tenancy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/TenantGroupRequest'
+          multipart/form-data:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/TenantGroupRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/tenancy/tenant-groups/{id}/:
+    get:
+      operationId: tenancy_tenant_groups_retrieve
+      description: Get a tenant group object.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this tenant group.
+        required: true
+      tags:
+      - tenancy
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TenantGroup'
+          description: ''
+    put:
+      operationId: tenancy_tenant_groups_update
+      description: Put a tenant group object.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this tenant group.
+        required: true
+      tags:
+      - tenancy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WritableTenantGroupRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/WritableTenantGroupRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TenantGroup'
+          description: ''
+    patch:
+      operationId: tenancy_tenant_groups_partial_update
+      description: Patch a tenant group object.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this tenant group.
+        required: true
+      tags:
+      - tenancy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedWritableTenantGroupRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedWritableTenantGroupRequest'
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TenantGroup'
+          description: ''
+    delete:
+      operationId: tenancy_tenant_groups_destroy
+      description: Delete a tenant group object.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this tenant group.
+        required: true
+      tags:
+      - tenancy
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/tenancy/tenants/:
+    get:
+      operationId: tenancy_tenants_list
+      description: Get a list of tenant objects.
+      parameters:
+      - in: query
+        name: contact
+        schema:
+          type: array
+          items:
+            type: integer
+        description: Contact
+        explode: true
+        style: form
+      - in: query
+        name: contact__n
+        schema:
+          type: array
+          items:
+            type: integer
+        description: Contact
+        explode: true
+        style: form
+      - in: query
+        name: contact_group
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: contact_group__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: contact_role
+        schema:
+          type: array
+          items:
+            type: integer
+        description: Contact Role
+        explode: true
+        style: form
+      - in: query
+        name: contact_role__n
+        schema:
+          type: array
+          items:
+            type: integer
+        description: Contact Role
+        explode: true
+        style: form
+      - in: query
+        name: created
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__empty
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__gt
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__gte
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__lt
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__lte
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__n
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created_by_request
+        schema:
+          type: string
+          format: uuid
+      - in: query
+        name: description
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__empty
+        schema:
+          type: boolean
+      - in: query
+        name: description__ic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__ie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__iew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__iregex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__isw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__nic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__nie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__niew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__nisw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__regex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: group
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: group__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: group_id
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: group_id__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: id
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__empty
+        schema:
+          type: boolean
+      - in: query
+        name: id__gt
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__gte
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__lt
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__lte
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__n
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: last_updated
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__empty
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__gt
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__gte
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__lt
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__lte
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__n
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - in: query
+        name: modified_by_request
+        schema:
+          type: string
+          format: uuid
+      - in: query
+        name: name
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__empty
+        schema:
+          type: boolean
+      - in: query
+        name: name__ic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__ie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__iew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__iregex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__isw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__nic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__nie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__niew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__nisw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__regex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - in: query
+        name: owner
+        schema:
+          type: array
+          items:
+            type: string
+        description: Owner (name)
+        explode: true
+        style: form
+      - in: query
+        name: owner__n
+        schema:
+          type: array
+          items:
+            type: string
+        description: Owner (name)
+        explode: true
+        style: form
+      - in: query
+        name: owner_group
+        schema:
+          type: array
+          items:
+            type: string
+        description: Owner Group (name)
+        explode: true
+        style: form
+      - in: query
+        name: owner_group__n
+        schema:
+          type: array
+          items:
+            type: string
+        description: Owner Group (name)
+        explode: true
+        style: form
+      - in: query
+        name: owner_group_id
+        schema:
+          type: array
+          items:
+            type: integer
+        description: Owner Group (ID)
+        explode: true
+        style: form
+      - in: query
+        name: owner_group_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+        description: Owner Group (ID)
+        explode: true
+        style: form
+      - in: query
+        name: owner_id
+        schema:
+          type: array
+          items:
+            type: integer
+            nullable: true
+        description: Owner (ID)
+        explode: true
+        style: form
+      - in: query
+        name: owner_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+            nullable: true
+        description: Owner (ID)
+        explode: true
+        style: form
+      - in: query
+        name: q
+        schema:
+          type: string
+        description: Search
+      - in: query
+        name: slug
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: slug__empty
+        schema:
+          type: boolean
+      - in: query
+        name: slug__ic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: slug__ie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: slug__iew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: slug__iregex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: slug__isw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: slug__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: slug__nic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: slug__nie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: slug__niew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: slug__nisw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: slug__regex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: tag
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: tag__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: tag_id
+        schema:
+          type: array
+          items:
+            type: integer
+        explode: true
+        style: form
+      - in: query
+        name: tag_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+        explode: true
+        style: form
+      - in: query
+        name: updated_by_request
+        schema:
+          type: string
+          format: uuid
+      tags:
+      - tenancy
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedTenantList'
+          description: ''
+    post:
+      operationId: tenancy_tenants_create
+      description: Post a list of tenant objects.
+      tags:
+      - tenancy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+              - $ref: '#/components/schemas/TenantRequest'
+              - type: array
+                items:
+                  $ref: '#/components/schemas/TenantRequest'
+          multipart/form-data:
+            schema:
+              oneOf:
+              - $ref: '#/components/schemas/TenantRequest'
+              - type: array
+                items:
+                  $ref: '#/components/schemas/TenantRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tenant'
+          description: ''
+    put:
+      operationId: tenancy_tenants_bulk_update
+      description: Put a list of tenant objects.
+      tags:
+      - tenancy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/TenantRequest'
+          multipart/form-data:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/TenantRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Tenant'
+          description: ''
+    patch:
+      operationId: tenancy_tenants_bulk_partial_update
+      description: Patch a list of tenant objects.
+      tags:
+      - tenancy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/TenantRequest'
+          multipart/form-data:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/TenantRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Tenant'
+          description: ''
+    delete:
+      operationId: tenancy_tenants_bulk_destroy
+      description: Delete a list of tenant objects.
+      tags:
+      - tenancy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/TenantRequest'
+          multipart/form-data:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/TenantRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/tenancy/tenants/{id}/:
+    get:
+      operationId: tenancy_tenants_retrieve
+      description: Get a tenant object.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this tenant.
+        required: true
+      tags:
+      - tenancy
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tenant'
+          description: ''
+    put:
+      operationId: tenancy_tenants_update
+      description: Put a tenant object.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this tenant.
+        required: true
+      tags:
+      - tenancy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TenantRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TenantRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tenant'
+          description: ''
+    patch:
+      operationId: tenancy_tenants_partial_update
+      description: Patch a tenant object.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this tenant.
+        required: true
+      tags:
+      - tenancy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedTenantRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedTenantRequest'
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tenant'
+          description: ''
+    delete:
+      operationId: tenancy_tenants_destroy
+      description: Delete a tenant object.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this tenant.
+        required: true
+      tags:
+      - tenancy
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+components:
+  schemas:
+    NestedTenantGroup:
+      type: object
+      description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
+
+        dictionary of attributes which can be used to uniquely identify the related object. This class should be
+
+        subclassed to return a full representation of the related object on read.'
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        slug:
+          type: string
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        _depth:
+          type: integer
+          readOnly: true
+          title: ' depth'
+      required:
+      - _depth
+      - display
+      - display_url
+      - id
+      - name
+      - slug
+      - url
+    PatchedWritableContactGroupRequest:
+      type: object
+      description: Base serializer class for models inheriting from NestedGroupModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        parent:
+          type: integer
+          nullable: true
+        description:
+          type: string
+          maxLength: 200
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+            nullable: true
+          nullable: true
+        comments:
+          type: string
+    NestedContactGroupRequest:
+      type: object
+      description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
+
+        dictionary of attributes which can be used to uniquely identify the related object. This class should be
+
+        subclassed to return a full representation of the related object on read.'
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+      required:
+      - name
+      - slug
+    BriefContactRoleRequest:
+      type: object
+      description: Base serializer class for models inheriting from OrganizationalModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - name
+      - slug
+    PaginatedContactGroupList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactGroup'
+    Tenant:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        slug:
+          type: string
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        group:
+          allOf:
+          - $ref: '#/components/schemas/BriefTenantGroup'
+          nullable: true
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          allOf:
+          - $ref: '#/components/schemas/BriefOwner'
+          nullable: true
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTag'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+        last_updated:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+        circuit_count:
+          type: integer
+          format: int64
+          readOnly: true
+        device_count:
+          type: integer
+          format: int64
+          readOnly: true
+        ipaddress_count:
+          type: integer
+          format: int64
+          readOnly: true
+        prefix_count:
+          type: integer
+          format: int64
+          readOnly: true
+        rack_count:
+          type: integer
+          format: int64
+          readOnly: true
+        site_count:
+          type: integer
+          format: int64
+          readOnly: true
+        virtualmachine_count:
+          type: integer
+          format: int64
+          readOnly: true
+        vlan_count:
+          type: integer
+          format: int64
+          readOnly: true
+        vrf_count:
+          type: integer
+          format: int64
+          readOnly: true
+        cluster_count:
+          type: integer
+          format: int64
+          readOnly: true
+      required:
+      - circuit_count
+      - cluster_count
+      - created
+      - device_count
+      - display
+      - display_url
+      - id
+      - ipaddress_count
+      - last_updated
+      - name
+      - prefix_count
+      - rack_count
+      - site_count
+      - slug
+      - url
+      - virtualmachine_count
+      - vlan_count
+      - vrf_count
+    TenantGroup:
+      type: object
+      description: Base serializer class for models inheriting from NestedGroupModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        slug:
+          type: string
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        parent:
+          allOf:
+          - $ref: '#/components/schemas/NestedTenantGroup'
+          nullable: true
+        description:
+          type: string
+          maxLength: 200
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTag'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+        last_updated:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+        tenant_count:
+          type: integer
+          readOnly: true
+          default: 0
+        owner:
+          allOf:
+          - $ref: '#/components/schemas/BriefOwner'
+          nullable: true
+        comments:
+          type: string
+        _depth:
+          type: integer
+          readOnly: true
+          title: ' depth'
+      required:
+      - _depth
+      - created
+      - display
+      - display_url
+      - id
+      - last_updated
+      - name
+      - slug
+      - tenant_count
+      - url
+    PatchedWritableContactAssignmentRequest:
+      type: object
+      description: Adds support for custom fields and tags.
+      properties:
+        object_type:
+          type: string
+        object_id:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        contact:
+          oneOf:
+          - type: integer
+          - $ref: '#/components/schemas/BriefContactRequest'
+        role:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefContactRoleRequest'
+            nullable: true
+          nullable: true
+        priority:
+          enum:
+          - primary
+          - secondary
+          - tertiary
+          - inactive
+          - ''
+          - null
+          type: string
+          description: '* `primary` - Primary
+
+            * `secondary` - Secondary
+
+            * `tertiary` - Tertiary
+
+            * `inactive` - Inactive'
+          x-spec-enum-id: 0548fc537440bf9d
+          nullable: true
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+    PatchedContactRoleRequest:
+      type: object
+      description: Base serializer class for models inheriting from OrganizationalModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+            nullable: true
+          nullable: true
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+    TenantGroupRequest:
+      type: object
+      description: Base serializer class for models inheriting from NestedGroupModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        parent:
+          allOf:
+          - $ref: '#/components/schemas/NestedTenantGroupRequest'
+          nullable: true
+        description:
+          type: string
+          maxLength: 200
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+            nullable: true
+          nullable: true
+        comments:
+          type: string
+      required:
+      - name
+      - slug
+    ContactRole:
+      type: object
+      description: Base serializer class for models inheriting from OrganizationalModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        slug:
+          type: string
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          allOf:
+          - $ref: '#/components/schemas/BriefOwner'
+          nullable: true
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTag'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+        last_updated:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+      required:
+      - created
+      - display
+      - display_url
+      - id
+      - last_updated
+      - name
+      - slug
+      - url
+    WritableContactAssignmentRequest:
+      type: object
+      description: Adds support for custom fields and tags.
+      properties:
+        object_type:
+          type: string
+        object_id:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        contact:
+          oneOf:
+          - type: integer
+          - $ref: '#/components/schemas/BriefContactRequest'
+        role:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefContactRoleRequest'
+            nullable: true
+          nullable: true
+        priority:
+          enum:
+          - primary
+          - secondary
+          - tertiary
+          - inactive
+          - ''
+          - null
+          type: string
+          description: '* `primary` - Primary
+
+            * `secondary` - Secondary
+
+            * `tertiary` - Tertiary
+
+            * `inactive` - Inactive'
+          x-spec-enum-id: 0548fc537440bf9d
+          nullable: true
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+      required:
+      - contact
+      - object_id
+      - object_type
+    TenantRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        group:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefTenantGroupRequest'
+            nullable: true
+          nullable: true
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+            nullable: true
+          nullable: true
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+      required:
+      - name
+      - slug
+    ContactGroupRequest:
+      type: object
+      description: Base serializer class for models inheriting from NestedGroupModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        parent:
+          allOf:
+          - $ref: '#/components/schemas/NestedContactGroupRequest'
+          nullable: true
+        description:
+          type: string
+          maxLength: 200
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+            nullable: true
+          nullable: true
+        comments:
+          type: string
+      required:
+      - name
+      - slug
+    BriefTenantGroupRequest:
+      type: object
+      description: Base serializer class for models inheriting from NestedGroupModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - name
+      - slug
+    PaginatedContactRoleList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactRole'
+    PatchedWritableTenantGroupRequest:
+      type: object
+      description: Base serializer class for models inheriting from NestedGroupModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        parent:
+          type: integer
+          nullable: true
+        description:
+          type: string
+          maxLength: 200
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+            nullable: true
+          nullable: true
+        comments:
+          type: string
+    ContactRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        groups:
+          type: array
+          items:
+            type: integer
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        title:
+          type: string
+          maxLength: 100
+        phone:
+          type: string
+          maxLength: 50
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        address:
+          type: string
+          maxLength: 200
+        link:
+          type: string
+          format: uri
+          maxLength: 200
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+            nullable: true
+          nullable: true
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+      required:
+      - name
+    BriefTenantGroup:
+      type: object
+      description: Base serializer class for models inheriting from NestedGroupModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        slug:
+          type: string
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+          maxLength: 200
+        tenant_count:
+          type: integer
+          readOnly: true
+          default: 0
+        _depth:
+          type: integer
+          readOnly: true
+          title: ' depth'
+      required:
+      - _depth
+      - display
+      - id
+      - name
+      - slug
+      - tenant_count
+      - url
+    PaginatedTenantList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tenant'
+    PaginatedContactList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Contact'
+    WritableContactGroupRequest:
+      type: object
+      description: Base serializer class for models inheriting from NestedGroupModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        parent:
+          type: integer
+          nullable: true
+        description:
+          type: string
+          maxLength: 200
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+            nullable: true
+          nullable: true
+        comments:
+          type: string
+      required:
+      - name
+      - slug
+    BriefContactRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - name
+    NestedTag:
+      type: object
+      description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
+
+        dictionary of attributes which can be used to uniquely identify the related object. This class should be
+
+        subclassed to return a full representation of the related object on read.'
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        slug:
+          type: string
+          pattern: ^[-\w]+$
+          maxLength: 100
+        color:
+          type: string
+          pattern: ^[0-9a-f]{6}$
+          maxLength: 6
+      required:
+      - display
+      - display_url
+      - id
+      - name
+      - slug
+      - url
+    BriefOwnerRequest:
+      type: object
+      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
+
+        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - name
+    PaginatedContactAssignmentList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactAssignment'
+    ContactRoleRequest:
+      type: object
+      description: Base serializer class for models inheriting from OrganizationalModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+            nullable: true
+          nullable: true
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+      required:
+      - name
+      - slug
+    PaginatedTenantGroupList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/TenantGroup'
+    ContactGroup:
+      type: object
+      description: Base serializer class for models inheriting from NestedGroupModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        slug:
+          type: string
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        parent:
+          allOf:
+          - $ref: '#/components/schemas/NestedContactGroup'
+          nullable: true
+        description:
+          type: string
+          maxLength: 200
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTag'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+        last_updated:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+        contact_count:
+          type: integer
+          readOnly: true
+          default: 0
+        owner:
+          allOf:
+          - $ref: '#/components/schemas/BriefOwner'
+          nullable: true
+        comments:
+          type: string
+        _depth:
+          type: integer
+          readOnly: true
+          title: ' depth'
+      required:
+      - _depth
+      - contact_count
+      - created
+      - display
+      - display_url
+      - id
+      - last_updated
+      - name
+      - slug
+      - url
+    PatchedTenantRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        group:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefTenantGroupRequest'
+            nullable: true
+          nullable: true
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+            nullable: true
+          nullable: true
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+    NestedContactGroup:
+      type: object
+      description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
+
+        dictionary of attributes which can be used to uniquely identify the related object. This class should be
+
+        subclassed to return a full representation of the related object on read.'
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        slug:
+          type: string
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        _depth:
+          type: integer
+          readOnly: true
+          title: ' depth'
+      required:
+      - _depth
+      - display
+      - display_url
+      - id
+      - name
+      - slug
+      - url
+    Contact:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactGroup'
+        name:
+          type: string
+          maxLength: 100
+        title:
+          type: string
+          maxLength: 100
+        phone:
+          type: string
+          maxLength: 50
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        address:
+          type: string
+          maxLength: 200
+        link:
+          type: string
+          format: uri
+          maxLength: 200
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          allOf:
+          - $ref: '#/components/schemas/BriefOwner'
+          nullable: true
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTag'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+        last_updated:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+      required:
+      - created
+      - display
+      - display_url
+      - id
+      - last_updated
+      - name
+      - url
+    NestedTenantGroupRequest:
+      type: object
+      description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
+
+        dictionary of attributes which can be used to uniquely identify the related object. This class should be
+
+        subclassed to return a full representation of the related object on read.'
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+      required:
+      - name
+      - slug
+    BriefContactRole:
+      type: object
+      description: Base serializer class for models inheriting from OrganizationalModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        slug:
+          type: string
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - display
+      - id
+      - name
+      - slug
+      - url
+    ContactAssignmentRequest:
+      type: object
+      description: Adds support for custom fields and tags.
+      properties:
+        object_type:
+          type: string
+        object_id:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        contact:
+          oneOf:
+          - type: integer
+          - $ref: '#/components/schemas/BriefContactRequest'
+        role:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefContactRoleRequest'
+            nullable: true
+          nullable: true
+        priority:
+          enum:
+          - primary
+          - secondary
+          - tertiary
+          - inactive
+          - ''
+          type: string
+          description: '* `primary` - Primary
+
+            * `secondary` - Secondary
+
+            * `tertiary` - Tertiary
+
+            * `inactive` - Inactive'
+          x-spec-enum-id: 0548fc537440bf9d
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+      required:
+      - contact
+      - object_id
+      - object_type
+    PatchedContactRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        groups:
+          type: array
+          items:
+            type: integer
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        title:
+          type: string
+          maxLength: 100
+        phone:
+          type: string
+          maxLength: 50
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        address:
+          type: string
+          maxLength: 200
+        link:
+          type: string
+          format: uri
+          maxLength: 200
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+            nullable: true
+          nullable: true
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+    BriefOwner:
+      type: object
+      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
+
+        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - display
+      - id
+      - name
+      - url
+    ContactAssignment:
+      type: object
+      description: Adds support for custom fields and tags.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        object_type:
+          type: string
+        object_id:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        object:
+          readOnly: true
+          nullable: true
+        contact:
+          $ref: '#/components/schemas/BriefContact'
+        role:
+          allOf:
+          - $ref: '#/components/schemas/BriefContactRole'
+          nullable: true
+        priority:
+          type: object
+          properties:
+            value:
+              enum:
+              - primary
+              - secondary
+              - tertiary
+              - inactive
+              - ''
+              type: string
+              description: '* `primary` - Primary
+
+                * `secondary` - Secondary
+
+                * `tertiary` - Tertiary
+
+                * `inactive` - Inactive'
+              x-spec-enum-id: 0548fc537440bf9d
+            label:
+              type: string
+              enum:
+              - Primary
+              - Secondary
+              - Tertiary
+              - Inactive
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTag'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+        last_updated:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+      required:
+      - contact
+      - created
+      - display
+      - id
+      - last_updated
+      - object
+      - object_id
+      - object_type
+      - url
+    WritableTenantGroupRequest:
+      type: object
+      description: Base serializer class for models inheriting from NestedGroupModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        parent:
+          type: integer
+          nullable: true
+        description:
+          type: string
+          maxLength: 200
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+            nullable: true
+          nullable: true
+        comments:
+          type: string
+      required:
+      - name
+      - slug
+    BriefContact:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - display
+      - id
+      - name
+      - url
+    NestedTagRequest:
+      type: object
+      description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
+
+        dictionary of attributes which can be used to uniquely identify the related object. This class should be
+
+        subclassed to return a full representation of the related object on read.'
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          pattern: ^[-\w]+$
+          maxLength: 100
+        color:
+          type: string
+          minLength: 1
+          pattern: ^[0-9a-f]{6}$
+          maxLength: 6
+      required:
+      - name
+      - slug
+  securitySchemes:
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: '`Token <token>` (v1) or `Bearer <key>.<token>` (v2)'

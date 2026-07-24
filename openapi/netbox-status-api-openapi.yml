@@ -1,0 +1,40 @@
+openapi: 3.0.3
+info:
+  title: NetBox REST authentication-check status API
+  version: 4.5.9 (4.5)
+  license:
+    name: Apache v2 License
+servers:
+- url: ''
+  description: NetBox
+tags:
+- name: status
+paths:
+  /api/status/:
+    get:
+      operationId: status_retrieve
+      description: A lightweight read-only endpoint for conveying NetBox's current operational status.
+      tags:
+      - status
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+components:
+  securitySchemes:
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: '`Token <token>` (v1) or `Bearer <key>.<token>` (v2)'

@@ -1,0 +1,4768 @@
+openapi: 3.0.3
+info:
+  title: NetBox REST authentication-check core API
+  version: 4.5.9 (4.5)
+  license:
+    name: Apache v2 License
+servers:
+- url: ''
+  description: NetBox
+tags:
+- name: core
+paths:
+  /api/core/background-queues/:
+    get:
+      operationId: core_background_queues_retrieve
+      description: 'Retrieve a list of RQ Queues.
+
+        Note: Queue names are not URL safe, so not returning a detail view.'
+      tags:
+      - core
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/core/background-queues/{name}/:
+    get:
+      operationId: core_background_queues_retrieve_by_name
+      description: 'Retrieve a list of RQ Queues.
+
+        Note: Queue names are not URL safe, so not returning a detail view.'
+      parameters:
+      - in: path
+        name: name
+        schema:
+          type: string
+        required: true
+      tags:
+      - core
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/core/background-tasks/:
+    get:
+      operationId: core_background_tasks_retrieve
+      description: Retrieve a list of RQ Tasks.
+      tags:
+      - core
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/core/background-tasks/{id}/:
+    get:
+      operationId: core_background_tasks_retrieve_by_id
+      description: Retrieve a list of RQ Tasks.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - core
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/core/background-tasks/{id}/delete/:
+    post:
+      operationId: core_background_tasks_delete_create
+      description: Retrieve a list of RQ Tasks.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - core
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BackgroundTaskRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/BackgroundTaskRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackgroundTask'
+          description: ''
+  /api/core/background-tasks/{id}/enqueue/:
+    post:
+      operationId: core_background_tasks_enqueue_create
+      description: Retrieve a list of RQ Tasks.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - core
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BackgroundTaskRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/BackgroundTaskRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackgroundTask'
+          description: ''
+  /api/core/background-tasks/{id}/requeue/:
+    post:
+      operationId: core_background_tasks_requeue_create
+      description: Retrieve a list of RQ Tasks.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - core
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BackgroundTaskRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/BackgroundTaskRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackgroundTask'
+          description: ''
+  /api/core/background-tasks/{id}/stop/:
+    post:
+      operationId: core_background_tasks_stop_create
+      description: Retrieve a list of RQ Tasks.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - core
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BackgroundTaskRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/BackgroundTaskRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackgroundTask'
+          description: ''
+  /api/core/background-workers/:
+    get:
+      operationId: core_background_workers_retrieve
+      description: Retrieve a list of RQ Workers.
+      tags:
+      - core
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/core/background-workers/{name}/:
+    get:
+      operationId: core_background_workers_retrieve_by_name
+      description: Retrieve a list of RQ Workers.
+      parameters:
+      - in: path
+        name: name
+        schema:
+          type: string
+        required: true
+      tags:
+      - core
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/core/data-files/:
+    get:
+      operationId: core_data_files_list
+      description: Get a list of data file objects.
+      parameters:
+      - in: query
+        name: created
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__empty
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__gt
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__gte
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__lt
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__lte
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__n
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created_by_request
+        schema:
+          type: string
+          format: uuid
+      - in: query
+        name: hash
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: hash__empty
+        schema:
+          type: boolean
+      - in: query
+        name: hash__ic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: hash__ie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: hash__iew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: hash__iregex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: hash__isw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: hash__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: hash__nic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: hash__nie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: hash__niew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: hash__nisw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: hash__regex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: id
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__empty
+        schema:
+          type: boolean
+      - in: query
+        name: id__gt
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__gte
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__lt
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__lte
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__n
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: last_updated
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__empty
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__gt
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__gte
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__lt
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__lte
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__n
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - in: query
+        name: modified_by_request
+        schema:
+          type: string
+          format: uuid
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - in: query
+        name: path
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: path__empty
+        schema:
+          type: boolean
+      - in: query
+        name: path__ic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: path__ie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: path__iew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: path__iregex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: path__isw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: path__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: path__nic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: path__nie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: path__niew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: path__nisw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: path__regex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: q
+        schema:
+          type: string
+      - in: query
+        name: size
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: size__empty
+        schema:
+          type: boolean
+      - in: query
+        name: size__gt
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: size__gte
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: size__lt
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: size__lte
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: size__n
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: source
+        schema:
+          type: array
+          items:
+            type: string
+        description: Data source (name)
+        explode: true
+        style: form
+      - in: query
+        name: source__n
+        schema:
+          type: array
+          items:
+            type: string
+        description: Data source (name)
+        explode: true
+        style: form
+      - in: query
+        name: source_id
+        schema:
+          type: array
+          items:
+            type: integer
+        description: Data source (ID)
+        explode: true
+        style: form
+      - in: query
+        name: source_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+        description: Data source (ID)
+        explode: true
+        style: form
+      - in: query
+        name: updated_by_request
+        schema:
+          type: string
+          format: uuid
+      tags:
+      - core
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedDataFileList'
+          description: ''
+  /api/core/data-files/{id}/:
+    get:
+      operationId: core_data_files_retrieve
+      description: Get a data file object.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this data file.
+        required: true
+      tags:
+      - core
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataFile'
+          description: ''
+  /api/core/data-sources/:
+    get:
+      operationId: core_data_sources_list
+      description: Get a list of data source objects.
+      parameters:
+      - in: query
+        name: created
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__empty
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__gt
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__gte
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__lt
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__lte
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__n
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created_by_request
+        schema:
+          type: string
+          format: uuid
+      - in: query
+        name: description
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__empty
+        schema:
+          type: boolean
+      - in: query
+        name: description__ic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__ie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__iew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__iregex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__isw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__nic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__nie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__niew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__nisw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__regex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: enabled
+        schema:
+          type: boolean
+      - in: query
+        name: id
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__empty
+        schema:
+          type: boolean
+      - in: query
+        name: id__gt
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__gte
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__lt
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__lte
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__n
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: last_synced
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_synced__empty
+        schema:
+          type: boolean
+      - in: query
+        name: last_synced__gt
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_synced__gte
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_synced__lt
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_synced__lte
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_synced__n
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__empty
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__gt
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__gte
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__lt
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__lte
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__n
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - in: query
+        name: modified_by_request
+        schema:
+          type: string
+          format: uuid
+      - in: query
+        name: name
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__empty
+        schema:
+          type: boolean
+      - in: query
+        name: name__ic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__ie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__iew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__iregex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__isw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__nic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__nie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__niew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__nisw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__regex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - in: query
+        name: owner
+        schema:
+          type: array
+          items:
+            type: string
+        description: Owner (name)
+        explode: true
+        style: form
+      - in: query
+        name: owner__n
+        schema:
+          type: array
+          items:
+            type: string
+        description: Owner (name)
+        explode: true
+        style: form
+      - in: query
+        name: owner_group
+        schema:
+          type: array
+          items:
+            type: string
+        description: Owner Group (name)
+        explode: true
+        style: form
+      - in: query
+        name: owner_group__n
+        schema:
+          type: array
+          items:
+            type: string
+        description: Owner Group (name)
+        explode: true
+        style: form
+      - in: query
+        name: owner_group_id
+        schema:
+          type: array
+          items:
+            type: integer
+        description: Owner Group (ID)
+        explode: true
+        style: form
+      - in: query
+        name: owner_group_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+        description: Owner Group (ID)
+        explode: true
+        style: form
+      - in: query
+        name: owner_id
+        schema:
+          type: array
+          items:
+            type: integer
+            nullable: true
+        description: Owner (ID)
+        explode: true
+        style: form
+      - in: query
+        name: owner_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+            nullable: true
+        description: Owner (ID)
+        explode: true
+        style: form
+      - in: query
+        name: q
+        schema:
+          type: string
+        description: Search
+      - in: query
+        name: source_url
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: source_url__empty
+        schema:
+          type: boolean
+      - in: query
+        name: source_url__ic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: source_url__ie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: source_url__iew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: source_url__iregex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: source_url__isw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: source_url__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: source_url__nic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: source_url__nie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: source_url__niew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: source_url__nisw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: source_url__regex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: status
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: status__empty
+        schema:
+          type: boolean
+      - in: query
+        name: status__ic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: status__ie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: status__iew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: status__iregex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: status__isw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: status__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: status__nic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: status__nie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: status__niew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: status__nisw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: status__regex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: sync_interval
+        schema:
+          type: array
+          items:
+            type: integer
+            x-spec-enum-id: 2e9f2567ecd93fbe
+            nullable: true
+        explode: true
+        style: form
+      - in: query
+        name: sync_interval__ic
+        schema:
+          type: array
+          items:
+            type: integer
+            x-spec-enum-id: 2e9f2567ecd93fbe
+            nullable: true
+        explode: true
+        style: form
+      - in: query
+        name: sync_interval__ie
+        schema:
+          type: array
+          items:
+            type: integer
+            x-spec-enum-id: 2e9f2567ecd93fbe
+            nullable: true
+        explode: true
+        style: form
+      - in: query
+        name: sync_interval__iew
+        schema:
+          type: array
+          items:
+            type: integer
+            x-spec-enum-id: 2e9f2567ecd93fbe
+            nullable: true
+        explode: true
+        style: form
+      - in: query
+        name: sync_interval__iregex
+        schema:
+          type: array
+          items:
+            type: integer
+            x-spec-enum-id: 2e9f2567ecd93fbe
+            nullable: true
+        explode: true
+        style: form
+      - in: query
+        name: sync_interval__isw
+        schema:
+          type: array
+          items:
+            type: integer
+            x-spec-enum-id: 2e9f2567ecd93fbe
+            nullable: true
+        explode: true
+        style: form
+      - in: query
+        name: sync_interval__n
+        schema:
+          type: array
+          items:
+            type: integer
+            x-spec-enum-id: 2e9f2567ecd93fbe
+            nullable: true
+        explode: true
+        style: form
+      - in: query
+        name: sync_interval__nic
+        schema:
+          type: array
+          items:
+            type: integer
+            x-spec-enum-id: 2e9f2567ecd93fbe
+            nullable: true
+        explode: true
+        style: form
+      - in: query
+        name: sync_interval__nie
+        schema:
+          type: array
+          items:
+            type: integer
+            x-spec-enum-id: 2e9f2567ecd93fbe
+            nullable: true
+        explode: true
+        style: form
+      - in: query
+        name: sync_interval__niew
+        schema:
+          type: array
+          items:
+            type: integer
+            x-spec-enum-id: 2e9f2567ecd93fbe
+            nullable: true
+        explode: true
+        style: form
+      - in: query
+        name: sync_interval__nisw
+        schema:
+          type: array
+          items:
+            type: integer
+            x-spec-enum-id: 2e9f2567ecd93fbe
+            nullable: true
+        explode: true
+        style: form
+      - in: query
+        name: sync_interval__regex
+        schema:
+          type: array
+          items:
+            type: integer
+            x-spec-enum-id: 2e9f2567ecd93fbe
+            nullable: true
+        explode: true
+        style: form
+      - in: query
+        name: tag
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: tag__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: tag_id
+        schema:
+          type: array
+          items:
+            type: integer
+        explode: true
+        style: form
+      - in: query
+        name: tag_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+        explode: true
+        style: form
+      - in: query
+        name: type
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: type__empty
+        schema:
+          type: boolean
+      - in: query
+        name: type__ic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: type__ie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: type__iew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: type__iregex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: type__isw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: type__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: type__nic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: type__nie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: type__niew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: type__nisw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: type__regex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: updated_by_request
+        schema:
+          type: string
+          format: uuid
+      tags:
+      - core
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedDataSourceList'
+          description: ''
+    post:
+      operationId: core_data_sources_create
+      description: Post a list of data source objects.
+      tags:
+      - core
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+              - $ref: '#/components/schemas/WritableDataSourceRequest'
+              - type: array
+                items:
+                  $ref: '#/components/schemas/WritableDataSourceRequest'
+          multipart/form-data:
+            schema:
+              oneOf:
+              - $ref: '#/components/schemas/WritableDataSourceRequest'
+              - type: array
+                items:
+                  $ref: '#/components/schemas/WritableDataSourceRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataSource'
+          description: ''
+    put:
+      operationId: core_data_sources_bulk_update
+      description: Put a list of data source objects.
+      tags:
+      - core
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/DataSourceRequest'
+          multipart/form-data:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/DataSourceRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DataSource'
+          description: ''
+    patch:
+      operationId: core_data_sources_bulk_partial_update
+      description: Patch a list of data source objects.
+      tags:
+      - core
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/DataSourceRequest'
+          multipart/form-data:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/DataSourceRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DataSource'
+          description: ''
+    delete:
+      operationId: core_data_sources_bulk_destroy
+      description: Delete a list of data source objects.
+      tags:
+      - core
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/DataSourceRequest'
+          multipart/form-data:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/DataSourceRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/core/data-sources/{id}/:
+    get:
+      operationId: core_data_sources_retrieve
+      description: Get a data source object.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this data source.
+        required: true
+      tags:
+      - core
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataSource'
+          description: ''
+    put:
+      operationId: core_data_sources_update
+      description: Put a data source object.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this data source.
+        required: true
+      tags:
+      - core
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WritableDataSourceRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/WritableDataSourceRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataSource'
+          description: ''
+    patch:
+      operationId: core_data_sources_partial_update
+      description: Patch a data source object.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this data source.
+        required: true
+      tags:
+      - core
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedWritableDataSourceRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedWritableDataSourceRequest'
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataSource'
+          description: ''
+    delete:
+      operationId: core_data_sources_destroy
+      description: Delete a data source object.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this data source.
+        required: true
+      tags:
+      - core
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/core/data-sources/{id}/sync/:
+    post:
+      operationId: core_data_sources_sync_create
+      description: Enqueue a job to synchronize the DataSource.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this data source.
+        required: true
+      tags:
+      - core
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WritableDataSourceRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/WritableDataSourceRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataSource'
+          description: ''
+  /api/core/jobs/:
+    get:
+      operationId: core_jobs_list
+      description: Retrieve a list of job results
+      parameters:
+      - in: query
+        name: completed
+        schema:
+          type: string
+          format: date-time
+      - in: query
+        name: completed__after
+        schema:
+          type: string
+          format: date-time
+      - in: query
+        name: completed__before
+        schema:
+          type: string
+          format: date-time
+      - in: query
+        name: created
+        schema:
+          type: string
+          format: date-time
+      - in: query
+        name: created__after
+        schema:
+          type: string
+          format: date-time
+      - in: query
+        name: created__before
+        schema:
+          type: string
+          format: date-time
+      - in: query
+        name: id
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__empty
+        schema:
+          type: boolean
+      - in: query
+        name: id__gt
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__gte
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__lt
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__lte
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__n
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: interval
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: interval__empty
+        schema:
+          type: boolean
+      - in: query
+        name: interval__gt
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: interval__gte
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: interval__lt
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: interval__lte
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: interval__n
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: job_id
+        schema:
+          type: string
+          format: uuid
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - in: query
+        name: name
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__empty
+        schema:
+          type: boolean
+      - in: query
+        name: name__ic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__ie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__iew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__iregex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__isw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__nic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__nie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__niew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__nisw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__regex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: object_id
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: object_id__empty
+        schema:
+          type: boolean
+      - in: query
+        name: object_id__gt
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: object_id__gte
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: object_id__lt
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: object_id__lte
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: object_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: object_type
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: object_type__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: object_type_id
+        schema:
+          type: array
+          items:
+            type: integer
+            nullable: true
+        explode: true
+        style: form
+      - in: query
+        name: object_type_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+            nullable: true
+        explode: true
+        style: form
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - in: query
+        name: q
+        schema:
+          type: string
+        description: Search
+      - in: query
+        name: queue_name
+        schema:
+          type: string
+      - in: query
+        name: queue_name__empty
+        schema:
+          type: boolean
+      - in: query
+        name: queue_name__ic
+        schema:
+          type: string
+      - in: query
+        name: queue_name__ie
+        schema:
+          type: string
+      - in: query
+        name: queue_name__iew
+        schema:
+          type: string
+      - in: query
+        name: queue_name__iregex
+        schema:
+          type: string
+      - in: query
+        name: queue_name__isw
+        schema:
+          type: string
+      - in: query
+        name: queue_name__n
+        schema:
+          type: string
+      - in: query
+        name: queue_name__nic
+        schema:
+          type: string
+      - in: query
+        name: queue_name__nie
+        schema:
+          type: string
+      - in: query
+        name: queue_name__niew
+        schema:
+          type: string
+      - in: query
+        name: queue_name__nisw
+        schema:
+          type: string
+      - in: query
+        name: queue_name__regex
+        schema:
+          type: string
+      - in: query
+        name: scheduled
+        schema:
+          type: string
+          format: date-time
+      - in: query
+        name: scheduled__after
+        schema:
+          type: string
+          format: date-time
+      - in: query
+        name: scheduled__before
+        schema:
+          type: string
+          format: date-time
+      - in: query
+        name: started
+        schema:
+          type: string
+          format: date-time
+      - in: query
+        name: started__after
+        schema:
+          type: string
+          format: date-time
+      - in: query
+        name: started__before
+        schema:
+          type: string
+          format: date-time
+      - in: query
+        name: status
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: b3049df95b935eab
+        explode: true
+        style: form
+      - in: query
+        name: status__empty
+        schema:
+          type: boolean
+      - in: query
+        name: status__ic
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: b3049df95b935eab
+        explode: true
+        style: form
+      - in: query
+        name: status__ie
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: b3049df95b935eab
+        explode: true
+        style: form
+      - in: query
+        name: status__iew
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: b3049df95b935eab
+        explode: true
+        style: form
+      - in: query
+        name: status__iregex
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: b3049df95b935eab
+        explode: true
+        style: form
+      - in: query
+        name: status__isw
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: b3049df95b935eab
+        explode: true
+        style: form
+      - in: query
+        name: status__n
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: b3049df95b935eab
+        explode: true
+        style: form
+      - in: query
+        name: status__nic
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: b3049df95b935eab
+        explode: true
+        style: form
+      - in: query
+        name: status__nie
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: b3049df95b935eab
+        explode: true
+        style: form
+      - in: query
+        name: status__niew
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: b3049df95b935eab
+        explode: true
+        style: form
+      - in: query
+        name: status__nisw
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: b3049df95b935eab
+        explode: true
+        style: form
+      - in: query
+        name: status__regex
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: b3049df95b935eab
+        explode: true
+        style: form
+      - in: query
+        name: user
+        schema:
+          type: integer
+      - in: query
+        name: user__n
+        schema:
+          type: integer
+      tags:
+      - core
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedJobList'
+          description: ''
+  /api/core/jobs/{id}/:
+    get:
+      operationId: core_jobs_retrieve
+      description: Retrieve a list of job results
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this job.
+        required: true
+      tags:
+      - core
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+          description: ''
+  /api/core/object-changes/:
+    get:
+      operationId: core_object_changes_list
+      description: Retrieve a list of recent changes.
+      parameters:
+      - in: query
+        name: action
+        schema:
+          type: string
+          x-spec-enum-id: 36ce3d432464454d
+          enum:
+          - create
+          - delete
+          - 'null'
+          - update
+        description: '* `create` - Created
+
+          * `update` - Updated
+
+          * `delete` - Deleted'
+      - in: query
+        name: action__empty
+        schema:
+          type: boolean
+      - in: query
+        name: action__ic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: action__ie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: action__iew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: action__iregex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: action__isw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: action__n
+        schema:
+          type: string
+          x-spec-enum-id: 36ce3d432464454d
+          enum:
+          - create
+          - delete
+          - 'null'
+          - update
+        description: '* `create` - Created
+
+          * `update` - Updated
+
+          * `delete` - Deleted'
+      - in: query
+        name: action__nic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: action__nie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: action__niew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: action__nisw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: action__regex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: changed_object_id
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: changed_object_id__empty
+        schema:
+          type: boolean
+      - in: query
+        name: changed_object_id__gt
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: changed_object_id__gte
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: changed_object_id__lt
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: changed_object_id__lte
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: changed_object_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: changed_object_type
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: changed_object_type__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: changed_object_type_id
+        schema:
+          type: array
+          items:
+            type: integer
+        explode: true
+        style: form
+      - in: query
+        name: changed_object_type_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+        explode: true
+        style: form
+      - in: query
+        name: id
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__empty
+        schema:
+          type: boolean
+      - in: query
+        name: id__gt
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__gte
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__lt
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__lte
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__n
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - in: query
+        name: object_repr
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: object_repr__empty
+        schema:
+          type: boolean
+      - in: query
+        name: object_repr__ic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: object_repr__ie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: object_repr__iew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: object_repr__iregex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: object_repr__isw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: object_repr__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: object_repr__nic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: object_repr__nie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: object_repr__niew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: object_repr__nisw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: object_repr__regex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - in: query
+        name: q
+        schema:
+          type: string
+        description: Search
+      - in: query
+        name: related_object_id
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: related_object_id__empty
+        schema:
+          type: boolean
+      - in: query
+        name: related_object_id__gt
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: related_object_id__gte
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: related_object_id__lt
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: related_object_id__lte
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: related_object_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: related_object_type
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: related_object_type__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: request_id
+        schema:
+          type: string
+          format: uuid
+      - in: query
+        name: time_after
+        schema:
+          type: string
+          format: date-time
+      - in: query
+        name: time_before
+        schema:
+          type: string
+          format: date-time
+      - in: query
+        name: user
+        schema:
+          type: array
+          items:
+            type: string
+        description: User name
+        explode: true
+        style: form
+      - in: query
+        name: user__n
+        schema:
+          type: array
+          items:
+            type: string
+        description: User name
+        explode: true
+        style: form
+      - in: query
+        name: user_id
+        schema:
+          type: array
+          items:
+            type: integer
+            nullable: true
+        description: User (ID)
+        explode: true
+        style: form
+      - in: query
+        name: user_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+            nullable: true
+        description: User (ID)
+        explode: true
+        style: form
+      - in: query
+        name: user_name
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: user_name__empty
+        schema:
+          type: boolean
+      - in: query
+        name: user_name__ic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: user_name__ie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: user_name__iew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: user_name__iregex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: user_name__isw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: user_name__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: user_name__nic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: user_name__nie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: user_name__niew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: user_name__nisw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: user_name__regex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      tags:
+      - core
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedObjectChangeList'
+          description: ''
+  /api/core/object-changes/{id}/:
+    get:
+      operationId: core_object_changes_retrieve
+      description: Retrieve a list of recent changes.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this object change.
+        required: true
+      tags:
+      - core
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectChange'
+          description: ''
+  /api/core/object-types/:
+    get:
+      operationId: core_object_types_list
+      description: Read-only list of ObjectTypes.
+      parameters:
+      - in: query
+        name: app_label
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: app_label__empty
+        schema:
+          type: boolean
+      - in: query
+        name: app_label__ic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: app_label__ie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: app_label__iew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: app_label__iregex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: app_label__isw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: app_label__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: app_label__nic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: app_label__nie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: app_label__niew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: app_label__nisw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: app_label__regex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: features
+        schema:
+          type: string
+      - in: query
+        name: id
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__empty
+        schema:
+          type: boolean
+      - in: query
+        name: id__gt
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__gte
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__lt
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__lte
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__n
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - in: query
+        name: model
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: model__empty
+        schema:
+          type: boolean
+      - in: query
+        name: model__ic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: model__ie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: model__iew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: model__iregex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: model__isw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: model__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: model__nic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: model__nie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: model__niew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: model__nisw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: model__regex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - in: query
+        name: public
+        schema:
+          type: boolean
+      - in: query
+        name: q
+        schema:
+          type: string
+        description: Search
+      tags:
+      - core
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedObjectTypeList'
+          description: ''
+  /api/core/object-types/{id}/:
+    get:
+      operationId: core_object_types_retrieve
+      description: Read-only list of ObjectTypes.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this object type.
+        required: true
+      tags:
+      - core
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectType'
+          description: ''
+components:
+  schemas:
+    ObjectType:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        app_label:
+          type: string
+          maxLength: 100
+        app_name:
+          type: string
+          readOnly: true
+        model:
+          type: string
+          title: Python model class name
+          maxLength: 100
+        model_name:
+          type: string
+          readOnly: true
+        model_name_plural:
+          type: string
+          readOnly: true
+        public:
+          type: boolean
+          readOnly: true
+        features:
+          type: array
+          items:
+            type: string
+            maxLength: 50
+          readOnly: true
+        is_plugin_model:
+          type: boolean
+          readOnly: true
+        rest_api_endpoint:
+          type: string
+          readOnly: true
+        description:
+          type: string
+          readOnly: true
+      required:
+      - app_label
+      - app_name
+      - description
+      - display
+      - features
+      - id
+      - is_plugin_model
+      - model
+      - model_name
+      - model_name_plural
+      - public
+      - rest_api_endpoint
+      - url
+    ObjectChange:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        time:
+          type: string
+          format: date-time
+          readOnly: true
+        user:
+          allOf:
+          - $ref: '#/components/schemas/BriefUser'
+          readOnly: true
+        user_name:
+          type: string
+          readOnly: true
+        request_id:
+          type: string
+          format: uuid
+          readOnly: true
+        action:
+          type: object
+          properties:
+            value:
+              enum:
+              - create
+              - update
+              - delete
+              type: string
+              description: '* `create` - Created
+
+                * `update` - Updated
+
+                * `delete` - Deleted'
+              x-spec-enum-id: 36ce3d432464454d
+            label:
+              type: string
+              enum:
+              - Created
+              - Updated
+              - Deleted
+          readOnly: true
+        changed_object_type:
+          type: string
+          readOnly: true
+        changed_object_id:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        changed_object:
+          readOnly: true
+          nullable: true
+        object_repr:
+          type: string
+          readOnly: true
+        message:
+          type: string
+          readOnly: true
+        prechange_data:
+          readOnly: true
+          nullable: true
+        postchange_data:
+          readOnly: true
+          nullable: true
+      required:
+      - action
+      - changed_object
+      - changed_object_id
+      - changed_object_type
+      - display
+      - display_url
+      - id
+      - message
+      - object_repr
+      - postchange_data
+      - prechange_data
+      - request_id
+      - time
+      - url
+      - user
+      - user_name
+    PaginatedDataFileList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/DataFile'
+    DataSourceRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        type:
+          enum:
+          - null
+          - local
+          - git
+          - amazon-s3
+          description: '* `None` - ---------
+
+            * `local` - Local
+
+            * `git` - Git
+
+            * `amazon-s3` - Amazon S3'
+          x-spec-enum-id: 562b613a749b34b0
+        source_url:
+          type: string
+          minLength: 1
+          title: URL
+          maxLength: 200
+        enabled:
+          type: boolean
+        description:
+          type: string
+          maxLength: 200
+        sync_interval:
+          enum:
+          - 1
+          - 60
+          - 720
+          - 1440
+          - 10080
+          - 43200
+          - null
+          type: integer
+          description: '* `1` - Minutely
+
+            * `60` - Hourly
+
+            * `720` - 12 hours
+
+            * `1440` - Daily
+
+            * `10080` - Weekly
+
+            * `43200` - 30 days'
+          x-spec-enum-id: 2e9f2567ecd93fbe
+          nullable: true
+          minimum: 0
+          maximum: 32767
+        parameters:
+          nullable: true
+        ignore_rules:
+          type: string
+          description: Patterns (one per line) matching files or paths to ignore when syncing
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+            nullable: true
+          nullable: true
+        comments:
+          type: string
+        custom_fields:
+          type: object
+          additionalProperties: {}
+      required:
+      - name
+      - source_url
+      - type
+    PaginatedObjectChangeList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ObjectChange'
+    PaginatedObjectTypeList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ObjectType'
+    Job:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        object_type:
+          type: string
+          readOnly: true
+        object_id:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+          nullable: true
+        object:
+          nullable: true
+          readOnly: true
+        name:
+          type: string
+          maxLength: 200
+        status:
+          type: object
+          properties:
+            value:
+              enum:
+              - pending
+              - scheduled
+              - running
+              - completed
+              - errored
+              - failed
+              type: string
+              description: '* `pending` - Pending
+
+                * `scheduled` - Scheduled
+
+                * `running` - Running
+
+                * `completed` - Completed
+
+                * `errored` - Errored
+
+                * `failed` - Failed'
+              x-spec-enum-id: b3049df95b935eab
+            label:
+              type: string
+              enum:
+              - Pending
+              - Scheduled
+              - Running
+              - Completed
+              - Errored
+              - Failed
+          readOnly: true
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        scheduled:
+          type: string
+          format: date-time
+          nullable: true
+        interval:
+          type: integer
+          maximum: 2147483647
+          minimum: 1
+          nullable: true
+          description: Recurrence interval (in minutes)
+        started:
+          type: string
+          format: date-time
+          nullable: true
+        completed:
+          type: string
+          format: date-time
+          nullable: true
+        user:
+          allOf:
+          - $ref: '#/components/schemas/BriefUser'
+          readOnly: true
+        data:
+          nullable: true
+        error:
+          type: string
+          readOnly: true
+        job_id:
+          type: string
+          format: uuid
+        queue_name:
+          type: string
+          description: Name of the queue in which this job was enqueued
+          maxLength: 100
+        log_entries:
+          type: array
+          items: {}
+      required:
+      - created
+      - display
+      - display_url
+      - error
+      - id
+      - job_id
+      - name
+      - object
+      - object_type
+      - status
+      - url
+      - user
+    PatchedWritableDataSourceRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        type:
+          type: string
+          minLength: 1
+          maxLength: 50
+        source_url:
+          type: string
+          minLength: 1
+          title: URL
+          maxLength: 200
+        enabled:
+          type: boolean
+        description:
+          type: string
+          maxLength: 200
+        sync_interval:
+          enum:
+          - 1
+          - 60
+          - 720
+          - 1440
+          - 10080
+          - 43200
+          - null
+          type: integer
+          description: '* `1` - Minutely
+
+            * `60` - Hourly
+
+            * `720` - 12 hours
+
+            * `1440` - Daily
+
+            * `10080` - Weekly
+
+            * `43200` - 30 days'
+          x-spec-enum-id: 2e9f2567ecd93fbe
+          nullable: true
+          minimum: 0
+          maximum: 32767
+        parameters:
+          nullable: true
+        ignore_rules:
+          type: string
+          description: Patterns (one per line) matching files or paths to ignore when syncing
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+            nullable: true
+          nullable: true
+        comments:
+          type: string
+        custom_fields:
+          type: object
+          additionalProperties: {}
+    BriefUser:
+      type: object
+      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
+
+        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        username:
+          type: string
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
+          pattern: ^[\w.@+-]+$
+          maxLength: 150
+      required:
+      - display
+      - id
+      - url
+      - username
+    BriefOwnerRequest:
+      type: object
+      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
+
+        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - name
+    BackgroundTask:
+      type: object
+      properties:
+        id:
+          type: string
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        description:
+          type: string
+        origin:
+          type: string
+        func_name:
+          type: string
+        args:
+          type: array
+          items: {}
+          readOnly: true
+        kwargs:
+          type: object
+          additionalProperties: {}
+          readOnly: true
+        result:
+          type: string
+        timeout:
+          type: integer
+        result_ttl:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        enqueued_at:
+          type: string
+          format: date-time
+        started_at:
+          type: string
+          format: date-time
+        ended_at:
+          type: string
+          format: date-time
+        worker_name:
+          type: string
+        position:
+          type: integer
+          readOnly: true
+        status:
+          type: string
+          readOnly: true
+        meta:
+          type: object
+          additionalProperties: {}
+        last_heartbeat:
+          type: string
+        is_finished:
+          type: boolean
+        is_queued:
+          type: boolean
+        is_failed:
+          type: boolean
+        is_started:
+          type: boolean
+        is_deferred:
+          type: boolean
+        is_canceled:
+          type: boolean
+        is_scheduled:
+          type: boolean
+        is_stopped:
+          type: boolean
+      required:
+      - args
+      - created_at
+      - description
+      - ended_at
+      - enqueued_at
+      - func_name
+      - id
+      - is_canceled
+      - is_deferred
+      - is_failed
+      - is_finished
+      - is_queued
+      - is_scheduled
+      - is_started
+      - is_stopped
+      - kwargs
+      - last_heartbeat
+      - meta
+      - origin
+      - position
+      - result
+      - result_ttl
+      - started_at
+      - status
+      - timeout
+      - url
+      - worker_name
+    PaginatedJobList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Job'
+    BriefDataSource:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - display
+      - id
+      - name
+      - url
+    DataSource:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        type:
+          type: object
+          properties:
+            value:
+              enum:
+              - null
+              - local
+              - git
+              - amazon-s3
+              description: '* `None` - ---------
+
+                * `local` - Local
+
+                * `git` - Git
+
+                * `amazon-s3` - Amazon S3'
+              x-spec-enum-id: 562b613a749b34b0
+            label:
+              type: string
+              enum:
+              - '---------'
+              - Local
+              - Git
+              - Amazon S3
+        source_url:
+          type: string
+          title: URL
+          maxLength: 200
+        enabled:
+          type: boolean
+        status:
+          type: object
+          properties:
+            value:
+              enum:
+              - new
+              - queued
+              - syncing
+              - completed
+              - failed
+              type: string
+              description: '* `new` - New
+
+                * `queued` - Queued
+
+                * `syncing` - Syncing
+
+                * `completed` - Completed
+
+                * `failed` - Failed'
+              x-spec-enum-id: 97ed937d7f0040be
+            label:
+              type: string
+              enum:
+              - New
+              - Queued
+              - Syncing
+              - Completed
+              - Failed
+          readOnly: true
+        description:
+          type: string
+          maxLength: 200
+        sync_interval:
+          enum:
+          - 1
+          - 60
+          - 720
+          - 1440
+          - 10080
+          - 43200
+          - null
+          type: integer
+          description: '* `1` - Minutely
+
+            * `60` - Hourly
+
+            * `720` - 12 hours
+
+            * `1440` - Daily
+
+            * `10080` - Weekly
+
+            * `43200` - 30 days'
+          x-spec-enum-id: 2e9f2567ecd93fbe
+          nullable: true
+          minimum: 0
+          maximum: 32767
+        parameters:
+          nullable: true
+        ignore_rules:
+          type: string
+          description: Patterns (one per line) matching files or paths to ignore when syncing
+        owner:
+          allOf:
+          - $ref: '#/components/schemas/BriefOwner'
+          nullable: true
+        comments:
+          type: string
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+        last_updated:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+        last_synced:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+        file_count:
+          type: integer
+          format: int64
+          readOnly: true
+      required:
+      - created
+      - display
+      - display_url
+      - file_count
+      - id
+      - last_synced
+      - last_updated
+      - name
+      - source_url
+      - status
+      - type
+      - url
+    BackgroundTaskRequest:
+      type: object
+      properties:
+        id:
+          type: string
+          minLength: 1
+        description:
+          type: string
+          minLength: 1
+        origin:
+          type: string
+          minLength: 1
+        func_name:
+          type: string
+          minLength: 1
+        result:
+          type: string
+          minLength: 1
+        timeout:
+          type: integer
+        result_ttl:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        enqueued_at:
+          type: string
+          format: date-time
+        started_at:
+          type: string
+          format: date-time
+        ended_at:
+          type: string
+          format: date-time
+        worker_name:
+          type: string
+          minLength: 1
+        meta:
+          type: object
+          additionalProperties: {}
+        last_heartbeat:
+          type: string
+          minLength: 1
+        is_finished:
+          type: boolean
+        is_queued:
+          type: boolean
+        is_failed:
+          type: boolean
+        is_started:
+          type: boolean
+        is_deferred:
+          type: boolean
+        is_canceled:
+          type: boolean
+        is_scheduled:
+          type: boolean
+        is_stopped:
+          type: boolean
+      required:
+      - created_at
+      - description
+      - ended_at
+      - enqueued_at
+      - func_name
+      - id
+      - is_canceled
+      - is_deferred
+      - is_failed
+      - is_finished
+      - is_queued
+      - is_scheduled
+      - is_started
+      - is_stopped
+      - last_heartbeat
+      - meta
+      - origin
+      - result
+      - result_ttl
+      - started_at
+      - timeout
+      - worker_name
+    BriefOwner:
+      type: object
+      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
+
+        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - display
+      - id
+      - name
+      - url
+    WritableDataSourceRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        type:
+          type: string
+          minLength: 1
+          maxLength: 50
+        source_url:
+          type: string
+          minLength: 1
+          title: URL
+          maxLength: 200
+        enabled:
+          type: boolean
+        description:
+          type: string
+          maxLength: 200
+        sync_interval:
+          enum:
+          - 1
+          - 60
+          - 720
+          - 1440
+          - 10080
+          - 43200
+          - null
+          type: integer
+          description: '* `1` - Minutely
+
+            * `60` - Hourly
+
+            * `720` - 12 hours
+
+            * `1440` - Daily
+
+            * `10080` - Weekly
+
+            * `43200` - 30 days'
+          x-spec-enum-id: 2e9f2567ecd93fbe
+          nullable: true
+          minimum: 0
+          maximum: 32767
+        parameters:
+          nullable: true
+        ignore_rules:
+          type: string
+          description: Patterns (one per line) matching files or paths to ignore when syncing
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+            nullable: true
+          nullable: true
+        comments:
+          type: string
+        custom_fields:
+          type: object
+          additionalProperties: {}
+      required:
+      - name
+      - source_url
+      - type
+    DataFile:
+      type: object
+      description: Adds support for custom fields and tags.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        source:
+          allOf:
+          - $ref: '#/components/schemas/BriefDataSource'
+          readOnly: true
+        path:
+          type: string
+          readOnly: true
+          description: File path relative to the data source's root
+        last_updated:
+          type: string
+          format: date-time
+          readOnly: true
+        size:
+          type: integer
+          readOnly: true
+        hash:
+          type: string
+          readOnly: true
+          description: SHA256 hash of the file data
+      required:
+      - display
+      - display_url
+      - hash
+      - id
+      - last_updated
+      - path
+      - size
+      - source
+      - url
+    PaginatedDataSourceList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/DataSource'
+  securitySchemes:
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: '`Token <token>` (v1) or `Bearer <key>.<token>` (v2)'

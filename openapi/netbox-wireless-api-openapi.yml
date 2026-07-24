@@ -1,0 +1,5776 @@
+openapi: 3.0.3
+info:
+  title: NetBox REST authentication-check wireless API
+  version: 4.5.9 (4.5)
+  license:
+    name: Apache v2 License
+servers:
+- url: ''
+  description: NetBox
+tags:
+- name: wireless
+paths:
+  /api/wireless/wireless-lan-groups/:
+    get:
+      operationId: wireless_wireless_lan_groups_list
+      description: Get a list of wireless LAN group objects.
+      parameters:
+      - in: query
+        name: ancestor
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: ancestor__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: ancestor_id
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: ancestor_id__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: created
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__empty
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__gt
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__gte
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__lt
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__lte
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__n
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created_by_request
+        schema:
+          type: string
+          format: uuid
+      - in: query
+        name: description
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__empty
+        schema:
+          type: boolean
+      - in: query
+        name: description__ic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__ie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__iew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__iregex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__isw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__nic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__nie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__niew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__nisw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__regex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: id
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__empty
+        schema:
+          type: boolean
+      - in: query
+        name: id__gt
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__gte
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__lt
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__lte
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__n
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: last_updated
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__empty
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__gt
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__gte
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__lt
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__lte
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__n
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - in: query
+        name: modified_by_request
+        schema:
+          type: string
+          format: uuid
+      - in: query
+        name: name
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__empty
+        schema:
+          type: boolean
+      - in: query
+        name: name__ic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__ie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__iew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__iregex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__isw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__nic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__nie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__niew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__nisw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: name__regex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - in: query
+        name: owner
+        schema:
+          type: array
+          items:
+            type: string
+        description: Owner (name)
+        explode: true
+        style: form
+      - in: query
+        name: owner__n
+        schema:
+          type: array
+          items:
+            type: string
+        description: Owner (name)
+        explode: true
+        style: form
+      - in: query
+        name: owner_group
+        schema:
+          type: array
+          items:
+            type: string
+        description: Owner Group (name)
+        explode: true
+        style: form
+      - in: query
+        name: owner_group__n
+        schema:
+          type: array
+          items:
+            type: string
+        description: Owner Group (name)
+        explode: true
+        style: form
+      - in: query
+        name: owner_group_id
+        schema:
+          type: array
+          items:
+            type: integer
+        description: Owner Group (ID)
+        explode: true
+        style: form
+      - in: query
+        name: owner_group_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+        description: Owner Group (ID)
+        explode: true
+        style: form
+      - in: query
+        name: owner_id
+        schema:
+          type: array
+          items:
+            type: integer
+            nullable: true
+        description: Owner (ID)
+        explode: true
+        style: form
+      - in: query
+        name: owner_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+            nullable: true
+        description: Owner (ID)
+        explode: true
+        style: form
+      - in: query
+        name: parent
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: parent__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: parent_id
+        schema:
+          type: array
+          items:
+            type: integer
+            nullable: true
+        explode: true
+        style: form
+      - in: query
+        name: parent_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+            nullable: true
+        explode: true
+        style: form
+      - in: query
+        name: q
+        schema:
+          type: string
+        description: Search
+      - in: query
+        name: slug
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: slug__empty
+        schema:
+          type: boolean
+      - in: query
+        name: slug__ic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: slug__ie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: slug__iew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: slug__iregex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: slug__isw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: slug__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: slug__nic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: slug__nie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: slug__niew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: slug__nisw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: slug__regex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: tag
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: tag__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: tag_id
+        schema:
+          type: array
+          items:
+            type: integer
+        explode: true
+        style: form
+      - in: query
+        name: tag_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+        explode: true
+        style: form
+      - in: query
+        name: updated_by_request
+        schema:
+          type: string
+          format: uuid
+      tags:
+      - wireless
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedWirelessLANGroupList'
+          description: ''
+    post:
+      operationId: wireless_wireless_lan_groups_create
+      description: Post a list of wireless LAN group objects.
+      tags:
+      - wireless
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+              - $ref: '#/components/schemas/WritableWirelessLANGroupRequest'
+              - type: array
+                items:
+                  $ref: '#/components/schemas/WritableWirelessLANGroupRequest'
+          multipart/form-data:
+            schema:
+              oneOf:
+              - $ref: '#/components/schemas/WritableWirelessLANGroupRequest'
+              - type: array
+                items:
+                  $ref: '#/components/schemas/WritableWirelessLANGroupRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WirelessLANGroup'
+          description: ''
+    put:
+      operationId: wireless_wireless_lan_groups_bulk_update
+      description: Put a list of wireless LAN group objects.
+      tags:
+      - wireless
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/WirelessLANGroupRequest'
+          multipart/form-data:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/WirelessLANGroupRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WirelessLANGroup'
+          description: ''
+    patch:
+      operationId: wireless_wireless_lan_groups_bulk_partial_update
+      description: Patch a list of wireless LAN group objects.
+      tags:
+      - wireless
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/WirelessLANGroupRequest'
+          multipart/form-data:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/WirelessLANGroupRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WirelessLANGroup'
+          description: ''
+    delete:
+      operationId: wireless_wireless_lan_groups_bulk_destroy
+      description: Delete a list of wireless LAN group objects.
+      tags:
+      - wireless
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/WirelessLANGroupRequest'
+          multipart/form-data:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/WirelessLANGroupRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/wireless/wireless-lan-groups/{id}/:
+    get:
+      operationId: wireless_wireless_lan_groups_retrieve
+      description: Get a wireless LAN group object.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this wireless LAN group.
+        required: true
+      tags:
+      - wireless
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WirelessLANGroup'
+          description: ''
+    put:
+      operationId: wireless_wireless_lan_groups_update
+      description: Put a wireless LAN group object.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this wireless LAN group.
+        required: true
+      tags:
+      - wireless
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WritableWirelessLANGroupRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/WritableWirelessLANGroupRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WirelessLANGroup'
+          description: ''
+    patch:
+      operationId: wireless_wireless_lan_groups_partial_update
+      description: Patch a wireless LAN group object.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this wireless LAN group.
+        required: true
+      tags:
+      - wireless
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedWritableWirelessLANGroupRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedWritableWirelessLANGroupRequest'
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WirelessLANGroup'
+          description: ''
+    delete:
+      operationId: wireless_wireless_lan_groups_destroy
+      description: Delete a wireless LAN group object.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this wireless LAN group.
+        required: true
+      tags:
+      - wireless
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/wireless/wireless-lans/:
+    get:
+      operationId: wireless_wireless_lans_list
+      description: Get a list of wireless LAN objects.
+      parameters:
+      - in: query
+        name: auth_cipher
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: 42f867e89988bb0c
+            nullable: true
+            title: Authentication cipher
+        explode: true
+        style: form
+      - in: query
+        name: auth_cipher__empty
+        schema:
+          type: boolean
+      - in: query
+        name: auth_cipher__ic
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: 42f867e89988bb0c
+            nullable: true
+            title: Authentication cipher
+        explode: true
+        style: form
+      - in: query
+        name: auth_cipher__ie
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: 42f867e89988bb0c
+            nullable: true
+            title: Authentication cipher
+        explode: true
+        style: form
+      - in: query
+        name: auth_cipher__iew
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: 42f867e89988bb0c
+            nullable: true
+            title: Authentication cipher
+        explode: true
+        style: form
+      - in: query
+        name: auth_cipher__iregex
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: 42f867e89988bb0c
+            nullable: true
+            title: Authentication cipher
+        explode: true
+        style: form
+      - in: query
+        name: auth_cipher__isw
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: 42f867e89988bb0c
+            nullable: true
+            title: Authentication cipher
+        explode: true
+        style: form
+      - in: query
+        name: auth_cipher__n
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: 42f867e89988bb0c
+            nullable: true
+            title: Authentication cipher
+        explode: true
+        style: form
+      - in: query
+        name: auth_cipher__nic
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: 42f867e89988bb0c
+            nullable: true
+            title: Authentication cipher
+        explode: true
+        style: form
+      - in: query
+        name: auth_cipher__nie
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: 42f867e89988bb0c
+            nullable: true
+            title: Authentication cipher
+        explode: true
+        style: form
+      - in: query
+        name: auth_cipher__niew
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: 42f867e89988bb0c
+            nullable: true
+            title: Authentication cipher
+        explode: true
+        style: form
+      - in: query
+        name: auth_cipher__nisw
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: 42f867e89988bb0c
+            nullable: true
+            title: Authentication cipher
+        explode: true
+        style: form
+      - in: query
+        name: auth_cipher__regex
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: 42f867e89988bb0c
+            nullable: true
+            title: Authentication cipher
+        explode: true
+        style: form
+      - in: query
+        name: auth_psk
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: auth_psk__empty
+        schema:
+          type: boolean
+      - in: query
+        name: auth_psk__ic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: auth_psk__ie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: auth_psk__iew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: auth_psk__iregex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: auth_psk__isw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: auth_psk__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: auth_psk__nic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: auth_psk__nie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: auth_psk__niew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: auth_psk__nisw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: auth_psk__regex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: auth_type
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: e917c12aac765910
+            nullable: true
+            title: Authentication type
+        explode: true
+        style: form
+      - in: query
+        name: auth_type__empty
+        schema:
+          type: boolean
+      - in: query
+        name: auth_type__ic
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: e917c12aac765910
+            nullable: true
+            title: Authentication type
+        explode: true
+        style: form
+      - in: query
+        name: auth_type__ie
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: e917c12aac765910
+            nullable: true
+            title: Authentication type
+        explode: true
+        style: form
+      - in: query
+        name: auth_type__iew
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: e917c12aac765910
+            nullable: true
+            title: Authentication type
+        explode: true
+        style: form
+      - in: query
+        name: auth_type__iregex
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: e917c12aac765910
+            nullable: true
+            title: Authentication type
+        explode: true
+        style: form
+      - in: query
+        name: auth_type__isw
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: e917c12aac765910
+            nullable: true
+            title: Authentication type
+        explode: true
+        style: form
+      - in: query
+        name: auth_type__n
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: e917c12aac765910
+            nullable: true
+            title: Authentication type
+        explode: true
+        style: form
+      - in: query
+        name: auth_type__nic
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: e917c12aac765910
+            nullable: true
+            title: Authentication type
+        explode: true
+        style: form
+      - in: query
+        name: auth_type__nie
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: e917c12aac765910
+            nullable: true
+            title: Authentication type
+        explode: true
+        style: form
+      - in: query
+        name: auth_type__niew
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: e917c12aac765910
+            nullable: true
+            title: Authentication type
+        explode: true
+        style: form
+      - in: query
+        name: auth_type__nisw
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: e917c12aac765910
+            nullable: true
+            title: Authentication type
+        explode: true
+        style: form
+      - in: query
+        name: auth_type__regex
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: e917c12aac765910
+            nullable: true
+            title: Authentication type
+        explode: true
+        style: form
+      - in: query
+        name: created
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__empty
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__gt
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__gte
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__lt
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__lte
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__n
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created_by_request
+        schema:
+          type: string
+          format: uuid
+      - in: query
+        name: description
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__empty
+        schema:
+          type: boolean
+      - in: query
+        name: description__ic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__ie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__iew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__iregex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__isw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__nic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__nie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__niew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__nisw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__regex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: group
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: group__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: group_id
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: group_id__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: id
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__empty
+        schema:
+          type: boolean
+      - in: query
+        name: id__gt
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__gte
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__lt
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__lte
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__n
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: interface_id
+        schema:
+          type: array
+          items:
+            type: integer
+        explode: true
+        style: form
+      - in: query
+        name: interface_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+        explode: true
+        style: form
+      - in: query
+        name: last_updated
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__empty
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__gt
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__gte
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__lt
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__lte
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__n
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - in: query
+        name: location
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: location__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: location_id
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: location_id__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: modified_by_request
+        schema:
+          type: string
+          format: uuid
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - in: query
+        name: owner
+        schema:
+          type: array
+          items:
+            type: string
+        description: Owner (name)
+        explode: true
+        style: form
+      - in: query
+        name: owner__n
+        schema:
+          type: array
+          items:
+            type: string
+        description: Owner (name)
+        explode: true
+        style: form
+      - in: query
+        name: owner_group
+        schema:
+          type: array
+          items:
+            type: string
+        description: Owner Group (name)
+        explode: true
+        style: form
+      - in: query
+        name: owner_group__n
+        schema:
+          type: array
+          items:
+            type: string
+        description: Owner Group (name)
+        explode: true
+        style: form
+      - in: query
+        name: owner_group_id
+        schema:
+          type: array
+          items:
+            type: integer
+        description: Owner Group (ID)
+        explode: true
+        style: form
+      - in: query
+        name: owner_group_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+        description: Owner Group (ID)
+        explode: true
+        style: form
+      - in: query
+        name: owner_id
+        schema:
+          type: array
+          items:
+            type: integer
+            nullable: true
+        description: Owner (ID)
+        explode: true
+        style: form
+      - in: query
+        name: owner_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+            nullable: true
+        description: Owner (ID)
+        explode: true
+        style: form
+      - in: query
+        name: q
+        schema:
+          type: string
+        description: Search
+      - in: query
+        name: region
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: region__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: region_id
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: region_id__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: scope_id
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: scope_id__empty
+        schema:
+          type: boolean
+      - in: query
+        name: scope_id__gt
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: scope_id__gte
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: scope_id__lt
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: scope_id__lte
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: scope_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: scope_type
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: scope_type__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: site
+        schema:
+          type: array
+          items:
+            type: string
+        description: Site (slug)
+        explode: true
+        style: form
+      - in: query
+        name: site__n
+        schema:
+          type: array
+          items:
+            type: string
+        description: Site (slug)
+        explode: true
+        style: form
+      - in: query
+        name: site_group
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: site_group__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: site_group_id
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: site_group_id__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: site_id
+        schema:
+          type: array
+          items:
+            type: integer
+        description: Site (ID)
+        explode: true
+        style: form
+      - in: query
+        name: site_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+        description: Site (ID)
+        explode: true
+        style: form
+      - in: query
+        name: ssid
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: ssid__empty
+        schema:
+          type: boolean
+      - in: query
+        name: ssid__ic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: ssid__ie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: ssid__iew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: ssid__iregex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: ssid__isw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: ssid__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: ssid__nic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: ssid__nie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: ssid__niew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: ssid__nisw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: ssid__regex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: status
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: e5549d7370ce2e6c
+        explode: true
+        style: form
+      - in: query
+        name: status__empty
+        schema:
+          type: boolean
+      - in: query
+        name: status__ic
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: e5549d7370ce2e6c
+        explode: true
+        style: form
+      - in: query
+        name: status__ie
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: e5549d7370ce2e6c
+        explode: true
+        style: form
+      - in: query
+        name: status__iew
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: e5549d7370ce2e6c
+        explode: true
+        style: form
+      - in: query
+        name: status__iregex
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: e5549d7370ce2e6c
+        explode: true
+        style: form
+      - in: query
+        name: status__isw
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: e5549d7370ce2e6c
+        explode: true
+        style: form
+      - in: query
+        name: status__n
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: e5549d7370ce2e6c
+        explode: true
+        style: form
+      - in: query
+        name: status__nic
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: e5549d7370ce2e6c
+        explode: true
+        style: form
+      - in: query
+        name: status__nie
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: e5549d7370ce2e6c
+        explode: true
+        style: form
+      - in: query
+        name: status__niew
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: e5549d7370ce2e6c
+        explode: true
+        style: form
+      - in: query
+        name: status__nisw
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: e5549d7370ce2e6c
+        explode: true
+        style: form
+      - in: query
+        name: status__regex
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: e5549d7370ce2e6c
+        explode: true
+        style: form
+      - in: query
+        name: tag
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: tag__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: tag_id
+        schema:
+          type: array
+          items:
+            type: integer
+        explode: true
+        style: form
+      - in: query
+        name: tag_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+        explode: true
+        style: form
+      - in: query
+        name: tenant
+        schema:
+          type: array
+          items:
+            type: string
+        description: Tenant (slug)
+        explode: true
+        style: form
+      - in: query
+        name: tenant__n
+        schema:
+          type: array
+          items:
+            type: string
+        description: Tenant (slug)
+        explode: true
+        style: form
+      - in: query
+        name: tenant_group
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: tenant_group__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: tenant_group_id
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: tenant_group_id__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: tenant_id
+        schema:
+          type: array
+          items:
+            type: integer
+            nullable: true
+        description: Tenant (ID)
+        explode: true
+        style: form
+      - in: query
+        name: tenant_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+            nullable: true
+        description: Tenant (ID)
+        explode: true
+        style: form
+      - in: query
+        name: updated_by_request
+        schema:
+          type: string
+          format: uuid
+      - in: query
+        name: vlan_id
+        schema:
+          type: array
+          items:
+            type: integer
+            nullable: true
+        explode: true
+        style: form
+      - in: query
+        name: vlan_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+            nullable: true
+        explode: true
+        style: form
+      tags:
+      - wireless
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedWirelessLANList'
+          description: ''
+    post:
+      operationId: wireless_wireless_lans_create
+      description: Post a list of wireless LAN objects.
+      tags:
+      - wireless
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+              - $ref: '#/components/schemas/WritableWirelessLANRequest'
+              - type: array
+                items:
+                  $ref: '#/components/schemas/WritableWirelessLANRequest'
+          multipart/form-data:
+            schema:
+              oneOf:
+              - $ref: '#/components/schemas/WritableWirelessLANRequest'
+              - type: array
+                items:
+                  $ref: '#/components/schemas/WritableWirelessLANRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WirelessLAN'
+          description: ''
+    put:
+      operationId: wireless_wireless_lans_bulk_update
+      description: Put a list of wireless LAN objects.
+      tags:
+      - wireless
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/WirelessLANRequest'
+          multipart/form-data:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/WirelessLANRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WirelessLAN'
+          description: ''
+    patch:
+      operationId: wireless_wireless_lans_bulk_partial_update
+      description: Patch a list of wireless LAN objects.
+      tags:
+      - wireless
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/WirelessLANRequest'
+          multipart/form-data:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/WirelessLANRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WirelessLAN'
+          description: ''
+    delete:
+      operationId: wireless_wireless_lans_bulk_destroy
+      description: Delete a list of wireless LAN objects.
+      tags:
+      - wireless
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/WirelessLANRequest'
+          multipart/form-data:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/WirelessLANRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/wireless/wireless-lans/{id}/:
+    get:
+      operationId: wireless_wireless_lans_retrieve
+      description: Get a wireless LAN object.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this wireless LAN.
+        required: true
+      tags:
+      - wireless
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WirelessLAN'
+          description: ''
+    put:
+      operationId: wireless_wireless_lans_update
+      description: Put a wireless LAN object.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this wireless LAN.
+        required: true
+      tags:
+      - wireless
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WritableWirelessLANRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/WritableWirelessLANRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WirelessLAN'
+          description: ''
+    patch:
+      operationId: wireless_wireless_lans_partial_update
+      description: Patch a wireless LAN object.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this wireless LAN.
+        required: true
+      tags:
+      - wireless
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedWritableWirelessLANRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedWritableWirelessLANRequest'
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WirelessLAN'
+          description: ''
+    delete:
+      operationId: wireless_wireless_lans_destroy
+      description: Delete a wireless LAN object.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this wireless LAN.
+        required: true
+      tags:
+      - wireless
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/wireless/wireless-links/:
+    get:
+      operationId: wireless_wireless_links_list
+      description: Get a list of wireless link objects.
+      parameters:
+      - in: query
+        name: auth_cipher
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: 42f867e89988bb0c
+            nullable: true
+            title: Authentication cipher
+        explode: true
+        style: form
+      - in: query
+        name: auth_cipher__empty
+        schema:
+          type: boolean
+      - in: query
+        name: auth_cipher__ic
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: 42f867e89988bb0c
+            nullable: true
+            title: Authentication cipher
+        explode: true
+        style: form
+      - in: query
+        name: auth_cipher__ie
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: 42f867e89988bb0c
+            nullable: true
+            title: Authentication cipher
+        explode: true
+        style: form
+      - in: query
+        name: auth_cipher__iew
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: 42f867e89988bb0c
+            nullable: true
+            title: Authentication cipher
+        explode: true
+        style: form
+      - in: query
+        name: auth_cipher__iregex
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: 42f867e89988bb0c
+            nullable: true
+            title: Authentication cipher
+        explode: true
+        style: form
+      - in: query
+        name: auth_cipher__isw
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: 42f867e89988bb0c
+            nullable: true
+            title: Authentication cipher
+        explode: true
+        style: form
+      - in: query
+        name: auth_cipher__n
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: 42f867e89988bb0c
+            nullable: true
+            title: Authentication cipher
+        explode: true
+        style: form
+      - in: query
+        name: auth_cipher__nic
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: 42f867e89988bb0c
+            nullable: true
+            title: Authentication cipher
+        explode: true
+        style: form
+      - in: query
+        name: auth_cipher__nie
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: 42f867e89988bb0c
+            nullable: true
+            title: Authentication cipher
+        explode: true
+        style: form
+      - in: query
+        name: auth_cipher__niew
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: 42f867e89988bb0c
+            nullable: true
+            title: Authentication cipher
+        explode: true
+        style: form
+      - in: query
+        name: auth_cipher__nisw
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: 42f867e89988bb0c
+            nullable: true
+            title: Authentication cipher
+        explode: true
+        style: form
+      - in: query
+        name: auth_cipher__regex
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: 42f867e89988bb0c
+            nullable: true
+            title: Authentication cipher
+        explode: true
+        style: form
+      - in: query
+        name: auth_psk
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: auth_psk__empty
+        schema:
+          type: boolean
+      - in: query
+        name: auth_psk__ic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: auth_psk__ie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: auth_psk__iew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: auth_psk__iregex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: auth_psk__isw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: auth_psk__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: auth_psk__nic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: auth_psk__nie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: auth_psk__niew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: auth_psk__nisw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: auth_psk__regex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: auth_type
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: e917c12aac765910
+            nullable: true
+            title: Authentication type
+        explode: true
+        style: form
+      - in: query
+        name: auth_type__empty
+        schema:
+          type: boolean
+      - in: query
+        name: auth_type__ic
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: e917c12aac765910
+            nullable: true
+            title: Authentication type
+        explode: true
+        style: form
+      - in: query
+        name: auth_type__ie
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: e917c12aac765910
+            nullable: true
+            title: Authentication type
+        explode: true
+        style: form
+      - in: query
+        name: auth_type__iew
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: e917c12aac765910
+            nullable: true
+            title: Authentication type
+        explode: true
+        style: form
+      - in: query
+        name: auth_type__iregex
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: e917c12aac765910
+            nullable: true
+            title: Authentication type
+        explode: true
+        style: form
+      - in: query
+        name: auth_type__isw
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: e917c12aac765910
+            nullable: true
+            title: Authentication type
+        explode: true
+        style: form
+      - in: query
+        name: auth_type__n
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: e917c12aac765910
+            nullable: true
+            title: Authentication type
+        explode: true
+        style: form
+      - in: query
+        name: auth_type__nic
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: e917c12aac765910
+            nullable: true
+            title: Authentication type
+        explode: true
+        style: form
+      - in: query
+        name: auth_type__nie
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: e917c12aac765910
+            nullable: true
+            title: Authentication type
+        explode: true
+        style: form
+      - in: query
+        name: auth_type__niew
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: e917c12aac765910
+            nullable: true
+            title: Authentication type
+        explode: true
+        style: form
+      - in: query
+        name: auth_type__nisw
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: e917c12aac765910
+            nullable: true
+            title: Authentication type
+        explode: true
+        style: form
+      - in: query
+        name: auth_type__regex
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: e917c12aac765910
+            nullable: true
+            title: Authentication type
+        explode: true
+        style: form
+      - in: query
+        name: created
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__empty
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__gt
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__gte
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__lt
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__lte
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created__n
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: created_by_request
+        schema:
+          type: string
+          format: uuid
+      - in: query
+        name: description
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__empty
+        schema:
+          type: boolean
+      - in: query
+        name: description__ic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__ie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__iew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__iregex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__isw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__nic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__nie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__niew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__nisw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: description__regex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: distance
+        schema:
+          type: array
+          items:
+            type: number
+            format: double
+        explode: true
+        style: form
+      - in: query
+        name: distance__empty
+        schema:
+          type: boolean
+      - in: query
+        name: distance__gt
+        schema:
+          type: array
+          items:
+            type: number
+            format: double
+        explode: true
+        style: form
+      - in: query
+        name: distance__gte
+        schema:
+          type: array
+          items:
+            type: number
+            format: double
+        explode: true
+        style: form
+      - in: query
+        name: distance__lt
+        schema:
+          type: array
+          items:
+            type: number
+            format: double
+        explode: true
+        style: form
+      - in: query
+        name: distance__lte
+        schema:
+          type: array
+          items:
+            type: number
+            format: double
+        explode: true
+        style: form
+      - in: query
+        name: distance__n
+        schema:
+          type: array
+          items:
+            type: number
+            format: double
+        explode: true
+        style: form
+      - in: query
+        name: distance_unit
+        schema:
+          type: string
+          x-spec-enum-id: b1169a409430c02e
+          nullable: true
+          enum:
+          - ft
+          - km
+          - m
+          - mi
+          - 'null'
+        description: '* `km` - Kilometers
+
+          * `m` - Meters
+
+          * `mi` - Miles
+
+          * `ft` - Feet'
+      - in: query
+        name: distance_unit__empty
+        schema:
+          type: boolean
+      - in: query
+        name: distance_unit__ic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: distance_unit__ie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: distance_unit__iew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: distance_unit__iregex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: distance_unit__isw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: distance_unit__n
+        schema:
+          type: string
+          x-spec-enum-id: b1169a409430c02e
+          nullable: true
+          enum:
+          - ft
+          - km
+          - m
+          - mi
+          - 'null'
+        description: '* `km` - Kilometers
+
+          * `m` - Meters
+
+          * `mi` - Miles
+
+          * `ft` - Feet'
+      - in: query
+        name: distance_unit__nic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: distance_unit__nie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: distance_unit__niew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: distance_unit__nisw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: distance_unit__regex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: id
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__empty
+        schema:
+          type: boolean
+      - in: query
+        name: id__gt
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__gte
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__lt
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__lte
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: id__n
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+        explode: true
+        style: form
+      - in: query
+        name: interface_a_id
+        schema:
+          type: array
+          items:
+            type: integer
+        explode: true
+        style: form
+      - in: query
+        name: interface_a_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+        explode: true
+        style: form
+      - in: query
+        name: interface_b_id
+        schema:
+          type: array
+          items:
+            type: integer
+        explode: true
+        style: form
+      - in: query
+        name: interface_b_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+        explode: true
+        style: form
+      - in: query
+        name: last_updated
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__empty
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__gt
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__gte
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__lt
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__lte
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - in: query
+        name: last_updated__n
+        schema:
+          type: array
+          items:
+            type: string
+            format: date-time
+        explode: true
+        style: form
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - in: query
+        name: modified_by_request
+        schema:
+          type: string
+          format: uuid
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - in: query
+        name: owner
+        schema:
+          type: array
+          items:
+            type: string
+        description: Owner (name)
+        explode: true
+        style: form
+      - in: query
+        name: owner__n
+        schema:
+          type: array
+          items:
+            type: string
+        description: Owner (name)
+        explode: true
+        style: form
+      - in: query
+        name: owner_group
+        schema:
+          type: array
+          items:
+            type: string
+        description: Owner Group (name)
+        explode: true
+        style: form
+      - in: query
+        name: owner_group__n
+        schema:
+          type: array
+          items:
+            type: string
+        description: Owner Group (name)
+        explode: true
+        style: form
+      - in: query
+        name: owner_group_id
+        schema:
+          type: array
+          items:
+            type: integer
+        description: Owner Group (ID)
+        explode: true
+        style: form
+      - in: query
+        name: owner_group_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+        description: Owner Group (ID)
+        explode: true
+        style: form
+      - in: query
+        name: owner_id
+        schema:
+          type: array
+          items:
+            type: integer
+            nullable: true
+        description: Owner (ID)
+        explode: true
+        style: form
+      - in: query
+        name: owner_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+            nullable: true
+        description: Owner (ID)
+        explode: true
+        style: form
+      - in: query
+        name: q
+        schema:
+          type: string
+        description: Search
+      - in: query
+        name: ssid
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: ssid__empty
+        schema:
+          type: boolean
+      - in: query
+        name: ssid__ic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: ssid__ie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: ssid__iew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: ssid__iregex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: ssid__isw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: ssid__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: ssid__nic
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: ssid__nie
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: ssid__niew
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: ssid__nisw
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: ssid__regex
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: status
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: 80d251a40f3a3144
+        explode: true
+        style: form
+      - in: query
+        name: status__empty
+        schema:
+          type: boolean
+      - in: query
+        name: status__ic
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: 80d251a40f3a3144
+        explode: true
+        style: form
+      - in: query
+        name: status__ie
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: 80d251a40f3a3144
+        explode: true
+        style: form
+      - in: query
+        name: status__iew
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: 80d251a40f3a3144
+        explode: true
+        style: form
+      - in: query
+        name: status__iregex
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: 80d251a40f3a3144
+        explode: true
+        style: form
+      - in: query
+        name: status__isw
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: 80d251a40f3a3144
+        explode: true
+        style: form
+      - in: query
+        name: status__n
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: 80d251a40f3a3144
+        explode: true
+        style: form
+      - in: query
+        name: status__nic
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: 80d251a40f3a3144
+        explode: true
+        style: form
+      - in: query
+        name: status__nie
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: 80d251a40f3a3144
+        explode: true
+        style: form
+      - in: query
+        name: status__niew
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: 80d251a40f3a3144
+        explode: true
+        style: form
+      - in: query
+        name: status__nisw
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: 80d251a40f3a3144
+        explode: true
+        style: form
+      - in: query
+        name: status__regex
+        schema:
+          type: array
+          items:
+            type: string
+            x-spec-enum-id: 80d251a40f3a3144
+        explode: true
+        style: form
+      - in: query
+        name: tag
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: tag__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: tag_id
+        schema:
+          type: array
+          items:
+            type: integer
+        explode: true
+        style: form
+      - in: query
+        name: tag_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+        explode: true
+        style: form
+      - in: query
+        name: tenant
+        schema:
+          type: array
+          items:
+            type: string
+        description: Tenant (slug)
+        explode: true
+        style: form
+      - in: query
+        name: tenant__n
+        schema:
+          type: array
+          items:
+            type: string
+        description: Tenant (slug)
+        explode: true
+        style: form
+      - in: query
+        name: tenant_group
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: tenant_group__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: tenant_group_id
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: tenant_group_id__n
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: tenant_id
+        schema:
+          type: array
+          items:
+            type: integer
+            nullable: true
+        description: Tenant (ID)
+        explode: true
+        style: form
+      - in: query
+        name: tenant_id__n
+        schema:
+          type: array
+          items:
+            type: integer
+            nullable: true
+        description: Tenant (ID)
+        explode: true
+        style: form
+      - in: query
+        name: updated_by_request
+        schema:
+          type: string
+          format: uuid
+      tags:
+      - wireless
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedWirelessLinkList'
+          description: ''
+    post:
+      operationId: wireless_wireless_links_create
+      description: Post a list of wireless link objects.
+      tags:
+      - wireless
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+              - $ref: '#/components/schemas/WritableWirelessLinkRequest'
+              - type: array
+                items:
+                  $ref: '#/components/schemas/WritableWirelessLinkRequest'
+          multipart/form-data:
+            schema:
+              oneOf:
+              - $ref: '#/components/schemas/WritableWirelessLinkRequest'
+              - type: array
+                items:
+                  $ref: '#/components/schemas/WritableWirelessLinkRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WirelessLink'
+          description: ''
+    put:
+      operationId: wireless_wireless_links_bulk_update
+      description: Put a list of wireless link objects.
+      tags:
+      - wireless
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/WirelessLinkRequest'
+          multipart/form-data:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/WirelessLinkRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WirelessLink'
+          description: ''
+    patch:
+      operationId: wireless_wireless_links_bulk_partial_update
+      description: Patch a list of wireless link objects.
+      tags:
+      - wireless
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/WirelessLinkRequest'
+          multipart/form-data:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/WirelessLinkRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WirelessLink'
+          description: ''
+    delete:
+      operationId: wireless_wireless_links_bulk_destroy
+      description: Delete a list of wireless link objects.
+      tags:
+      - wireless
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/WirelessLinkRequest'
+          multipart/form-data:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/WirelessLinkRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/wireless/wireless-links/{id}/:
+    get:
+      operationId: wireless_wireless_links_retrieve
+      description: Get a wireless link object.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this wireless link.
+        required: true
+      tags:
+      - wireless
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WirelessLink'
+          description: ''
+    put:
+      operationId: wireless_wireless_links_update
+      description: Put a wireless link object.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this wireless link.
+        required: true
+      tags:
+      - wireless
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WritableWirelessLinkRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/WritableWirelessLinkRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WirelessLink'
+          description: ''
+    patch:
+      operationId: wireless_wireless_links_partial_update
+      description: Patch a wireless link object.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this wireless link.
+        required: true
+      tags:
+      - wireless
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedWritableWirelessLinkRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedWritableWirelessLinkRequest'
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WirelessLink'
+          description: ''
+    delete:
+      operationId: wireless_wireless_links_destroy
+      description: Delete a wireless link object.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this wireless link.
+        required: true
+      tags:
+      - wireless
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+components:
+  schemas:
+    WirelessLANGroupRequest:
+      type: object
+      description: Base serializer class for models inheriting from NestedGroupModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        parent:
+          allOf:
+          - $ref: '#/components/schemas/NestedWirelessLANGroupRequest'
+          nullable: true
+        description:
+          type: string
+          maxLength: 200
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+            nullable: true
+          nullable: true
+        comments:
+          type: string
+      required:
+      - name
+      - slug
+    BriefWirelessLANGroup:
+      type: object
+      description: Base serializer class for models inheriting from NestedGroupModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        slug:
+          type: string
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+          maxLength: 200
+        wirelesslan_count:
+          type: integer
+          readOnly: true
+          default: 0
+        _depth:
+          type: integer
+          readOnly: true
+          title: ' depth'
+      required:
+      - _depth
+      - display
+      - id
+      - name
+      - slug
+      - url
+      - wirelesslan_count
+    PatchedWritableWirelessLANGroupRequest:
+      type: object
+      description: Base serializer class for models inheriting from NestedGroupModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        parent:
+          type: integer
+          nullable: true
+        description:
+          type: string
+          maxLength: 200
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+            nullable: true
+          nullable: true
+        comments:
+          type: string
+    PaginatedWirelessLinkList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/WirelessLink'
+    WirelessLink:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        interface_a:
+          $ref: '#/components/schemas/BriefInterface'
+        interface_b:
+          $ref: '#/components/schemas/BriefInterface'
+        ssid:
+          type: string
+          maxLength: 32
+        status:
+          type: object
+          properties:
+            value:
+              enum:
+              - connected
+              - planned
+              - decommissioning
+              type: string
+              description: '* `connected` - Connected
+
+                * `planned` - Planned
+
+                * `decommissioning` - Decommissioning'
+              x-spec-enum-id: 80d251a40f3a3144
+            label:
+              type: string
+              enum:
+              - Connected
+              - Planned
+              - Decommissioning
+        tenant:
+          allOf:
+          - $ref: '#/components/schemas/BriefTenant'
+          nullable: true
+        auth_type:
+          type: object
+          properties:
+            value:
+              enum:
+              - open
+              - wep
+              - wpa-personal
+              - wpa-enterprise
+              - ''
+              type: string
+              description: '* `open` - Open
+
+                * `wep` - WEP
+
+                * `wpa-personal` - WPA Personal (PSK)
+
+                * `wpa-enterprise` - WPA Enterprise'
+              x-spec-enum-id: e917c12aac765910
+            label:
+              type: string
+              enum:
+              - Open
+              - WEP
+              - WPA Personal (PSK)
+              - WPA Enterprise
+        auth_cipher:
+          type: object
+          properties:
+            value:
+              enum:
+              - auto
+              - tkip
+              - aes
+              - ''
+              type: string
+              description: '* `auto` - Auto
+
+                * `tkip` - TKIP
+
+                * `aes` - AES'
+              x-spec-enum-id: 42f867e89988bb0c
+            label:
+              type: string
+              enum:
+              - Auto
+              - TKIP
+              - AES
+        auth_psk:
+          type: string
+          title: Pre-shared key
+          maxLength: 64
+        distance:
+          type: number
+          format: double
+          maximum: 1000000
+          minimum: -1000000
+          exclusiveMaximum: true
+          exclusiveMinimum: true
+          nullable: true
+        distance_unit:
+          type: object
+          properties:
+            value:
+              enum:
+              - km
+              - m
+              - mi
+              - ft
+              - ''
+              - null
+              type: string
+              description: '* `km` - Kilometers
+
+                * `m` - Meters
+
+                * `mi` - Miles
+
+                * `ft` - Feet'
+              x-spec-enum-id: b1169a409430c02e
+            label:
+              type: string
+              enum:
+              - Kilometers
+              - Meters
+              - Miles
+              - Feet
+          nullable: true
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          allOf:
+          - $ref: '#/components/schemas/BriefOwner'
+          nullable: true
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTag'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+        last_updated:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+      required:
+      - created
+      - display
+      - display_url
+      - id
+      - interface_a
+      - interface_b
+      - last_updated
+      - url
+    WirelessLANGroup:
+      type: object
+      description: Base serializer class for models inheriting from NestedGroupModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        slug:
+          type: string
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        parent:
+          allOf:
+          - $ref: '#/components/schemas/NestedWirelessLANGroup'
+          nullable: true
+        description:
+          type: string
+          maxLength: 200
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTag'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+        last_updated:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+        wirelesslan_count:
+          type: integer
+          readOnly: true
+          default: 0
+        owner:
+          allOf:
+          - $ref: '#/components/schemas/BriefOwner'
+          nullable: true
+        comments:
+          type: string
+        _depth:
+          type: integer
+          readOnly: true
+          title: ' depth'
+      required:
+      - _depth
+      - created
+      - display
+      - display_url
+      - id
+      - last_updated
+      - name
+      - slug
+      - url
+      - wirelesslan_count
+    BriefTenantRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - name
+      - slug
+    NestedWirelessLANGroupRequest:
+      type: object
+      description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
+
+        dictionary of attributes which can be used to uniquely identify the related object. This class should be
+
+        subclassed to return a full representation of the related object on read.'
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+      required:
+      - name
+      - slug
+    WritableWirelessLANRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        ssid:
+          type: string
+          minLength: 1
+          maxLength: 32
+        description:
+          type: string
+          maxLength: 200
+        group:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefWirelessLANGroupRequest'
+            nullable: true
+          nullable: true
+        status:
+          enum:
+          - active
+          - reserved
+          - disabled
+          - deprecated
+          type: string
+          description: '* `active` - Active
+
+            * `reserved` - Reserved
+
+            * `disabled` - Disabled
+
+            * `deprecated` - Deprecated'
+          x-spec-enum-id: e5549d7370ce2e6c
+        vlan:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefVLANRequest'
+            nullable: true
+          nullable: true
+        scope_type:
+          type: string
+          nullable: true
+        scope_id:
+          type: integer
+          nullable: true
+        tenant:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefTenantRequest'
+            nullable: true
+          nullable: true
+        auth_type:
+          enum:
+          - open
+          - wep
+          - wpa-personal
+          - wpa-enterprise
+          - ''
+          - null
+          type: string
+          description: '* `open` - Open
+
+            * `wep` - WEP
+
+            * `wpa-personal` - WPA Personal (PSK)
+
+            * `wpa-enterprise` - WPA Enterprise'
+          x-spec-enum-id: e917c12aac765910
+          nullable: true
+          title: Authentication type
+        auth_cipher:
+          enum:
+          - auto
+          - tkip
+          - aes
+          - ''
+          - null
+          type: string
+          description: '* `auto` - Auto
+
+            * `tkip` - TKIP
+
+            * `aes` - AES'
+          x-spec-enum-id: 42f867e89988bb0c
+          nullable: true
+          title: Authentication cipher
+        auth_psk:
+          type: string
+          title: Pre-shared key
+          maxLength: 64
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+            nullable: true
+          nullable: true
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+      required:
+      - ssid
+    NestedWirelessLANGroup:
+      type: object
+      description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
+
+        dictionary of attributes which can be used to uniquely identify the related object. This class should be
+
+        subclassed to return a full representation of the related object on read.'
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        slug:
+          type: string
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        _depth:
+          type: integer
+          readOnly: true
+          title: ' depth'
+      required:
+      - _depth
+      - display
+      - display_url
+      - id
+      - name
+      - slug
+      - url
+    BriefWirelessLANGroupRequest:
+      type: object
+      description: Base serializer class for models inheriting from NestedGroupModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - name
+      - slug
+    PaginatedWirelessLANGroupList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/WirelessLANGroup'
+    NestedTagRequest:
+      type: object
+      description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
+
+        dictionary of attributes which can be used to uniquely identify the related object. This class should be
+
+        subclassed to return a full representation of the related object on read.'
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          pattern: ^[-\w]+$
+          maxLength: 100
+        color:
+          type: string
+          minLength: 1
+          pattern: ^[0-9a-f]{6}$
+          maxLength: 6
+      required:
+      - name
+      - slug
+    WirelessLANRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        ssid:
+          type: string
+          minLength: 1
+          maxLength: 32
+        description:
+          type: string
+          maxLength: 200
+        group:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefWirelessLANGroupRequest'
+            nullable: true
+          nullable: true
+        status:
+          enum:
+          - active
+          - reserved
+          - disabled
+          - deprecated
+          - ''
+          type: string
+          description: '* `active` - Active
+
+            * `reserved` - Reserved
+
+            * `disabled` - Disabled
+
+            * `deprecated` - Deprecated'
+          x-spec-enum-id: e5549d7370ce2e6c
+        vlan:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefVLANRequest'
+            nullable: true
+          nullable: true
+        scope_type:
+          type: string
+          nullable: true
+        scope_id:
+          type: integer
+          nullable: true
+        tenant:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefTenantRequest'
+            nullable: true
+          nullable: true
+        auth_type:
+          enum:
+          - open
+          - wep
+          - wpa-personal
+          - wpa-enterprise
+          - ''
+          type: string
+          description: '* `open` - Open
+
+            * `wep` - WEP
+
+            * `wpa-personal` - WPA Personal (PSK)
+
+            * `wpa-enterprise` - WPA Enterprise'
+          x-spec-enum-id: e917c12aac765910
+        auth_cipher:
+          enum:
+          - auto
+          - tkip
+          - aes
+          - ''
+          type: string
+          description: '* `auto` - Auto
+
+            * `tkip` - TKIP
+
+            * `aes` - AES'
+          x-spec-enum-id: 42f867e89988bb0c
+        auth_psk:
+          type: string
+          title: Pre-shared key
+          maxLength: 64
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+            nullable: true
+          nullable: true
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+      required:
+      - ssid
+    NestedTag:
+      type: object
+      description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
+
+        dictionary of attributes which can be used to uniquely identify the related object. This class should be
+
+        subclassed to return a full representation of the related object on read.'
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        slug:
+          type: string
+          pattern: ^[-\w]+$
+          maxLength: 100
+        color:
+          type: string
+          pattern: ^[0-9a-f]{6}$
+          maxLength: 6
+      required:
+      - display
+      - display_url
+      - id
+      - name
+      - slug
+      - url
+    BriefTenant:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        slug:
+          type: string
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - display
+      - id
+      - name
+      - slug
+      - url
+    BriefOwnerRequest:
+      type: object
+      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
+
+        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - name
+    WirelessLinkRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        interface_a:
+          oneOf:
+          - type: integer
+          - $ref: '#/components/schemas/BriefInterfaceRequest'
+        interface_b:
+          oneOf:
+          - type: integer
+          - $ref: '#/components/schemas/BriefInterfaceRequest'
+        ssid:
+          type: string
+          maxLength: 32
+        status:
+          enum:
+          - connected
+          - planned
+          - decommissioning
+          type: string
+          description: '* `connected` - Connected
+
+            * `planned` - Planned
+
+            * `decommissioning` - Decommissioning'
+          x-spec-enum-id: 80d251a40f3a3144
+        tenant:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefTenantRequest'
+            nullable: true
+          nullable: true
+        auth_type:
+          enum:
+          - open
+          - wep
+          - wpa-personal
+          - wpa-enterprise
+          - ''
+          type: string
+          description: '* `open` - Open
+
+            * `wep` - WEP
+
+            * `wpa-personal` - WPA Personal (PSK)
+
+            * `wpa-enterprise` - WPA Enterprise'
+          x-spec-enum-id: e917c12aac765910
+        auth_cipher:
+          enum:
+          - auto
+          - tkip
+          - aes
+          - ''
+          type: string
+          description: '* `auto` - Auto
+
+            * `tkip` - TKIP
+
+            * `aes` - AES'
+          x-spec-enum-id: 42f867e89988bb0c
+        auth_psk:
+          type: string
+          title: Pre-shared key
+          maxLength: 64
+        distance:
+          type: number
+          format: double
+          maximum: 1000000
+          minimum: -1000000
+          exclusiveMaximum: true
+          exclusiveMinimum: true
+          nullable: true
+        distance_unit:
+          enum:
+          - km
+          - m
+          - mi
+          - ft
+          - ''
+          - null
+          type: string
+          description: '* `km` - Kilometers
+
+            * `m` - Meters
+
+            * `mi` - Miles
+
+            * `ft` - Feet'
+          x-spec-enum-id: b1169a409430c02e
+          nullable: true
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+            nullable: true
+          nullable: true
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+      required:
+      - interface_a
+      - interface_b
+    PaginatedWirelessLANList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/WirelessLAN'
+    BriefInterface:
+      type: object
+      description: Adds an `owner` field for models which have a ForeignKey to users.Owner.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        device:
+          $ref: '#/components/schemas/BriefDevice'
+        name:
+          type: string
+          maxLength: 64
+        description:
+          type: string
+          maxLength: 200
+        cable:
+          allOf:
+          - $ref: '#/components/schemas/BriefCable'
+          readOnly: true
+          nullable: true
+        _occupied:
+          type: boolean
+          readOnly: true
+          title: ' occupied'
+      required:
+      - _occupied
+      - cable
+      - device
+      - display
+      - id
+      - name
+      - url
+    BriefOwner:
+      type: object
+      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
+
+        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - display
+      - id
+      - name
+      - url
+    PatchedWritableWirelessLinkRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        interface_a:
+          oneOf:
+          - type: integer
+          - $ref: '#/components/schemas/BriefInterfaceRequest'
+        interface_b:
+          oneOf:
+          - type: integer
+          - $ref: '#/components/schemas/BriefInterfaceRequest'
+        ssid:
+          type: string
+          maxLength: 32
+        status:
+          enum:
+          - connected
+          - planned
+          - decommissioning
+          type: string
+          description: '* `connected` - Connected
+
+            * `planned` - Planned
+
+            * `decommissioning` - Decommissioning'
+          x-spec-enum-id: 80d251a40f3a3144
+        tenant:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefTenantRequest'
+            nullable: true
+          nullable: true
+        auth_type:
+          enum:
+          - open
+          - wep
+          - wpa-personal
+          - wpa-enterprise
+          - ''
+          - null
+          type: string
+          description: '* `open` - Open
+
+            * `wep` - WEP
+
+            * `wpa-personal` - WPA Personal (PSK)
+
+            * `wpa-enterprise` - WPA Enterprise'
+          x-spec-enum-id: e917c12aac765910
+          nullable: true
+          title: Authentication type
+        auth_cipher:
+          enum:
+          - auto
+          - tkip
+          - aes
+          - ''
+          - null
+          type: string
+          description: '* `auto` - Auto
+
+            * `tkip` - TKIP
+
+            * `aes` - AES'
+          x-spec-enum-id: 42f867e89988bb0c
+          nullable: true
+          title: Authentication cipher
+        auth_psk:
+          type: string
+          title: Pre-shared key
+          maxLength: 64
+        distance:
+          type: number
+          format: double
+          maximum: 1000000
+          minimum: -1000000
+          exclusiveMaximum: true
+          exclusiveMinimum: true
+          nullable: true
+        distance_unit:
+          enum:
+          - km
+          - m
+          - mi
+          - ft
+          - ''
+          - null
+          type: string
+          description: '* `km` - Kilometers
+
+            * `m` - Meters
+
+            * `mi` - Miles
+
+            * `ft` - Feet'
+          x-spec-enum-id: b1169a409430c02e
+          nullable: true
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+            nullable: true
+          nullable: true
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+    PatchedWritableWirelessLANRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        ssid:
+          type: string
+          minLength: 1
+          maxLength: 32
+        description:
+          type: string
+          maxLength: 200
+        group:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefWirelessLANGroupRequest'
+            nullable: true
+          nullable: true
+        status:
+          enum:
+          - active
+          - reserved
+          - disabled
+          - deprecated
+          type: string
+          description: '* `active` - Active
+
+            * `reserved` - Reserved
+
+            * `disabled` - Disabled
+
+            * `deprecated` - Deprecated'
+          x-spec-enum-id: e5549d7370ce2e6c
+        vlan:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefVLANRequest'
+            nullable: true
+          nullable: true
+        scope_type:
+          type: string
+          nullable: true
+        scope_id:
+          type: integer
+          nullable: true
+        tenant:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefTenantRequest'
+            nullable: true
+          nullable: true
+        auth_type:
+          enum:
+          - open
+          - wep
+          - wpa-personal
+          - wpa-enterprise
+          - ''
+          - null
+          type: string
+          description: '* `open` - Open
+
+            * `wep` - WEP
+
+            * `wpa-personal` - WPA Personal (PSK)
+
+            * `wpa-enterprise` - WPA Enterprise'
+          x-spec-enum-id: e917c12aac765910
+          nullable: true
+          title: Authentication type
+        auth_cipher:
+          enum:
+          - auto
+          - tkip
+          - aes
+          - ''
+          - null
+          type: string
+          description: '* `auto` - Auto
+
+            * `tkip` - TKIP
+
+            * `aes` - AES'
+          x-spec-enum-id: 42f867e89988bb0c
+          nullable: true
+          title: Authentication cipher
+        auth_psk:
+          type: string
+          title: Pre-shared key
+          maxLength: 64
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+            nullable: true
+          nullable: true
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+    BriefDeviceRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        name:
+          type: string
+          nullable: true
+          maxLength: 64
+        description:
+          type: string
+          maxLength: 200
+    BriefVLAN:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        vid:
+          type: integer
+          maximum: 4094
+          minimum: 1
+          title: VLAN ID
+          description: Numeric VLAN ID (1-4094)
+        name:
+          type: string
+          maxLength: 64
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - display
+      - id
+      - name
+      - url
+      - vid
+    WirelessLAN:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        ssid:
+          type: string
+          maxLength: 32
+        description:
+          type: string
+          maxLength: 200
+        group:
+          allOf:
+          - $ref: '#/components/schemas/BriefWirelessLANGroup'
+          nullable: true
+        status:
+          type: object
+          properties:
+            value:
+              enum:
+              - active
+              - reserved
+              - disabled
+              - deprecated
+              - ''
+              type: string
+              description: '* `active` - Active
+
+                * `reserved` - Reserved
+
+                * `disabled` - Disabled
+
+                * `deprecated` - Deprecated'
+              x-spec-enum-id: e5549d7370ce2e6c
+            label:
+              type: string
+              enum:
+              - Active
+              - Reserved
+              - Disabled
+              - Deprecated
+        vlan:
+          allOf:
+          - $ref: '#/components/schemas/BriefVLAN'
+          nullable: true
+        scope_type:
+          type: string
+          nullable: true
+        scope_id:
+          type: integer
+          nullable: true
+        scope:
+          readOnly: true
+          nullable: true
+        tenant:
+          allOf:
+          - $ref: '#/components/schemas/BriefTenant'
+          nullable: true
+        auth_type:
+          type: object
+          properties:
+            value:
+              enum:
+              - open
+              - wep
+              - wpa-personal
+              - wpa-enterprise
+              - ''
+              type: string
+              description: '* `open` - Open
+
+                * `wep` - WEP
+
+                * `wpa-personal` - WPA Personal (PSK)
+
+                * `wpa-enterprise` - WPA Enterprise'
+              x-spec-enum-id: e917c12aac765910
+            label:
+              type: string
+              enum:
+              - Open
+              - WEP
+              - WPA Personal (PSK)
+              - WPA Enterprise
+        auth_cipher:
+          type: object
+          properties:
+            value:
+              enum:
+              - auto
+              - tkip
+              - aes
+              - ''
+              type: string
+              description: '* `auto` - Auto
+
+                * `tkip` - TKIP
+
+                * `aes` - AES'
+              x-spec-enum-id: 42f867e89988bb0c
+            label:
+              type: string
+              enum:
+              - Auto
+              - TKIP
+              - AES
+        auth_psk:
+          type: string
+          title: Pre-shared key
+          maxLength: 64
+        owner:
+          allOf:
+          - $ref: '#/components/schemas/BriefOwner'
+          nullable: true
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTag'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+        last_updated:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+      required:
+      - created
+      - display
+      - display_url
+      - id
+      - last_updated
+      - scope
+      - ssid
+      - url
+    WritableWirelessLANGroupRequest:
+      type: object
+      description: Base serializer class for models inheriting from NestedGroupModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        parent:
+          type: integer
+          nullable: true
+        description:
+          type: string
+          maxLength: 200
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+            nullable: true
+          nullable: true
+        comments:
+          type: string
+      required:
+      - name
+      - slug
+    BriefInterfaceRequest:
+      type: object
+      description: Adds an `owner` field for models which have a ForeignKey to users.Owner.
+      properties:
+        device:
+          oneOf:
+          - type: integer
+          - $ref: '#/components/schemas/BriefDeviceRequest'
+        name:
+          type: string
+          minLength: 1
+          maxLength: 64
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - device
+      - name
+    BriefDevice:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          nullable: true
+          maxLength: 64
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - display
+      - id
+      - url
+    BriefVLANRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        vid:
+          type: integer
+          maximum: 4094
+          minimum: 1
+          title: VLAN ID
+          description: Numeric VLAN ID (1-4094)
+        name:
+          type: string
+          minLength: 1
+          maxLength: 64
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - name
+      - vid
+    WritableWirelessLinkRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        interface_a:
+          oneOf:
+          - type: integer
+          - $ref: '#/components/schemas/BriefInterfaceRequest'
+        interface_b:
+          oneOf:
+          - type: integer
+          - $ref: '#/components/schemas/BriefInterfaceRequest'
+        ssid:
+          type: string
+          maxLength: 32
+        status:
+          enum:
+          - connected
+          - planned
+          - decommissioning
+          type: string
+          description: '* `connected` - Connected
+
+            * `planned` - Planned
+
+            * `decommissioning` - Decommissioning'
+          x-spec-enum-id: 80d251a40f3a3144
+        tenant:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefTenantRequest'
+            nullable: true
+          nullable: true
+        auth_type:
+          enum:
+          - open
+          - wep
+          - wpa-personal
+          - wpa-enterprise
+          - ''
+          - null
+          type: string
+          description: '* `open` - Open
+
+            * `wep` - WEP
+
+            * `wpa-personal` - WPA Personal (PSK)
+
+            * `wpa-enterprise` - WPA Enterprise'
+          x-spec-enum-id: e917c12aac765910
+          nullable: true
+          title: Authentication type
+        auth_cipher:
+          enum:
+          - auto
+          - tkip
+          - aes
+          - ''
+          - null
+          type: string
+          description: '* `auto` - Auto
+
+            * `tkip` - TKIP
+
+            * `aes` - AES'
+          x-spec-enum-id: 42f867e89988bb0c
+          nullable: true
+          title: Authentication cipher
+        auth_psk:
+          type: string
+          title: Pre-shared key
+          maxLength: 64
+        distance:
+          type: number
+          format: double
+          maximum: 1000000
+          minimum: -1000000
+          exclusiveMaximum: true
+          exclusiveMinimum: true
+          nullable: true
+        distance_unit:
+          enum:
+          - km
+          - m
+          - mi
+          - ft
+          - ''
+          - null
+          type: string
+          description: '* `km` - Kilometers
+
+            * `m` - Meters
+
+            * `mi` - Miles
+
+            * `ft` - Feet'
+          x-spec-enum-id: b1169a409430c02e
+          nullable: true
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+            nullable: true
+          nullable: true
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+      required:
+      - interface_a
+      - interface_b
+    BriefCable:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        label:
+          type: string
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - display
+      - id
+      - url
+  securitySchemes:
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: '`Token <token>` (v1) or `Bearer <key>.<token>` (v2)'
