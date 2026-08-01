@@ -1,0 +1,38 @@
+{
+  "provider": "netbox",
+  "sources": [
+    "netbox-authentication-check-api-openapi.yml",
+    "netbox-circuits-api-openapi.yml",
+    "netbox-core-api-openapi.yml",
+    "netbox-dcim-api-openapi.yml",
+    "netbox-extras-api-openapi.yml",
+    "netbox-ipam-api-openapi.yml",
+    "netbox-schema-api-openapi.yml",
+    "netbox-status-api-openapi.yml",
+    "netbox-tenancy-api-openapi.yml",
+    "netbox-users-api-openapi.yml",
+    "netbox-virtualization-api-openapi.yml",
+    "netbox-vpn-api-openapi.yml",
+    "netbox-wireless-api-openapi.yml"
+  ],
+  "outputs": [
+    "netbox-authentication-check-api-openapi.yml",
+    "netbox-circuits-api-openapi.yml",
+    "netbox-core-api-openapi.yml",
+    "netbox-dcim-api-openapi.yml",
+    "netbox-extras-api-openapi.yml",
+    "netbox-ipam-api-openapi.yml",
+    "netbox-schema-api-openapi.yml",
+    "netbox-status-api-openapi.yml",
+    "netbox-tenancy-api-openapi.yml",
+    "netbox-users-api-openapi.yml",
+    "netbox-virtualization-api-openapi.yml",
+    "netbox-vpn-api-openapi.yml",
+    "netbox-wireless-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
