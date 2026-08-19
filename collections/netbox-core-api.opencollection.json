@@ -1,0 +1,2651 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NetBox REST authentication-check core API",
+    "version": "4.5.9 (4.5)"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "core",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "core_background_queues_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/core/background-queues/",
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Retrieve a list of RQ Queues.\nNote: Queue names are not URL safe, so not returning a detail view."
+        },
+        {
+          "info": {
+            "name": "core_background_queues_retrieve_by_name",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/core/background-queues/:name/",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Retrieve a list of RQ Queues.\nNote: Queue names are not URL safe, so not returning a detail view."
+        },
+        {
+          "info": {
+            "name": "core_background_tasks_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/core/background-tasks/",
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Retrieve a list of RQ Tasks."
+        },
+        {
+          "info": {
+            "name": "core_background_tasks_retrieve_by_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/core/background-tasks/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Retrieve a list of RQ Tasks."
+        },
+        {
+          "info": {
+            "name": "core_background_tasks_delete_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/core/background-tasks/:id/delete/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Retrieve a list of RQ Tasks."
+        },
+        {
+          "info": {
+            "name": "core_background_tasks_enqueue_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/core/background-tasks/:id/enqueue/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Retrieve a list of RQ Tasks."
+        },
+        {
+          "info": {
+            "name": "core_background_tasks_requeue_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/core/background-tasks/:id/requeue/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Retrieve a list of RQ Tasks."
+        },
+        {
+          "info": {
+            "name": "core_background_tasks_stop_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/core/background-tasks/:id/stop/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Retrieve a list of RQ Tasks."
+        },
+        {
+          "info": {
+            "name": "core_background_workers_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/core/background-workers/",
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Retrieve a list of RQ Workers."
+        },
+        {
+          "info": {
+            "name": "core_background_workers_retrieve_by_name",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/core/background-workers/:name/",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Retrieve a list of RQ Workers."
+        },
+        {
+          "info": {
+            "name": "core_data_files_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/core/data-files/",
+            "params": [
+              {
+                "name": "created",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created_by_request",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "hash",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "hash__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "hash__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "hash__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "hash__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "hash__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "hash__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "hash__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "hash__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "hash__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "hash__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "hash__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "hash__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "modified_by_request",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              },
+              {
+                "name": "ordering",
+                "value": "",
+                "type": "query",
+                "description": "Which field to use when ordering the results."
+              },
+              {
+                "name": "path",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "path__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "path__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "path__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "path__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "path__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "path__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "path__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "path__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "path__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "path__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "path__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "path__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "size__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "size__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "size__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "size__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "size__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "size__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "source",
+                "value": "",
+                "type": "query",
+                "description": "Data source (name)"
+              },
+              {
+                "name": "source__n",
+                "value": "",
+                "type": "query",
+                "description": "Data source (name)"
+              },
+              {
+                "name": "source_id",
+                "value": "",
+                "type": "query",
+                "description": "Data source (ID)"
+              },
+              {
+                "name": "source_id__n",
+                "value": "",
+                "type": "query",
+                "description": "Data source (ID)"
+              },
+              {
+                "name": "updated_by_request",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Get a list of data file objects."
+        },
+        {
+          "info": {
+            "name": "core_data_files_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/core/data-files/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this data file."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Get a data file object."
+        },
+        {
+          "info": {
+            "name": "core_data_sources_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/core/data-sources/",
+            "params": [
+              {
+                "name": "created",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created_by_request",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "enabled",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_synced",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_synced__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_synced__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_synced__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_synced__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_synced__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_synced__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "modified_by_request",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              },
+              {
+                "name": "ordering",
+                "value": "",
+                "type": "query",
+                "description": "Which field to use when ordering the results."
+              },
+              {
+                "name": "owner",
+                "value": "",
+                "type": "query",
+                "description": "Owner (name)"
+              },
+              {
+                "name": "owner__n",
+                "value": "",
+                "type": "query",
+                "description": "Owner (name)"
+              },
+              {
+                "name": "owner_group",
+                "value": "",
+                "type": "query",
+                "description": "Owner Group (name)"
+              },
+              {
+                "name": "owner_group__n",
+                "value": "",
+                "type": "query",
+                "description": "Owner Group (name)"
+              },
+              {
+                "name": "owner_group_id",
+                "value": "",
+                "type": "query",
+                "description": "Owner Group (ID)"
+              },
+              {
+                "name": "owner_group_id__n",
+                "value": "",
+                "type": "query",
+                "description": "Owner Group (ID)"
+              },
+              {
+                "name": "owner_id",
+                "value": "",
+                "type": "query",
+                "description": "Owner (ID)"
+              },
+              {
+                "name": "owner_id__n",
+                "value": "",
+                "type": "query",
+                "description": "Owner (ID)"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Search"
+              },
+              {
+                "name": "source_url",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "source_url__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "source_url__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "source_url__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "source_url__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "source_url__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "source_url__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "source_url__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "source_url__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "source_url__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "source_url__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "source_url__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "source_url__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sync_interval",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sync_interval__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sync_interval__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sync_interval__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sync_interval__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sync_interval__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sync_interval__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sync_interval__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sync_interval__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sync_interval__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sync_interval__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sync_interval__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tag",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tag__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tag_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tag_id__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "type__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "type__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "type__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "type__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "type__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "type__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "type__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "type__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "type__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "type__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "type__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "type__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "updated_by_request",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Get a list of data source objects."
+        },
+        {
+          "info": {
+            "name": "core_data_sources_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/core/data-sources/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Post a list of data source objects."
+        },
+        {
+          "info": {
+            "name": "core_data_sources_bulk_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/api/core/data-sources/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Put a list of data source objects."
+        },
+        {
+          "info": {
+            "name": "core_data_sources_bulk_partial_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "/api/core/data-sources/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Patch a list of data source objects."
+        },
+        {
+          "info": {
+            "name": "core_data_sources_bulk_destroy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/api/core/data-sources/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Delete a list of data source objects."
+        },
+        {
+          "info": {
+            "name": "core_data_sources_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/core/data-sources/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this data source."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Get a data source object."
+        },
+        {
+          "info": {
+            "name": "core_data_sources_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/api/core/data-sources/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this data source."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Put a data source object."
+        },
+        {
+          "info": {
+            "name": "core_data_sources_partial_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "/api/core/data-sources/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this data source."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Patch a data source object."
+        },
+        {
+          "info": {
+            "name": "core_data_sources_destroy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/api/core/data-sources/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this data source."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Delete a data source object."
+        },
+        {
+          "info": {
+            "name": "core_data_sources_sync_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/core/data-sources/:id/sync/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this data source."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Enqueue a job to synchronize the DataSource."
+        },
+        {
+          "info": {
+            "name": "core_jobs_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/core/jobs/",
+            "params": [
+              {
+                "name": "completed",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "completed__after",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "completed__before",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__after",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__before",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "interval",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "interval__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "interval__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "interval__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "interval__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "interval__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "interval__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "job_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "object_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "object_id__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "object_id__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "object_id__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "object_id__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "object_id__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "object_id__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "object_type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "object_type__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "object_type_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "object_type_id__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              },
+              {
+                "name": "ordering",
+                "value": "",
+                "type": "query",
+                "description": "Which field to use when ordering the results."
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Search"
+              },
+              {
+                "name": "queue_name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "queue_name__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "queue_name__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "queue_name__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "queue_name__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "queue_name__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "queue_name__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "queue_name__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "queue_name__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "queue_name__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "queue_name__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "queue_name__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "queue_name__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "scheduled",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "scheduled__after",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "scheduled__before",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "started",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "started__after",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "started__before",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "user",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "user__n",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Retrieve a list of job results"
+        },
+        {
+          "info": {
+            "name": "core_jobs_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/core/jobs/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this job."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Retrieve a list of job results"
+        },
+        {
+          "info": {
+            "name": "core_object_changes_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/core/object-changes/",
+            "params": [
+              {
+                "name": "action",
+                "value": "",
+                "type": "query",
+                "description": "* `create` - Created\n* `update` - Updated\n* `delete` - Deleted"
+              },
+              {
+                "name": "action__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "action__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "action__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "action__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "action__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "action__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "action__n",
+                "value": "",
+                "type": "query",
+                "description": "* `create` - Created\n* `update` - Updated\n* `delete` - Deleted"
+              },
+              {
+                "name": "action__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "action__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "action__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "action__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "action__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "changed_object_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "changed_object_id__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "changed_object_id__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "changed_object_id__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "changed_object_id__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "changed_object_id__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "changed_object_id__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "changed_object_type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "changed_object_type__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "changed_object_type_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "changed_object_type_id__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "object_repr",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "object_repr__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "object_repr__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "object_repr__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "object_repr__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "object_repr__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "object_repr__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "object_repr__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "object_repr__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "object_repr__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "object_repr__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "object_repr__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "object_repr__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              },
+              {
+                "name": "ordering",
+                "value": "",
+                "type": "query",
+                "description": "Which field to use when ordering the results."
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Search"
+              },
+              {
+                "name": "related_object_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "related_object_id__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "related_object_id__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "related_object_id__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "related_object_id__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "related_object_id__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "related_object_id__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "related_object_type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "related_object_type__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "request_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "time_after",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "time_before",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "user",
+                "value": "",
+                "type": "query",
+                "description": "User name"
+              },
+              {
+                "name": "user__n",
+                "value": "",
+                "type": "query",
+                "description": "User name"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query",
+                "description": "User (ID)"
+              },
+              {
+                "name": "user_id__n",
+                "value": "",
+                "type": "query",
+                "description": "User (ID)"
+              },
+              {
+                "name": "user_name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "user_name__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "user_name__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "user_name__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "user_name__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "user_name__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "user_name__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "user_name__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "user_name__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "user_name__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "user_name__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "user_name__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "user_name__regex",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Retrieve a list of recent changes."
+        },
+        {
+          "info": {
+            "name": "core_object_changes_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/core/object-changes/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this object change."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Retrieve a list of recent changes."
+        },
+        {
+          "info": {
+            "name": "core_object_types_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/core/object-types/",
+            "params": [
+              {
+                "name": "app_label",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "app_label__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "app_label__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "app_label__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "app_label__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "app_label__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "app_label__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "app_label__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "app_label__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "app_label__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "app_label__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "app_label__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "app_label__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "features",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "model",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "model__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "model__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "model__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "model__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "model__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "model__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "model__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "model__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "model__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "model__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "model__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "model__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              },
+              {
+                "name": "ordering",
+                "value": "",
+                "type": "query",
+                "description": "Which field to use when ordering the results."
+              },
+              {
+                "name": "public",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Search"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Read-only list of ObjectTypes."
+        },
+        {
+          "info": {
+            "name": "core_object_types_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/core/object-types/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this object type."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Read-only list of ObjectTypes."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

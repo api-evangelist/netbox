@@ -1,0 +1,5051 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NetBox REST authentication-check virtualization API",
+    "version": "4.5.9 (4.5)"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "virtualization",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "virtualization_cluster_groups_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/virtualization/cluster-groups/",
+            "params": [
+              {
+                "name": "contact",
+                "value": "",
+                "type": "query",
+                "description": "Contact"
+              },
+              {
+                "name": "contact__n",
+                "value": "",
+                "type": "query",
+                "description": "Contact"
+              },
+              {
+                "name": "contact_group",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "contact_group__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "contact_role",
+                "value": "",
+                "type": "query",
+                "description": "Contact Role"
+              },
+              {
+                "name": "contact_role__n",
+                "value": "",
+                "type": "query",
+                "description": "Contact Role"
+              },
+              {
+                "name": "created",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created_by_request",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "modified_by_request",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              },
+              {
+                "name": "ordering",
+                "value": "",
+                "type": "query",
+                "description": "Which field to use when ordering the results."
+              },
+              {
+                "name": "owner",
+                "value": "",
+                "type": "query",
+                "description": "Owner (name)"
+              },
+              {
+                "name": "owner__n",
+                "value": "",
+                "type": "query",
+                "description": "Owner (name)"
+              },
+              {
+                "name": "owner_group",
+                "value": "",
+                "type": "query",
+                "description": "Owner Group (name)"
+              },
+              {
+                "name": "owner_group__n",
+                "value": "",
+                "type": "query",
+                "description": "Owner Group (name)"
+              },
+              {
+                "name": "owner_group_id",
+                "value": "",
+                "type": "query",
+                "description": "Owner Group (ID)"
+              },
+              {
+                "name": "owner_group_id__n",
+                "value": "",
+                "type": "query",
+                "description": "Owner Group (ID)"
+              },
+              {
+                "name": "owner_id",
+                "value": "",
+                "type": "query",
+                "description": "Owner (ID)"
+              },
+              {
+                "name": "owner_id__n",
+                "value": "",
+                "type": "query",
+                "description": "Owner (ID)"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Search"
+              },
+              {
+                "name": "slug",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "slug__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "slug__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "slug__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "slug__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "slug__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "slug__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "slug__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "slug__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "slug__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "slug__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "slug__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "slug__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tag",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tag__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tag_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tag_id__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "updated_by_request",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Get a list of cluster group objects."
+        },
+        {
+          "info": {
+            "name": "virtualization_cluster_groups_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/virtualization/cluster-groups/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Post a list of cluster group objects."
+        },
+        {
+          "info": {
+            "name": "virtualization_cluster_groups_bulk_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/api/virtualization/cluster-groups/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Put a list of cluster group objects."
+        },
+        {
+          "info": {
+            "name": "virtualization_cluster_groups_bulk_partial_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "/api/virtualization/cluster-groups/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Patch a list of cluster group objects."
+        },
+        {
+          "info": {
+            "name": "virtualization_cluster_groups_bulk_destroy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/api/virtualization/cluster-groups/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Delete a list of cluster group objects."
+        },
+        {
+          "info": {
+            "name": "virtualization_cluster_groups_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/virtualization/cluster-groups/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this cluster group."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Get a cluster group object."
+        },
+        {
+          "info": {
+            "name": "virtualization_cluster_groups_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/api/virtualization/cluster-groups/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this cluster group."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Put a cluster group object."
+        },
+        {
+          "info": {
+            "name": "virtualization_cluster_groups_partial_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "/api/virtualization/cluster-groups/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this cluster group."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Patch a cluster group object."
+        },
+        {
+          "info": {
+            "name": "virtualization_cluster_groups_destroy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/api/virtualization/cluster-groups/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this cluster group."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Delete a cluster group object."
+        },
+        {
+          "info": {
+            "name": "virtualization_cluster_types_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/virtualization/cluster-types/",
+            "params": [
+              {
+                "name": "created",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created_by_request",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "modified_by_request",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              },
+              {
+                "name": "ordering",
+                "value": "",
+                "type": "query",
+                "description": "Which field to use when ordering the results."
+              },
+              {
+                "name": "owner",
+                "value": "",
+                "type": "query",
+                "description": "Owner (name)"
+              },
+              {
+                "name": "owner__n",
+                "value": "",
+                "type": "query",
+                "description": "Owner (name)"
+              },
+              {
+                "name": "owner_group",
+                "value": "",
+                "type": "query",
+                "description": "Owner Group (name)"
+              },
+              {
+                "name": "owner_group__n",
+                "value": "",
+                "type": "query",
+                "description": "Owner Group (name)"
+              },
+              {
+                "name": "owner_group_id",
+                "value": "",
+                "type": "query",
+                "description": "Owner Group (ID)"
+              },
+              {
+                "name": "owner_group_id__n",
+                "value": "",
+                "type": "query",
+                "description": "Owner Group (ID)"
+              },
+              {
+                "name": "owner_id",
+                "value": "",
+                "type": "query",
+                "description": "Owner (ID)"
+              },
+              {
+                "name": "owner_id__n",
+                "value": "",
+                "type": "query",
+                "description": "Owner (ID)"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Search"
+              },
+              {
+                "name": "slug",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "slug__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "slug__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "slug__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "slug__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "slug__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "slug__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "slug__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "slug__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "slug__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "slug__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "slug__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "slug__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tag",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tag__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tag_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tag_id__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "updated_by_request",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Get a list of cluster type objects."
+        },
+        {
+          "info": {
+            "name": "virtualization_cluster_types_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/virtualization/cluster-types/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Post a list of cluster type objects."
+        },
+        {
+          "info": {
+            "name": "virtualization_cluster_types_bulk_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/api/virtualization/cluster-types/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Put a list of cluster type objects."
+        },
+        {
+          "info": {
+            "name": "virtualization_cluster_types_bulk_partial_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "/api/virtualization/cluster-types/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Patch a list of cluster type objects."
+        },
+        {
+          "info": {
+            "name": "virtualization_cluster_types_bulk_destroy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/api/virtualization/cluster-types/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Delete a list of cluster type objects."
+        },
+        {
+          "info": {
+            "name": "virtualization_cluster_types_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/virtualization/cluster-types/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this cluster type."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Get a cluster type object."
+        },
+        {
+          "info": {
+            "name": "virtualization_cluster_types_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/api/virtualization/cluster-types/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this cluster type."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Put a cluster type object."
+        },
+        {
+          "info": {
+            "name": "virtualization_cluster_types_partial_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "/api/virtualization/cluster-types/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this cluster type."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Patch a cluster type object."
+        },
+        {
+          "info": {
+            "name": "virtualization_cluster_types_destroy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/api/virtualization/cluster-types/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this cluster type."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Delete a cluster type object."
+        },
+        {
+          "info": {
+            "name": "virtualization_clusters_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/virtualization/clusters/",
+            "params": [
+              {
+                "name": "contact",
+                "value": "",
+                "type": "query",
+                "description": "Contact"
+              },
+              {
+                "name": "contact__n",
+                "value": "",
+                "type": "query",
+                "description": "Contact"
+              },
+              {
+                "name": "contact_group",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "contact_group__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "contact_role",
+                "value": "",
+                "type": "query",
+                "description": "Contact Role"
+              },
+              {
+                "name": "contact_role__n",
+                "value": "",
+                "type": "query",
+                "description": "Contact Role"
+              },
+              {
+                "name": "created",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created_by_request",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "group",
+                "value": "",
+                "type": "query",
+                "description": "Parent group (slug)"
+              },
+              {
+                "name": "group__n",
+                "value": "",
+                "type": "query",
+                "description": "Parent group (slug)"
+              },
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "query",
+                "description": "Parent group (ID)"
+              },
+              {
+                "name": "group_id__n",
+                "value": "",
+                "type": "query",
+                "description": "Parent group (ID)"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "location",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "location__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "location_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "location_id__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "modified_by_request",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              },
+              {
+                "name": "ordering",
+                "value": "",
+                "type": "query",
+                "description": "Which field to use when ordering the results."
+              },
+              {
+                "name": "owner",
+                "value": "",
+                "type": "query",
+                "description": "Owner (name)"
+              },
+              {
+                "name": "owner__n",
+                "value": "",
+                "type": "query",
+                "description": "Owner (name)"
+              },
+              {
+                "name": "owner_group",
+                "value": "",
+                "type": "query",
+                "description": "Owner Group (name)"
+              },
+              {
+                "name": "owner_group__n",
+                "value": "",
+                "type": "query",
+                "description": "Owner Group (name)"
+              },
+              {
+                "name": "owner_group_id",
+                "value": "",
+                "type": "query",
+                "description": "Owner Group (ID)"
+              },
+              {
+                "name": "owner_group_id__n",
+                "value": "",
+                "type": "query",
+                "description": "Owner Group (ID)"
+              },
+              {
+                "name": "owner_id",
+                "value": "",
+                "type": "query",
+                "description": "Owner (ID)"
+              },
+              {
+                "name": "owner_id__n",
+                "value": "",
+                "type": "query",
+                "description": "Owner (ID)"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Search"
+              },
+              {
+                "name": "region",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "region__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "region_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "region_id__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "scope_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "scope_id__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "scope_id__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "scope_id__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "scope_id__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "scope_id__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "scope_id__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "scope_type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "scope_type__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "site",
+                "value": "",
+                "type": "query",
+                "description": "Site (slug)"
+              },
+              {
+                "name": "site__n",
+                "value": "",
+                "type": "query",
+                "description": "Site (slug)"
+              },
+              {
+                "name": "site_group",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "site_group__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "site_group_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "site_group_id__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "site_id",
+                "value": "",
+                "type": "query",
+                "description": "Site (ID)"
+              },
+              {
+                "name": "site_id__n",
+                "value": "",
+                "type": "query",
+                "description": "Site (ID)"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tag",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tag__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tag_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tag_id__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tenant",
+                "value": "",
+                "type": "query",
+                "description": "Tenant (slug)"
+              },
+              {
+                "name": "tenant__n",
+                "value": "",
+                "type": "query",
+                "description": "Tenant (slug)"
+              },
+              {
+                "name": "tenant_group",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tenant_group__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tenant_group_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tenant_group_id__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tenant_id",
+                "value": "",
+                "type": "query",
+                "description": "Tenant (ID)"
+              },
+              {
+                "name": "tenant_id__n",
+                "value": "",
+                "type": "query",
+                "description": "Tenant (ID)"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Cluster type (slug)"
+              },
+              {
+                "name": "type__n",
+                "value": "",
+                "type": "query",
+                "description": "Cluster type (slug)"
+              },
+              {
+                "name": "type_id",
+                "value": "",
+                "type": "query",
+                "description": "Cluster type (ID)"
+              },
+              {
+                "name": "type_id__n",
+                "value": "",
+                "type": "query",
+                "description": "Cluster type (ID)"
+              },
+              {
+                "name": "updated_by_request",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Get a list of cluster objects."
+        },
+        {
+          "info": {
+            "name": "virtualization_clusters_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/virtualization/clusters/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Post a list of cluster objects."
+        },
+        {
+          "info": {
+            "name": "virtualization_clusters_bulk_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/api/virtualization/clusters/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Put a list of cluster objects."
+        },
+        {
+          "info": {
+            "name": "virtualization_clusters_bulk_partial_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "/api/virtualization/clusters/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Patch a list of cluster objects."
+        },
+        {
+          "info": {
+            "name": "virtualization_clusters_bulk_destroy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/api/virtualization/clusters/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Delete a list of cluster objects."
+        },
+        {
+          "info": {
+            "name": "virtualization_clusters_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/virtualization/clusters/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this cluster."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Get a cluster object."
+        },
+        {
+          "info": {
+            "name": "virtualization_clusters_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/api/virtualization/clusters/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this cluster."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Put a cluster object."
+        },
+        {
+          "info": {
+            "name": "virtualization_clusters_partial_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "/api/virtualization/clusters/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this cluster."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Patch a cluster object."
+        },
+        {
+          "info": {
+            "name": "virtualization_clusters_destroy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/api/virtualization/clusters/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this cluster."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Delete a cluster object."
+        },
+        {
+          "info": {
+            "name": "virtualization_interfaces_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/virtualization/interfaces/",
+            "params": [
+              {
+                "name": "bridge_id",
+                "value": "",
+                "type": "query",
+                "description": "Bridged interface (ID)"
+              },
+              {
+                "name": "bridge_id__n",
+                "value": "",
+                "type": "query",
+                "description": "Bridged interface (ID)"
+              },
+              {
+                "name": "cluster",
+                "value": "",
+                "type": "query",
+                "description": "Cluster"
+              },
+              {
+                "name": "cluster__n",
+                "value": "",
+                "type": "query",
+                "description": "Cluster"
+              },
+              {
+                "name": "cluster_id",
+                "value": "",
+                "type": "query",
+                "description": "Cluster (ID)"
+              },
+              {
+                "name": "cluster_id__n",
+                "value": "",
+                "type": "query",
+                "description": "Cluster (ID)"
+              },
+              {
+                "name": "created",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created_by_request",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "enabled",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "l2vpn",
+                "value": "",
+                "type": "query",
+                "description": "L2VPN"
+              },
+              {
+                "name": "l2vpn__n",
+                "value": "",
+                "type": "query",
+                "description": "L2VPN"
+              },
+              {
+                "name": "l2vpn_id",
+                "value": "",
+                "type": "query",
+                "description": "L2VPN (ID)"
+              },
+              {
+                "name": "l2vpn_id__n",
+                "value": "",
+                "type": "query",
+                "description": "L2VPN (ID)"
+              },
+              {
+                "name": "last_updated",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "mac_address",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "mac_address__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "mac_address__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "mac_address__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "mac_address__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "mac_address__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "mac_address__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "mac_address__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "mac_address__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "mac_address__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "mac_address__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "mac_address__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "mode",
+                "value": "",
+                "type": "query",
+                "description": "802.1Q Mode"
+              },
+              {
+                "name": "mode__empty",
+                "value": "",
+                "type": "query",
+                "description": "802.1Q Mode"
+              },
+              {
+                "name": "mode__ic",
+                "value": "",
+                "type": "query",
+                "description": "802.1Q Mode"
+              },
+              {
+                "name": "mode__ie",
+                "value": "",
+                "type": "query",
+                "description": "802.1Q Mode"
+              },
+              {
+                "name": "mode__iew",
+                "value": "",
+                "type": "query",
+                "description": "802.1Q Mode"
+              },
+              {
+                "name": "mode__iregex",
+                "value": "",
+                "type": "query",
+                "description": "802.1Q Mode"
+              },
+              {
+                "name": "mode__isw",
+                "value": "",
+                "type": "query",
+                "description": "802.1Q Mode"
+              },
+              {
+                "name": "mode__n",
+                "value": "",
+                "type": "query",
+                "description": "802.1Q Mode"
+              },
+              {
+                "name": "mode__nic",
+                "value": "",
+                "type": "query",
+                "description": "802.1Q Mode"
+              },
+              {
+                "name": "mode__nie",
+                "value": "",
+                "type": "query",
+                "description": "802.1Q Mode"
+              },
+              {
+                "name": "mode__niew",
+                "value": "",
+                "type": "query",
+                "description": "802.1Q Mode"
+              },
+              {
+                "name": "mode__nisw",
+                "value": "",
+                "type": "query",
+                "description": "802.1Q Mode"
+              },
+              {
+                "name": "mode__regex",
+                "value": "",
+                "type": "query",
+                "description": "802.1Q Mode"
+              },
+              {
+                "name": "modified_by_request",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "mtu",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "mtu__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "mtu__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "mtu__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "mtu__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "mtu__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "mtu__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              },
+              {
+                "name": "ordering",
+                "value": "",
+                "type": "query",
+                "description": "Which field to use when ordering the results."
+              },
+              {
+                "name": "owner",
+                "value": "",
+                "type": "query",
+                "description": "Owner (name)"
+              },
+              {
+                "name": "owner__n",
+                "value": "",
+                "type": "query",
+                "description": "Owner (name)"
+              },
+              {
+                "name": "owner_group",
+                "value": "",
+                "type": "query",
+                "description": "Owner Group (name)"
+              },
+              {
+                "name": "owner_group__n",
+                "value": "",
+                "type": "query",
+                "description": "Owner Group (name)"
+              },
+              {
+                "name": "owner_group_id",
+                "value": "",
+                "type": "query",
+                "description": "Owner Group (ID)"
+              },
+              {
+                "name": "owner_group_id__n",
+                "value": "",
+                "type": "query",
+                "description": "Owner Group (ID)"
+              },
+              {
+                "name": "owner_id",
+                "value": "",
+                "type": "query",
+                "description": "Owner (ID)"
+              },
+              {
+                "name": "owner_id__n",
+                "value": "",
+                "type": "query",
+                "description": "Owner (ID)"
+              },
+              {
+                "name": "parent_id",
+                "value": "",
+                "type": "query",
+                "description": "Parent interface (ID)"
+              },
+              {
+                "name": "parent_id__n",
+                "value": "",
+                "type": "query",
+                "description": "Parent interface (ID)"
+              },
+              {
+                "name": "primary_mac_address",
+                "value": "",
+                "type": "query",
+                "description": "Primary MAC address"
+              },
+              {
+                "name": "primary_mac_address__n",
+                "value": "",
+                "type": "query",
+                "description": "Primary MAC address"
+              },
+              {
+                "name": "primary_mac_address_id",
+                "value": "",
+                "type": "query",
+                "description": "Primary MAC address (ID)"
+              },
+              {
+                "name": "primary_mac_address_id__n",
+                "value": "",
+                "type": "query",
+                "description": "Primary MAC address (ID)"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Search"
+              },
+              {
+                "name": "tag",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tag__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tag_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tag_id__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "updated_by_request",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "virtual_machine",
+                "value": "",
+                "type": "query",
+                "description": "Virtual machine"
+              },
+              {
+                "name": "virtual_machine__n",
+                "value": "",
+                "type": "query",
+                "description": "Virtual machine"
+              },
+              {
+                "name": "virtual_machine_id",
+                "value": "",
+                "type": "query",
+                "description": "Virtual machine (ID)"
+              },
+              {
+                "name": "virtual_machine_id__n",
+                "value": "",
+                "type": "query",
+                "description": "Virtual machine (ID)"
+              },
+              {
+                "name": "vlan",
+                "value": "",
+                "type": "query",
+                "description": "Assigned VID"
+              },
+              {
+                "name": "vlan_id",
+                "value": "",
+                "type": "query",
+                "description": "Assigned VLAN"
+              },
+              {
+                "name": "vlan_translation_policy",
+                "value": "",
+                "type": "query",
+                "description": "VLAN Translation Policy"
+              },
+              {
+                "name": "vlan_translation_policy__n",
+                "value": "",
+                "type": "query",
+                "description": "VLAN Translation Policy"
+              },
+              {
+                "name": "vlan_translation_policy_id",
+                "value": "",
+                "type": "query",
+                "description": "VLAN Translation Policy (ID)"
+              },
+              {
+                "name": "vlan_translation_policy_id__n",
+                "value": "",
+                "type": "query",
+                "description": "VLAN Translation Policy (ID)"
+              },
+              {
+                "name": "vrf",
+                "value": "",
+                "type": "query",
+                "description": "VRF (RD)"
+              },
+              {
+                "name": "vrf__n",
+                "value": "",
+                "type": "query",
+                "description": "VRF (RD)"
+              },
+              {
+                "name": "vrf_id",
+                "value": "",
+                "type": "query",
+                "description": "VRF"
+              },
+              {
+                "name": "vrf_id__n",
+                "value": "",
+                "type": "query",
+                "description": "VRF"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Get a list of interface objects."
+        },
+        {
+          "info": {
+            "name": "virtualization_interfaces_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/virtualization/interfaces/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Post a list of interface objects."
+        },
+        {
+          "info": {
+            "name": "virtualization_interfaces_bulk_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/api/virtualization/interfaces/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Put a list of interface objects."
+        },
+        {
+          "info": {
+            "name": "virtualization_interfaces_bulk_partial_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "/api/virtualization/interfaces/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Patch a list of interface objects."
+        },
+        {
+          "info": {
+            "name": "virtualization_interfaces_bulk_destroy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/api/virtualization/interfaces/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Delete a list of interface objects."
+        },
+        {
+          "info": {
+            "name": "virtualization_interfaces_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/virtualization/interfaces/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this interface."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Get a interface object."
+        },
+        {
+          "info": {
+            "name": "virtualization_interfaces_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/api/virtualization/interfaces/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this interface."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Put a interface object."
+        },
+        {
+          "info": {
+            "name": "virtualization_interfaces_partial_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "/api/virtualization/interfaces/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this interface."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Patch a interface object."
+        },
+        {
+          "info": {
+            "name": "virtualization_interfaces_destroy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/api/virtualization/interfaces/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this interface."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Delete a interface object."
+        },
+        {
+          "info": {
+            "name": "virtualization_virtual_disks_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/virtualization/virtual-disks/",
+            "params": [
+              {
+                "name": "created",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created_by_request",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "modified_by_request",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              },
+              {
+                "name": "ordering",
+                "value": "",
+                "type": "query",
+                "description": "Which field to use when ordering the results."
+              },
+              {
+                "name": "owner",
+                "value": "",
+                "type": "query",
+                "description": "Owner (name)"
+              },
+              {
+                "name": "owner__n",
+                "value": "",
+                "type": "query",
+                "description": "Owner (name)"
+              },
+              {
+                "name": "owner_group",
+                "value": "",
+                "type": "query",
+                "description": "Owner Group (name)"
+              },
+              {
+                "name": "owner_group__n",
+                "value": "",
+                "type": "query",
+                "description": "Owner Group (name)"
+              },
+              {
+                "name": "owner_group_id",
+                "value": "",
+                "type": "query",
+                "description": "Owner Group (ID)"
+              },
+              {
+                "name": "owner_group_id__n",
+                "value": "",
+                "type": "query",
+                "description": "Owner Group (ID)"
+              },
+              {
+                "name": "owner_id",
+                "value": "",
+                "type": "query",
+                "description": "Owner (ID)"
+              },
+              {
+                "name": "owner_id__n",
+                "value": "",
+                "type": "query",
+                "description": "Owner (ID)"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Search"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "size__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "size__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "size__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "size__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "size__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "size__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tag",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tag__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tag_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tag_id__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "updated_by_request",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "virtual_machine",
+                "value": "",
+                "type": "query",
+                "description": "Virtual machine"
+              },
+              {
+                "name": "virtual_machine__n",
+                "value": "",
+                "type": "query",
+                "description": "Virtual machine"
+              },
+              {
+                "name": "virtual_machine_id",
+                "value": "",
+                "type": "query",
+                "description": "Virtual machine (ID)"
+              },
+              {
+                "name": "virtual_machine_id__n",
+                "value": "",
+                "type": "query",
+                "description": "Virtual machine (ID)"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Get a list of virtual disk objects."
+        },
+        {
+          "info": {
+            "name": "virtualization_virtual_disks_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/virtualization/virtual-disks/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Post a list of virtual disk objects."
+        },
+        {
+          "info": {
+            "name": "virtualization_virtual_disks_bulk_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/api/virtualization/virtual-disks/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Put a list of virtual disk objects."
+        },
+        {
+          "info": {
+            "name": "virtualization_virtual_disks_bulk_partial_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "/api/virtualization/virtual-disks/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Patch a list of virtual disk objects."
+        },
+        {
+          "info": {
+            "name": "virtualization_virtual_disks_bulk_destroy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/api/virtualization/virtual-disks/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Delete a list of virtual disk objects."
+        },
+        {
+          "info": {
+            "name": "virtualization_virtual_disks_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/virtualization/virtual-disks/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this virtual disk."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Get a virtual disk object."
+        },
+        {
+          "info": {
+            "name": "virtualization_virtual_disks_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/api/virtualization/virtual-disks/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this virtual disk."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Put a virtual disk object."
+        },
+        {
+          "info": {
+            "name": "virtualization_virtual_disks_partial_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "/api/virtualization/virtual-disks/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this virtual disk."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Patch a virtual disk object."
+        },
+        {
+          "info": {
+            "name": "virtualization_virtual_disks_destroy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/api/virtualization/virtual-disks/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this virtual disk."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Delete a virtual disk object."
+        },
+        {
+          "info": {
+            "name": "virtualization_virtual_machines_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/virtualization/virtual-machines/",
+            "params": [
+              {
+                "name": "cluster",
+                "value": "",
+                "type": "query",
+                "description": "Cluster"
+              },
+              {
+                "name": "cluster__n",
+                "value": "",
+                "type": "query",
+                "description": "Cluster"
+              },
+              {
+                "name": "cluster_group",
+                "value": "",
+                "type": "query",
+                "description": "Cluster group (slug)"
+              },
+              {
+                "name": "cluster_group__n",
+                "value": "",
+                "type": "query",
+                "description": "Cluster group (slug)"
+              },
+              {
+                "name": "cluster_group_id",
+                "value": "",
+                "type": "query",
+                "description": "Cluster group (ID)"
+              },
+              {
+                "name": "cluster_group_id__n",
+                "value": "",
+                "type": "query",
+                "description": "Cluster group (ID)"
+              },
+              {
+                "name": "cluster_id",
+                "value": "",
+                "type": "query",
+                "description": "Cluster (ID)"
+              },
+              {
+                "name": "cluster_id__n",
+                "value": "",
+                "type": "query",
+                "description": "Cluster (ID)"
+              },
+              {
+                "name": "cluster_type",
+                "value": "",
+                "type": "query",
+                "description": "Cluster type (slug)"
+              },
+              {
+                "name": "cluster_type__n",
+                "value": "",
+                "type": "query",
+                "description": "Cluster type (slug)"
+              },
+              {
+                "name": "cluster_type_id",
+                "value": "",
+                "type": "query",
+                "description": "Cluster type (ID)"
+              },
+              {
+                "name": "cluster_type_id__n",
+                "value": "",
+                "type": "query",
+                "description": "Cluster type (ID)"
+              },
+              {
+                "name": "config_template_id",
+                "value": "",
+                "type": "query",
+                "description": "Config template (ID)"
+              },
+              {
+                "name": "config_template_id__n",
+                "value": "",
+                "type": "query",
+                "description": "Config template (ID)"
+              },
+              {
+                "name": "contact",
+                "value": "",
+                "type": "query",
+                "description": "Contact"
+              },
+              {
+                "name": "contact__n",
+                "value": "",
+                "type": "query",
+                "description": "Contact"
+              },
+              {
+                "name": "contact_group",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "contact_group__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "contact_role",
+                "value": "",
+                "type": "query",
+                "description": "Contact Role"
+              },
+              {
+                "name": "contact_role__n",
+                "value": "",
+                "type": "query",
+                "description": "Contact Role"
+              },
+              {
+                "name": "created",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created_by_request",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "device",
+                "value": "",
+                "type": "query",
+                "description": "Device"
+              },
+              {
+                "name": "device__n",
+                "value": "",
+                "type": "query",
+                "description": "Device"
+              },
+              {
+                "name": "device_id",
+                "value": "",
+                "type": "query",
+                "description": "Device (ID)"
+              },
+              {
+                "name": "device_id__n",
+                "value": "",
+                "type": "query",
+                "description": "Device (ID)"
+              },
+              {
+                "name": "disk",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "disk__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "disk__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "disk__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "disk__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "disk__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "disk__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "has_primary_ip",
+                "value": "",
+                "type": "query",
+                "description": "Has a primary IP"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "interface_count",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "interface_count__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "interface_count__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "interface_count__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "interface_count__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "interface_count__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "interface_count__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "local_context_data",
+                "value": "",
+                "type": "query",
+                "description": "Has local config context data"
+              },
+              {
+                "name": "mac_address",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "mac_address__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "mac_address__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "mac_address__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "mac_address__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "mac_address__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "mac_address__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "mac_address__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "mac_address__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "mac_address__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "mac_address__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "mac_address__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "memory",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "memory__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "memory__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "memory__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "memory__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "memory__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "memory__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "modified_by_request",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              },
+              {
+                "name": "ordering",
+                "value": "",
+                "type": "query",
+                "description": "Which field to use when ordering the results."
+              },
+              {
+                "name": "owner",
+                "value": "",
+                "type": "query",
+                "description": "Owner (name)"
+              },
+              {
+                "name": "owner__n",
+                "value": "",
+                "type": "query",
+                "description": "Owner (name)"
+              },
+              {
+                "name": "owner_group",
+                "value": "",
+                "type": "query",
+                "description": "Owner Group (name)"
+              },
+              {
+                "name": "owner_group__n",
+                "value": "",
+                "type": "query",
+                "description": "Owner Group (name)"
+              },
+              {
+                "name": "owner_group_id",
+                "value": "",
+                "type": "query",
+                "description": "Owner Group (ID)"
+              },
+              {
+                "name": "owner_group_id__n",
+                "value": "",
+                "type": "query",
+                "description": "Owner Group (ID)"
+              },
+              {
+                "name": "owner_id",
+                "value": "",
+                "type": "query",
+                "description": "Owner (ID)"
+              },
+              {
+                "name": "owner_id__n",
+                "value": "",
+                "type": "query",
+                "description": "Owner (ID)"
+              },
+              {
+                "name": "platform",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "platform__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "platform_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "platform_id__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "primary_ip4",
+                "value": "",
+                "type": "query",
+                "description": "Primary IPv4 (address)"
+              },
+              {
+                "name": "primary_ip4__n",
+                "value": "",
+                "type": "query",
+                "description": "Primary IPv4 (address)"
+              },
+              {
+                "name": "primary_ip4_id",
+                "value": "",
+                "type": "query",
+                "description": "Primary IPv4 (ID)"
+              },
+              {
+                "name": "primary_ip4_id__n",
+                "value": "",
+                "type": "query",
+                "description": "Primary IPv4 (ID)"
+              },
+              {
+                "name": "primary_ip6",
+                "value": "",
+                "type": "query",
+                "description": "Primary IPv6 (address)"
+              },
+              {
+                "name": "primary_ip6__n",
+                "value": "",
+                "type": "query",
+                "description": "Primary IPv6 (address)"
+              },
+              {
+                "name": "primary_ip6_id",
+                "value": "",
+                "type": "query",
+                "description": "Primary IPv6 (ID)"
+              },
+              {
+                "name": "primary_ip6_id__n",
+                "value": "",
+                "type": "query",
+                "description": "Primary IPv6 (ID)"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Search"
+              },
+              {
+                "name": "region",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "region__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "region_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "region_id__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "role",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "role__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "role_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "role_id__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "serial",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "serial__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "serial__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "serial__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "serial__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "serial__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "serial__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "serial__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "serial__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "serial__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "serial__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "serial__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "serial__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "site",
+                "value": "",
+                "type": "query",
+                "description": "Site (slug)"
+              },
+              {
+                "name": "site__n",
+                "value": "",
+                "type": "query",
+                "description": "Site (slug)"
+              },
+              {
+                "name": "site_group",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "site_group__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "site_group_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "site_group_id__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "site_id",
+                "value": "",
+                "type": "query",
+                "description": "Site (ID)"
+              },
+              {
+                "name": "site_id__n",
+                "value": "",
+                "type": "query",
+                "description": "Site (ID)"
+              },
+              {
+                "name": "start_on_boot",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "start_on_boot__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "start_on_boot__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "start_on_boot__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "start_on_boot__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "start_on_boot__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "start_on_boot__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "start_on_boot__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "start_on_boot__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "start_on_boot__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "start_on_boot__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "start_on_boot__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "start_on_boot__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tag",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tag__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tag_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tag_id__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tenant",
+                "value": "",
+                "type": "query",
+                "description": "Tenant (slug)"
+              },
+              {
+                "name": "tenant__n",
+                "value": "",
+                "type": "query",
+                "description": "Tenant (slug)"
+              },
+              {
+                "name": "tenant_group",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tenant_group__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tenant_group_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tenant_group_id__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tenant_id",
+                "value": "",
+                "type": "query",
+                "description": "Tenant (ID)"
+              },
+              {
+                "name": "tenant_id__n",
+                "value": "",
+                "type": "query",
+                "description": "Tenant (ID)"
+              },
+              {
+                "name": "updated_by_request",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "vcpus",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "vcpus__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "vcpus__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "vcpus__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "vcpus__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "vcpus__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "vcpus__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "virtual_disk_count",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "virtual_disk_count__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "virtual_disk_count__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "virtual_disk_count__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "virtual_disk_count__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "virtual_disk_count__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "virtual_disk_count__n",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Get a list of virtual machine objects."
+        },
+        {
+          "info": {
+            "name": "virtualization_virtual_machines_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/virtualization/virtual-machines/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Post a list of virtual machine objects."
+        },
+        {
+          "info": {
+            "name": "virtualization_virtual_machines_bulk_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/api/virtualization/virtual-machines/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Put a list of virtual machine objects."
+        },
+        {
+          "info": {
+            "name": "virtualization_virtual_machines_bulk_partial_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "/api/virtualization/virtual-machines/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Patch a list of virtual machine objects."
+        },
+        {
+          "info": {
+            "name": "virtualization_virtual_machines_bulk_destroy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/api/virtualization/virtual-machines/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Delete a list of virtual machine objects."
+        },
+        {
+          "info": {
+            "name": "virtualization_virtual_machines_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/virtualization/virtual-machines/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this virtual machine."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Get a virtual machine object."
+        },
+        {
+          "info": {
+            "name": "virtualization_virtual_machines_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/api/virtualization/virtual-machines/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this virtual machine."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Put a virtual machine object."
+        },
+        {
+          "info": {
+            "name": "virtualization_virtual_machines_partial_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "/api/virtualization/virtual-machines/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this virtual machine."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Patch a virtual machine object."
+        },
+        {
+          "info": {
+            "name": "virtualization_virtual_machines_destroy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/api/virtualization/virtual-machines/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this virtual machine."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Delete a virtual machine object."
+        },
+        {
+          "info": {
+            "name": "virtualization_virtual_machines_render_config_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/virtualization/virtual-machines/:id/render-config/",
+            "params": [
+              {
+                "name": "format",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this virtual machine."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Resolve and render the preferred ConfigTemplate for this Device or Virtual Machine."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

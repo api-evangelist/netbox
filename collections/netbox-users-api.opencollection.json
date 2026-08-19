@@ -1,0 +1,3199 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NetBox REST authentication-check users API",
+    "version": "4.5.9 (4.5)"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "users_config_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/users/config/",
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "An API endpoint via which a user can update his or her own UserConfig data (but no one else's)."
+        },
+        {
+          "info": {
+            "name": "users_groups_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/users/groups/",
+            "params": [
+              {
+                "name": "description",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "notification_group_id",
+                "value": "",
+                "type": "query",
+                "description": "Notification group (ID)"
+              },
+              {
+                "name": "notification_group_id__n",
+                "value": "",
+                "type": "query",
+                "description": "Notification group (ID)"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              },
+              {
+                "name": "ordering",
+                "value": "",
+                "type": "query",
+                "description": "Which field to use when ordering the results."
+              },
+              {
+                "name": "owner",
+                "value": "",
+                "type": "query",
+                "description": "Owner (name)"
+              },
+              {
+                "name": "owner__n",
+                "value": "",
+                "type": "query",
+                "description": "Owner (name)"
+              },
+              {
+                "name": "owner_id",
+                "value": "",
+                "type": "query",
+                "description": "Owner (ID)"
+              },
+              {
+                "name": "owner_id__n",
+                "value": "",
+                "type": "query",
+                "description": "Owner (ID)"
+              },
+              {
+                "name": "permission_id",
+                "value": "",
+                "type": "query",
+                "description": "Permission (ID)"
+              },
+              {
+                "name": "permission_id__n",
+                "value": "",
+                "type": "query",
+                "description": "Permission (ID)"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Search"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query",
+                "description": "User (ID)"
+              },
+              {
+                "name": "user_id__n",
+                "value": "",
+                "type": "query",
+                "description": "User (ID)"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Get a list of group objects."
+        },
+        {
+          "info": {
+            "name": "users_groups_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/users/groups/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Post a list of group objects."
+        },
+        {
+          "info": {
+            "name": "users_groups_bulk_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/api/users/groups/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Put a list of group objects."
+        },
+        {
+          "info": {
+            "name": "users_groups_bulk_partial_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "/api/users/groups/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Patch a list of group objects."
+        },
+        {
+          "info": {
+            "name": "users_groups_bulk_destroy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/api/users/groups/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Delete a list of group objects."
+        },
+        {
+          "info": {
+            "name": "users_groups_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/users/groups/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this group."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Get a group object."
+        },
+        {
+          "info": {
+            "name": "users_groups_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/api/users/groups/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this group."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Put a group object."
+        },
+        {
+          "info": {
+            "name": "users_groups_partial_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "/api/users/groups/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this group."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Patch a group object."
+        },
+        {
+          "info": {
+            "name": "users_groups_destroy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/api/users/groups/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this group."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Delete a group object."
+        },
+        {
+          "info": {
+            "name": "users_owner_groups_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/users/owner-groups/",
+            "params": [
+              {
+                "name": "description",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              },
+              {
+                "name": "ordering",
+                "value": "",
+                "type": "query",
+                "description": "Which field to use when ordering the results."
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Search"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Get a list of owner group objects."
+        },
+        {
+          "info": {
+            "name": "users_owner_groups_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/users/owner-groups/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Post a list of owner group objects."
+        },
+        {
+          "info": {
+            "name": "users_owner_groups_bulk_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/api/users/owner-groups/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Put a list of owner group objects."
+        },
+        {
+          "info": {
+            "name": "users_owner_groups_bulk_partial_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "/api/users/owner-groups/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Patch a list of owner group objects."
+        },
+        {
+          "info": {
+            "name": "users_owner_groups_bulk_destroy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/api/users/owner-groups/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Delete a list of owner group objects."
+        },
+        {
+          "info": {
+            "name": "users_owner_groups_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/users/owner-groups/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this owner group."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Get a owner group object."
+        },
+        {
+          "info": {
+            "name": "users_owner_groups_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/api/users/owner-groups/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this owner group."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Put a owner group object."
+        },
+        {
+          "info": {
+            "name": "users_owner_groups_partial_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "/api/users/owner-groups/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this owner group."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Patch a owner group object."
+        },
+        {
+          "info": {
+            "name": "users_owner_groups_destroy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/api/users/owner-groups/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this owner group."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Delete a owner group object."
+        },
+        {
+          "info": {
+            "name": "users_owners_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/users/owners/",
+            "params": [
+              {
+                "name": "description",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "group",
+                "value": "",
+                "type": "query",
+                "description": "Group (name)"
+              },
+              {
+                "name": "group__n",
+                "value": "",
+                "type": "query",
+                "description": "Group (name)"
+              },
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "query",
+                "description": "Group (ID)"
+              },
+              {
+                "name": "group_id__n",
+                "value": "",
+                "type": "query",
+                "description": "Group (ID)"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              },
+              {
+                "name": "ordering",
+                "value": "",
+                "type": "query",
+                "description": "Which field to use when ordering the results."
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Search"
+              },
+              {
+                "name": "user",
+                "value": "",
+                "type": "query",
+                "description": "User (username)"
+              },
+              {
+                "name": "user__n",
+                "value": "",
+                "type": "query",
+                "description": "User (username)"
+              },
+              {
+                "name": "user_group",
+                "value": "",
+                "type": "query",
+                "description": "User group (name)"
+              },
+              {
+                "name": "user_group__n",
+                "value": "",
+                "type": "query",
+                "description": "User group (name)"
+              },
+              {
+                "name": "user_group_id",
+                "value": "",
+                "type": "query",
+                "description": "User group (ID)"
+              },
+              {
+                "name": "user_group_id__n",
+                "value": "",
+                "type": "query",
+                "description": "User group (ID)"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query",
+                "description": "User (ID)"
+              },
+              {
+                "name": "user_id__n",
+                "value": "",
+                "type": "query",
+                "description": "User (ID)"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Get a list of owner objects."
+        },
+        {
+          "info": {
+            "name": "users_owners_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/users/owners/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Post a list of owner objects."
+        },
+        {
+          "info": {
+            "name": "users_owners_bulk_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/api/users/owners/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Put a list of owner objects."
+        },
+        {
+          "info": {
+            "name": "users_owners_bulk_partial_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "/api/users/owners/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Patch a list of owner objects."
+        },
+        {
+          "info": {
+            "name": "users_owners_bulk_destroy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/api/users/owners/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Delete a list of owner objects."
+        },
+        {
+          "info": {
+            "name": "users_owners_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/users/owners/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this owner."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Get a owner object."
+        },
+        {
+          "info": {
+            "name": "users_owners_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/api/users/owners/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this owner."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Put a owner object."
+        },
+        {
+          "info": {
+            "name": "users_owners_partial_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "/api/users/owners/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this owner."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Patch a owner object."
+        },
+        {
+          "info": {
+            "name": "users_owners_destroy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/api/users/owners/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this owner."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Delete a owner object."
+        },
+        {
+          "info": {
+            "name": "users_permissions_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/users/permissions/",
+            "params": [
+              {
+                "name": "can_add",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "can_change",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "can_delete",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "can_view",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "enabled",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "group",
+                "value": "",
+                "type": "query",
+                "description": "Group (name)"
+              },
+              {
+                "name": "group__n",
+                "value": "",
+                "type": "query",
+                "description": "Group (name)"
+              },
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "query",
+                "description": "Group"
+              },
+              {
+                "name": "group_id__n",
+                "value": "",
+                "type": "query",
+                "description": "Group"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "object_type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "object_type__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "object_type__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "object_type__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "object_type__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "object_type__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "object_type__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "object_type__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "object_type__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "object_type__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "object_type__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "object_type__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "object_type_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "object_type_id__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "object_types",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "object_types__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              },
+              {
+                "name": "ordering",
+                "value": "",
+                "type": "query",
+                "description": "Which field to use when ordering the results."
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Search"
+              },
+              {
+                "name": "user",
+                "value": "",
+                "type": "query",
+                "description": "User (name)"
+              },
+              {
+                "name": "user__n",
+                "value": "",
+                "type": "query",
+                "description": "User (name)"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query",
+                "description": "User"
+              },
+              {
+                "name": "user_id__n",
+                "value": "",
+                "type": "query",
+                "description": "User"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Get a list of permission objects."
+        },
+        {
+          "info": {
+            "name": "users_permissions_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/users/permissions/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Post a list of permission objects."
+        },
+        {
+          "info": {
+            "name": "users_permissions_bulk_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/api/users/permissions/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Put a list of permission objects."
+        },
+        {
+          "info": {
+            "name": "users_permissions_bulk_partial_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "/api/users/permissions/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Patch a list of permission objects."
+        },
+        {
+          "info": {
+            "name": "users_permissions_bulk_destroy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/api/users/permissions/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Delete a list of permission objects."
+        },
+        {
+          "info": {
+            "name": "users_permissions_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/users/permissions/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this permission."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Get a permission object."
+        },
+        {
+          "info": {
+            "name": "users_permissions_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/api/users/permissions/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this permission."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Put a permission object."
+        },
+        {
+          "info": {
+            "name": "users_permissions_partial_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "/api/users/permissions/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this permission."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Patch a permission object."
+        },
+        {
+          "info": {
+            "name": "users_permissions_destroy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/api/users/permissions/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this permission."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Delete a permission object."
+        },
+        {
+          "info": {
+            "name": "users_tokens_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/users/tokens/",
+            "params": [
+              {
+                "name": "created",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "enabled",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "expires",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "expires__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "expires__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "key__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "key__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "key__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "key__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "key__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "key__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "key__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "key__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "key__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "key__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "key__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "key__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_used",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_used__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_used__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              },
+              {
+                "name": "ordering",
+                "value": "",
+                "type": "query",
+                "description": "Which field to use when ordering the results."
+              },
+              {
+                "name": "pepper_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pepper_id__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pepper_id__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pepper_id__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pepper_id__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pepper_id__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pepper_id__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Search"
+              },
+              {
+                "name": "user",
+                "value": "",
+                "type": "query",
+                "description": "User (name)"
+              },
+              {
+                "name": "user__n",
+                "value": "",
+                "type": "query",
+                "description": "User (name)"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query",
+                "description": "User"
+              },
+              {
+                "name": "user_id__n",
+                "value": "",
+                "type": "query",
+                "description": "User"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "query",
+                "description": "* `1` - v1\n* `2` - v2"
+              },
+              {
+                "name": "version__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "version__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "version__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "version__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "version__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "version__n",
+                "value": "",
+                "type": "query",
+                "description": "* `1` - v1\n* `2` - v2"
+              },
+              {
+                "name": "version__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "version__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "version__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "version__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "version__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "write_enabled",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Get a list of token objects."
+        },
+        {
+          "info": {
+            "name": "users_tokens_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/users/tokens/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Post a list of token objects."
+        },
+        {
+          "info": {
+            "name": "users_tokens_bulk_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/api/users/tokens/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Put a list of token objects."
+        },
+        {
+          "info": {
+            "name": "users_tokens_bulk_partial_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "/api/users/tokens/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Patch a list of token objects."
+        },
+        {
+          "info": {
+            "name": "users_tokens_bulk_destroy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/api/users/tokens/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Delete a list of token objects."
+        },
+        {
+          "info": {
+            "name": "users_tokens_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/users/tokens/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this token."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Get a token object."
+        },
+        {
+          "info": {
+            "name": "users_tokens_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/api/users/tokens/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this token."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Put a token object."
+        },
+        {
+          "info": {
+            "name": "users_tokens_partial_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "/api/users/tokens/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this token."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Patch a token object."
+        },
+        {
+          "info": {
+            "name": "users_tokens_destroy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/api/users/tokens/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this token."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Delete a token object."
+        },
+        {
+          "info": {
+            "name": "users_tokens_provision_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/users/tokens/provision/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Non-authenticated REST API endpoint via which a user may create a Token."
+        },
+        {
+          "info": {
+            "name": "users_users_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/users/users/",
+            "params": [
+              {
+                "name": "date_joined",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date_joined__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date_joined__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date_joined__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date_joined__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date_joined__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date_joined__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "email",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "email__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "email__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "email__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "email__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "email__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "email__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "email__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "email__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "email__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "email__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "email__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "email__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "first_name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "first_name__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "first_name__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "first_name__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "first_name__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "first_name__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "first_name__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "first_name__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "first_name__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "first_name__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "first_name__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "first_name__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "first_name__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "group",
+                "value": "",
+                "type": "query",
+                "description": "Group (name)"
+              },
+              {
+                "name": "group__n",
+                "value": "",
+                "type": "query",
+                "description": "Group (name)"
+              },
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "query",
+                "description": "Group"
+              },
+              {
+                "name": "group_id__n",
+                "value": "",
+                "type": "query",
+                "description": "Group"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "is_active",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "is_superuser",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_login",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_login__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_login__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_login__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_login__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_login__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_login__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_name__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_name__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_name__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_name__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_name__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_name__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_name__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_name__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_name__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_name__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_name__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_name__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "notification_group_id",
+                "value": "",
+                "type": "query",
+                "description": "Notification group (ID)"
+              },
+              {
+                "name": "notification_group_id__n",
+                "value": "",
+                "type": "query",
+                "description": "Notification group (ID)"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              },
+              {
+                "name": "ordering",
+                "value": "",
+                "type": "query",
+                "description": "Which field to use when ordering the results."
+              },
+              {
+                "name": "owner",
+                "value": "",
+                "type": "query",
+                "description": "Owner (name)"
+              },
+              {
+                "name": "owner__n",
+                "value": "",
+                "type": "query",
+                "description": "Owner (name)"
+              },
+              {
+                "name": "owner_id",
+                "value": "",
+                "type": "query",
+                "description": "Owner (ID)"
+              },
+              {
+                "name": "owner_id__n",
+                "value": "",
+                "type": "query",
+                "description": "Owner (ID)"
+              },
+              {
+                "name": "permission_id",
+                "value": "",
+                "type": "query",
+                "description": "Permission (ID)"
+              },
+              {
+                "name": "permission_id__n",
+                "value": "",
+                "type": "query",
+                "description": "Permission (ID)"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Search"
+              },
+              {
+                "name": "username",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "username__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "username__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "username__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "username__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "username__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "username__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "username__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "username__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "username__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "username__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "username__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "username__regex",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Get a list of user objects."
+        },
+        {
+          "info": {
+            "name": "users_users_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/users/users/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Post a list of user objects."
+        },
+        {
+          "info": {
+            "name": "users_users_bulk_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/api/users/users/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Put a list of user objects."
+        },
+        {
+          "info": {
+            "name": "users_users_bulk_partial_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "/api/users/users/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Patch a list of user objects."
+        },
+        {
+          "info": {
+            "name": "users_users_bulk_destroy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/api/users/users/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Delete a list of user objects."
+        },
+        {
+          "info": {
+            "name": "users_users_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/users/users/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this user."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Get a user object."
+        },
+        {
+          "info": {
+            "name": "users_users_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/api/users/users/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this user."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Put a user object."
+        },
+        {
+          "info": {
+            "name": "users_users_partial_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "/api/users/users/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this user."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Patch a user object."
+        },
+        {
+          "info": {
+            "name": "users_users_destroy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/api/users/users/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this user."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Delete a user object."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

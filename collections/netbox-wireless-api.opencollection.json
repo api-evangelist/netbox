@@ -1,0 +1,2681 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NetBox REST authentication-check wireless API",
+    "version": "4.5.9 (4.5)"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "wireless",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "wireless_wireless_lan_groups_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/wireless/wireless-lan-groups/",
+            "params": [
+              {
+                "name": "ancestor",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ancestor__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ancestor_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ancestor_id__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created_by_request",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "modified_by_request",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              },
+              {
+                "name": "ordering",
+                "value": "",
+                "type": "query",
+                "description": "Which field to use when ordering the results."
+              },
+              {
+                "name": "owner",
+                "value": "",
+                "type": "query",
+                "description": "Owner (name)"
+              },
+              {
+                "name": "owner__n",
+                "value": "",
+                "type": "query",
+                "description": "Owner (name)"
+              },
+              {
+                "name": "owner_group",
+                "value": "",
+                "type": "query",
+                "description": "Owner Group (name)"
+              },
+              {
+                "name": "owner_group__n",
+                "value": "",
+                "type": "query",
+                "description": "Owner Group (name)"
+              },
+              {
+                "name": "owner_group_id",
+                "value": "",
+                "type": "query",
+                "description": "Owner Group (ID)"
+              },
+              {
+                "name": "owner_group_id__n",
+                "value": "",
+                "type": "query",
+                "description": "Owner Group (ID)"
+              },
+              {
+                "name": "owner_id",
+                "value": "",
+                "type": "query",
+                "description": "Owner (ID)"
+              },
+              {
+                "name": "owner_id__n",
+                "value": "",
+                "type": "query",
+                "description": "Owner (ID)"
+              },
+              {
+                "name": "parent",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "parent__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "parent_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "parent_id__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Search"
+              },
+              {
+                "name": "slug",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "slug__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "slug__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "slug__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "slug__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "slug__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "slug__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "slug__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "slug__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "slug__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "slug__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "slug__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "slug__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tag",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tag__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tag_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tag_id__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "updated_by_request",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Get a list of wireless LAN group objects."
+        },
+        {
+          "info": {
+            "name": "wireless_wireless_lan_groups_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/wireless/wireless-lan-groups/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Post a list of wireless LAN group objects."
+        },
+        {
+          "info": {
+            "name": "wireless_wireless_lan_groups_bulk_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/api/wireless/wireless-lan-groups/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Put a list of wireless LAN group objects."
+        },
+        {
+          "info": {
+            "name": "wireless_wireless_lan_groups_bulk_partial_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "/api/wireless/wireless-lan-groups/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Patch a list of wireless LAN group objects."
+        },
+        {
+          "info": {
+            "name": "wireless_wireless_lan_groups_bulk_destroy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/api/wireless/wireless-lan-groups/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Delete a list of wireless LAN group objects."
+        },
+        {
+          "info": {
+            "name": "wireless_wireless_lan_groups_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/wireless/wireless-lan-groups/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this wireless LAN group."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Get a wireless LAN group object."
+        },
+        {
+          "info": {
+            "name": "wireless_wireless_lan_groups_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/api/wireless/wireless-lan-groups/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this wireless LAN group."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Put a wireless LAN group object."
+        },
+        {
+          "info": {
+            "name": "wireless_wireless_lan_groups_partial_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "/api/wireless/wireless-lan-groups/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this wireless LAN group."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Patch a wireless LAN group object."
+        },
+        {
+          "info": {
+            "name": "wireless_wireless_lan_groups_destroy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/api/wireless/wireless-lan-groups/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this wireless LAN group."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Delete a wireless LAN group object."
+        },
+        {
+          "info": {
+            "name": "wireless_wireless_lans_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/wireless/wireless-lans/",
+            "params": [
+              {
+                "name": "auth_cipher",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_cipher__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_cipher__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_cipher__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_cipher__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_cipher__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_cipher__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_cipher__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_cipher__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_cipher__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_cipher__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_cipher__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_cipher__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_psk",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_psk__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_psk__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_psk__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_psk__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_psk__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_psk__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_psk__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_psk__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_psk__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_psk__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_psk__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_psk__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_type__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_type__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_type__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_type__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_type__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_type__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_type__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_type__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_type__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_type__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_type__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_type__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created_by_request",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "group",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "group__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "group_id__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "interface_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "interface_id__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "location",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "location__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "location_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "location_id__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "modified_by_request",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              },
+              {
+                "name": "ordering",
+                "value": "",
+                "type": "query",
+                "description": "Which field to use when ordering the results."
+              },
+              {
+                "name": "owner",
+                "value": "",
+                "type": "query",
+                "description": "Owner (name)"
+              },
+              {
+                "name": "owner__n",
+                "value": "",
+                "type": "query",
+                "description": "Owner (name)"
+              },
+              {
+                "name": "owner_group",
+                "value": "",
+                "type": "query",
+                "description": "Owner Group (name)"
+              },
+              {
+                "name": "owner_group__n",
+                "value": "",
+                "type": "query",
+                "description": "Owner Group (name)"
+              },
+              {
+                "name": "owner_group_id",
+                "value": "",
+                "type": "query",
+                "description": "Owner Group (ID)"
+              },
+              {
+                "name": "owner_group_id__n",
+                "value": "",
+                "type": "query",
+                "description": "Owner Group (ID)"
+              },
+              {
+                "name": "owner_id",
+                "value": "",
+                "type": "query",
+                "description": "Owner (ID)"
+              },
+              {
+                "name": "owner_id__n",
+                "value": "",
+                "type": "query",
+                "description": "Owner (ID)"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Search"
+              },
+              {
+                "name": "region",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "region__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "region_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "region_id__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "scope_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "scope_id__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "scope_id__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "scope_id__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "scope_id__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "scope_id__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "scope_id__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "scope_type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "scope_type__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "site",
+                "value": "",
+                "type": "query",
+                "description": "Site (slug)"
+              },
+              {
+                "name": "site__n",
+                "value": "",
+                "type": "query",
+                "description": "Site (slug)"
+              },
+              {
+                "name": "site_group",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "site_group__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "site_group_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "site_group_id__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "site_id",
+                "value": "",
+                "type": "query",
+                "description": "Site (ID)"
+              },
+              {
+                "name": "site_id__n",
+                "value": "",
+                "type": "query",
+                "description": "Site (ID)"
+              },
+              {
+                "name": "ssid",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ssid__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ssid__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ssid__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ssid__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ssid__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ssid__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ssid__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ssid__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ssid__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ssid__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ssid__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ssid__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tag",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tag__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tag_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tag_id__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tenant",
+                "value": "",
+                "type": "query",
+                "description": "Tenant (slug)"
+              },
+              {
+                "name": "tenant__n",
+                "value": "",
+                "type": "query",
+                "description": "Tenant (slug)"
+              },
+              {
+                "name": "tenant_group",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tenant_group__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tenant_group_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tenant_group_id__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tenant_id",
+                "value": "",
+                "type": "query",
+                "description": "Tenant (ID)"
+              },
+              {
+                "name": "tenant_id__n",
+                "value": "",
+                "type": "query",
+                "description": "Tenant (ID)"
+              },
+              {
+                "name": "updated_by_request",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "vlan_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "vlan_id__n",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Get a list of wireless LAN objects."
+        },
+        {
+          "info": {
+            "name": "wireless_wireless_lans_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/wireless/wireless-lans/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Post a list of wireless LAN objects."
+        },
+        {
+          "info": {
+            "name": "wireless_wireless_lans_bulk_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/api/wireless/wireless-lans/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Put a list of wireless LAN objects."
+        },
+        {
+          "info": {
+            "name": "wireless_wireless_lans_bulk_partial_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "/api/wireless/wireless-lans/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Patch a list of wireless LAN objects."
+        },
+        {
+          "info": {
+            "name": "wireless_wireless_lans_bulk_destroy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/api/wireless/wireless-lans/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Delete a list of wireless LAN objects."
+        },
+        {
+          "info": {
+            "name": "wireless_wireless_lans_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/wireless/wireless-lans/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this wireless LAN."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Get a wireless LAN object."
+        },
+        {
+          "info": {
+            "name": "wireless_wireless_lans_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/api/wireless/wireless-lans/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this wireless LAN."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Put a wireless LAN object."
+        },
+        {
+          "info": {
+            "name": "wireless_wireless_lans_partial_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "/api/wireless/wireless-lans/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this wireless LAN."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Patch a wireless LAN object."
+        },
+        {
+          "info": {
+            "name": "wireless_wireless_lans_destroy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/api/wireless/wireless-lans/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this wireless LAN."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Delete a wireless LAN object."
+        },
+        {
+          "info": {
+            "name": "wireless_wireless_links_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/wireless/wireless-links/",
+            "params": [
+              {
+                "name": "auth_cipher",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_cipher__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_cipher__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_cipher__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_cipher__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_cipher__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_cipher__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_cipher__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_cipher__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_cipher__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_cipher__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_cipher__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_cipher__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_psk",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_psk__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_psk__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_psk__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_psk__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_psk__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_psk__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_psk__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_psk__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_psk__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_psk__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_psk__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_psk__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_type__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_type__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_type__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_type__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_type__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_type__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_type__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_type__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_type__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_type__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_type__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "auth_type__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created_by_request",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "description__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "distance",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "distance__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "distance__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "distance__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "distance__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "distance__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "distance__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "distance_unit",
+                "value": "",
+                "type": "query",
+                "description": "* `km` - Kilometers\n* `m` - Meters\n* `mi` - Miles\n* `ft` - Feet"
+              },
+              {
+                "name": "distance_unit__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "distance_unit__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "distance_unit__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "distance_unit__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "distance_unit__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "distance_unit__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "distance_unit__n",
+                "value": "",
+                "type": "query",
+                "description": "* `km` - Kilometers\n* `m` - Meters\n* `mi` - Miles\n* `ft` - Feet"
+              },
+              {
+                "name": "distance_unit__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "distance_unit__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "distance_unit__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "distance_unit__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "distance_unit__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "interface_a_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "interface_a_id__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "interface_b_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "interface_b_id__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "modified_by_request",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              },
+              {
+                "name": "ordering",
+                "value": "",
+                "type": "query",
+                "description": "Which field to use when ordering the results."
+              },
+              {
+                "name": "owner",
+                "value": "",
+                "type": "query",
+                "description": "Owner (name)"
+              },
+              {
+                "name": "owner__n",
+                "value": "",
+                "type": "query",
+                "description": "Owner (name)"
+              },
+              {
+                "name": "owner_group",
+                "value": "",
+                "type": "query",
+                "description": "Owner Group (name)"
+              },
+              {
+                "name": "owner_group__n",
+                "value": "",
+                "type": "query",
+                "description": "Owner Group (name)"
+              },
+              {
+                "name": "owner_group_id",
+                "value": "",
+                "type": "query",
+                "description": "Owner Group (ID)"
+              },
+              {
+                "name": "owner_group_id__n",
+                "value": "",
+                "type": "query",
+                "description": "Owner Group (ID)"
+              },
+              {
+                "name": "owner_id",
+                "value": "",
+                "type": "query",
+                "description": "Owner (ID)"
+              },
+              {
+                "name": "owner_id__n",
+                "value": "",
+                "type": "query",
+                "description": "Owner (ID)"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Search"
+              },
+              {
+                "name": "ssid",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ssid__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ssid__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ssid__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ssid__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ssid__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ssid__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ssid__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ssid__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ssid__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ssid__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ssid__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ssid__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__empty",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__ic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__ie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__iew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__iregex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__isw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__nic",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__nie",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__niew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__nisw",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__regex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tag",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tag__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tag_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tag_id__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tenant",
+                "value": "",
+                "type": "query",
+                "description": "Tenant (slug)"
+              },
+              {
+                "name": "tenant__n",
+                "value": "",
+                "type": "query",
+                "description": "Tenant (slug)"
+              },
+              {
+                "name": "tenant_group",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tenant_group__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tenant_group_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tenant_group_id__n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tenant_id",
+                "value": "",
+                "type": "query",
+                "description": "Tenant (ID)"
+              },
+              {
+                "name": "tenant_id__n",
+                "value": "",
+                "type": "query",
+                "description": "Tenant (ID)"
+              },
+              {
+                "name": "updated_by_request",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Get a list of wireless link objects."
+        },
+        {
+          "info": {
+            "name": "wireless_wireless_links_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/wireless/wireless-links/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Post a list of wireless link objects."
+        },
+        {
+          "info": {
+            "name": "wireless_wireless_links_bulk_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/api/wireless/wireless-links/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Put a list of wireless link objects."
+        },
+        {
+          "info": {
+            "name": "wireless_wireless_links_bulk_partial_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "/api/wireless/wireless-links/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Patch a list of wireless link objects."
+        },
+        {
+          "info": {
+            "name": "wireless_wireless_links_bulk_destroy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/api/wireless/wireless-links/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Delete a list of wireless link objects."
+        },
+        {
+          "info": {
+            "name": "wireless_wireless_links_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/wireless/wireless-links/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this wireless link."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Get a wireless link object."
+        },
+        {
+          "info": {
+            "name": "wireless_wireless_links_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/api/wireless/wireless-links/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this wireless link."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Put a wireless link object."
+        },
+        {
+          "info": {
+            "name": "wireless_wireless_links_partial_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "/api/wireless/wireless-links/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this wireless link."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Patch a wireless link object."
+        },
+        {
+          "info": {
+            "name": "wireless_wireless_links_destroy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/api/wireless/wireless-links/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this wireless link."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Delete a wireless link object."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
