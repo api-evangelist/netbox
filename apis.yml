@@ -20,7 +20,7 @@ accessModel:
 image: https://netbox.dev/static/img/netbox-logo.svg
 created: '2024-01-15'
 modified: '2026-05-19'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 url: https://raw.githubusercontent.com/api-evangelist/netbox/refs/heads/main/apis.yml
 apis:
 - name: NetBox GraphQL API
