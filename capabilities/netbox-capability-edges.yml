@@ -1,0 +1,88 @@
+slug: netbox
+provider: NetBox
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Banking & Capital Markets
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 7
+edges:
+- tag: dcim
+  spec_file: netbox-dcim-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.82
+  evidence: GET /api/dcim/cable-terminations/, dcim_cables_create, schemas 'BriefPowerPanel', 'BriefRackRole',
+    'Site', 'BriefDeviceType' — datacenter infrastructure documentation
+  reason: NetBox's dcim surface models physical datacenter infrastructure — racks, devices, cables, power
+    panels, sites — i.e. compute/network/facility infrastructure records, mapping to IT Infrastructure
+    Management. Not a business-domain capability.
+- tag: ipam
+  spec_file: netbox-ipam-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.8
+  evidence: GET /api/ipam/aggregates/, ipam_asn_ranges_create, schemas 'PatchedWritableIPAddressRequest',
+    'AvailablePrefix', 'PaginatedVLANList'
+  reason: IP address management — prefixes, IP addresses, ASN ranges, VLANs — is network infrastructure
+    administration, which sits under IT Infrastructure Management.
+- tag: virtualization
+  spec_file: netbox-virtualization-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.8
+  evidence: virtualization_cluster_types_create, schemas 'WritableVirtualMachineWithConfigContextRequest',
+    'VMInterface', 'BriefClusterRequest'
+  reason: Models virtualization clusters, virtual machines and VM interfaces — compute infrastructure
+    inventory, i.e. IT Infrastructure Management.
+- tag: circuits
+  spec_file: netbox-circuits-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.78
+  evidence: circuits_circuit_groups_list; schemas PaginatedCircuitTerminationList, PaginatedProviderList,
+    VirtualCircuitType
+  reason: Modelling of WAN circuits, terminations, providers and virtual circuits in a network source-of-truth
+    tool is documentation/management of network infrastructure, not a telecom product capability of the
+    buyer.
+- tag: users
+  spec_file: netbox-users-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.78
+  evidence: users_groups_create, users_owner_groups_list, schemas 'ObjectPermissionRequest', 'Token',
+    'TokenProvision', 'PatchedUserRequest'
+  reason: Operations manage users, groups, object permissions and API tokens — account and access administration,
+    i.e. Identity & Access Management. Some risk this is read as mere app config, hence moderate confidence.
+- tag: wireless
+  spec_file: netbox-wireless-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.75
+  evidence: wireless_wireless_lans_list, schemas 'WirelessLAN', 'WirelessLinkRequest', 'WirelessLANGroup'
+  reason: Models wireless LANs, LAN groups and wireless links — network infrastructure inventory under
+    IT Infrastructure Management.
+- tag: vpn
+  spec_file: netbox-vpn-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.72
+  evidence: GET /api/vpn/ike-policies/, schemas 'WritableIPSecProfileRequest', 'PaginatedTunnelList',
+    'TunnelTermination', 'BriefL2VPNRequest'
+  reason: Documents VPN tunnels, IKE/IPSec policies and L2VPN terminations — network infrastructure configuration
+    records rather than a security-programme capability, so IT Infrastructure Management is the honest
+    fit.

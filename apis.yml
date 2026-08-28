@@ -4,6 +4,17 @@ description: >-
   NetBox is the leading solution for modeling and documenting modern networks. By combining the traditional disciplines
   of IP address management (IPAM) and datacenter infrastructure management (DCIM) with powerful APIs and extensions,
   NetBox provides the ideal "source of truth" to power network automation.
+deliveryModel:
+  model: unknown
+  open_source: false
+  commercial: false
+  callable_host: false
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - openapi
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
@@ -247,6 +258,9 @@ apis:
   - type: Authentication
     url: https://docs.netbox.dev/en/stable/integrations/rest-api/#authentication
 common:
+- type: CapabilityMap
+  url: capabilities/netbox-capability-edges.yml
+  name: NetBox Business Capability Map
 - type: AgenticAccess
   url: agentic-access/netbox-agentic-access.yml
 - type: DomainSecurity
