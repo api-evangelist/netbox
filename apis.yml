@@ -1,9 +1,9 @@
 aid: netbox
 name: NetBox
-description: >-
-  NetBox is the leading solution for modeling and documenting modern networks. By combining the traditional disciplines
-  of IP address management (IPAM) and datacenter infrastructure management (DCIM) with powerful APIs and extensions,
-  NetBox provides the ideal "source of truth" to power network automation.
+description: NetBox is the leading solution for modeling and documenting modern networks. By combining
+  the traditional disciplines of IP address management (IPAM) and datacenter infrastructure management
+  (DCIM) with powerful APIs and extensions, NetBox provides the ideal "source of truth" to power network
+  automation.
 deliveryModel:
   model: unknown
   open_source: false
@@ -31,14 +31,13 @@ accessModel:
   method: derived
 image: https://netbox.dev/static/img/netbox-logo.svg
 created: '2024-01-15'
-modified: '2026-05-19'
+modified: '2026-09-16'
 specificationVersion: '0.23'
 url: https://raw.githubusercontent.com/api-evangelist/netbox/refs/heads/main/apis.yml
 apis:
 - name: NetBox GraphQL API
-  description: >-
-    A GraphQL API providing flexible querying capabilities for NetBox data with support for nested queries
-    and custom field selection.
+  description: A GraphQL API providing flexible querying capabilities for NetBox data with support for
+    nested queries and custom field selection.
   image: https://netbox.dev/static/img/netbox-logo.svg
   humanURL: https://docs.netbox.dev/en/stable/integrations/graphql-api/
   baseURL: https://demo.netbox.dev/graphql
@@ -259,6 +258,8 @@ apis:
   - type: Authentication
     url: https://docs.netbox.dev/en/stable/integrations/rest-api/#authentication
 common:
+- type: Website
+  url: https://netbox.dev
 - type: CapabilityMap
   url: capabilities/netbox-capability-edges.yml
   name: NetBox Business Capability Map
