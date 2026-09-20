@@ -10,6 +10,11 @@ provenance:
   grounding: every price_text was found verbatim in the fetched page text
 audience: business-product
 pricing_basis: negotiated
+delivery:
+  delivery: managed+licensed
+  method: page
+  read: '2026-09-20'
+  evidence: What deployment model should I choose for NetBox Enterprise?
 published: false
 note: No numeric price is published on the pricing page; Pricing page for NetBox Cloud/Enterprise lists
   three tiers but no numeric prices; all say Contact Sales. Quotas mentioned (e.g. 'Up to 1 year or 500
