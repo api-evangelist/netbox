@@ -258,6 +258,10 @@ apis:
   - type: Authentication
     url: https://docs.netbox.dev/en/stable/integrations/rest-api/#authentication
 common:
+- type: Pricing
+  url: https://netboxlabs.com/pricing/
+- type: Plans
+  url: plans/netbox-plans-pricing.yml
 - type: Website
   url: https://netbox.dev
 - type: CapabilityMap
