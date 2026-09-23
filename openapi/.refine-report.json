@@ -1,19 +1,7 @@
 {
   "provider": "netbox",
   "sources": [
-    "netbox-authentication-check-api-openapi.yml",
-    "netbox-circuits-api-openapi.yml",
-    "netbox-core-api-openapi.yml",
-    "netbox-dcim-api-openapi.yml",
-    "netbox-extras-api-openapi.yml",
-    "netbox-ipam-api-openapi.yml",
-    "netbox-schema-api-openapi.yml",
-    "netbox-status-api-openapi.yml",
-    "netbox-tenancy-api-openapi.yml",
-    "netbox-users-api-openapi.yml",
-    "netbox-virtualization-api-openapi.yml",
-    "netbox-vpn-api-openapi.yml",
-    "netbox-wireless-api-openapi.yml"
+    "_original/netbox-openapi.yml"
   ],
   "outputs": [
     "netbox-authentication-check-api-openapi.yml",
@@ -33,6 +21,37 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "netbox-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "netbox-openapi.yml: declared missing tag: authentication-check",
+    "netbox-openapi.yml: declared missing tag: circuits",
+    "netbox-openapi.yml: declared missing tag: core",
+    "netbox-openapi.yml: declared missing tag: dcim",
+    "netbox-openapi.yml: declared missing tag: extras",
+    "netbox-openapi.yml: declared missing tag: ipam",
+    "netbox-openapi.yml: declared missing tag: schema",
+    "netbox-openapi.yml: declared missing tag: status",
+    "netbox-openapi.yml: declared missing tag: tenancy",
+    "netbox-openapi.yml: declared missing tag: users",
+    "netbox-openapi.yml: declared missing tag: virtualization",
+    "netbox-openapi.yml: declared missing tag: vpn",
+    "netbox-openapi.yml: declared missing tag: wireless",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "netbox-authentication-check-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "netbox-circuits-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "netbox-core-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "netbox-dcim-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "netbox-extras-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "netbox-ipam-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "netbox-schema-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "netbox-status-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "netbox-tenancy-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "netbox-users-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "netbox-virtualization-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "netbox-vpn-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "netbox-wireless-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

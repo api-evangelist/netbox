@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: NetBox REST authentication-check wireless API
+  title: NetBox REST Wireless API
   version: 4.5.9 (4.5)
   license:
     name: Apache v2 License
@@ -8,7 +8,7 @@ servers:
 - url: ''
   description: NetBox
 tags:
-- name: wireless
+- name: Wireless
 paths:
   /api/wireless/wireless-lan-groups/:
     get:
@@ -518,8 +518,9 @@ paths:
         schema:
           type: array
           items:
-            type: integer
-            nullable: true
+            type:
+            - integer
+            - 'null'
         description: Owner (ID)
         explode: true
         style: form
@@ -528,8 +529,9 @@ paths:
         schema:
           type: array
           items:
-            type: integer
-            nullable: true
+            type:
+            - integer
+            - 'null'
         description: Owner (ID)
         explode: true
         style: form
@@ -554,8 +556,9 @@ paths:
         schema:
           type: array
           items:
-            type: integer
-            nullable: true
+            type:
+            - integer
+            - 'null'
         explode: true
         style: form
       - in: query
@@ -563,8 +566,9 @@ paths:
         schema:
           type: array
           items:
-            type: integer
-            nullable: true
+            type:
+            - integer
+            - 'null'
         explode: true
         style: form
       - in: query
@@ -710,7 +714,7 @@ paths:
           type: string
           format: uuid
       tags:
-      - wireless
+      - Wireless
       security:
       - cookieAuth: []
       - tokenAuth: []
@@ -721,11 +725,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/PaginatedWirelessLANGroupList'
           description: ''
+      summary: Wireless wireless lan groups list
+      x-summary-source: derived
     post:
       operationId: wireless_wireless_lan_groups_create
       description: Post a list of wireless LAN group objects.
       tags:
-      - wireless
+      - Wireless
       requestBody:
         content:
           application/json:
@@ -753,11 +759,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/WirelessLANGroup'
           description: ''
+      summary: Wireless wireless lan groups create
+      x-summary-source: derived
     put:
       operationId: wireless_wireless_lan_groups_bulk_update
       description: Put a list of wireless LAN group objects.
       tags:
-      - wireless
+      - Wireless
       requestBody:
         content:
           application/json:
@@ -783,11 +791,13 @@ paths:
                 items:
                   $ref: '#/components/schemas/WirelessLANGroup'
           description: ''
+      summary: Wireless wireless lan groups bulk update
+      x-summary-source: derived
     patch:
       operationId: wireless_wireless_lan_groups_bulk_partial_update
       description: Patch a list of wireless LAN group objects.
       tags:
-      - wireless
+      - Wireless
       requestBody:
         content:
           application/json:
@@ -813,11 +823,13 @@ paths:
                 items:
                   $ref: '#/components/schemas/WirelessLANGroup'
           description: ''
+      summary: Wireless wireless lan groups bulk partial update
+      x-summary-source: derived
     delete:
       operationId: wireless_wireless_lan_groups_bulk_destroy
       description: Delete a list of wireless LAN group objects.
       tags:
-      - wireless
+      - Wireless
       requestBody:
         content:
           application/json:
@@ -837,6 +849,8 @@ paths:
       responses:
         '204':
           description: No response body
+      summary: Wireless wireless lan groups bulk destroy
+      x-summary-source: derived
   /api/wireless/wireless-lan-groups/{id}/:
     get:
       operationId: wireless_wireless_lan_groups_retrieve
@@ -849,7 +863,7 @@ paths:
         description: A unique integer value identifying this wireless LAN group.
         required: true
       tags:
-      - wireless
+      - Wireless
       security:
       - cookieAuth: []
       - tokenAuth: []
@@ -860,6 +874,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/WirelessLANGroup'
           description: ''
+      summary: Wireless wireless lan groups retrieve
+      x-summary-source: derived
     put:
       operationId: wireless_wireless_lan_groups_update
       description: Put a wireless LAN group object.
@@ -871,7 +887,7 @@ paths:
         description: A unique integer value identifying this wireless LAN group.
         required: true
       tags:
-      - wireless
+      - Wireless
       requestBody:
         content:
           application/json:
@@ -891,6 +907,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/WirelessLANGroup'
           description: ''
+      summary: Wireless wireless lan groups update
+      x-summary-source: derived
     patch:
       operationId: wireless_wireless_lan_groups_partial_update
       description: Patch a wireless LAN group object.
@@ -902,7 +920,7 @@ paths:
         description: A unique integer value identifying this wireless LAN group.
         required: true
       tags:
-      - wireless
+      - Wireless
       requestBody:
         content:
           application/json:
@@ -921,6 +939,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/WirelessLANGroup'
           description: ''
+      summary: Wireless wireless lan groups partial update
+      x-summary-source: derived
     delete:
       operationId: wireless_wireless_lan_groups_destroy
       description: Delete a wireless LAN group object.
@@ -932,13 +952,15 @@ paths:
         description: A unique integer value identifying this wireless LAN group.
         required: true
       tags:
-      - wireless
+      - Wireless
       security:
       - cookieAuth: []
       - tokenAuth: []
       responses:
         '204':
           description: No response body
+      summary: Wireless wireless lan groups destroy
+      x-summary-source: derived
   /api/wireless/wireless-lans/:
     get:
       operationId: wireless_wireless_lans_list
@@ -949,9 +971,10 @@ paths:
         schema:
           type: array
           items:
-            type: string
+            type:
+            - string
+            - 'null'
             x-spec-enum-id: 42f867e89988bb0c
-            nullable: true
             title: Authentication cipher
         explode: true
         style: form
@@ -964,9 +987,10 @@ paths:
         schema:
           type: array
           items:
-            type: string
+            type:
+            - string
+            - 'null'
             x-spec-enum-id: 42f867e89988bb0c
-            nullable: true
             title: Authentication cipher
         explode: true
         style: form
@@ -975,9 +999,10 @@ paths:
         schema:
           type: array
           items:
-            type: string
+            type:
+            - string
+            - 'null'
             x-spec-enum-id: 42f867e89988bb0c
-            nullable: true
             title: Authentication cipher
         explode: true
         style: form
@@ -986,9 +1011,10 @@ paths:
         schema:
           type: array
           items:
-            type: string
+            type:
+            - string
+            - 'null'
             x-spec-enum-id: 42f867e89988bb0c
-            nullable: true
             title: Authentication cipher
         explode: true
         style: form
@@ -997,9 +1023,10 @@ paths:
         schema:
           type: array
           items:
-            type: string
+            type:
+            - string
+            - 'null'
             x-spec-enum-id: 42f867e89988bb0c
-            nullable: true
             title: Authentication cipher
         explode: true
         style: form
@@ -1008,9 +1035,10 @@ paths:
         schema:
           type: array
           items:
-            type: string
+            type:
+            - string
+            - 'null'
             x-spec-enum-id: 42f867e89988bb0c
-            nullable: true
             title: Authentication cipher
         explode: true
         style: form
@@ -1019,9 +1047,10 @@ paths:
         schema:
           type: array
           items:
-            type: string
+            type:
+            - string
+            - 'null'
             x-spec-enum-id: 42f867e89988bb0c
-            nullable: true
             title: Authentication cipher
         explode: true
         style: form
@@ -1030,9 +1059,10 @@ paths:
         schema:
           type: array
           items:
-            type: string
+            type:
+            - string
+            - 'null'
             x-spec-enum-id: 42f867e89988bb0c
-            nullable: true
             title: Authentication cipher
         explode: true
         style: form
@@ -1041,9 +1071,10 @@ paths:
         schema:
           type: array
           items:
-            type: string
+            type:
+            - string
+            - 'null'
             x-spec-enum-id: 42f867e89988bb0c
-            nullable: true
             title: Authentication cipher
         explode: true
         style: form
@@ -1052,9 +1083,10 @@ paths:
         schema:
           type: array
           items:
-            type: string
+            type:
+            - string
+            - 'null'
             x-spec-enum-id: 42f867e89988bb0c
-            nullable: true
             title: Authentication cipher
         explode: true
         style: form
@@ -1063,9 +1095,10 @@ paths:
         schema:
           type: array
           items:
-            type: string
+            type:
+            - string
+            - 'null'
             x-spec-enum-id: 42f867e89988bb0c
-            nullable: true
             title: Authentication cipher
         explode: true
         style: form
@@ -1074,9 +1107,10 @@ paths:
         schema:
           type: array
           items:
-            type: string
+            type:
+            - string
+            - 'null'
             x-spec-enum-id: 42f867e89988bb0c
-            nullable: true
             title: Authentication cipher
         explode: true
         style: form
@@ -1185,9 +1219,10 @@ paths:
         schema:
           type: array
           items:
-            type: string
+            type:
+            - string
+            - 'null'
             x-spec-enum-id: e917c12aac765910
-            nullable: true
             title: Authentication type
         explode: true
         style: form
@@ -1200,9 +1235,10 @@ paths:
         schema:
           type: array
           items:
-            type: string
+            type:
+            - string
+            - 'null'
             x-spec-enum-id: e917c12aac765910
-            nullable: true
             title: Authentication type
         explode: true
         style: form
@@ -1211,9 +1247,10 @@ paths:
         schema:
           type: array
           items:
-            type: string
+            type:
+            - string
+            - 'null'
             x-spec-enum-id: e917c12aac765910
-            nullable: true
             title: Authentication type
         explode: true
         style: form
@@ -1222,9 +1259,10 @@ paths:
         schema:
           type: array
           items:
-            type: string
+            type:
+            - string
+            - 'null'
             x-spec-enum-id: e917c12aac765910
-            nullable: true
             title: Authentication type
         explode: true
         style: form
@@ -1233,9 +1271,10 @@ paths:
         schema:
           type: array
           items:
-            type: string
+            type:
+            - string
+            - 'null'
             x-spec-enum-id: e917c12aac765910
-            nullable: true
             title: Authentication type
         explode: true
         style: form
@@ -1244,9 +1283,10 @@ paths:
         schema:
           type: array
           items:
-            type: string
+            type:
+            - string
+            - 'null'
             x-spec-enum-id: e917c12aac765910
-            nullable: true
             title: Authentication type
         explode: true
         style: form
@@ -1255,9 +1295,10 @@ paths:
         schema:
           type: array
           items:
-            type: string
+            type:
+            - string
+            - 'null'
             x-spec-enum-id: e917c12aac765910
-            nullable: true
             title: Authentication type
         explode: true
         style: form
@@ -1266,9 +1307,10 @@ paths:
         schema:
           type: array
           items:
-            type: string
+            type:
+            - string
+            - 'null'
             x-spec-enum-id: e917c12aac765910
-            nullable: true
             title: Authentication type
         explode: true
         style: form
@@ -1277,9 +1319,10 @@ paths:
         schema:
           type: array
           items:
-            type: string
+            type:
+            - string
+            - 'null'
             x-spec-enum-id: e917c12aac765910
-            nullable: true
             title: Authentication type
         explode: true
         style: form
@@ -1288,9 +1331,10 @@ paths:
         schema:
           type: array
           items:
-            type: string
+            type:
+            - string
+            - 'null'
             x-spec-enum-id: e917c12aac765910
-            nullable: true
             title: Authentication type
         explode: true
         style: form
@@ -1299,9 +1343,10 @@ paths:
         schema:
           type: array
           items:
-            type: string
+            type:
+            - string
+            - 'null'
             x-spec-enum-id: e917c12aac765910
-            nullable: true
             title: Authentication type
         explode: true
         style: form
@@ -1310,9 +1355,10 @@ paths:
         schema:
           type: array
           items:
-            type: string
+            type:
+            - string
+            - 'null'
             x-spec-enum-id: e917c12aac765910
-            nullable: true
             title: Authentication type
         explode: true
         style: form
@@ -1767,8 +1813,9 @@ paths:
         schema:
           type: array
           items:
-            type: integer
-            nullable: true
+            type:
+            - integer
+            - 'null'
         description: Owner (ID)
         explode: true
         style: form
@@ -1777,8 +1824,9 @@ paths:
         schema:
           type: array
           items:
-            type: integer
-            nullable: true
+            type:
+            - integer
+            - 'null'
         description: Owner (ID)
         explode: true
         style: form
@@ -2260,8 +2308,9 @@ paths:
         schema:
           type: array
           items:
-            type: integer
-            nullable: true
+            type:
+            - integer
+            - 'null'
         description: Tenant (ID)
         explode: true
         style: form
@@ -2270,8 +2319,9 @@ paths:
         schema:
           type: array
           items:
-            type: integer
-            nullable: true
+            type:
+            - integer
+            - 'null'
         description: Tenant (ID)
         explode: true
         style: form
@@ -2285,8 +2335,9 @@ paths:
         schema:
           type: array
           items:
-            type: integer
-            nullable: true
+            type:
+            - integer
+            - 'null'
         explode: true
         style: form
       - in: query
@@ -2294,12 +2345,13 @@ paths:
         schema:
           type: array
           items:
-            type: integer
-            nullable: true
+            type:
+            - integer
+            - 'null'
         explode: true
         style: form
       tags:
-      - wireless
+      - Wireless
       security:
       - cookieAuth: []
       - tokenAuth: []
@@ -2310,11 +2362,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/PaginatedWirelessLANList'
           description: ''
+      summary: Wireless wireless lans list
+      x-summary-source: derived
     post:
       operationId: wireless_wireless_lans_create
       description: Post a list of wireless LAN objects.
       tags:
-      - wireless
+      - Wireless
       requestBody:
         content:
           application/json:
@@ -2342,11 +2396,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/WirelessLAN'
           description: ''
+      summary: Wireless wireless lans create
+      x-summary-source: derived
     put:
       operationId: wireless_wireless_lans_bulk_update
       description: Put a list of wireless LAN objects.
       tags:
-      - wireless
+      - Wireless
       requestBody:
         content:
           application/json:
@@ -2372,11 +2428,13 @@ paths:
                 items:
                   $ref: '#/components/schemas/WirelessLAN'
           description: ''
+      summary: Wireless wireless lans bulk update
+      x-summary-source: derived
     patch:
       operationId: wireless_wireless_lans_bulk_partial_update
       description: Patch a list of wireless LAN objects.
       tags:
-      - wireless
+      - Wireless
       requestBody:
         content:
           application/json:
@@ -2402,11 +2460,13 @@ paths:
                 items:
                   $ref: '#/components/schemas/WirelessLAN'
           description: ''
+      summary: Wireless wireless lans bulk partial update
+      x-summary-source: derived
     delete:
       operationId: wireless_wireless_lans_bulk_destroy
       description: Delete a list of wireless LAN objects.
       tags:
-      - wireless
+      - Wireless
       requestBody:
         content:
           application/json:
@@ -2426,6 +2486,8 @@ paths:
       responses:
         '204':
           description: No response body
+      summary: Wireless wireless lans bulk destroy
+      x-summary-source: derived
   /api/wireless/wireless-lans/{id}/:
     get:
       operationId: wireless_wireless_lans_retrieve
@@ -2438,7 +2500,7 @@ paths:
         description: A unique integer value identifying this wireless LAN.
         required: true
       tags:
-      - wireless
+      - Wireless
       security:
       - cookieAuth: []
       - tokenAuth: []
@@ -2449,6 +2511,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/WirelessLAN'
           description: ''
+      summary: Wireless wireless lans retrieve
+      x-summary-source: derived
     put:
       operationId: wireless_wireless_lans_update
       description: Put a wireless LAN object.
@@ -2460,7 +2524,7 @@ paths:
         description: A unique integer value identifying this wireless LAN.
         required: true
       tags:
-      - wireless
+      - Wireless
       requestBody:
         content:
           application/json:
@@ -2480,6 +2544,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/WirelessLAN'
           description: ''
+      summary: Wireless wireless lans update
+      x-summary-source: derived
     patch:
       operationId: wireless_wireless_lans_partial_update
       description: Patch a wireless LAN object.
@@ -2491,7 +2557,7 @@ paths:
         description: A unique integer value identifying this wireless LAN.
         required: true
       tags:
-      - wireless
+      - Wireless
       requestBody:
         content:
           application/json:
@@ -2510,6 +2576,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/WirelessLAN'
           description: ''
+      summary: Wireless wireless lans partial update
+      x-summary-source: derived
     delete:
       operationId: wireless_wireless_lans_destroy
       description: Delete a wireless LAN object.
@@ -2521,13 +2589,15 @@ paths:
         description: A unique integer value identifying this wireless LAN.
         required: true
       tags:
-      - wireless
+      - Wireless
       security:
       - cookieAuth: []
       - tokenAuth: []
       responses:
         '204':
           description: No response body
+      summary: Wireless wireless lans destroy
+      x-summary-source: derived
   /api/wireless/wireless-links/:
     get:
       operationId: wireless_wireless_links_list
@@ -2538,9 +2608,10 @@ paths:
         schema:
           type: array
           items:
-            type: string
+            type:
+            - string
+            - 'null'
             x-spec-enum-id: 42f867e89988bb0c
-            nullable: true
             title: Authentication cipher
         explode: true
         style: form
@@ -2553,9 +2624,10 @@ paths:
         schema:
           type: array
           items:
-            type: string
+            type:
+            - string
+            - 'null'
             x-spec-enum-id: 42f867e89988bb0c
-            nullable: true
             title: Authentication cipher
         explode: true
         style: form
@@ -2564,9 +2636,10 @@ paths:
         schema:
           type: array
           items:
-            type: string
+            type:
+            - string
+            - 'null'
             x-spec-enum-id: 42f867e89988bb0c
-            nullable: true
             title: Authentication cipher
         explode: true
         style: form
@@ -2575,9 +2648,10 @@ paths:
         schema:
           type: array
           items:
-            type: string
+            type:
+            - string
+            - 'null'
             x-spec-enum-id: 42f867e89988bb0c
-            nullable: true
             title: Authentication cipher
         explode: true
         style: form
@@ -2586,9 +2660,10 @@ paths:
         schema:
           type: array
           items:
-            type: string
+            type:
+            - string
+            - 'null'
             x-spec-enum-id: 42f867e89988bb0c
-            nullable: true
             title: Authentication cipher
         explode: true
         style: form
@@ -2597,9 +2672,10 @@ paths:
         schema:
           type: array
           items:
-            type: string
+            type:
+            - string
+            - 'null'
             x-spec-enum-id: 42f867e89988bb0c
-            nullable: true
             title: Authentication cipher
         explode: true
         style: form
@@ -2608,9 +2684,10 @@ paths:
         schema:
           type: array
           items:
-            type: string
+            type:
+            - string
+            - 'null'
             x-spec-enum-id: 42f867e89988bb0c
-            nullable: true
             title: Authentication cipher
         explode: true
         style: form
@@ -2619,9 +2696,10 @@ paths:
         schema:
           type: array
           items:
-            type: string
+            type:
+            - string
+            - 'null'
             x-spec-enum-id: 42f867e89988bb0c
-            nullable: true
             title: Authentication cipher
         explode: true
         style: form
@@ -2630,9 +2708,10 @@ paths:
         schema:
           type: array
           items:
-            type: string
+            type:
+            - string
+            - 'null'
             x-spec-enum-id: 42f867e89988bb0c
-            nullable: true
             title: Authentication cipher
         explode: true
         style: form
@@ -2641,9 +2720,10 @@ paths:
         schema:
           type: array
           items:
-            type: string
+            type:
+            - string
+            - 'null'
             x-spec-enum-id: 42f867e89988bb0c
-            nullable: true
             title: Authentication cipher
         explode: true
         style: form
@@ -2652,9 +2732,10 @@ paths:
         schema:
           type: array
           items:
-            type: string
+            type:
+            - string
+            - 'null'
             x-spec-enum-id: 42f867e89988bb0c
-            nullable: true
             title: Authentication cipher
         explode: true
         style: form
@@ -2663,9 +2744,10 @@ paths:
         schema:
           type: array
           items:
-            type: string
+            type:
+            - string
+            - 'null'
             x-spec-enum-id: 42f867e89988bb0c
-            nullable: true
             title: Authentication cipher
         explode: true
         style: form
@@ -2774,9 +2856,10 @@ paths:
         schema:
           type: array
           items:
-            type: string
+            type:
+            - string
+            - 'null'
             x-spec-enum-id: e917c12aac765910
-            nullable: true
             title: Authentication type
         explode: true
         style: form
@@ -2789,9 +2872,10 @@ paths:
         schema:
           type: array
           items:
-            type: string
+            type:
+            - string
+            - 'null'
             x-spec-enum-id: e917c12aac765910
-            nullable: true
             title: Authentication type
         explode: true
         style: form
@@ -2800,9 +2884,10 @@ paths:
         schema:
           type: array
           items:
-            type: string
+            type:
+            - string
+            - 'null'
             x-spec-enum-id: e917c12aac765910
-            nullable: true
             title: Authentication type
         explode: true
         style: form
@@ -2811,9 +2896,10 @@ paths:
         schema:
           type: array
           items:
-            type: string
+            type:
+            - string
+            - 'null'
             x-spec-enum-id: e917c12aac765910
-            nullable: true
             title: Authentication type
         explode: true
         style: form
@@ -2822,9 +2908,10 @@ paths:
         schema:
           type: array
           items:
-            type: string
+            type:
+            - string
+            - 'null'
             x-spec-enum-id: e917c12aac765910
-            nullable: true
             title: Authentication type
         explode: true
         style: form
@@ -2833,9 +2920,10 @@ paths:
         schema:
           type: array
           items:
-            type: string
+            type:
+            - string
+            - 'null'
             x-spec-enum-id: e917c12aac765910
-            nullable: true
             title: Authentication type
         explode: true
         style: form
@@ -2844,9 +2932,10 @@ paths:
         schema:
           type: array
           items:
-            type: string
+            type:
+            - string
+            - 'null'
             x-spec-enum-id: e917c12aac765910
-            nullable: true
             title: Authentication type
         explode: true
         style: form
@@ -2855,9 +2944,10 @@ paths:
         schema:
           type: array
           items:
-            type: string
+            type:
+            - string
+            - 'null'
             x-spec-enum-id: e917c12aac765910
-            nullable: true
             title: Authentication type
         explode: true
         style: form
@@ -2866,9 +2956,10 @@ paths:
         schema:
           type: array
           items:
-            type: string
+            type:
+            - string
+            - 'null'
             x-spec-enum-id: e917c12aac765910
-            nullable: true
             title: Authentication type
         explode: true
         style: form
@@ -2877,9 +2968,10 @@ paths:
         schema:
           type: array
           items:
-            type: string
+            type:
+            - string
+            - 'null'
             x-spec-enum-id: e917c12aac765910
-            nullable: true
             title: Authentication type
         explode: true
         style: form
@@ -2888,9 +2980,10 @@ paths:
         schema:
           type: array
           items:
-            type: string
+            type:
+            - string
+            - 'null'
             x-spec-enum-id: e917c12aac765910
-            nullable: true
             title: Authentication type
         explode: true
         style: form
@@ -2899,9 +2992,10 @@ paths:
         schema:
           type: array
           items:
-            type: string
+            type:
+            - string
+            - 'null'
             x-spec-enum-id: e917c12aac765910
-            nullable: true
             title: Authentication type
         explode: true
         style: form
@@ -3134,9 +3228,10 @@ paths:
       - in: query
         name: distance_unit
         schema:
-          type: string
+          type:
+          - string
+          - 'null'
           x-spec-enum-id: b1169a409430c02e
-          nullable: true
           enum:
           - ft
           - km
@@ -3197,9 +3292,10 @@ paths:
       - in: query
         name: distance_unit__n
         schema:
-          type: string
+          type:
+          - string
+          - 'null'
           x-spec-enum-id: b1169a409430c02e
-          nullable: true
           enum:
           - ft
           - km
@@ -3488,8 +3584,9 @@ paths:
         schema:
           type: array
           items:
-            type: integer
-            nullable: true
+            type:
+            - integer
+            - 'null'
         description: Owner (ID)
         explode: true
         style: form
@@ -3498,8 +3595,9 @@ paths:
         schema:
           type: array
           items:
-            type: integer
-            nullable: true
+            type:
+            - integer
+            - 'null'
         description: Owner (ID)
         explode: true
         style: form
@@ -3807,8 +3905,9 @@ paths:
         schema:
           type: array
           items:
-            type: integer
-            nullable: true
+            type:
+            - integer
+            - 'null'
         description: Tenant (ID)
         explode: true
         style: form
@@ -3817,8 +3916,9 @@ paths:
         schema:
           type: array
           items:
-            type: integer
-            nullable: true
+            type:
+            - integer
+            - 'null'
         description: Tenant (ID)
         explode: true
         style: form
@@ -3828,7 +3928,7 @@ paths:
           type: string
           format: uuid
       tags:
-      - wireless
+      - Wireless
       security:
       - cookieAuth: []
       - tokenAuth: []
@@ -3839,11 +3939,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/PaginatedWirelessLinkList'
           description: ''
+      summary: Wireless wireless links list
+      x-summary-source: derived
     post:
       operationId: wireless_wireless_links_create
       description: Post a list of wireless link objects.
       tags:
-      - wireless
+      - Wireless
       requestBody:
         content:
           application/json:
@@ -3871,11 +3973,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/WirelessLink'
           description: ''
+      summary: Wireless wireless links create
+      x-summary-source: derived
     put:
       operationId: wireless_wireless_links_bulk_update
       description: Put a list of wireless link objects.
       tags:
-      - wireless
+      - Wireless
       requestBody:
         content:
           application/json:
@@ -3901,11 +4005,13 @@ paths:
                 items:
                   $ref: '#/components/schemas/WirelessLink'
           description: ''
+      summary: Wireless wireless links bulk update
+      x-summary-source: derived
     patch:
       operationId: wireless_wireless_links_bulk_partial_update
       description: Patch a list of wireless link objects.
       tags:
-      - wireless
+      - Wireless
       requestBody:
         content:
           application/json:
@@ -3931,11 +4037,13 @@ paths:
                 items:
                   $ref: '#/components/schemas/WirelessLink'
           description: ''
+      summary: Wireless wireless links bulk partial update
+      x-summary-source: derived
     delete:
       operationId: wireless_wireless_links_bulk_destroy
       description: Delete a list of wireless link objects.
       tags:
-      - wireless
+      - Wireless
       requestBody:
         content:
           application/json:
@@ -3955,6 +4063,8 @@ paths:
       responses:
         '204':
           description: No response body
+      summary: Wireless wireless links bulk destroy
+      x-summary-source: derived
   /api/wireless/wireless-links/{id}/:
     get:
       operationId: wireless_wireless_links_retrieve
@@ -3967,7 +4077,7 @@ paths:
         description: A unique integer value identifying this wireless link.
         required: true
       tags:
-      - wireless
+      - Wireless
       security:
       - cookieAuth: []
       - tokenAuth: []
@@ -3978,6 +4088,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/WirelessLink'
           description: ''
+      summary: Wireless wireless links retrieve
+      x-summary-source: derived
     put:
       operationId: wireless_wireless_links_update
       description: Put a wireless link object.
@@ -3989,7 +4101,7 @@ paths:
         description: A unique integer value identifying this wireless link.
         required: true
       tags:
-      - wireless
+      - Wireless
       requestBody:
         content:
           application/json:
@@ -4009,6 +4121,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/WirelessLink'
           description: ''
+      summary: Wireless wireless links update
+      x-summary-source: derived
     patch:
       operationId: wireless_wireless_links_partial_update
       description: Patch a wireless link object.
@@ -4020,7 +4134,7 @@ paths:
         description: A unique integer value identifying this wireless link.
         required: true
       tags:
-      - wireless
+      - Wireless
       requestBody:
         content:
           application/json:
@@ -4039,6 +4153,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/WirelessLink'
           description: ''
+      summary: Wireless wireless links partial update
+      x-summary-source: derived
     delete:
       operationId: wireless_wireless_links_destroy
       description: Delete a wireless link object.
@@ -4050,16 +4166,18 @@ paths:
         description: A unique integer value identifying this wireless link.
         required: true
       tags:
-      - wireless
+      - Wireless
       security:
       - cookieAuth: []
       - tokenAuth: []
       responses:
         '204':
           description: No response body
+      summary: Wireless wireless links destroy
+      x-summary-source: derived
 components:
   schemas:
-    WirelessLANGroupRequest:
+    BriefWirelessLANGroupRequest:
       type: object
       description: Base serializer class for models inheriting from NestedGroupModel.
       properties:
@@ -4072,13 +4190,113 @@ components:
           minLength: 1
           maxLength: 100
           pattern: ^[-a-zA-Z0-9_]+$
-        parent:
-          allOf:
-          - $ref: '#/components/schemas/NestedWirelessLANGroupRequest'
-          nullable: true
         description:
           type: string
           maxLength: 200
+      required:
+      - name
+      - slug
+    WirelessLinkRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        interface_a:
+          oneOf:
+          - type: integer
+          - $ref: '#/components/schemas/BriefInterfaceRequest'
+        interface_b:
+          oneOf:
+          - type: integer
+          - $ref: '#/components/schemas/BriefInterfaceRequest'
+        ssid:
+          type: string
+          maxLength: 32
+        status:
+          enum:
+          - connected
+          - planned
+          - decommissioning
+          type: string
+          description: '* `connected` - Connected
+
+            * `planned` - Planned
+
+            * `decommissioning` - Decommissioning'
+          x-spec-enum-id: 80d251a40f3a3144
+        tenant:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefTenantRequest'
+        auth_type:
+          enum:
+          - open
+          - wep
+          - wpa-personal
+          - wpa-enterprise
+          - ''
+          type: string
+          description: '* `open` - Open
+
+            * `wep` - WEP
+
+            * `wpa-personal` - WPA Personal (PSK)
+
+            * `wpa-enterprise` - WPA Enterprise'
+          x-spec-enum-id: e917c12aac765910
+        auth_cipher:
+          enum:
+          - auto
+          - tkip
+          - aes
+          - ''
+          type: string
+          description: '* `auto` - Auto
+
+            * `tkip` - TKIP
+
+            * `aes` - AES'
+          x-spec-enum-id: 42f867e89988bb0c
+        auth_psk:
+          type: string
+          title: Pre-shared key
+          maxLength: 64
+        distance:
+          type:
+          - number
+          - 'null'
+          format: double
+          exclusiveMinimum: -1000000
+          exclusiveMaximum: 1000000
+        distance_unit:
+          enum:
+          - km
+          - m
+          - mi
+          - ft
+          - ''
+          - null
+          type:
+          - string
+          - 'null'
+          description: '* `km` - Kilometers
+
+            * `m` - Meters
+
+            * `mi` - Miles
+
+            * `ft` - Feet'
+          x-spec-enum-id: b1169a409430c02e
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
         tags:
           type: array
           items:
@@ -4086,18 +4304,213 @@ components:
         custom_fields:
           type: object
           additionalProperties: {}
+      required:
+      - interface_a
+      - interface_b
+    PaginatedWirelessLANGroupList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/WirelessLANGroup'
+    WirelessLAN:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        ssid:
+          type: string
+          maxLength: 32
+        description:
+          type: string
+          maxLength: 200
+        group:
+          allOf:
+          - $ref: '#/components/schemas/BriefWirelessLANGroup'
+        status:
+          type: object
+          properties:
+            value:
+              enum:
+              - active
+              - reserved
+              - disabled
+              - deprecated
+              - ''
+              type: string
+              description: '* `active` - Active
+
+                * `reserved` - Reserved
+
+                * `disabled` - Disabled
+
+                * `deprecated` - Deprecated'
+              x-spec-enum-id: e5549d7370ce2e6c
+            label:
+              type: string
+              enum:
+              - Active
+              - Reserved
+              - Disabled
+              - Deprecated
+        vlan:
+          allOf:
+          - $ref: '#/components/schemas/BriefVLAN'
+        scope_type:
+          type:
+          - string
+          - 'null'
+        scope_id:
+          type:
+          - integer
+          - 'null'
+        scope:
+          readOnly: true
+        tenant:
+          allOf:
+          - $ref: '#/components/schemas/BriefTenant'
+        auth_type:
+          type: object
+          properties:
+            value:
+              enum:
+              - open
+              - wep
+              - wpa-personal
+              - wpa-enterprise
+              - ''
+              type: string
+              description: '* `open` - Open
+
+                * `wep` - WEP
+
+                * `wpa-personal` - WPA Personal (PSK)
+
+                * `wpa-enterprise` - WPA Enterprise'
+              x-spec-enum-id: e917c12aac765910
+            label:
+              type: string
+              enum:
+              - Open
+              - WEP
+              - WPA Personal (PSK)
+              - WPA Enterprise
+        auth_cipher:
+          type: object
+          properties:
+            value:
+              enum:
+              - auto
+              - tkip
+              - aes
+              - ''
+              type: string
+              description: '* `auto` - Auto
+
+                * `tkip` - TKIP
+
+                * `aes` - AES'
+              x-spec-enum-id: 42f867e89988bb0c
+            label:
+              type: string
+              enum:
+              - Auto
+              - TKIP
+              - AES
+        auth_psk:
+          type: string
+          title: Pre-shared key
+          maxLength: 64
         owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-            nullable: true
-          nullable: true
+          allOf:
+          - $ref: '#/components/schemas/BriefOwner'
         comments:
           type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTag'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        created:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        last_updated:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
       required:
-      - name
-      - slug
+      - created
+      - display
+      - display_url
+      - id
+      - last_updated
+      - scope
+      - ssid
+      - url
+    PaginatedWirelessLinkList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/WirelessLink'
     BriefWirelessLANGroup:
       type: object
       description: Base serializer class for models inheriting from NestedGroupModel.
@@ -4138,6 +4551,75 @@ components:
       - slug
       - url
       - wirelesslan_count
+    BriefTenantRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - name
+      - slug
+    PaginatedWirelessLANList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/WirelessLAN'
+    NestedTagRequest:
+      type: object
+      description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
+
+        dictionary of attributes which can be used to uniquely identify the related object. This class should be
+
+        subclassed to return a full representation of the related object on read.'
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          pattern: ^[-\w]+$
+          maxLength: 100
+        color:
+          type: string
+          minLength: 1
+          pattern: ^[0-9a-f]{6}$
+          maxLength: 6
+      required:
+      - name
+      - slug
     PatchedWritableWirelessLANGroupRequest:
       type: object
       description: Base serializer class for models inheriting from NestedGroupModel.
@@ -4152,8 +4634,9 @@ components:
           maxLength: 100
           pattern: ^[-a-zA-Z0-9_]+$
         parent:
-          type: integer
-          nullable: true
+          type:
+          - integer
+          - 'null'
         description:
           type: string
           maxLength: 200
@@ -4169,33 +4652,8 @@ components:
           - type: integer
           - allOf:
             - $ref: '#/components/schemas/BriefOwnerRequest'
-            nullable: true
-          nullable: true
         comments:
           type: string
-    PaginatedWirelessLinkList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/WirelessLink'
     WirelessLink:
       type: object
       description: Base serializer class for models inheriting from PrimaryModel.
@@ -4245,7 +4703,6 @@ components:
         tenant:
           allOf:
           - $ref: '#/components/schemas/BriefTenant'
-          nullable: true
         auth_type:
           type: object
           properties:
@@ -4299,15 +4756,16 @@ components:
           title: Pre-shared key
           maxLength: 64
         distance:
-          type: number
+          type:
+          - number
+          - 'null'
           format: double
-          maximum: 1000000
-          minimum: -1000000
-          exclusiveMaximum: true
-          exclusiveMinimum: true
-          nullable: true
+          exclusiveMinimum: -1000000
+          exclusiveMaximum: 1000000
         distance_unit:
-          type: object
+          type:
+          - object
+          - 'null'
           properties:
             value:
               enum:
@@ -4333,14 +4791,12 @@ components:
               - Meters
               - Miles
               - Feet
-          nullable: true
         description:
           type: string
           maxLength: 200
         owner:
           allOf:
           - $ref: '#/components/schemas/BriefOwner'
-          nullable: true
         comments:
           type: string
         tags:
@@ -4351,15 +4807,17 @@ components:
           type: object
           additionalProperties: {}
         created:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
           readOnly: true
-          nullable: true
         last_updated:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
           readOnly: true
-          nullable: true
       required:
       - created
       - display
@@ -4369,6 +4827,512 @@ components:
       - interface_b
       - last_updated
       - url
+    BriefInterface:
+      type: object
+      description: Adds an `owner` field for models which have a ForeignKey to users.Owner.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        device:
+          $ref: '#/components/schemas/BriefDevice'
+        name:
+          type: string
+          maxLength: 64
+        description:
+          type: string
+          maxLength: 200
+        cable:
+          allOf:
+          - $ref: '#/components/schemas/BriefCable'
+          readOnly: true
+        _occupied:
+          type: boolean
+          readOnly: true
+          title: ' occupied'
+      required:
+      - _occupied
+      - cable
+      - device
+      - display
+      - id
+      - name
+      - url
+    NestedTag:
+      type: object
+      description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
+
+        dictionary of attributes which can be used to uniquely identify the related object. This class should be
+
+        subclassed to return a full representation of the related object on read.'
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        slug:
+          type: string
+          pattern: ^[-\w]+$
+          maxLength: 100
+        color:
+          type: string
+          pattern: ^[0-9a-f]{6}$
+          maxLength: 6
+      required:
+      - display
+      - display_url
+      - id
+      - name
+      - slug
+      - url
+    BriefCable:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        label:
+          type: string
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - display
+      - id
+      - url
+    BriefDeviceRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        name:
+          type:
+          - string
+          - 'null'
+          maxLength: 64
+        description:
+          type: string
+          maxLength: 200
+    WirelessLANRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        ssid:
+          type: string
+          minLength: 1
+          maxLength: 32
+        description:
+          type: string
+          maxLength: 200
+        group:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefWirelessLANGroupRequest'
+        status:
+          enum:
+          - active
+          - reserved
+          - disabled
+          - deprecated
+          - ''
+          type: string
+          description: '* `active` - Active
+
+            * `reserved` - Reserved
+
+            * `disabled` - Disabled
+
+            * `deprecated` - Deprecated'
+          x-spec-enum-id: e5549d7370ce2e6c
+        vlan:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefVLANRequest'
+        scope_type:
+          type:
+          - string
+          - 'null'
+        scope_id:
+          type:
+          - integer
+          - 'null'
+        tenant:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefTenantRequest'
+        auth_type:
+          enum:
+          - open
+          - wep
+          - wpa-personal
+          - wpa-enterprise
+          - ''
+          type: string
+          description: '* `open` - Open
+
+            * `wep` - WEP
+
+            * `wpa-personal` - WPA Personal (PSK)
+
+            * `wpa-enterprise` - WPA Enterprise'
+          x-spec-enum-id: e917c12aac765910
+        auth_cipher:
+          enum:
+          - auto
+          - tkip
+          - aes
+          - ''
+          type: string
+          description: '* `auto` - Auto
+
+            * `tkip` - TKIP
+
+            * `aes` - AES'
+          x-spec-enum-id: 42f867e89988bb0c
+        auth_psk:
+          type: string
+          title: Pre-shared key
+          maxLength: 64
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+      required:
+      - ssid
+    BriefOwner:
+      type: object
+      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
+
+        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - display
+      - id
+      - name
+      - url
+    BriefDevice:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type:
+          - string
+          - 'null'
+          maxLength: 64
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - display
+      - id
+      - url
+    PatchedWritableWirelessLinkRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        interface_a:
+          oneOf:
+          - type: integer
+          - $ref: '#/components/schemas/BriefInterfaceRequest'
+        interface_b:
+          oneOf:
+          - type: integer
+          - $ref: '#/components/schemas/BriefInterfaceRequest'
+        ssid:
+          type: string
+          maxLength: 32
+        status:
+          enum:
+          - connected
+          - planned
+          - decommissioning
+          type: string
+          description: '* `connected` - Connected
+
+            * `planned` - Planned
+
+            * `decommissioning` - Decommissioning'
+          x-spec-enum-id: 80d251a40f3a3144
+        tenant:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefTenantRequest'
+        auth_type:
+          enum:
+          - open
+          - wep
+          - wpa-personal
+          - wpa-enterprise
+          - ''
+          - null
+          type:
+          - string
+          - 'null'
+          description: '* `open` - Open
+
+            * `wep` - WEP
+
+            * `wpa-personal` - WPA Personal (PSK)
+
+            * `wpa-enterprise` - WPA Enterprise'
+          x-spec-enum-id: e917c12aac765910
+          title: Authentication type
+        auth_cipher:
+          enum:
+          - auto
+          - tkip
+          - aes
+          - ''
+          - null
+          type:
+          - string
+          - 'null'
+          description: '* `auto` - Auto
+
+            * `tkip` - TKIP
+
+            * `aes` - AES'
+          x-spec-enum-id: 42f867e89988bb0c
+          title: Authentication cipher
+        auth_psk:
+          type: string
+          title: Pre-shared key
+          maxLength: 64
+        distance:
+          type:
+          - number
+          - 'null'
+          format: double
+          exclusiveMinimum: -1000000
+          exclusiveMaximum: 1000000
+        distance_unit:
+          enum:
+          - km
+          - m
+          - mi
+          - ft
+          - ''
+          - null
+          type:
+          - string
+          - 'null'
+          description: '* `km` - Kilometers
+
+            * `m` - Meters
+
+            * `mi` - Miles
+
+            * `ft` - Feet'
+          x-spec-enum-id: b1169a409430c02e
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+    PatchedWritableWirelessLANRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        ssid:
+          type: string
+          minLength: 1
+          maxLength: 32
+        description:
+          type: string
+          maxLength: 200
+        group:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefWirelessLANGroupRequest'
+        status:
+          enum:
+          - active
+          - reserved
+          - disabled
+          - deprecated
+          type: string
+          description: '* `active` - Active
+
+            * `reserved` - Reserved
+
+            * `disabled` - Disabled
+
+            * `deprecated` - Deprecated'
+          x-spec-enum-id: e5549d7370ce2e6c
+        vlan:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefVLANRequest'
+        scope_type:
+          type:
+          - string
+          - 'null'
+        scope_id:
+          type:
+          - integer
+          - 'null'
+        tenant:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefTenantRequest'
+        auth_type:
+          enum:
+          - open
+          - wep
+          - wpa-personal
+          - wpa-enterprise
+          - ''
+          - null
+          type:
+          - string
+          - 'null'
+          description: '* `open` - Open
+
+            * `wep` - WEP
+
+            * `wpa-personal` - WPA Personal (PSK)
+
+            * `wpa-enterprise` - WPA Enterprise'
+          x-spec-enum-id: e917c12aac765910
+          title: Authentication type
+        auth_cipher:
+          enum:
+          - auto
+          - tkip
+          - aes
+          - ''
+          - null
+          type:
+          - string
+          - 'null'
+          description: '* `auto` - Auto
+
+            * `tkip` - TKIP
+
+            * `aes` - AES'
+          x-spec-enum-id: 42f867e89988bb0c
+          title: Authentication cipher
+        auth_psk:
+          type: string
+          title: Pre-shared key
+          maxLength: 64
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+    BriefVLANRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        vid:
+          type: integer
+          maximum: 4094
+          minimum: 1
+          title: VLAN ID
+          description: Numeric VLAN ID (1-4094)
+        name:
+          type: string
+          minLength: 1
+          maxLength: 64
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - name
+      - vid
     WirelessLANGroup:
       type: object
       description: Base serializer class for models inheriting from NestedGroupModel.
@@ -4397,7 +5361,6 @@ components:
         parent:
           allOf:
           - $ref: '#/components/schemas/NestedWirelessLANGroup'
-          nullable: true
         description:
           type: string
           maxLength: 200
@@ -4409,15 +5372,17 @@ components:
           type: object
           additionalProperties: {}
         created:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
           readOnly: true
-          nullable: true
         last_updated:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
           readOnly: true
-          nullable: true
         wirelesslan_count:
           type: integer
           readOnly: true
@@ -4425,7 +5390,6 @@ components:
         owner:
           allOf:
           - $ref: '#/components/schemas/BriefOwner'
-          nullable: true
         comments:
           type: string
         _depth:
@@ -4443,9 +5407,9 @@ components:
       - slug
       - url
       - wirelesslan_count
-    BriefTenantRequest:
+    WritableWirelessLANGroupRequest:
       type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
+      description: Base serializer class for models inheriting from NestedGroupModel.
       properties:
         name:
           type: string
@@ -4456,85 +5420,62 @@ components:
           minLength: 1
           maxLength: 100
           pattern: ^[-a-zA-Z0-9_]+$
+        parent:
+          type:
+          - integer
+          - 'null'
         description:
           type: string
           maxLength: 200
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
       required:
       - name
       - slug
-    NestedWirelessLANGroupRequest:
-      type: object
-      description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
-
-        dictionary of attributes which can be used to uniquely identify the related object. This class should be
-
-        subclassed to return a full representation of the related object on read.'
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        slug:
-          type: string
-          minLength: 1
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-      required:
-      - name
-      - slug
-    WritableWirelessLANRequest:
+    WritableWirelessLinkRequest:
       type: object
       description: Base serializer class for models inheriting from PrimaryModel.
       properties:
+        interface_a:
+          oneOf:
+          - type: integer
+          - $ref: '#/components/schemas/BriefInterfaceRequest'
+        interface_b:
+          oneOf:
+          - type: integer
+          - $ref: '#/components/schemas/BriefInterfaceRequest'
         ssid:
           type: string
-          minLength: 1
           maxLength: 32
-        description:
-          type: string
-          maxLength: 200
-        group:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefWirelessLANGroupRequest'
-            nullable: true
-          nullable: true
         status:
           enum:
-          - active
-          - reserved
-          - disabled
-          - deprecated
+          - connected
+          - planned
+          - decommissioning
           type: string
-          description: '* `active` - Active
+          description: '* `connected` - Connected
 
-            * `reserved` - Reserved
+            * `planned` - Planned
 
-            * `disabled` - Disabled
-
-            * `deprecated` - Deprecated'
-          x-spec-enum-id: e5549d7370ce2e6c
-        vlan:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefVLANRequest'
-            nullable: true
-          nullable: true
-        scope_type:
-          type: string
-          nullable: true
-        scope_id:
-          type: integer
-          nullable: true
+            * `decommissioning` - Decommissioning'
+          x-spec-enum-id: 80d251a40f3a3144
         tenant:
           oneOf:
           - type: integer
           - allOf:
             - $ref: '#/components/schemas/BriefTenantRequest'
-            nullable: true
-          nullable: true
         auth_type:
           enum:
           - open
@@ -4543,7 +5484,9 @@ components:
           - wpa-enterprise
           - ''
           - null
-          type: string
+          type:
+          - string
+          - 'null'
           description: '* `open` - Open
 
             * `wep` - WEP
@@ -4552,7 +5495,6 @@ components:
 
             * `wpa-enterprise` - WPA Enterprise'
           x-spec-enum-id: e917c12aac765910
-          nullable: true
           title: Authentication type
         auth_cipher:
           enum:
@@ -4561,26 +5503,54 @@ components:
           - aes
           - ''
           - null
-          type: string
+          type:
+          - string
+          - 'null'
           description: '* `auto` - Auto
 
             * `tkip` - TKIP
 
             * `aes` - AES'
           x-spec-enum-id: 42f867e89988bb0c
-          nullable: true
           title: Authentication cipher
         auth_psk:
           type: string
           title: Pre-shared key
           maxLength: 64
+        distance:
+          type:
+          - number
+          - 'null'
+          format: double
+          exclusiveMinimum: -1000000
+          exclusiveMaximum: 1000000
+        distance_unit:
+          enum:
+          - km
+          - m
+          - mi
+          - ft
+          - ''
+          - null
+          type:
+          - string
+          - 'null'
+          description: '* `km` - Kilometers
+
+            * `m` - Meters
+
+            * `mi` - Miles
+
+            * `ft` - Feet'
+          x-spec-enum-id: b1169a409430c02e
+        description:
+          type: string
+          maxLength: 200
         owner:
           oneOf:
           - type: integer
           - allOf:
             - $ref: '#/components/schemas/BriefOwnerRequest'
-            nullable: true
-          nullable: true
         comments:
           type: string
         tags:
@@ -4591,7 +5561,8 @@ components:
           type: object
           additionalProperties: {}
       required:
-      - ssid
+      - interface_a
+      - interface_b
     NestedWirelessLANGroup:
       type: object
       description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
@@ -4627,218 +5598,6 @@ components:
           title: ' depth'
       required:
       - _depth
-      - display
-      - display_url
-      - id
-      - name
-      - slug
-      - url
-    BriefWirelessLANGroupRequest:
-      type: object
-      description: Base serializer class for models inheriting from NestedGroupModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        slug:
-          type: string
-          minLength: 1
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - name
-      - slug
-    PaginatedWirelessLANGroupList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/WirelessLANGroup'
-    NestedTagRequest:
-      type: object
-      description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
-
-        dictionary of attributes which can be used to uniquely identify the related object. This class should be
-
-        subclassed to return a full representation of the related object on read.'
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        slug:
-          type: string
-          minLength: 1
-          pattern: ^[-\w]+$
-          maxLength: 100
-        color:
-          type: string
-          minLength: 1
-          pattern: ^[0-9a-f]{6}$
-          maxLength: 6
-      required:
-      - name
-      - slug
-    WirelessLANRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        ssid:
-          type: string
-          minLength: 1
-          maxLength: 32
-        description:
-          type: string
-          maxLength: 200
-        group:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefWirelessLANGroupRequest'
-            nullable: true
-          nullable: true
-        status:
-          enum:
-          - active
-          - reserved
-          - disabled
-          - deprecated
-          - ''
-          type: string
-          description: '* `active` - Active
-
-            * `reserved` - Reserved
-
-            * `disabled` - Disabled
-
-            * `deprecated` - Deprecated'
-          x-spec-enum-id: e5549d7370ce2e6c
-        vlan:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefVLANRequest'
-            nullable: true
-          nullable: true
-        scope_type:
-          type: string
-          nullable: true
-        scope_id:
-          type: integer
-          nullable: true
-        tenant:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefTenantRequest'
-            nullable: true
-          nullable: true
-        auth_type:
-          enum:
-          - open
-          - wep
-          - wpa-personal
-          - wpa-enterprise
-          - ''
-          type: string
-          description: '* `open` - Open
-
-            * `wep` - WEP
-
-            * `wpa-personal` - WPA Personal (PSK)
-
-            * `wpa-enterprise` - WPA Enterprise'
-          x-spec-enum-id: e917c12aac765910
-        auth_cipher:
-          enum:
-          - auto
-          - tkip
-          - aes
-          - ''
-          type: string
-          description: '* `auto` - Auto
-
-            * `tkip` - TKIP
-
-            * `aes` - AES'
-          x-spec-enum-id: 42f867e89988bb0c
-        auth_psk:
-          type: string
-          title: Pre-shared key
-          maxLength: 64
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-            nullable: true
-          nullable: true
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-      required:
-      - ssid
-    NestedTag:
-      type: object
-      description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
-
-        dictionary of attributes which can be used to uniquely identify the related object. This class should be
-
-        subclassed to return a full representation of the related object on read.'
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display_url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          maxLength: 100
-        slug:
-          type: string
-          pattern: ^[-\w]+$
-          maxLength: 100
-        color:
-          type: string
-          pattern: ^[0-9a-f]{6}$
-          maxLength: 6
-      required:
       - display
       - display_url
       - id
@@ -4890,329 +5649,27 @@ components:
           maxLength: 200
       required:
       - name
-    WirelessLinkRequest:
+    NestedWirelessLANGroupRequest:
       type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
+      description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
+
+        dictionary of attributes which can be used to uniquely identify the related object. This class should be
+
+        subclassed to return a full representation of the related object on read.'
       properties:
-        interface_a:
-          oneOf:
-          - type: integer
-          - $ref: '#/components/schemas/BriefInterfaceRequest'
-        interface_b:
-          oneOf:
-          - type: integer
-          - $ref: '#/components/schemas/BriefInterfaceRequest'
-        ssid:
-          type: string
-          maxLength: 32
-        status:
-          enum:
-          - connected
-          - planned
-          - decommissioning
-          type: string
-          description: '* `connected` - Connected
-
-            * `planned` - Planned
-
-            * `decommissioning` - Decommissioning'
-          x-spec-enum-id: 80d251a40f3a3144
-        tenant:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefTenantRequest'
-            nullable: true
-          nullable: true
-        auth_type:
-          enum:
-          - open
-          - wep
-          - wpa-personal
-          - wpa-enterprise
-          - ''
-          type: string
-          description: '* `open` - Open
-
-            * `wep` - WEP
-
-            * `wpa-personal` - WPA Personal (PSK)
-
-            * `wpa-enterprise` - WPA Enterprise'
-          x-spec-enum-id: e917c12aac765910
-        auth_cipher:
-          enum:
-          - auto
-          - tkip
-          - aes
-          - ''
-          type: string
-          description: '* `auto` - Auto
-
-            * `tkip` - TKIP
-
-            * `aes` - AES'
-          x-spec-enum-id: 42f867e89988bb0c
-        auth_psk:
-          type: string
-          title: Pre-shared key
-          maxLength: 64
-        distance:
-          type: number
-          format: double
-          maximum: 1000000
-          minimum: -1000000
-          exclusiveMaximum: true
-          exclusiveMinimum: true
-          nullable: true
-        distance_unit:
-          enum:
-          - km
-          - m
-          - mi
-          - ft
-          - ''
-          - null
-          type: string
-          description: '* `km` - Kilometers
-
-            * `m` - Meters
-
-            * `mi` - Miles
-
-            * `ft` - Feet'
-          x-spec-enum-id: b1169a409430c02e
-          nullable: true
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-            nullable: true
-          nullable: true
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-      required:
-      - interface_a
-      - interface_b
-    PaginatedWirelessLANList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/WirelessLAN'
-    BriefInterface:
-      type: object
-      description: Adds an `owner` field for models which have a ForeignKey to users.Owner.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        device:
-          $ref: '#/components/schemas/BriefDevice'
         name:
           type: string
-          maxLength: 64
-        description:
-          type: string
-          maxLength: 200
-        cable:
-          allOf:
-          - $ref: '#/components/schemas/BriefCable'
-          readOnly: true
-          nullable: true
-        _occupied:
-          type: boolean
-          readOnly: true
-          title: ' occupied'
-      required:
-      - _occupied
-      - cable
-      - device
-      - display
-      - id
-      - name
-      - url
-    BriefOwner:
-      type: object
-      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
-
-        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        name:
-          type: string
+          minLength: 1
           maxLength: 100
-        description:
+        slug:
           type: string
-          maxLength: 200
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
       required:
-      - display
-      - id
       - name
-      - url
-    PatchedWritableWirelessLinkRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        interface_a:
-          oneOf:
-          - type: integer
-          - $ref: '#/components/schemas/BriefInterfaceRequest'
-        interface_b:
-          oneOf:
-          - type: integer
-          - $ref: '#/components/schemas/BriefInterfaceRequest'
-        ssid:
-          type: string
-          maxLength: 32
-        status:
-          enum:
-          - connected
-          - planned
-          - decommissioning
-          type: string
-          description: '* `connected` - Connected
-
-            * `planned` - Planned
-
-            * `decommissioning` - Decommissioning'
-          x-spec-enum-id: 80d251a40f3a3144
-        tenant:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefTenantRequest'
-            nullable: true
-          nullable: true
-        auth_type:
-          enum:
-          - open
-          - wep
-          - wpa-personal
-          - wpa-enterprise
-          - ''
-          - null
-          type: string
-          description: '* `open` - Open
-
-            * `wep` - WEP
-
-            * `wpa-personal` - WPA Personal (PSK)
-
-            * `wpa-enterprise` - WPA Enterprise'
-          x-spec-enum-id: e917c12aac765910
-          nullable: true
-          title: Authentication type
-        auth_cipher:
-          enum:
-          - auto
-          - tkip
-          - aes
-          - ''
-          - null
-          type: string
-          description: '* `auto` - Auto
-
-            * `tkip` - TKIP
-
-            * `aes` - AES'
-          x-spec-enum-id: 42f867e89988bb0c
-          nullable: true
-          title: Authentication cipher
-        auth_psk:
-          type: string
-          title: Pre-shared key
-          maxLength: 64
-        distance:
-          type: number
-          format: double
-          maximum: 1000000
-          minimum: -1000000
-          exclusiveMaximum: true
-          exclusiveMinimum: true
-          nullable: true
-        distance_unit:
-          enum:
-          - km
-          - m
-          - mi
-          - ft
-          - ''
-          - null
-          type: string
-          description: '* `km` - Kilometers
-
-            * `m` - Meters
-
-            * `mi` - Miles
-
-            * `ft` - Feet'
-          x-spec-enum-id: b1169a409430c02e
-          nullable: true
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-            nullable: true
-          nullable: true
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-    PatchedWritableWirelessLANRequest:
+      - slug
+    WritableWirelessLANRequest:
       type: object
       description: Base serializer class for models inheriting from PrimaryModel.
       properties:
@@ -5228,8 +5685,6 @@ components:
           - type: integer
           - allOf:
             - $ref: '#/components/schemas/BriefWirelessLANGroupRequest'
-            nullable: true
-          nullable: true
         status:
           enum:
           - active
@@ -5250,21 +5705,19 @@ components:
           - type: integer
           - allOf:
             - $ref: '#/components/schemas/BriefVLANRequest'
-            nullable: true
-          nullable: true
         scope_type:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         scope_id:
-          type: integer
-          nullable: true
+          type:
+          - integer
+          - 'null'
         tenant:
           oneOf:
           - type: integer
           - allOf:
             - $ref: '#/components/schemas/BriefTenantRequest'
-            nullable: true
-          nullable: true
         auth_type:
           enum:
           - open
@@ -5273,7 +5726,9 @@ components:
           - wpa-enterprise
           - ''
           - null
-          type: string
+          type:
+          - string
+          - 'null'
           description: '* `open` - Open
 
             * `wep` - WEP
@@ -5282,7 +5737,6 @@ components:
 
             * `wpa-enterprise` - WPA Enterprise'
           x-spec-enum-id: e917c12aac765910
-          nullable: true
           title: Authentication type
         auth_cipher:
           enum:
@@ -5291,14 +5745,15 @@ components:
           - aes
           - ''
           - null
-          type: string
+          type:
+          - string
+          - 'null'
           description: '* `auto` - Auto
 
             * `tkip` - TKIP
 
             * `aes` - AES'
           x-spec-enum-id: 42f867e89988bb0c
-          nullable: true
           title: Authentication cipher
         auth_psk:
           type: string
@@ -5309,8 +5764,6 @@ components:
           - type: integer
           - allOf:
             - $ref: '#/components/schemas/BriefOwnerRequest'
-            nullable: true
-          nullable: true
         comments:
           type: string
         tags:
@@ -5320,17 +5773,62 @@ components:
         custom_fields:
           type: object
           additionalProperties: {}
-    BriefDeviceRequest:
+      required:
+      - ssid
+    WirelessLANGroupRequest:
       type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
+      description: Base serializer class for models inheriting from NestedGroupModel.
       properties:
         name:
           type: string
-          nullable: true
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        parent:
+          allOf:
+          - $ref: '#/components/schemas/NestedWirelessLANGroupRequest'
+        description:
+          type: string
+          maxLength: 200
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+      required:
+      - name
+      - slug
+    BriefInterfaceRequest:
+      type: object
+      description: Adds an `owner` field for models which have a ForeignKey to users.Owner.
+      properties:
+        device:
+          oneOf:
+          - type: integer
+          - $ref: '#/components/schemas/BriefDeviceRequest'
+        name:
+          type: string
+          minLength: 1
           maxLength: 64
         description:
           type: string
           maxLength: 200
+      required:
+      - device
+      - name
     BriefVLAN:
       type: object
       description: Base serializer class for models inheriting from PrimaryModel.
@@ -5363,407 +5861,6 @@ components:
       - name
       - url
       - vid
-    WirelessLAN:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display_url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        ssid:
-          type: string
-          maxLength: 32
-        description:
-          type: string
-          maxLength: 200
-        group:
-          allOf:
-          - $ref: '#/components/schemas/BriefWirelessLANGroup'
-          nullable: true
-        status:
-          type: object
-          properties:
-            value:
-              enum:
-              - active
-              - reserved
-              - disabled
-              - deprecated
-              - ''
-              type: string
-              description: '* `active` - Active
-
-                * `reserved` - Reserved
-
-                * `disabled` - Disabled
-
-                * `deprecated` - Deprecated'
-              x-spec-enum-id: e5549d7370ce2e6c
-            label:
-              type: string
-              enum:
-              - Active
-              - Reserved
-              - Disabled
-              - Deprecated
-        vlan:
-          allOf:
-          - $ref: '#/components/schemas/BriefVLAN'
-          nullable: true
-        scope_type:
-          type: string
-          nullable: true
-        scope_id:
-          type: integer
-          nullable: true
-        scope:
-          readOnly: true
-          nullable: true
-        tenant:
-          allOf:
-          - $ref: '#/components/schemas/BriefTenant'
-          nullable: true
-        auth_type:
-          type: object
-          properties:
-            value:
-              enum:
-              - open
-              - wep
-              - wpa-personal
-              - wpa-enterprise
-              - ''
-              type: string
-              description: '* `open` - Open
-
-                * `wep` - WEP
-
-                * `wpa-personal` - WPA Personal (PSK)
-
-                * `wpa-enterprise` - WPA Enterprise'
-              x-spec-enum-id: e917c12aac765910
-            label:
-              type: string
-              enum:
-              - Open
-              - WEP
-              - WPA Personal (PSK)
-              - WPA Enterprise
-        auth_cipher:
-          type: object
-          properties:
-            value:
-              enum:
-              - auto
-              - tkip
-              - aes
-              - ''
-              type: string
-              description: '* `auto` - Auto
-
-                * `tkip` - TKIP
-
-                * `aes` - AES'
-              x-spec-enum-id: 42f867e89988bb0c
-            label:
-              type: string
-              enum:
-              - Auto
-              - TKIP
-              - AES
-        auth_psk:
-          type: string
-          title: Pre-shared key
-          maxLength: 64
-        owner:
-          allOf:
-          - $ref: '#/components/schemas/BriefOwner'
-          nullable: true
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTag'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-        created:
-          type: string
-          format: date-time
-          readOnly: true
-          nullable: true
-        last_updated:
-          type: string
-          format: date-time
-          readOnly: true
-          nullable: true
-      required:
-      - created
-      - display
-      - display_url
-      - id
-      - last_updated
-      - scope
-      - ssid
-      - url
-    WritableWirelessLANGroupRequest:
-      type: object
-      description: Base serializer class for models inheriting from NestedGroupModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        slug:
-          type: string
-          minLength: 1
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        parent:
-          type: integer
-          nullable: true
-        description:
-          type: string
-          maxLength: 200
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-            nullable: true
-          nullable: true
-        comments:
-          type: string
-      required:
-      - name
-      - slug
-    BriefInterfaceRequest:
-      type: object
-      description: Adds an `owner` field for models which have a ForeignKey to users.Owner.
-      properties:
-        device:
-          oneOf:
-          - type: integer
-          - $ref: '#/components/schemas/BriefDeviceRequest'
-        name:
-          type: string
-          minLength: 1
-          maxLength: 64
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - device
-      - name
-    BriefDevice:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          nullable: true
-          maxLength: 64
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - display
-      - id
-      - url
-    BriefVLANRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        vid:
-          type: integer
-          maximum: 4094
-          minimum: 1
-          title: VLAN ID
-          description: Numeric VLAN ID (1-4094)
-        name:
-          type: string
-          minLength: 1
-          maxLength: 64
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - name
-      - vid
-    WritableWirelessLinkRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        interface_a:
-          oneOf:
-          - type: integer
-          - $ref: '#/components/schemas/BriefInterfaceRequest'
-        interface_b:
-          oneOf:
-          - type: integer
-          - $ref: '#/components/schemas/BriefInterfaceRequest'
-        ssid:
-          type: string
-          maxLength: 32
-        status:
-          enum:
-          - connected
-          - planned
-          - decommissioning
-          type: string
-          description: '* `connected` - Connected
-
-            * `planned` - Planned
-
-            * `decommissioning` - Decommissioning'
-          x-spec-enum-id: 80d251a40f3a3144
-        tenant:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefTenantRequest'
-            nullable: true
-          nullable: true
-        auth_type:
-          enum:
-          - open
-          - wep
-          - wpa-personal
-          - wpa-enterprise
-          - ''
-          - null
-          type: string
-          description: '* `open` - Open
-
-            * `wep` - WEP
-
-            * `wpa-personal` - WPA Personal (PSK)
-
-            * `wpa-enterprise` - WPA Enterprise'
-          x-spec-enum-id: e917c12aac765910
-          nullable: true
-          title: Authentication type
-        auth_cipher:
-          enum:
-          - auto
-          - tkip
-          - aes
-          - ''
-          - null
-          type: string
-          description: '* `auto` - Auto
-
-            * `tkip` - TKIP
-
-            * `aes` - AES'
-          x-spec-enum-id: 42f867e89988bb0c
-          nullable: true
-          title: Authentication cipher
-        auth_psk:
-          type: string
-          title: Pre-shared key
-          maxLength: 64
-        distance:
-          type: number
-          format: double
-          maximum: 1000000
-          minimum: -1000000
-          exclusiveMaximum: true
-          exclusiveMinimum: true
-          nullable: true
-        distance_unit:
-          enum:
-          - km
-          - m
-          - mi
-          - ft
-          - ''
-          - null
-          type: string
-          description: '* `km` - Kilometers
-
-            * `m` - Meters
-
-            * `mi` - Miles
-
-            * `ft` - Feet'
-          x-spec-enum-id: b1169a409430c02e
-          nullable: true
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-            nullable: true
-          nullable: true
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-      required:
-      - interface_a
-      - interface_b
-    BriefCable:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        label:
-          type: string
-          maxLength: 100
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - display
-      - id
-      - url
   securitySchemes:
     cookieAuth:
       type: apiKey

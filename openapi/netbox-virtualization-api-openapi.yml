@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: NetBox REST authentication-check virtualization API
+  title: NetBox REST Virtualization API
   version: 4.5.9 (4.5)
   license:
     name: Apache v2 License
@@ -538,8 +538,9 @@ paths:
         schema:
           type: array
           items:
-            type: integer
-            nullable: true
+            type:
+            - integer
+            - 'null'
         description: Owner (ID)
         explode: true
         style: form
@@ -548,8 +549,9 @@ paths:
         schema:
           type: array
           items:
-            type: integer
-            nullable: true
+            type:
+            - integer
+            - 'null'
         description: Owner (ID)
         explode: true
         style: form
@@ -707,6 +709,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/PaginatedClusterGroupList'
           description: ''
+      summary: Virtualization cluster groups list
+      x-summary-source: derived
     post:
       operationId: virtualization_cluster_groups_create
       description: Post a list of cluster group objects.
@@ -739,6 +743,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ClusterGroup'
           description: ''
+      summary: Virtualization cluster groups create
+      x-summary-source: derived
     put:
       operationId: virtualization_cluster_groups_bulk_update
       description: Put a list of cluster group objects.
@@ -769,6 +775,8 @@ paths:
                 items:
                   $ref: '#/components/schemas/ClusterGroup'
           description: ''
+      summary: Virtualization cluster groups bulk update
+      x-summary-source: derived
     patch:
       operationId: virtualization_cluster_groups_bulk_partial_update
       description: Patch a list of cluster group objects.
@@ -799,6 +807,8 @@ paths:
                 items:
                   $ref: '#/components/schemas/ClusterGroup'
           description: ''
+      summary: Virtualization cluster groups bulk partial update
+      x-summary-source: derived
     delete:
       operationId: virtualization_cluster_groups_bulk_destroy
       description: Delete a list of cluster group objects.
@@ -823,6 +833,8 @@ paths:
       responses:
         '204':
           description: No response body
+      summary: Virtualization cluster groups bulk destroy
+      x-summary-source: derived
   /api/virtualization/cluster-groups/{id}/:
     get:
       operationId: virtualization_cluster_groups_retrieve
@@ -846,6 +858,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ClusterGroup'
           description: ''
+      summary: Virtualization cluster groups retrieve
+      x-summary-source: derived
     put:
       operationId: virtualization_cluster_groups_update
       description: Put a cluster group object.
@@ -877,6 +891,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ClusterGroup'
           description: ''
+      summary: Virtualization cluster groups update
+      x-summary-source: derived
     patch:
       operationId: virtualization_cluster_groups_partial_update
       description: Patch a cluster group object.
@@ -907,6 +923,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ClusterGroup'
           description: ''
+      summary: Virtualization cluster groups partial update
+      x-summary-source: derived
     delete:
       operationId: virtualization_cluster_groups_destroy
       description: Delete a cluster group object.
@@ -925,6 +943,8 @@ paths:
       responses:
         '204':
           description: No response body
+      summary: Virtualization cluster groups destroy
+      x-summary-source: derived
   /api/virtualization/cluster-types/:
     get:
       operationId: virtualization_cluster_types_list
@@ -1401,8 +1421,9 @@ paths:
         schema:
           type: array
           items:
-            type: integer
-            nullable: true
+            type:
+            - integer
+            - 'null'
         description: Owner (ID)
         explode: true
         style: form
@@ -1411,8 +1432,9 @@ paths:
         schema:
           type: array
           items:
-            type: integer
-            nullable: true
+            type:
+            - integer
+            - 'null'
         description: Owner (ID)
         explode: true
         style: form
@@ -1570,6 +1592,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/PaginatedClusterTypeList'
           description: ''
+      summary: Virtualization cluster types list
+      x-summary-source: derived
     post:
       operationId: virtualization_cluster_types_create
       description: Post a list of cluster type objects.
@@ -1602,6 +1626,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ClusterType'
           description: ''
+      summary: Virtualization cluster types create
+      x-summary-source: derived
     put:
       operationId: virtualization_cluster_types_bulk_update
       description: Put a list of cluster type objects.
@@ -1632,6 +1658,8 @@ paths:
                 items:
                   $ref: '#/components/schemas/ClusterType'
           description: ''
+      summary: Virtualization cluster types bulk update
+      x-summary-source: derived
     patch:
       operationId: virtualization_cluster_types_bulk_partial_update
       description: Patch a list of cluster type objects.
@@ -1662,6 +1690,8 @@ paths:
                 items:
                   $ref: '#/components/schemas/ClusterType'
           description: ''
+      summary: Virtualization cluster types bulk partial update
+      x-summary-source: derived
     delete:
       operationId: virtualization_cluster_types_bulk_destroy
       description: Delete a list of cluster type objects.
@@ -1686,6 +1716,8 @@ paths:
       responses:
         '204':
           description: No response body
+      summary: Virtualization cluster types bulk destroy
+      x-summary-source: derived
   /api/virtualization/cluster-types/{id}/:
     get:
       operationId: virtualization_cluster_types_retrieve
@@ -1709,6 +1741,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ClusterType'
           description: ''
+      summary: Virtualization cluster types retrieve
+      x-summary-source: derived
     put:
       operationId: virtualization_cluster_types_update
       description: Put a cluster type object.
@@ -1740,6 +1774,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ClusterType'
           description: ''
+      summary: Virtualization cluster types update
+      x-summary-source: derived
     patch:
       operationId: virtualization_cluster_types_partial_update
       description: Patch a cluster type object.
@@ -1770,6 +1806,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ClusterType'
           description: ''
+      summary: Virtualization cluster types partial update
+      x-summary-source: derived
     delete:
       operationId: virtualization_cluster_types_destroy
       description: Delete a cluster type object.
@@ -1788,6 +1826,8 @@ paths:
       responses:
         '204':
           description: No response body
+      summary: Virtualization cluster types destroy
+      x-summary-source: derived
   /api/virtualization/clusters/:
     get:
       operationId: virtualization_clusters_list
@@ -2036,8 +2076,9 @@ paths:
         schema:
           type: array
           items:
-            type: integer
-            nullable: true
+            type:
+            - integer
+            - 'null'
         description: Parent group (ID)
         explode: true
         style: form
@@ -2046,8 +2087,9 @@ paths:
         schema:
           type: array
           items:
-            type: integer
-            nullable: true
+            type:
+            - integer
+            - 'null'
         description: Parent group (ID)
         explode: true
         style: form
@@ -2386,8 +2428,9 @@ paths:
         schema:
           type: array
           items:
-            type: integer
-            nullable: true
+            type:
+            - integer
+            - 'null'
         description: Owner (ID)
         explode: true
         style: form
@@ -2396,8 +2439,9 @@ paths:
         schema:
           type: array
           items:
-            type: integer
-            nullable: true
+            type:
+            - integer
+            - 'null'
         description: Owner (ID)
         explode: true
         style: form
@@ -2779,8 +2823,9 @@ paths:
         schema:
           type: array
           items:
-            type: integer
-            nullable: true
+            type:
+            - integer
+            - 'null'
         description: Tenant (ID)
         explode: true
         style: form
@@ -2789,8 +2834,9 @@ paths:
         schema:
           type: array
           items:
-            type: integer
-            nullable: true
+            type:
+            - integer
+            - 'null'
         description: Tenant (ID)
         explode: true
         style: form
@@ -2847,6 +2893,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/PaginatedClusterList'
           description: ''
+      summary: Virtualization clusters list
+      x-summary-source: derived
     post:
       operationId: virtualization_clusters_create
       description: Post a list of cluster objects.
@@ -2879,6 +2927,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/Cluster'
           description: ''
+      summary: Virtualization clusters create
+      x-summary-source: derived
     put:
       operationId: virtualization_clusters_bulk_update
       description: Put a list of cluster objects.
@@ -2909,6 +2959,8 @@ paths:
                 items:
                   $ref: '#/components/schemas/Cluster'
           description: ''
+      summary: Virtualization clusters bulk update
+      x-summary-source: derived
     patch:
       operationId: virtualization_clusters_bulk_partial_update
       description: Patch a list of cluster objects.
@@ -2939,6 +2991,8 @@ paths:
                 items:
                   $ref: '#/components/schemas/Cluster'
           description: ''
+      summary: Virtualization clusters bulk partial update
+      x-summary-source: derived
     delete:
       operationId: virtualization_clusters_bulk_destroy
       description: Delete a list of cluster objects.
@@ -2963,6 +3017,8 @@ paths:
       responses:
         '204':
           description: No response body
+      summary: Virtualization clusters bulk destroy
+      x-summary-source: derived
   /api/virtualization/clusters/{id}/:
     get:
       operationId: virtualization_clusters_retrieve
@@ -2986,6 +3042,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/Cluster'
           description: ''
+      summary: Virtualization clusters retrieve
+      x-summary-source: derived
     put:
       operationId: virtualization_clusters_update
       description: Put a cluster object.
@@ -3017,6 +3075,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/Cluster'
           description: ''
+      summary: Virtualization clusters update
+      x-summary-source: derived
     patch:
       operationId: virtualization_clusters_partial_update
       description: Patch a cluster object.
@@ -3047,6 +3107,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/Cluster'
           description: ''
+      summary: Virtualization clusters partial update
+      x-summary-source: derived
     delete:
       operationId: virtualization_clusters_destroy
       description: Delete a cluster object.
@@ -3065,6 +3127,8 @@ paths:
       responses:
         '204':
           description: No response body
+      summary: Virtualization clusters destroy
+      x-summary-source: derived
   /api/virtualization/interfaces/:
     get:
       operationId: virtualization_interfaces_list
@@ -3359,11 +3423,12 @@ paths:
         schema:
           type: array
           items:
-            type: integer
+            type:
+            - integer
+            - 'null'
             maximum: 9223372036854775807
             minimum: -9223372036854775808
             format: int64
-            nullable: true
         description: L2VPN
         explode: true
         style: form
@@ -3372,11 +3437,12 @@ paths:
         schema:
           type: array
           items:
-            type: integer
+            type:
+            - integer
+            - 'null'
             maximum: 9223372036854775807
             minimum: -9223372036854775808
             format: int64
-            nullable: true
         description: L2VPN
         explode: true
         style: form
@@ -3568,9 +3634,10 @@ paths:
         schema:
           type: array
           items:
-            type: string
+            type:
+            - string
+            - 'null'
             x-spec-enum-id: 84129b71b974ebe5
-            nullable: true
         description: 802.1Q Mode
         explode: true
         style: form
@@ -3584,9 +3651,10 @@ paths:
         schema:
           type: array
           items:
-            type: string
+            type:
+            - string
+            - 'null'
             x-spec-enum-id: 84129b71b974ebe5
-            nullable: true
         description: 802.1Q Mode
         explode: true
         style: form
@@ -3595,9 +3663,10 @@ paths:
         schema:
           type: array
           items:
-            type: string
+            type:
+            - string
+            - 'null'
             x-spec-enum-id: 84129b71b974ebe5
-            nullable: true
         description: 802.1Q Mode
         explode: true
         style: form
@@ -3606,9 +3675,10 @@ paths:
         schema:
           type: array
           items:
-            type: string
+            type:
+            - string
+            - 'null'
             x-spec-enum-id: 84129b71b974ebe5
-            nullable: true
         description: 802.1Q Mode
         explode: true
         style: form
@@ -3617,9 +3687,10 @@ paths:
         schema:
           type: array
           items:
-            type: string
+            type:
+            - string
+            - 'null'
             x-spec-enum-id: 84129b71b974ebe5
-            nullable: true
         description: 802.1Q Mode
         explode: true
         style: form
@@ -3628,9 +3699,10 @@ paths:
         schema:
           type: array
           items:
-            type: string
+            type:
+            - string
+            - 'null'
             x-spec-enum-id: 84129b71b974ebe5
-            nullable: true
         description: 802.1Q Mode
         explode: true
         style: form
@@ -3639,9 +3711,10 @@ paths:
         schema:
           type: array
           items:
-            type: string
+            type:
+            - string
+            - 'null'
             x-spec-enum-id: 84129b71b974ebe5
-            nullable: true
         description: 802.1Q Mode
         explode: true
         style: form
@@ -3650,9 +3723,10 @@ paths:
         schema:
           type: array
           items:
-            type: string
+            type:
+            - string
+            - 'null'
             x-spec-enum-id: 84129b71b974ebe5
-            nullable: true
         description: 802.1Q Mode
         explode: true
         style: form
@@ -3661,9 +3735,10 @@ paths:
         schema:
           type: array
           items:
-            type: string
+            type:
+            - string
+            - 'null'
             x-spec-enum-id: 84129b71b974ebe5
-            nullable: true
         description: 802.1Q Mode
         explode: true
         style: form
@@ -3672,9 +3747,10 @@ paths:
         schema:
           type: array
           items:
-            type: string
+            type:
+            - string
+            - 'null'
             x-spec-enum-id: 84129b71b974ebe5
-            nullable: true
         description: 802.1Q Mode
         explode: true
         style: form
@@ -3683,9 +3759,10 @@ paths:
         schema:
           type: array
           items:
-            type: string
+            type:
+            - string
+            - 'null'
             x-spec-enum-id: 84129b71b974ebe5
-            nullable: true
         description: 802.1Q Mode
         explode: true
         style: form
@@ -3694,9 +3771,10 @@ paths:
         schema:
           type: array
           items:
-            type: string
+            type:
+            - string
+            - 'null'
             x-spec-enum-id: 84129b71b974ebe5
-            nullable: true
         description: 802.1Q Mode
         explode: true
         style: form
@@ -3934,8 +4012,9 @@ paths:
         schema:
           type: array
           items:
-            type: integer
-            nullable: true
+            type:
+            - integer
+            - 'null'
         description: Owner (ID)
         explode: true
         style: form
@@ -3944,8 +4023,9 @@ paths:
         schema:
           type: array
           items:
-            type: integer
-            nullable: true
+            type:
+            - integer
+            - 'null'
         description: Owner (ID)
         explode: true
         style: form
@@ -4132,8 +4212,9 @@ paths:
         schema:
           type: array
           items:
-            type: string
-            nullable: true
+            type:
+            - string
+            - 'null'
             title: Route distinguisher
         description: VRF (RD)
         explode: true
@@ -4143,8 +4224,9 @@ paths:
         schema:
           type: array
           items:
-            type: string
-            nullable: true
+            type:
+            - string
+            - 'null'
             title: Route distinguisher
         description: VRF (RD)
         explode: true
@@ -4179,6 +4261,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/PaginatedVMInterfaceList'
           description: ''
+      summary: Virtualization interfaces list
+      x-summary-source: derived
     post:
       operationId: virtualization_interfaces_create
       description: Post a list of interface objects.
@@ -4211,6 +4295,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/VMInterface'
           description: ''
+      summary: Virtualization interfaces create
+      x-summary-source: derived
     put:
       operationId: virtualization_interfaces_bulk_update
       description: Put a list of interface objects.
@@ -4241,6 +4327,8 @@ paths:
                 items:
                   $ref: '#/components/schemas/VMInterface'
           description: ''
+      summary: Virtualization interfaces bulk update
+      x-summary-source: derived
     patch:
       operationId: virtualization_interfaces_bulk_partial_update
       description: Patch a list of interface objects.
@@ -4271,6 +4359,8 @@ paths:
                 items:
                   $ref: '#/components/schemas/VMInterface'
           description: ''
+      summary: Virtualization interfaces bulk partial update
+      x-summary-source: derived
     delete:
       operationId: virtualization_interfaces_bulk_destroy
       description: Delete a list of interface objects.
@@ -4295,6 +4385,8 @@ paths:
       responses:
         '204':
           description: No response body
+      summary: Virtualization interfaces bulk destroy
+      x-summary-source: derived
   /api/virtualization/interfaces/{id}/:
     get:
       operationId: virtualization_interfaces_retrieve
@@ -4318,6 +4410,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/VMInterface'
           description: ''
+      summary: Virtualization interfaces retrieve
+      x-summary-source: derived
     put:
       operationId: virtualization_interfaces_update
       description: Put a interface object.
@@ -4349,6 +4443,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/VMInterface'
           description: ''
+      summary: Virtualization interfaces update
+      x-summary-source: derived
     patch:
       operationId: virtualization_interfaces_partial_update
       description: Patch a interface object.
@@ -4379,6 +4475,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/VMInterface'
           description: ''
+      summary: Virtualization interfaces partial update
+      x-summary-source: derived
     delete:
       operationId: virtualization_interfaces_destroy
       description: Delete a interface object.
@@ -4397,6 +4495,8 @@ paths:
       responses:
         '204':
           description: No response body
+      summary: Virtualization interfaces destroy
+      x-summary-source: derived
   /api/virtualization/virtual-disks/:
     get:
       operationId: virtualization_virtual_disks_list
@@ -4873,8 +4973,9 @@ paths:
         schema:
           type: array
           items:
-            type: integer
-            nullable: true
+            type:
+            - integer
+            - 'null'
         description: Owner (ID)
         explode: true
         style: form
@@ -4883,8 +4984,9 @@ paths:
         schema:
           type: array
           items:
-            type: integer
-            nullable: true
+            type:
+            - integer
+            - 'null'
         description: Owner (ID)
         explode: true
         style: form
@@ -5036,6 +5138,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/PaginatedVirtualDiskList'
           description: ''
+      summary: Virtualization virtual disks list
+      x-summary-source: derived
     post:
       operationId: virtualization_virtual_disks_create
       description: Post a list of virtual disk objects.
@@ -5068,6 +5172,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/VirtualDisk'
           description: ''
+      summary: Virtualization virtual disks create
+      x-summary-source: derived
     put:
       operationId: virtualization_virtual_disks_bulk_update
       description: Put a list of virtual disk objects.
@@ -5098,6 +5204,8 @@ paths:
                 items:
                   $ref: '#/components/schemas/VirtualDisk'
           description: ''
+      summary: Virtualization virtual disks bulk update
+      x-summary-source: derived
     patch:
       operationId: virtualization_virtual_disks_bulk_partial_update
       description: Patch a list of virtual disk objects.
@@ -5128,6 +5236,8 @@ paths:
                 items:
                   $ref: '#/components/schemas/VirtualDisk'
           description: ''
+      summary: Virtualization virtual disks bulk partial update
+      x-summary-source: derived
     delete:
       operationId: virtualization_virtual_disks_bulk_destroy
       description: Delete a list of virtual disk objects.
@@ -5152,6 +5262,8 @@ paths:
       responses:
         '204':
           description: No response body
+      summary: Virtualization virtual disks bulk destroy
+      x-summary-source: derived
   /api/virtualization/virtual-disks/{id}/:
     get:
       operationId: virtualization_virtual_disks_retrieve
@@ -5175,6 +5287,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/VirtualDisk'
           description: ''
+      summary: Virtualization virtual disks retrieve
+      x-summary-source: derived
     put:
       operationId: virtualization_virtual_disks_update
       description: Put a virtual disk object.
@@ -5206,6 +5320,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/VirtualDisk'
           description: ''
+      summary: Virtualization virtual disks update
+      x-summary-source: derived
     patch:
       operationId: virtualization_virtual_disks_partial_update
       description: Patch a virtual disk object.
@@ -5236,6 +5352,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/VirtualDisk'
           description: ''
+      summary: Virtualization virtual disks partial update
+      x-summary-source: derived
     delete:
       operationId: virtualization_virtual_disks_destroy
       description: Delete a virtual disk object.
@@ -5254,6 +5372,8 @@ paths:
       responses:
         '204':
           description: No response body
+      summary: Virtualization virtual disks destroy
+      x-summary-source: derived
   /api/virtualization/virtual-machines/:
     get:
       operationId: virtualization_virtual_machines_list
@@ -5318,8 +5438,9 @@ paths:
         schema:
           type: array
           items:
-            type: integer
-            nullable: true
+            type:
+            - integer
+            - 'null'
         description: Cluster (ID)
         explode: true
         style: form
@@ -5328,8 +5449,9 @@ paths:
         schema:
           type: array
           items:
-            type: integer
-            nullable: true
+            type:
+            - integer
+            - 'null'
         description: Cluster (ID)
         explode: true
         style: form
@@ -5374,8 +5496,9 @@ paths:
         schema:
           type: array
           items:
-            type: integer
-            nullable: true
+            type:
+            - integer
+            - 'null'
         description: Config template (ID)
         explode: true
         style: form
@@ -5384,8 +5507,9 @@ paths:
         schema:
           type: array
           items:
-            type: integer
-            nullable: true
+            type:
+            - integer
+            - 'null'
         description: Config template (ID)
         explode: true
         style: form
@@ -5614,8 +5738,9 @@ paths:
         schema:
           type: array
           items:
-            type: string
-            nullable: true
+            type:
+            - string
+            - 'null'
         description: Device
         explode: true
         style: form
@@ -5624,8 +5749,9 @@ paths:
         schema:
           type: array
           items:
-            type: string
-            nullable: true
+            type:
+            - string
+            - 'null'
         description: Device
         explode: true
         style: form
@@ -5634,8 +5760,9 @@ paths:
         schema:
           type: array
           items:
-            type: integer
-            nullable: true
+            type:
+            - integer
+            - 'null'
         description: Device (ID)
         explode: true
         style: form
@@ -5644,8 +5771,9 @@ paths:
         schema:
           type: array
           items:
-            type: integer
-            nullable: true
+            type:
+            - integer
+            - 'null'
         description: Device (ID)
         explode: true
         style: form
@@ -6232,8 +6360,9 @@ paths:
         schema:
           type: array
           items:
-            type: integer
-            nullable: true
+            type:
+            - integer
+            - 'null'
         description: Owner (ID)
         explode: true
         style: form
@@ -6242,8 +6371,9 @@ paths:
         schema:
           type: array
           items:
-            type: integer
-            nullable: true
+            type:
+            - integer
+            - 'null'
         description: Owner (ID)
         explode: true
         style: form
@@ -6575,8 +6705,9 @@ paths:
         schema:
           type: array
           items:
-            type: integer
-            nullable: true
+            type:
+            - integer
+            - 'null'
         description: Site (ID)
         explode: true
         style: form
@@ -6585,8 +6716,9 @@ paths:
         schema:
           type: array
           items:
-            type: integer
-            nullable: true
+            type:
+            - integer
+            - 'null'
         description: Site (ID)
         explode: true
         style: form
@@ -6901,8 +7033,9 @@ paths:
         schema:
           type: array
           items:
-            type: integer
-            nullable: true
+            type:
+            - integer
+            - 'null'
         description: Tenant (ID)
         explode: true
         style: form
@@ -6911,8 +7044,9 @@ paths:
         schema:
           type: array
           items:
-            type: integer
-            nullable: true
+            type:
+            - integer
+            - 'null'
         description: Tenant (ID)
         explode: true
         style: form
@@ -7049,6 +7183,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/PaginatedVirtualMachineWithConfigContextList'
           description: ''
+      summary: Virtualization virtual machines list
+      x-summary-source: derived
     post:
       operationId: virtualization_virtual_machines_create
       description: Post a list of virtual machine objects.
@@ -7081,6 +7217,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/VirtualMachineWithConfigContext'
           description: ''
+      summary: Virtualization virtual machines create
+      x-summary-source: derived
     put:
       operationId: virtualization_virtual_machines_bulk_update
       description: Put a list of virtual machine objects.
@@ -7111,6 +7249,8 @@ paths:
                 items:
                   $ref: '#/components/schemas/VirtualMachineWithConfigContext'
           description: ''
+      summary: Virtualization virtual machines bulk update
+      x-summary-source: derived
     patch:
       operationId: virtualization_virtual_machines_bulk_partial_update
       description: Patch a list of virtual machine objects.
@@ -7141,6 +7281,8 @@ paths:
                 items:
                   $ref: '#/components/schemas/VirtualMachineWithConfigContext'
           description: ''
+      summary: Virtualization virtual machines bulk partial update
+      x-summary-source: derived
     delete:
       operationId: virtualization_virtual_machines_bulk_destroy
       description: Delete a list of virtual machine objects.
@@ -7165,6 +7307,8 @@ paths:
       responses:
         '204':
           description: No response body
+      summary: Virtualization virtual machines bulk destroy
+      x-summary-source: derived
   /api/virtualization/virtual-machines/{id}/:
     get:
       operationId: virtualization_virtual_machines_retrieve
@@ -7188,6 +7332,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/VirtualMachineWithConfigContext'
           description: ''
+      summary: Virtualization virtual machines retrieve
+      x-summary-source: derived
     put:
       operationId: virtualization_virtual_machines_update
       description: Put a virtual machine object.
@@ -7219,6 +7365,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/VirtualMachineWithConfigContext'
           description: ''
+      summary: Virtualization virtual machines update
+      x-summary-source: derived
     patch:
       operationId: virtualization_virtual_machines_partial_update
       description: Patch a virtual machine object.
@@ -7249,6 +7397,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/VirtualMachineWithConfigContext'
           description: ''
+      summary: Virtualization virtual machines partial update
+      x-summary-source: derived
     delete:
       operationId: virtualization_virtual_machines_destroy
       description: Delete a virtual machine object.
@@ -7267,6 +7417,8 @@ paths:
       responses:
         '204':
           description: No response body
+      summary: Virtualization virtual machines destroy
+      x-summary-source: derived
   /api/virtualization/virtual-machines/{id}/render-config/:
     post:
       operationId: virtualization_virtual_machines_render_config_create
@@ -7309,183 +7461,23 @@ paths:
               schema:
                 $ref: '#/components/schemas/VirtualMachineWithConfigContext'
           description: ''
+      summary: Virtualization virtual machines render config create
+      x-summary-source: derived
 components:
   schemas:
-    ClusterType:
+    BriefConfigTemplateRequest:
       type: object
-      description: Base serializer class for models inheriting from OrganizationalModel.
+      description: Adds an `owner` field for models which have a ForeignKey to users.Owner.
       properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display_url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
         name:
           type: string
+          minLength: 1
           maxLength: 100
-        slug:
-          type: string
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
         description:
           type: string
           maxLength: 200
-        owner:
-          allOf:
-          - $ref: '#/components/schemas/BriefOwner'
-          nullable: true
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTag'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-        created:
-          type: string
-          format: date-time
-          readOnly: true
-          nullable: true
-        last_updated:
-          type: string
-          format: date-time
-          readOnly: true
-          nullable: true
-        cluster_count:
-          type: integer
-          format: int64
-          readOnly: true
       required:
-      - cluster_count
-      - created
-      - display
-      - display_url
-      - id
-      - last_updated
       - name
-      - slug
-      - url
-    BriefPlatform:
-      type: object
-      description: Base serializer class for models inheriting from NestedGroupModel.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          maxLength: 100
-        slug:
-          type: string
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        description:
-          type: string
-          maxLength: 200
-        device_count:
-          type: integer
-          readOnly: true
-          default: 0
-        virtualmachine_count:
-          type: integer
-          readOnly: true
-          default: 0
-        _depth:
-          type: integer
-          readOnly: true
-          title: ' depth'
-      required:
-      - _depth
-      - device_count
-      - display
-      - id
-      - name
-      - slug
-      - url
-      - virtualmachine_count
-    ClusterGroup:
-      type: object
-      description: Base serializer class for models inheriting from OrganizationalModel.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display_url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          maxLength: 100
-        slug:
-          type: string
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          allOf:
-          - $ref: '#/components/schemas/BriefOwner'
-          nullable: true
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTag'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-        created:
-          type: string
-          format: date-time
-          readOnly: true
-          nullable: true
-        last_updated:
-          type: string
-          format: date-time
-          readOnly: true
-          nullable: true
-        cluster_count:
-          type: integer
-          format: int64
-          readOnly: true
-      required:
-      - cluster_count
-      - created
-      - display
-      - display_url
-      - id
-      - last_updated
-      - name
-      - slug
-      - url
     NestedVirtualMachine:
       type: object
       description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
@@ -7517,28 +7509,9 @@ components:
       - id
       - name
       - url
-    BriefClusterTypeRequest:
+    BriefL2VPNTermination:
       type: object
-      description: Base serializer class for models inheriting from OrganizationalModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        slug:
-          type: string
-          minLength: 1
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - name
-      - slug
-    BriefConfigTemplate:
-      type: object
-      description: Adds an `owner` field for models which have a ForeignKey to users.Owner.
+      description: Adds support for custom fields and tags.
       properties:
         id:
           type: integer
@@ -7550,341 +7523,13 @@ components:
         display:
           type: string
           readOnly: true
-        name:
-          type: string
-          maxLength: 100
-        description:
-          type: string
-          maxLength: 200
+        l2vpn:
+          $ref: '#/components/schemas/BriefL2VPN'
       required:
       - display
       - id
-      - name
+      - l2vpn
       - url
-    NestedVMInterface:
-      type: object
-      description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
-
-        dictionary of attributes which can be used to uniquely identify the related object. This class should be
-
-        subclassed to return a full representation of the related object on read.'
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display_url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        virtual_machine:
-          allOf:
-          - $ref: '#/components/schemas/NestedVirtualMachine'
-          readOnly: true
-        name:
-          type: string
-          maxLength: 64
-      required:
-      - display
-      - display_url
-      - id
-      - name
-      - url
-      - virtual_machine
-    BriefIPAddressRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        address:
-          type: string
-          minLength: 1
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - address
-    Cluster:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display_url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          maxLength: 100
-        type:
-          $ref: '#/components/schemas/BriefClusterType'
-        group:
-          allOf:
-          - $ref: '#/components/schemas/BriefClusterGroup'
-          nullable: true
-        status:
-          type: object
-          properties:
-            value:
-              enum:
-              - planned
-              - staging
-              - active
-              - decommissioning
-              - offline
-              type: string
-              description: '* `planned` - Planned
-
-                * `staging` - Staging
-
-                * `active` - Active
-
-                * `decommissioning` - Decommissioning
-
-                * `offline` - Offline'
-              x-spec-enum-id: 65a25166053759eb
-            label:
-              type: string
-              enum:
-              - Planned
-              - Staging
-              - Active
-              - Decommissioning
-              - Offline
-        tenant:
-          allOf:
-          - $ref: '#/components/schemas/BriefTenant'
-          nullable: true
-        scope_type:
-          type: string
-          nullable: true
-        scope_id:
-          type: integer
-          nullable: true
-        scope:
-          readOnly: true
-          nullable: true
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          allOf:
-          - $ref: '#/components/schemas/BriefOwner'
-          nullable: true
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTag'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-        created:
-          type: string
-          format: date-time
-          readOnly: true
-          nullable: true
-        last_updated:
-          type: string
-          format: date-time
-          readOnly: true
-          nullable: true
-        device_count:
-          type: integer
-          format: int64
-          readOnly: true
-        virtualmachine_count:
-          type: integer
-          format: int64
-          readOnly: true
-        allocated_vcpus:
-          type: number
-          format: double
-          maximum: 1000000
-          minimum: -1000000
-          exclusiveMaximum: true
-          exclusiveMinimum: true
-          readOnly: true
-        allocated_memory:
-          type: integer
-          readOnly: true
-        allocated_disk:
-          type: integer
-          readOnly: true
-      required:
-      - allocated_disk
-      - allocated_memory
-      - allocated_vcpus
-      - created
-      - device_count
-      - display
-      - display_url
-      - id
-      - last_updated
-      - name
-      - scope
-      - type
-      - url
-      - virtualmachine_count
-    PatchedWritableVMInterfaceRequest:
-      type: object
-      description: Adds an `owner` field for models which have a ForeignKey to users.Owner.
-      properties:
-        virtual_machine:
-          oneOf:
-          - type: integer
-          - $ref: '#/components/schemas/BriefVirtualMachineRequest'
-        name:
-          type: string
-          minLength: 1
-          maxLength: 64
-        enabled:
-          type: boolean
-        parent:
-          type: integer
-          nullable: true
-          title: Parent interface
-        bridge:
-          type: integer
-          nullable: true
-          title: Bridge interface
-        mtu:
-          type: integer
-          maximum: 65536
-          minimum: 1
-          nullable: true
-        primary_mac_address:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefMACAddressRequest'
-            nullable: true
-          nullable: true
-        description:
-          type: string
-          maxLength: 200
-        mode:
-          enum:
-          - access
-          - tagged
-          - tagged-all
-          - q-in-q
-          - ''
-          - null
-          type: string
-          x-spec-enum-id: 84129b71b974ebe5
-          nullable: true
-          description: 'IEEE 802.1Q tagging strategy
-
-
-            * `access` - Access
-
-            * `tagged` - Tagged
-
-            * `tagged-all` - Tagged (All)
-
-            * `q-in-q` - Q-in-Q (802.1ad)'
-        untagged_vlan:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefVLANRequest'
-            nullable: true
-          nullable: true
-        tagged_vlans:
-          type: array
-          items:
-            type: integer
-        qinq_svlan:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefVLANRequest'
-            nullable: true
-          nullable: true
-        vlan_translation_policy:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefVLANTranslationPolicyRequest'
-            nullable: true
-          nullable: true
-        vrf:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefVRFRequest'
-            nullable: true
-          nullable: true
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-            nullable: true
-          nullable: true
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-    BriefRole:
-      type: object
-      description: Base serializer class for models inheriting from OrganizationalModel.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          maxLength: 100
-        slug:
-          type: string
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        description:
-          type: string
-          maxLength: 200
-        prefix_count:
-          type: integer
-          format: int64
-          readOnly: true
-        vlan_count:
-          type: integer
-          format: int64
-          readOnly: true
-      required:
-      - display
-      - id
-      - name
-      - prefix_count
-      - slug
-      - url
-      - vlan_count
     BriefVRFRequest:
       type: object
       description: Base serializer class for models inheriting from PrimaryModel.
@@ -7894,8 +7539,9 @@ components:
           minLength: 1
           maxLength: 100
         rd:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           title: Route distinguisher
           description: Unique route distinguisher (as defined in RFC 4364)
           maxLength: 21
@@ -7904,9 +7550,67 @@ components:
           maxLength: 200
       required:
       - name
-    BriefVLANGroup:
+    BriefVLANTranslationPolicyRequest:
       type: object
-      description: Base serializer class for models inheriting from OrganizationalModel.
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - name
+    BriefVirtualMachineRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 64
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - name
+    BriefVLAN:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        vid:
+          type: integer
+          maximum: 4094
+          minimum: 1
+          title: VLAN ID
+          description: Numeric VLAN ID (1-4094)
+        name:
+          type: string
+          maxLength: 64
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - display
+      - id
+      - name
+      - url
+      - vid
+    BriefSite:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
       properties:
         id:
           type: integer
@@ -7920,6 +7624,7 @@ components:
           readOnly: true
         name:
           type: string
+          description: Full name of the site
           maxLength: 100
         slug:
           type: string
@@ -7928,108 +7633,144 @@ components:
         description:
           type: string
           maxLength: 200
-        vlan_count:
-          type: integer
-          format: int64
-          readOnly: true
       required:
       - display
       - id
       - name
       - slug
       - url
-      - vlan_count
-    PaginatedVirtualMachineWithConfigContextList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/VirtualMachineWithConfigContext'
-    PaginatedClusterTypeList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/ClusterType'
-    PaginatedVMInterfaceList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/VMInterface'
-    BriefTenantRequest:
+    VLAN:
       type: object
       description: Base serializer class for models inheriting from PrimaryModel.
       properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        site:
+          allOf:
+          - $ref: '#/components/schemas/BriefSite'
+        group:
+          allOf:
+          - $ref: '#/components/schemas/BriefVLANGroup'
+        vid:
+          type: integer
+          maximum: 4094
+          minimum: 1
+          title: VLAN ID
+          description: Numeric VLAN ID (1-4094)
         name:
           type: string
-          minLength: 1
-          maxLength: 100
-        slug:
-          type: string
-          minLength: 1
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
+          maxLength: 64
+        tenant:
+          allOf:
+          - $ref: '#/components/schemas/BriefTenant'
+        status:
+          type: object
+          properties:
+            value:
+              enum:
+              - active
+              - reserved
+              - deprecated
+              type: string
+              description: '* `active` - Active
+
+                * `reserved` - Reserved
+
+                * `deprecated` - Deprecated'
+              x-spec-enum-id: ca933c38b935e547
+            label:
+              type: string
+              enum:
+              - Active
+              - Reserved
+              - Deprecated
+        role:
+          allOf:
+          - $ref: '#/components/schemas/BriefRole'
         description:
           type: string
           maxLength: 200
+        qinq_role:
+          type:
+          - object
+          - 'null'
+          properties:
+            value:
+              enum:
+              - svlan
+              - cvlan
+              - null
+              type: string
+              description: '* `svlan` - Service
+
+                * `cvlan` - Customer'
+              x-spec-enum-id: fa0abd59fb1a7312
+            label:
+              type: string
+              enum:
+              - Service
+              - Customer
+        qinq_svlan:
+          allOf:
+          - $ref: '#/components/schemas/NestedVLAN'
+        owner:
+          allOf:
+          - $ref: '#/components/schemas/BriefOwner'
+        comments:
+          type: string
+        l2vpn_termination:
+          allOf:
+          - $ref: '#/components/schemas/BriefL2VPNTermination'
+          readOnly: true
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTag'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        created:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        last_updated:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        prefix_count:
+          type: integer
+          format: int64
+          readOnly: true
       required:
+      - created
+      - display
+      - display_url
+      - id
+      - l2vpn_termination
+      - last_updated
       - name
-      - slug
-    BriefClusterGroupRequest:
+      - prefix_count
+      - url
+      - vid
+    BriefPlatformRequest:
       type: object
-      description: Base serializer class for models inheriting from OrganizationalModel.
+      description: Base serializer class for models inheriting from NestedGroupModel.
       properties:
         name:
           type: string
@@ -8081,238 +7822,6 @@ components:
       - name
       - slug
       - url
-    BriefDeviceRole:
-      type: object
-      description: Base serializer class for models inheriting from NestedGroupModel.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          maxLength: 100
-        slug:
-          type: string
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        description:
-          type: string
-          maxLength: 200
-        device_count:
-          type: integer
-          readOnly: true
-          default: 0
-        virtualmachine_count:
-          type: integer
-          readOnly: true
-          default: 0
-        _depth:
-          type: integer
-          readOnly: true
-          title: ' depth'
-      required:
-      - _depth
-      - device_count
-      - display
-      - id
-      - name
-      - slug
-      - url
-      - virtualmachine_count
-    VirtualMachineWithConfigContextRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 64
-        status:
-          enum:
-          - offline
-          - active
-          - planned
-          - staged
-          - failed
-          - decommissioning
-          - paused
-          type: string
-          description: '* `offline` - Offline
-
-            * `active` - Active
-
-            * `planned` - Planned
-
-            * `staged` - Staged
-
-            * `failed` - Failed
-
-            * `decommissioning` - Decommissioning
-
-            * `paused` - Paused'
-          x-spec-enum-id: effecc3b94e0b74b
-        start_on_boot:
-          enum:
-          - 'on'
-          - 'off'
-          - laststate
-          type: string
-          description: '* `on` - On
-
-            * `off` - Off
-
-            * `laststate` - Last State'
-          x-spec-enum-id: 610e33fc2fde73d6
-        site:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefSiteRequest'
-            nullable: true
-          nullable: true
-        cluster:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefClusterRequest'
-            nullable: true
-          nullable: true
-        device:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefDeviceRequest'
-            nullable: true
-          nullable: true
-        serial:
-          type: string
-          title: Serial number
-          maxLength: 50
-        role:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefDeviceRoleRequest'
-            nullable: true
-          nullable: true
-        tenant:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefTenantRequest'
-            nullable: true
-          nullable: true
-        platform:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefPlatformRequest'
-            nullable: true
-          nullable: true
-        primary_ip4:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefIPAddressRequest'
-            nullable: true
-          nullable: true
-        primary_ip6:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefIPAddressRequest'
-            nullable: true
-          nullable: true
-        vcpus:
-          type: number
-          format: double
-          maximum: 10000
-          minimum: 0.01
-          exclusiveMaximum: true
-          nullable: true
-        memory:
-          type: integer
-          maximum: 2147483647
-          minimum: 0
-          nullable: true
-        disk:
-          type: integer
-          maximum: 2147483647
-          minimum: 0
-          nullable: true
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-            nullable: true
-          nullable: true
-        comments:
-          type: string
-        config_template:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefConfigTemplateRequest'
-            nullable: true
-          nullable: true
-        local_context_data:
-          nullable: true
-          description: Local config context data takes precedence over source contexts in the final rendered config context
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-      required:
-      - name
-    ClusterGroupRequest:
-      type: object
-      description: Base serializer class for models inheriting from OrganizationalModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        slug:
-          type: string
-          minLength: 1
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-            nullable: true
-          nullable: true
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-      required:
-      - name
-      - slug
     BriefCluster:
       type: object
       description: Base serializer class for models inheriting from PrimaryModel.
@@ -8343,645 +7852,18 @@ components:
       - name
       - url
       - virtualmachine_count
-    PaginatedClusterGroupList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/ClusterGroup'
-    BriefIPAddress:
+    BriefMACAddressRequest:
       type: object
       description: Base serializer class for models inheriting from PrimaryModel.
       properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
+        mac_address:
           type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        family:
-          type: object
-          properties:
-            value:
-              enum:
-              - 4
-              - 6
-              type: integer
-              description: '* `4` - IPv4
-
-                * `6` - IPv6'
-              x-spec-enum-id: d72003fd1af3603d
-            label:
-              type: string
-              enum:
-              - IPv4
-              - IPv6
-          readOnly: true
-        address:
-          type: string
+          minLength: 1
         description:
           type: string
           maxLength: 200
       required:
-      - address
-      - display
-      - family
-      - id
-      - url
-    BriefPlatformRequest:
-      type: object
-      description: Base serializer class for models inheriting from NestedGroupModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        slug:
-          type: string
-          minLength: 1
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - name
-      - slug
-    PatchedClusterTypeRequest:
-      type: object
-      description: Base serializer class for models inheriting from OrganizationalModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        slug:
-          type: string
-          minLength: 1
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-            nullable: true
-          nullable: true
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-    PatchedClusterGroupRequest:
-      type: object
-      description: Base serializer class for models inheriting from OrganizationalModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        slug:
-          type: string
-          minLength: 1
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-            nullable: true
-          nullable: true
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-    BriefVLANTranslationPolicy:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          maxLength: 100
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - display
-      - id
-      - name
-      - url
-    BriefL2VPN:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        identifier:
-          type: integer
-          maximum: 9223372036854775807
-          minimum: -9223372036854775808
-          format: int64
-          nullable: true
-        name:
-          type: string
-          maxLength: 100
-        slug:
-          type: string
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        type:
-          type: object
-          properties:
-            value:
-              enum:
-              - vpws
-              - vpls
-              - vxlan
-              - vxlan-evpn
-              - mpls-evpn
-              - pbb-evpn
-              - evpn-vpws
-              - epl
-              - evpl
-              - ep-lan
-              - evp-lan
-              - ep-tree
-              - evp-tree
-              - spb
-              type: string
-              description: '* `vpws` - VPWS
-
-                * `vpls` - VPLS
-
-                * `vxlan` - VXLAN
-
-                * `vxlan-evpn` - VXLAN-EVPN
-
-                * `mpls-evpn` - MPLS EVPN
-
-                * `pbb-evpn` - PBB EVPN
-
-                * `evpn-vpws` - EVPN VPWS
-
-                * `epl` - EPL
-
-                * `evpl` - EVPL
-
-                * `ep-lan` - Ethernet Private LAN
-
-                * `evp-lan` - Ethernet Virtual Private LAN
-
-                * `ep-tree` - Ethernet Private Tree
-
-                * `evp-tree` - Ethernet Virtual Private Tree
-
-                * `spb` - SPB'
-              x-spec-enum-id: 0a46f8056d717efc
-            label:
-              type: string
-              enum:
-              - VPWS
-              - VPLS
-              - VXLAN
-              - VXLAN-EVPN
-              - MPLS EVPN
-              - PBB EVPN
-              - EVPN VPWS
-              - EPL
-              - EVPL
-              - Ethernet Private LAN
-              - Ethernet Virtual Private LAN
-              - Ethernet Private Tree
-              - Ethernet Virtual Private Tree
-              - SPB
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - display
-      - id
-      - name
-      - slug
-      - url
-    NestedTag:
-      type: object
-      description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
-
-        dictionary of attributes which can be used to uniquely identify the related object. This class should be
-
-        subclassed to return a full representation of the related object on read.'
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display_url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          maxLength: 100
-        slug:
-          type: string
-          pattern: ^[-\w]+$
-          maxLength: 100
-        color:
-          type: string
-          pattern: ^[0-9a-f]{6}$
-          maxLength: 6
-      required:
-      - display
-      - display_url
-      - id
-      - name
-      - slug
-      - url
-    BriefSiteRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          description: Full name of the site
-          maxLength: 100
-        slug:
-          type: string
-          minLength: 1
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - name
-      - slug
-    BriefTenant:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          maxLength: 100
-        slug:
-          type: string
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - display
-      - id
-      - name
-      - slug
-      - url
-    WritableClusterRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        type:
-          oneOf:
-          - type: integer
-          - $ref: '#/components/schemas/BriefClusterTypeRequest'
-        group:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefClusterGroupRequest'
-            nullable: true
-          nullable: true
-        status:
-          enum:
-          - planned
-          - staging
-          - active
-          - decommissioning
-          - offline
-          type: string
-          description: '* `planned` - Planned
-
-            * `staging` - Staging
-
-            * `active` - Active
-
-            * `decommissioning` - Decommissioning
-
-            * `offline` - Offline'
-          x-spec-enum-id: 65a25166053759eb
-        tenant:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefTenantRequest'
-            nullable: true
-          nullable: true
-        scope_type:
-          type: string
-          nullable: true
-        scope_id:
-          type: integer
-          nullable: true
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-            nullable: true
-          nullable: true
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-      required:
-      - name
-      - type
-    WritableVirtualMachineWithConfigContextRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 64
-        status:
-          enum:
-          - offline
-          - active
-          - planned
-          - staged
-          - failed
-          - decommissioning
-          - paused
-          type: string
-          description: '* `offline` - Offline
-
-            * `active` - Active
-
-            * `planned` - Planned
-
-            * `staged` - Staged
-
-            * `failed` - Failed
-
-            * `decommissioning` - Decommissioning
-
-            * `paused` - Paused'
-          x-spec-enum-id: effecc3b94e0b74b
-        start_on_boot:
-          enum:
-          - 'on'
-          - 'off'
-          - laststate
-          type: string
-          description: '* `on` - On
-
-            * `off` - Off
-
-            * `laststate` - Last State'
-          x-spec-enum-id: 610e33fc2fde73d6
-        site:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefSiteRequest'
-            nullable: true
-          nullable: true
-        cluster:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefClusterRequest'
-            nullable: true
-          nullable: true
-        device:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefDeviceRequest'
-            nullable: true
-          nullable: true
-        serial:
-          type: string
-          title: Serial number
-          maxLength: 50
-        role:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefDeviceRoleRequest'
-            nullable: true
-          nullable: true
-        tenant:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefTenantRequest'
-            nullable: true
-          nullable: true
-        platform:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefPlatformRequest'
-            nullable: true
-          nullable: true
-        primary_ip4:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefIPAddressRequest'
-            nullable: true
-          nullable: true
-        primary_ip6:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefIPAddressRequest'
-            nullable: true
-          nullable: true
-        vcpus:
-          type: number
-          format: double
-          maximum: 10000
-          minimum: 0.01
-          exclusiveMaximum: true
-          nullable: true
-        memory:
-          type: integer
-          maximum: 2147483647
-          minimum: 0
-          nullable: true
-        disk:
-          type: integer
-          maximum: 2147483647
-          minimum: 0
-          nullable: true
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-            nullable: true
-          nullable: true
-        comments:
-          type: string
-        config_template:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefConfigTemplateRequest'
-            nullable: true
-          nullable: true
-        local_context_data:
-          nullable: true
-          description: Local config context data takes precedence over source contexts in the final rendered config context
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-      required:
-      - name
-    BriefOwnerRequest:
-      type: object
-      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
-
-        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - name
-    BriefClusterGroup:
-      type: object
-      description: Base serializer class for models inheriting from OrganizationalModel.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          maxLength: 100
-        slug:
-          type: string
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        description:
-          type: string
-          maxLength: 200
-        cluster_count:
-          type: integer
-          format: int64
-          readOnly: true
-      required:
-      - cluster_count
-      - display
-      - id
-      - name
-      - slug
-      - url
+      - mac_address
     VirtualDisk:
       type: object
       description: Adds an `owner` field for models which have a ForeignKey to users.Owner.
@@ -9015,7 +7897,6 @@ components:
         owner:
           allOf:
           - $ref: '#/components/schemas/BriefOwner'
-          nullable: true
         tags:
           type: array
           items:
@@ -9024,15 +7905,17 @@ components:
           type: object
           additionalProperties: {}
         created:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
           readOnly: true
-          nullable: true
         last_updated:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
           readOnly: true
-          nullable: true
       required:
       - created
       - display
@@ -9043,1014 +7926,6 @@ components:
       - size
       - url
       - virtual_machine
-    PaginatedClusterList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/Cluster'
-    BriefConfigTemplateRequest:
-      type: object
-      description: Adds an `owner` field for models which have a ForeignKey to users.Owner.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - name
-    PatchedWritableVirtualMachineWithConfigContextRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 64
-        status:
-          enum:
-          - offline
-          - active
-          - planned
-          - staged
-          - failed
-          - decommissioning
-          - paused
-          type: string
-          description: '* `offline` - Offline
-
-            * `active` - Active
-
-            * `planned` - Planned
-
-            * `staged` - Staged
-
-            * `failed` - Failed
-
-            * `decommissioning` - Decommissioning
-
-            * `paused` - Paused'
-          x-spec-enum-id: effecc3b94e0b74b
-        start_on_boot:
-          enum:
-          - 'on'
-          - 'off'
-          - laststate
-          type: string
-          description: '* `on` - On
-
-            * `off` - Off
-
-            * `laststate` - Last State'
-          x-spec-enum-id: 610e33fc2fde73d6
-        site:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefSiteRequest'
-            nullable: true
-          nullable: true
-        cluster:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefClusterRequest'
-            nullable: true
-          nullable: true
-        device:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefDeviceRequest'
-            nullable: true
-          nullable: true
-        serial:
-          type: string
-          title: Serial number
-          maxLength: 50
-        role:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefDeviceRoleRequest'
-            nullable: true
-          nullable: true
-        tenant:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefTenantRequest'
-            nullable: true
-          nullable: true
-        platform:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefPlatformRequest'
-            nullable: true
-          nullable: true
-        primary_ip4:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefIPAddressRequest'
-            nullable: true
-          nullable: true
-        primary_ip6:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefIPAddressRequest'
-            nullable: true
-          nullable: true
-        vcpus:
-          type: number
-          format: double
-          maximum: 10000
-          minimum: 0.01
-          exclusiveMaximum: true
-          nullable: true
-        memory:
-          type: integer
-          maximum: 2147483647
-          minimum: 0
-          nullable: true
-        disk:
-          type: integer
-          maximum: 2147483647
-          minimum: 0
-          nullable: true
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-            nullable: true
-          nullable: true
-        comments:
-          type: string
-        config_template:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefConfigTemplateRequest'
-            nullable: true
-          nullable: true
-        local_context_data:
-          nullable: true
-          description: Local config context data takes precedence over source contexts in the final rendered config context
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-    VirtualDiskRequest:
-      type: object
-      description: Adds an `owner` field for models which have a ForeignKey to users.Owner.
-      properties:
-        virtual_machine:
-          oneOf:
-          - type: integer
-          - $ref: '#/components/schemas/BriefVirtualMachineRequest'
-        name:
-          type: string
-          minLength: 1
-          maxLength: 64
-        description:
-          type: string
-          maxLength: 200
-        size:
-          type: integer
-          maximum: 2147483647
-          minimum: 0
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-            nullable: true
-          nullable: true
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-      required:
-      - name
-      - size
-      - virtual_machine
-    PatchedWritableClusterRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        type:
-          oneOf:
-          - type: integer
-          - $ref: '#/components/schemas/BriefClusterTypeRequest'
-        group:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefClusterGroupRequest'
-            nullable: true
-          nullable: true
-        status:
-          enum:
-          - planned
-          - staging
-          - active
-          - decommissioning
-          - offline
-          type: string
-          description: '* `planned` - Planned
-
-            * `staging` - Staging
-
-            * `active` - Active
-
-            * `decommissioning` - Decommissioning
-
-            * `offline` - Offline'
-          x-spec-enum-id: 65a25166053759eb
-        tenant:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefTenantRequest'
-            nullable: true
-          nullable: true
-        scope_type:
-          type: string
-          nullable: true
-        scope_id:
-          type: integer
-          nullable: true
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-            nullable: true
-          nullable: true
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-    BriefSite:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          description: Full name of the site
-          maxLength: 100
-        slug:
-          type: string
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - display
-      - id
-      - name
-      - slug
-      - url
-    BriefDeviceRoleRequest:
-      type: object
-      description: Base serializer class for models inheriting from NestedGroupModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        slug:
-          type: string
-          minLength: 1
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - name
-      - slug
-    BriefVirtualMachineRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 64
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - name
-    ClusterRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        type:
-          oneOf:
-          - type: integer
-          - $ref: '#/components/schemas/BriefClusterTypeRequest'
-        group:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefClusterGroupRequest'
-            nullable: true
-          nullable: true
-        status:
-          enum:
-          - planned
-          - staging
-          - active
-          - decommissioning
-          - offline
-          type: string
-          description: '* `planned` - Planned
-
-            * `staging` - Staging
-
-            * `active` - Active
-
-            * `decommissioning` - Decommissioning
-
-            * `offline` - Offline'
-          x-spec-enum-id: 65a25166053759eb
-        tenant:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefTenantRequest'
-            nullable: true
-          nullable: true
-        scope_type:
-          type: string
-          nullable: true
-        scope_id:
-          type: integer
-          nullable: true
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-            nullable: true
-          nullable: true
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-      required:
-      - name
-      - type
-    ClusterTypeRequest:
-      type: object
-      description: Base serializer class for models inheriting from OrganizationalModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        slug:
-          type: string
-          minLength: 1
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-            nullable: true
-          nullable: true
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-      required:
-      - name
-      - slug
-    BriefVRF:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          maxLength: 100
-        rd:
-          type: string
-          nullable: true
-          title: Route distinguisher
-          description: Unique route distinguisher (as defined in RFC 4364)
-          maxLength: 21
-        description:
-          type: string
-          maxLength: 200
-        prefix_count:
-          type: integer
-          format: int64
-          readOnly: true
-      required:
-      - display
-      - id
-      - name
-      - prefix_count
-      - url
-    PaginatedVirtualDiskList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/VirtualDisk'
-    WritableVMInterfaceRequest:
-      type: object
-      description: Adds an `owner` field for models which have a ForeignKey to users.Owner.
-      properties:
-        virtual_machine:
-          oneOf:
-          - type: integer
-          - $ref: '#/components/schemas/BriefVirtualMachineRequest'
-        name:
-          type: string
-          minLength: 1
-          maxLength: 64
-        enabled:
-          type: boolean
-        parent:
-          type: integer
-          nullable: true
-          title: Parent interface
-        bridge:
-          type: integer
-          nullable: true
-          title: Bridge interface
-        mtu:
-          type: integer
-          maximum: 65536
-          minimum: 1
-          nullable: true
-        primary_mac_address:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefMACAddressRequest'
-            nullable: true
-          nullable: true
-        description:
-          type: string
-          maxLength: 200
-        mode:
-          enum:
-          - access
-          - tagged
-          - tagged-all
-          - q-in-q
-          - ''
-          - null
-          type: string
-          x-spec-enum-id: 84129b71b974ebe5
-          nullable: true
-          description: 'IEEE 802.1Q tagging strategy
-
-
-            * `access` - Access
-
-            * `tagged` - Tagged
-
-            * `tagged-all` - Tagged (All)
-
-            * `q-in-q` - Q-in-Q (802.1ad)'
-        untagged_vlan:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefVLANRequest'
-            nullable: true
-          nullable: true
-        tagged_vlans:
-          type: array
-          items:
-            type: integer
-        qinq_svlan:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefVLANRequest'
-            nullable: true
-          nullable: true
-        vlan_translation_policy:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefVLANTranslationPolicyRequest'
-            nullable: true
-          nullable: true
-        vrf:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefVRFRequest'
-            nullable: true
-          nullable: true
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-            nullable: true
-          nullable: true
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-      required:
-      - name
-      - virtual_machine
-    VMInterfaceRequest:
-      type: object
-      description: Adds an `owner` field for models which have a ForeignKey to users.Owner.
-      properties:
-        virtual_machine:
-          oneOf:
-          - type: integer
-          - $ref: '#/components/schemas/BriefVirtualMachineRequest'
-        name:
-          type: string
-          minLength: 1
-          maxLength: 64
-        enabled:
-          type: boolean
-        parent:
-          allOf:
-          - $ref: '#/components/schemas/NestedVMInterfaceRequest'
-          nullable: true
-        bridge:
-          allOf:
-          - $ref: '#/components/schemas/NestedVMInterfaceRequest'
-          nullable: true
-        mtu:
-          type: integer
-          maximum: 65536
-          minimum: 1
-          nullable: true
-        primary_mac_address:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefMACAddressRequest'
-            nullable: true
-          nullable: true
-        description:
-          type: string
-          maxLength: 200
-        mode:
-          enum:
-          - access
-          - tagged
-          - tagged-all
-          - q-in-q
-          - ''
-          type: string
-          description: '* `access` - Access
-
-            * `tagged` - Tagged
-
-            * `tagged-all` - Tagged (All)
-
-            * `q-in-q` - Q-in-Q (802.1ad)'
-          x-spec-enum-id: 84129b71b974ebe5
-        untagged_vlan:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefVLANRequest'
-            nullable: true
-          nullable: true
-        tagged_vlans:
-          type: array
-          items:
-            type: integer
-        qinq_svlan:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefVLANRequest'
-            nullable: true
-          nullable: true
-        vlan_translation_policy:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefVLANTranslationPolicyRequest'
-            nullable: true
-          nullable: true
-        vrf:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefVRFRequest'
-            nullable: true
-          nullable: true
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-            nullable: true
-          nullable: true
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-      required:
-      - name
-      - virtual_machine
-    VLAN:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display_url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        site:
-          allOf:
-          - $ref: '#/components/schemas/BriefSite'
-          nullable: true
-        group:
-          allOf:
-          - $ref: '#/components/schemas/BriefVLANGroup'
-          nullable: true
-        vid:
-          type: integer
-          maximum: 4094
-          minimum: 1
-          title: VLAN ID
-          description: Numeric VLAN ID (1-4094)
-        name:
-          type: string
-          maxLength: 64
-        tenant:
-          allOf:
-          - $ref: '#/components/schemas/BriefTenant'
-          nullable: true
-        status:
-          type: object
-          properties:
-            value:
-              enum:
-              - active
-              - reserved
-              - deprecated
-              type: string
-              description: '* `active` - Active
-
-                * `reserved` - Reserved
-
-                * `deprecated` - Deprecated'
-              x-spec-enum-id: ca933c38b935e547
-            label:
-              type: string
-              enum:
-              - Active
-              - Reserved
-              - Deprecated
-        role:
-          allOf:
-          - $ref: '#/components/schemas/BriefRole'
-          nullable: true
-        description:
-          type: string
-          maxLength: 200
-        qinq_role:
-          type: object
-          properties:
-            value:
-              enum:
-              - svlan
-              - cvlan
-              - null
-              type: string
-              description: '* `svlan` - Service
-
-                * `cvlan` - Customer'
-              x-spec-enum-id: fa0abd59fb1a7312
-            label:
-              type: string
-              enum:
-              - Service
-              - Customer
-          nullable: true
-        qinq_svlan:
-          allOf:
-          - $ref: '#/components/schemas/NestedVLAN'
-          nullable: true
-        owner:
-          allOf:
-          - $ref: '#/components/schemas/BriefOwner'
-          nullable: true
-        comments:
-          type: string
-        l2vpn_termination:
-          allOf:
-          - $ref: '#/components/schemas/BriefL2VPNTermination'
-          readOnly: true
-          nullable: true
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTag'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-        created:
-          type: string
-          format: date-time
-          readOnly: true
-          nullable: true
-        last_updated:
-          type: string
-          format: date-time
-          readOnly: true
-          nullable: true
-        prefix_count:
-          type: integer
-          format: int64
-          readOnly: true
-      required:
-      - created
-      - display
-      - display_url
-      - id
-      - l2vpn_termination
-      - last_updated
-      - name
-      - prefix_count
-      - url
-      - vid
-    BriefOwner:
-      type: object
-      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
-
-        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          maxLength: 100
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - display
-      - id
-      - name
-      - url
-    NestedVLAN:
-      type: object
-      description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
-
-        dictionary of attributes which can be used to uniquely identify the related object. This class should be
-
-        subclassed to return a full representation of the related object on read.'
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        vid:
-          type: integer
-          maximum: 4094
-          minimum: 1
-          title: VLAN ID
-          description: Numeric VLAN ID (1-4094)
-        name:
-          type: string
-          maxLength: 64
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - display
-      - id
-      - name
-      - url
-      - vid
-    BriefVirtualMachine:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          maxLength: 64
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - display
-      - id
-      - name
-      - url
-    BriefDeviceRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        name:
-          type: string
-          nullable: true
-          maxLength: 64
-        description:
-          type: string
-          maxLength: 200
-    NestedVMInterfaceRequest:
-      type: object
-      description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
-
-        dictionary of attributes which can be used to uniquely identify the related object. This class should be
-
-        subclassed to return a full representation of the related object on read.'
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 64
-      required:
-      - name
-    BriefVLAN:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        vid:
-          type: integer
-          maximum: 4094
-          minimum: 1
-          title: VLAN ID
-          description: Numeric VLAN ID (1-4094)
-        name:
-          type: string
-          maxLength: 64
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - display
-      - id
-      - name
-      - url
-      - vid
     VirtualMachineWithConfigContext:
       type: object
       description: Base serializer class for models inheriting from PrimaryModel.
@@ -10133,15 +8008,12 @@ components:
         site:
           allOf:
           - $ref: '#/components/schemas/BriefSite'
-          nullable: true
         cluster:
           allOf:
           - $ref: '#/components/schemas/BriefCluster'
-          nullable: true
         device:
           allOf:
           - $ref: '#/components/schemas/BriefDevice'
-          nullable: true
         serial:
           type: string
           title: Serial number
@@ -10149,60 +8021,53 @@ components:
         role:
           allOf:
           - $ref: '#/components/schemas/BriefDeviceRole'
-          nullable: true
         tenant:
           allOf:
           - $ref: '#/components/schemas/BriefTenant'
-          nullable: true
         platform:
           allOf:
           - $ref: '#/components/schemas/BriefPlatform'
-          nullable: true
         primary_ip:
           allOf:
           - $ref: '#/components/schemas/BriefIPAddress'
           readOnly: true
-          nullable: true
         primary_ip4:
           allOf:
           - $ref: '#/components/schemas/BriefIPAddress'
-          nullable: true
         primary_ip6:
           allOf:
           - $ref: '#/components/schemas/BriefIPAddress'
-          nullable: true
         vcpus:
-          type: number
+          type:
+          - number
+          - 'null'
           format: double
-          maximum: 10000
           minimum: 0.01
-          exclusiveMaximum: true
-          nullable: true
+          exclusiveMaximum: 10000
         memory:
-          type: integer
+          type:
+          - integer
+          - 'null'
           maximum: 2147483647
           minimum: 0
-          nullable: true
         disk:
-          type: integer
+          type:
+          - integer
+          - 'null'
           maximum: 2147483647
           minimum: 0
-          nullable: true
         description:
           type: string
           maxLength: 200
         owner:
           allOf:
           - $ref: '#/components/schemas/BriefOwner'
-          nullable: true
         comments:
           type: string
         config_template:
           allOf:
           - $ref: '#/components/schemas/BriefConfigTemplate'
-          nullable: true
         local_context_data:
-          nullable: true
           description: Local config context data takes precedence over source contexts in the final rendered config context
         tags:
           type: array
@@ -10212,18 +8077,19 @@ components:
           type: object
           additionalProperties: {}
         config_context:
-          nullable: true
           readOnly: true
         created:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
           readOnly: true
-          nullable: true
         last_updated:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
           readOnly: true
-          nullable: true
         interface_count:
           type: integer
           readOnly: true
@@ -10242,20 +8108,52 @@ components:
       - primary_ip
       - url
       - virtual_disk_count
-    BriefVLANTranslationPolicyRequest:
+    BriefPlatform:
       type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
+      description: Base serializer class for models inheriting from NestedGroupModel.
       properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
         name:
           type: string
-          minLength: 1
           maxLength: 100
+        slug:
+          type: string
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
         description:
           type: string
           maxLength: 200
+        device_count:
+          type: integer
+          readOnly: true
+          default: 0
+        virtualmachine_count:
+          type: integer
+          readOnly: true
+          default: 0
+        _depth:
+          type: integer
+          readOnly: true
+          title: ' depth'
       required:
+      - _depth
+      - device_count
+      - display
+      - id
       - name
-    PatchedVirtualDiskRequest:
+      - slug
+      - url
+      - virtualmachine_count
+    VMInterfaceRequest:
       type: object
       description: Adds an `owner` field for models which have a ForeignKey to users.Owner.
       properties:
@@ -10267,20 +8165,73 @@ components:
           type: string
           minLength: 1
           maxLength: 64
+        enabled:
+          type: boolean
+        parent:
+          allOf:
+          - $ref: '#/components/schemas/NestedVMInterfaceRequest'
+        bridge:
+          allOf:
+          - $ref: '#/components/schemas/NestedVMInterfaceRequest'
+        mtu:
+          type:
+          - integer
+          - 'null'
+          maximum: 65536
+          minimum: 1
+        primary_mac_address:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefMACAddressRequest'
         description:
           type: string
           maxLength: 200
-        size:
-          type: integer
-          maximum: 2147483647
-          minimum: 0
+        mode:
+          enum:
+          - access
+          - tagged
+          - tagged-all
+          - q-in-q
+          - ''
+          type: string
+          description: '* `access` - Access
+
+            * `tagged` - Tagged
+
+            * `tagged-all` - Tagged (All)
+
+            * `q-in-q` - Q-in-Q (802.1ad)'
+          x-spec-enum-id: 84129b71b974ebe5
+        untagged_vlan:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefVLANRequest'
+        tagged_vlans:
+          type: array
+          items:
+            type: integer
+        qinq_svlan:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefVLANRequest'
+        vlan_translation_policy:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefVLANTranslationPolicyRequest'
+        vrf:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefVRFRequest'
         owner:
           oneOf:
           - type: integer
           - allOf:
             - $ref: '#/components/schemas/BriefOwnerRequest'
-            nullable: true
-          nullable: true
         tags:
           type: array
           items:
@@ -10288,6 +8239,34 @@ components:
         custom_fields:
           type: object
           additionalProperties: {}
+      required:
+      - name
+      - virtual_machine
+    PaginatedClusterGroupList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ClusterGroup'
     BriefMACAddress:
       type: object
       description: Base serializer class for models inheriting from PrimaryModel.
@@ -10312,7 +8291,7 @@ components:
       - id
       - mac_address
       - url
-    BriefDevice:
+    BriefVRF:
       type: object
       description: Base serializer class for models inheriting from PrimaryModel.
       properties:
@@ -10328,7 +8307,1168 @@ components:
           readOnly: true
         name:
           type: string
-          nullable: true
+          maxLength: 100
+        rd:
+          type:
+          - string
+          - 'null'
+          title: Route distinguisher
+          description: Unique route distinguisher (as defined in RFC 4364)
+          maxLength: 21
+        description:
+          type: string
+          maxLength: 200
+        prefix_count:
+          type: integer
+          format: int64
+          readOnly: true
+      required:
+      - display
+      - id
+      - name
+      - prefix_count
+      - url
+    BriefTenantRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - name
+      - slug
+    Cluster:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        type:
+          $ref: '#/components/schemas/BriefClusterType'
+        group:
+          allOf:
+          - $ref: '#/components/schemas/BriefClusterGroup'
+        status:
+          type: object
+          properties:
+            value:
+              enum:
+              - planned
+              - staging
+              - active
+              - decommissioning
+              - offline
+              type: string
+              description: '* `planned` - Planned
+
+                * `staging` - Staging
+
+                * `active` - Active
+
+                * `decommissioning` - Decommissioning
+
+                * `offline` - Offline'
+              x-spec-enum-id: 65a25166053759eb
+            label:
+              type: string
+              enum:
+              - Planned
+              - Staging
+              - Active
+              - Decommissioning
+              - Offline
+        tenant:
+          allOf:
+          - $ref: '#/components/schemas/BriefTenant'
+        scope_type:
+          type:
+          - string
+          - 'null'
+        scope_id:
+          type:
+          - integer
+          - 'null'
+        scope:
+          readOnly: true
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          allOf:
+          - $ref: '#/components/schemas/BriefOwner'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTag'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        created:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        last_updated:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        device_count:
+          type: integer
+          format: int64
+          readOnly: true
+        virtualmachine_count:
+          type: integer
+          format: int64
+          readOnly: true
+        allocated_vcpus:
+          type: number
+          format: double
+          readOnly: true
+          exclusiveMinimum: -1000000
+          exclusiveMaximum: 1000000
+        allocated_memory:
+          type: integer
+          readOnly: true
+        allocated_disk:
+          type: integer
+          readOnly: true
+      required:
+      - allocated_disk
+      - allocated_memory
+      - allocated_vcpus
+      - created
+      - device_count
+      - display
+      - display_url
+      - id
+      - last_updated
+      - name
+      - scope
+      - type
+      - url
+      - virtualmachine_count
+    ClusterTypeRequest:
+      type: object
+      description: Base serializer class for models inheriting from OrganizationalModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+      required:
+      - name
+      - slug
+    PatchedWritableClusterRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        type:
+          oneOf:
+          - type: integer
+          - $ref: '#/components/schemas/BriefClusterTypeRequest'
+        group:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefClusterGroupRequest'
+        status:
+          enum:
+          - planned
+          - staging
+          - active
+          - decommissioning
+          - offline
+          type: string
+          description: '* `planned` - Planned
+
+            * `staging` - Staging
+
+            * `active` - Active
+
+            * `decommissioning` - Decommissioning
+
+            * `offline` - Offline'
+          x-spec-enum-id: 65a25166053759eb
+        tenant:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefTenantRequest'
+        scope_type:
+          type:
+          - string
+          - 'null'
+        scope_id:
+          type:
+          - integer
+          - 'null'
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+    PatchedClusterTypeRequest:
+      type: object
+      description: Base serializer class for models inheriting from OrganizationalModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+    NestedTagRequest:
+      type: object
+      description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
+
+        dictionary of attributes which can be used to uniquely identify the related object. This class should be
+
+        subclassed to return a full representation of the related object on read.'
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          pattern: ^[-\w]+$
+          maxLength: 100
+        color:
+          type: string
+          minLength: 1
+          pattern: ^[0-9a-f]{6}$
+          maxLength: 6
+      required:
+      - name
+      - slug
+    WritableVirtualMachineWithConfigContextRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 64
+        status:
+          enum:
+          - offline
+          - active
+          - planned
+          - staged
+          - failed
+          - decommissioning
+          - paused
+          type: string
+          description: '* `offline` - Offline
+
+            * `active` - Active
+
+            * `planned` - Planned
+
+            * `staged` - Staged
+
+            * `failed` - Failed
+
+            * `decommissioning` - Decommissioning
+
+            * `paused` - Paused'
+          x-spec-enum-id: effecc3b94e0b74b
+        start_on_boot:
+          enum:
+          - 'on'
+          - 'off'
+          - laststate
+          type: string
+          description: '* `on` - On
+
+            * `off` - Off
+
+            * `laststate` - Last State'
+          x-spec-enum-id: 610e33fc2fde73d6
+        site:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefSiteRequest'
+        cluster:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefClusterRequest'
+        device:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefDeviceRequest'
+        serial:
+          type: string
+          title: Serial number
+          maxLength: 50
+        role:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefDeviceRoleRequest'
+        tenant:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefTenantRequest'
+        platform:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefPlatformRequest'
+        primary_ip4:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefIPAddressRequest'
+        primary_ip6:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefIPAddressRequest'
+        vcpus:
+          type:
+          - number
+          - 'null'
+          format: double
+          minimum: 0.01
+          exclusiveMaximum: 10000
+        memory:
+          type:
+          - integer
+          - 'null'
+          maximum: 2147483647
+          minimum: 0
+        disk:
+          type:
+          - integer
+          - 'null'
+          maximum: 2147483647
+          minimum: 0
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        config_template:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefConfigTemplateRequest'
+        local_context_data:
+          description: Local config context data takes precedence over source contexts in the final rendered config context
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+      required:
+      - name
+    NestedTag:
+      type: object
+      description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
+
+        dictionary of attributes which can be used to uniquely identify the related object. This class should be
+
+        subclassed to return a full representation of the related object on read.'
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        slug:
+          type: string
+          pattern: ^[-\w]+$
+          maxLength: 100
+        color:
+          type: string
+          pattern: ^[0-9a-f]{6}$
+          maxLength: 6
+      required:
+      - display
+      - display_url
+      - id
+      - name
+      - slug
+      - url
+    BriefClusterGroup:
+      type: object
+      description: Base serializer class for models inheriting from OrganizationalModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        slug:
+          type: string
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+          maxLength: 200
+        cluster_count:
+          type: integer
+          format: int64
+          readOnly: true
+      required:
+      - cluster_count
+      - display
+      - id
+      - name
+      - slug
+      - url
+    BriefIPAddressRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        address:
+          type: string
+          minLength: 1
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - address
+    VirtualMachineWithConfigContextRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 64
+        status:
+          enum:
+          - offline
+          - active
+          - planned
+          - staged
+          - failed
+          - decommissioning
+          - paused
+          type: string
+          description: '* `offline` - Offline
+
+            * `active` - Active
+
+            * `planned` - Planned
+
+            * `staged` - Staged
+
+            * `failed` - Failed
+
+            * `decommissioning` - Decommissioning
+
+            * `paused` - Paused'
+          x-spec-enum-id: effecc3b94e0b74b
+        start_on_boot:
+          enum:
+          - 'on'
+          - 'off'
+          - laststate
+          type: string
+          description: '* `on` - On
+
+            * `off` - Off
+
+            * `laststate` - Last State'
+          x-spec-enum-id: 610e33fc2fde73d6
+        site:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefSiteRequest'
+        cluster:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefClusterRequest'
+        device:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefDeviceRequest'
+        serial:
+          type: string
+          title: Serial number
+          maxLength: 50
+        role:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefDeviceRoleRequest'
+        tenant:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefTenantRequest'
+        platform:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefPlatformRequest'
+        primary_ip4:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefIPAddressRequest'
+        primary_ip6:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefIPAddressRequest'
+        vcpus:
+          type:
+          - number
+          - 'null'
+          format: double
+          minimum: 0.01
+          exclusiveMaximum: 10000
+        memory:
+          type:
+          - integer
+          - 'null'
+          maximum: 2147483647
+          minimum: 0
+        disk:
+          type:
+          - integer
+          - 'null'
+          maximum: 2147483647
+          minimum: 0
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        config_template:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefConfigTemplateRequest'
+        local_context_data:
+          description: Local config context data takes precedence over source contexts in the final rendered config context
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+      required:
+      - name
+    BriefDeviceRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        name:
+          type:
+          - string
+          - 'null'
+          maxLength: 64
+        description:
+          type: string
+          maxLength: 200
+    BriefConfigTemplate:
+      type: object
+      description: Adds an `owner` field for models which have a ForeignKey to users.Owner.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - display
+      - id
+      - name
+      - url
+    ClusterGroupRequest:
+      type: object
+      description: Base serializer class for models inheriting from OrganizationalModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+      required:
+      - name
+      - slug
+    BriefDeviceRole:
+      type: object
+      description: Base serializer class for models inheriting from NestedGroupModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        slug:
+          type: string
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+          maxLength: 200
+        device_count:
+          type: integer
+          readOnly: true
+          default: 0
+        virtualmachine_count:
+          type: integer
+          readOnly: true
+          default: 0
+        _depth:
+          type: integer
+          readOnly: true
+          title: ' depth'
+      required:
+      - _depth
+      - device_count
+      - display
+      - id
+      - name
+      - slug
+      - url
+      - virtualmachine_count
+    WritableClusterRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        type:
+          oneOf:
+          - type: integer
+          - $ref: '#/components/schemas/BriefClusterTypeRequest'
+        group:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefClusterGroupRequest'
+        status:
+          enum:
+          - planned
+          - staging
+          - active
+          - decommissioning
+          - offline
+          type: string
+          description: '* `planned` - Planned
+
+            * `staging` - Staging
+
+            * `active` - Active
+
+            * `decommissioning` - Decommissioning
+
+            * `offline` - Offline'
+          x-spec-enum-id: 65a25166053759eb
+        tenant:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefTenantRequest'
+        scope_type:
+          type:
+          - string
+          - 'null'
+        scope_id:
+          type:
+          - integer
+          - 'null'
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+      required:
+      - name
+      - type
+    ClusterType:
+      type: object
+      description: Base serializer class for models inheriting from OrganizationalModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        slug:
+          type: string
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          allOf:
+          - $ref: '#/components/schemas/BriefOwner'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTag'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        created:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        last_updated:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        cluster_count:
+          type: integer
+          format: int64
+          readOnly: true
+      required:
+      - cluster_count
+      - created
+      - display
+      - display_url
+      - id
+      - last_updated
+      - name
+      - slug
+      - url
+    BriefOwner:
+      type: object
+      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
+
+        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - display
+      - id
+      - name
+      - url
+    PatchedClusterGroupRequest:
+      type: object
+      description: Base serializer class for models inheriting from OrganizationalModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+    PaginatedClusterTypeList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ClusterType'
+    ClusterGroup:
+      type: object
+      description: Base serializer class for models inheriting from OrganizationalModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        slug:
+          type: string
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          allOf:
+          - $ref: '#/components/schemas/BriefOwner'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTag'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        created:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        last_updated:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        cluster_count:
+          type: integer
+          format: int64
+          readOnly: true
+      required:
+      - cluster_count
+      - created
+      - display
+      - display_url
+      - id
+      - last_updated
+      - name
+      - slug
+      - url
+    BriefRole:
+      type: object
+      description: Base serializer class for models inheriting from OrganizationalModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        slug:
+          type: string
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+          maxLength: 200
+        prefix_count:
+          type: integer
+          format: int64
+          readOnly: true
+        vlan_count:
+          type: integer
+          format: int64
+          readOnly: true
+      required:
+      - display
+      - id
+      - name
+      - prefix_count
+      - slug
+      - url
+      - vlan_count
+    PatchedVirtualDiskRequest:
+      type: object
+      description: Adds an `owner` field for models which have a ForeignKey to users.Owner.
+      properties:
+        virtual_machine:
+          oneOf:
+          - type: integer
+          - $ref: '#/components/schemas/BriefVirtualMachineRequest'
+        name:
+          type: string
+          minLength: 1
+          maxLength: 64
+        description:
+          type: string
+          maxLength: 200
+        size:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+    BriefDevice:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type:
+          - string
+          - 'null'
           maxLength: 64
         description:
           type: string
@@ -10337,18 +9477,135 @@ components:
       - display
       - id
       - url
-    BriefMACAddressRequest:
+    BriefVirtualMachine:
       type: object
       description: Base serializer class for models inheriting from PrimaryModel.
       properties:
-        mac_address:
+        id:
+          type: integer
+          readOnly: true
+        url:
           type: string
-          minLength: 1
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 64
         description:
           type: string
           maxLength: 200
       required:
-      - mac_address
+      - display
+      - id
+      - name
+      - url
+    NestedVMInterface:
+      type: object
+      description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
+
+        dictionary of attributes which can be used to uniquely identify the related object. This class should be
+
+        subclassed to return a full representation of the related object on read.'
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        virtual_machine:
+          allOf:
+          - $ref: '#/components/schemas/NestedVirtualMachine'
+          readOnly: true
+        name:
+          type: string
+          maxLength: 64
+      required:
+      - display
+      - display_url
+      - id
+      - name
+      - url
+      - virtual_machine
+    BriefIPAddress:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        family:
+          type: object
+          properties:
+            value:
+              enum:
+              - 4
+              - 6
+              type: integer
+              description: '* `4` - IPv4
+
+                * `6` - IPv6'
+              x-spec-enum-id: d72003fd1af3603d
+            label:
+              type: string
+              enum:
+              - IPv4
+              - IPv6
+          readOnly: true
+        address:
+          type: string
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - address
+      - display
+      - family
+      - id
+      - url
+    PaginatedVMInterfaceList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/VMInterface'
     BriefVLANRequest:
       type: object
       description: Base serializer class for models inheriting from PrimaryModel.
@@ -10382,6 +9639,649 @@ components:
           maxLength: 200
       required:
       - name
+    BriefVLANTranslationPolicy:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - display
+      - id
+      - name
+      - url
+    NestedVLAN:
+      type: object
+      description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
+
+        dictionary of attributes which can be used to uniquely identify the related object. This class should be
+
+        subclassed to return a full representation of the related object on read.'
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        vid:
+          type: integer
+          maximum: 4094
+          minimum: 1
+          title: VLAN ID
+          description: Numeric VLAN ID (1-4094)
+        name:
+          type: string
+          maxLength: 64
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - display
+      - id
+      - name
+      - url
+      - vid
+    VirtualDiskRequest:
+      type: object
+      description: Adds an `owner` field for models which have a ForeignKey to users.Owner.
+      properties:
+        virtual_machine:
+          oneOf:
+          - type: integer
+          - $ref: '#/components/schemas/BriefVirtualMachineRequest'
+        name:
+          type: string
+          minLength: 1
+          maxLength: 64
+        description:
+          type: string
+          maxLength: 200
+        size:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+      required:
+      - name
+      - size
+      - virtual_machine
+    WritableVMInterfaceRequest:
+      type: object
+      description: Adds an `owner` field for models which have a ForeignKey to users.Owner.
+      properties:
+        virtual_machine:
+          oneOf:
+          - type: integer
+          - $ref: '#/components/schemas/BriefVirtualMachineRequest'
+        name:
+          type: string
+          minLength: 1
+          maxLength: 64
+        enabled:
+          type: boolean
+        parent:
+          type:
+          - integer
+          - 'null'
+          title: Parent interface
+        bridge:
+          type:
+          - integer
+          - 'null'
+          title: Bridge interface
+        mtu:
+          type:
+          - integer
+          - 'null'
+          maximum: 65536
+          minimum: 1
+        primary_mac_address:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefMACAddressRequest'
+        description:
+          type: string
+          maxLength: 200
+        mode:
+          enum:
+          - access
+          - tagged
+          - tagged-all
+          - q-in-q
+          - ''
+          - null
+          type:
+          - string
+          - 'null'
+          x-spec-enum-id: 84129b71b974ebe5
+          description: 'IEEE 802.1Q tagging strategy
+
+
+            * `access` - Access
+
+            * `tagged` - Tagged
+
+            * `tagged-all` - Tagged (All)
+
+            * `q-in-q` - Q-in-Q (802.1ad)'
+        untagged_vlan:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefVLANRequest'
+        tagged_vlans:
+          type: array
+          items:
+            type: integer
+        qinq_svlan:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefVLANRequest'
+        vlan_translation_policy:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefVLANTranslationPolicyRequest'
+        vrf:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefVRFRequest'
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+      required:
+      - name
+      - virtual_machine
+    NestedVMInterfaceRequest:
+      type: object
+      description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
+
+        dictionary of attributes which can be used to uniquely identify the related object. This class should be
+
+        subclassed to return a full representation of the related object on read.'
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 64
+      required:
+      - name
+    BriefVLANGroup:
+      type: object
+      description: Base serializer class for models inheriting from OrganizationalModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        slug:
+          type: string
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+          maxLength: 200
+        vlan_count:
+          type: integer
+          format: int64
+          readOnly: true
+      required:
+      - display
+      - id
+      - name
+      - slug
+      - url
+      - vlan_count
+    BriefL2VPN:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        identifier:
+          type:
+          - integer
+          - 'null'
+          maximum: 9223372036854775807
+          minimum: -9223372036854775808
+          format: int64
+        name:
+          type: string
+          maxLength: 100
+        slug:
+          type: string
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        type:
+          type: object
+          properties:
+            value:
+              enum:
+              - vpws
+              - vpls
+              - vxlan
+              - vxlan-evpn
+              - mpls-evpn
+              - pbb-evpn
+              - evpn-vpws
+              - epl
+              - evpl
+              - ep-lan
+              - evp-lan
+              - ep-tree
+              - evp-tree
+              - spb
+              type: string
+              description: '* `vpws` - VPWS
+
+                * `vpls` - VPLS
+
+                * `vxlan` - VXLAN
+
+                * `vxlan-evpn` - VXLAN-EVPN
+
+                * `mpls-evpn` - MPLS EVPN
+
+                * `pbb-evpn` - PBB EVPN
+
+                * `evpn-vpws` - EVPN VPWS
+
+                * `epl` - EPL
+
+                * `evpl` - EVPL
+
+                * `ep-lan` - Ethernet Private LAN
+
+                * `evp-lan` - Ethernet Virtual Private LAN
+
+                * `ep-tree` - Ethernet Private Tree
+
+                * `evp-tree` - Ethernet Virtual Private Tree
+
+                * `spb` - SPB'
+              x-spec-enum-id: 0a46f8056d717efc
+            label:
+              type: string
+              enum:
+              - VPWS
+              - VPLS
+              - VXLAN
+              - VXLAN-EVPN
+              - MPLS EVPN
+              - PBB EVPN
+              - EVPN VPWS
+              - EPL
+              - EVPL
+              - Ethernet Private LAN
+              - Ethernet Virtual Private LAN
+              - Ethernet Private Tree
+              - Ethernet Virtual Private Tree
+              - SPB
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - display
+      - id
+      - name
+      - slug
+      - url
+    BriefTenant:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        slug:
+          type: string
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - display
+      - id
+      - name
+      - slug
+      - url
+    PatchedWritableVMInterfaceRequest:
+      type: object
+      description: Adds an `owner` field for models which have a ForeignKey to users.Owner.
+      properties:
+        virtual_machine:
+          oneOf:
+          - type: integer
+          - $ref: '#/components/schemas/BriefVirtualMachineRequest'
+        name:
+          type: string
+          minLength: 1
+          maxLength: 64
+        enabled:
+          type: boolean
+        parent:
+          type:
+          - integer
+          - 'null'
+          title: Parent interface
+        bridge:
+          type:
+          - integer
+          - 'null'
+          title: Bridge interface
+        mtu:
+          type:
+          - integer
+          - 'null'
+          maximum: 65536
+          minimum: 1
+        primary_mac_address:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefMACAddressRequest'
+        description:
+          type: string
+          maxLength: 200
+        mode:
+          enum:
+          - access
+          - tagged
+          - tagged-all
+          - q-in-q
+          - ''
+          - null
+          type:
+          - string
+          - 'null'
+          x-spec-enum-id: 84129b71b974ebe5
+          description: 'IEEE 802.1Q tagging strategy
+
+
+            * `access` - Access
+
+            * `tagged` - Tagged
+
+            * `tagged-all` - Tagged (All)
+
+            * `q-in-q` - Q-in-Q (802.1ad)'
+        untagged_vlan:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefVLANRequest'
+        tagged_vlans:
+          type: array
+          items:
+            type: integer
+        qinq_svlan:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefVLANRequest'
+        vlan_translation_policy:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefVLANTranslationPolicyRequest'
+        vrf:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefVRFRequest'
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+    BriefOwnerRequest:
+      type: object
+      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
+
+        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - name
+    PaginatedClusterList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Cluster'
+    PatchedWritableVirtualMachineWithConfigContextRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 64
+        status:
+          enum:
+          - offline
+          - active
+          - planned
+          - staged
+          - failed
+          - decommissioning
+          - paused
+          type: string
+          description: '* `offline` - Offline
+
+            * `active` - Active
+
+            * `planned` - Planned
+
+            * `staged` - Staged
+
+            * `failed` - Failed
+
+            * `decommissioning` - Decommissioning
+
+            * `paused` - Paused'
+          x-spec-enum-id: effecc3b94e0b74b
+        start_on_boot:
+          enum:
+          - 'on'
+          - 'off'
+          - laststate
+          type: string
+          description: '* `on` - On
+
+            * `off` - Off
+
+            * `laststate` - Last State'
+          x-spec-enum-id: 610e33fc2fde73d6
+        site:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefSiteRequest'
+        cluster:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefClusterRequest'
+        device:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefDeviceRequest'
+        serial:
+          type: string
+          title: Serial number
+          maxLength: 50
+        role:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefDeviceRoleRequest'
+        tenant:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefTenantRequest'
+        platform:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefPlatformRequest'
+        primary_ip4:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefIPAddressRequest'
+        primary_ip6:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefIPAddressRequest'
+        vcpus:
+          type:
+          - number
+          - 'null'
+          format: double
+          minimum: 0.01
+          exclusiveMaximum: 10000
+        memory:
+          type:
+          - integer
+          - 'null'
+          maximum: 2147483647
+          minimum: 0
+        disk:
+          type:
+          - integer
+          - 'null'
+          maximum: 2147483647
+          minimum: 0
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        config_template:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefConfigTemplateRequest'
+        local_context_data:
+          description: Local config context data takes precedence over source contexts in the final rendered config context
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
     VMInterface:
       type: object
       description: Adds an `owner` field for models which have a ForeignKey to users.Owner.
@@ -10410,30 +10310,30 @@ components:
         parent:
           allOf:
           - $ref: '#/components/schemas/NestedVMInterface'
-          nullable: true
         bridge:
           allOf:
           - $ref: '#/components/schemas/NestedVMInterface'
-          nullable: true
         mtu:
-          type: integer
+          type:
+          - integer
+          - 'null'
           maximum: 65536
           minimum: 1
-          nullable: true
         mac_address:
-          type: string
+          type:
+          - string
+          - 'null'
           readOnly: true
-          nullable: true
         primary_mac_address:
           allOf:
           - $ref: '#/components/schemas/BriefMACAddress'
-          nullable: true
         mac_addresses:
-          type: array
+          type:
+          - array
+          - 'null'
           items:
             $ref: '#/components/schemas/BriefMACAddress'
           readOnly: true
-          nullable: true
         description:
           type: string
           maxLength: 200
@@ -10466,7 +10366,6 @@ components:
         untagged_vlan:
           allOf:
           - $ref: '#/components/schemas/BriefVLAN'
-          nullable: true
         tagged_vlans:
           type: array
           items:
@@ -10474,24 +10373,19 @@ components:
         qinq_svlan:
           allOf:
           - $ref: '#/components/schemas/BriefVLAN'
-          nullable: true
         vlan_translation_policy:
           allOf:
           - $ref: '#/components/schemas/BriefVLANTranslationPolicy'
-          nullable: true
         vrf:
           allOf:
           - $ref: '#/components/schemas/BriefVRF'
-          nullable: true
         l2vpn_termination:
           allOf:
           - $ref: '#/components/schemas/BriefL2VPNTermination'
           readOnly: true
-          nullable: true
         owner:
           allOf:
           - $ref: '#/components/schemas/BriefOwner'
-          nullable: true
         tags:
           type: array
           items:
@@ -10500,15 +10394,17 @@ components:
           type: object
           additionalProperties: {}
         created:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
           readOnly: true
-          nullable: true
         last_updated:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
           readOnly: true
-          nullable: true
         count_ipaddresses:
           type: integer
           readOnly: true
@@ -10529,13 +10425,34 @@ components:
       - name
       - url
       - virtual_machine
-    NestedTagRequest:
+    PaginatedVirtualMachineWithConfigContextList:
       type: object
-      description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
-
-        dictionary of attributes which can be used to uniquely identify the related object. This class should be
-
-        subclassed to return a full representation of the related object on read.'
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/VirtualMachineWithConfigContext'
+    BriefDeviceRoleRequest:
+      type: object
+      description: Base serializer class for models inheriting from NestedGroupModel.
       properties:
         name:
           type: string
@@ -10544,37 +10461,165 @@ components:
         slug:
           type: string
           minLength: 1
-          pattern: ^[-\w]+$
           maxLength: 100
-        color:
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
           type: string
-          minLength: 1
-          pattern: ^[0-9a-f]{6}$
-          maxLength: 6
+          maxLength: 200
       required:
       - name
       - slug
-    BriefL2VPNTermination:
+    BriefClusterTypeRequest:
       type: object
-      description: Adds support for custom fields and tags.
+      description: Base serializer class for models inheriting from OrganizationalModel.
       properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
+        name:
           type: string
-          format: uri
-          readOnly: true
-        display:
+          minLength: 1
+          maxLength: 100
+        slug:
           type: string
-          readOnly: true
-        l2vpn:
-          $ref: '#/components/schemas/BriefL2VPN'
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+          maxLength: 200
       required:
-      - display
-      - id
-      - l2vpn
-      - url
+      - name
+      - slug
+    BriefClusterGroupRequest:
+      type: object
+      description: Base serializer class for models inheriting from OrganizationalModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - name
+      - slug
+    ClusterRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        type:
+          oneOf:
+          - type: integer
+          - $ref: '#/components/schemas/BriefClusterTypeRequest'
+        group:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefClusterGroupRequest'
+        status:
+          enum:
+          - planned
+          - staging
+          - active
+          - decommissioning
+          - offline
+          type: string
+          description: '* `planned` - Planned
+
+            * `staging` - Staging
+
+            * `active` - Active
+
+            * `decommissioning` - Decommissioning
+
+            * `offline` - Offline'
+          x-spec-enum-id: 65a25166053759eb
+        tenant:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefTenantRequest'
+        scope_type:
+          type:
+          - string
+          - 'null'
+        scope_id:
+          type:
+          - integer
+          - 'null'
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+      required:
+      - name
+      - type
+    PaginatedVirtualDiskList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/VirtualDisk'
+    BriefSiteRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          description: Full name of the site
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - name
+      - slug
   securitySchemes:
     cookieAuth:
       type: apiKey

@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: NetBox REST authentication-check tenancy API
+  title: NetBox REST Tenancy API
   version: 4.5.9 (4.5)
   license:
     name: Apache v2 License
@@ -8,7 +8,7 @@ servers:
 - url: ''
   description: NetBox
 tags:
-- name: tenancy
+- name: Tenancy
 paths:
   /api/tenancy/contact-assignments/:
     get:
@@ -362,9 +362,10 @@ paths:
       - in: query
         name: priority
         schema:
-          type: string
+          type:
+          - string
+          - 'null'
           x-spec-enum-id: 0548fc537440bf9d
-          nullable: true
           enum:
           - inactive
           - 'null'
@@ -425,9 +426,10 @@ paths:
       - in: query
         name: priority__n
         schema:
-          type: string
+          type:
+          - string
+          - 'null'
           x-spec-enum-id: 0548fc537440bf9d
-          nullable: true
           enum:
           - inactive
           - 'null'
@@ -560,7 +562,7 @@ paths:
           type: string
           format: uuid
       tags:
-      - tenancy
+      - Tenancy
       security:
       - cookieAuth: []
       - tokenAuth: []
@@ -571,11 +573,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/PaginatedContactAssignmentList'
           description: ''
+      summary: Tenancy contact assignments list
+      x-summary-source: derived
     post:
       operationId: tenancy_contact_assignments_create
       description: Post a list of contact assignment objects.
       tags:
-      - tenancy
+      - Tenancy
       requestBody:
         content:
           application/json:
@@ -603,11 +607,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/ContactAssignment'
           description: ''
+      summary: Tenancy contact assignments create
+      x-summary-source: derived
     put:
       operationId: tenancy_contact_assignments_bulk_update
       description: Put a list of contact assignment objects.
       tags:
-      - tenancy
+      - Tenancy
       requestBody:
         content:
           application/json:
@@ -633,11 +639,13 @@ paths:
                 items:
                   $ref: '#/components/schemas/ContactAssignment'
           description: ''
+      summary: Tenancy contact assignments bulk update
+      x-summary-source: derived
     patch:
       operationId: tenancy_contact_assignments_bulk_partial_update
       description: Patch a list of contact assignment objects.
       tags:
-      - tenancy
+      - Tenancy
       requestBody:
         content:
           application/json:
@@ -663,11 +671,13 @@ paths:
                 items:
                   $ref: '#/components/schemas/ContactAssignment'
           description: ''
+      summary: Tenancy contact assignments bulk partial update
+      x-summary-source: derived
     delete:
       operationId: tenancy_contact_assignments_bulk_destroy
       description: Delete a list of contact assignment objects.
       tags:
-      - tenancy
+      - Tenancy
       requestBody:
         content:
           application/json:
@@ -687,6 +697,8 @@ paths:
       responses:
         '204':
           description: No response body
+      summary: Tenancy contact assignments bulk destroy
+      x-summary-source: derived
   /api/tenancy/contact-assignments/{id}/:
     get:
       operationId: tenancy_contact_assignments_retrieve
@@ -699,7 +711,7 @@ paths:
         description: A unique integer value identifying this contact assignment.
         required: true
       tags:
-      - tenancy
+      - Tenancy
       security:
       - cookieAuth: []
       - tokenAuth: []
@@ -710,6 +722,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ContactAssignment'
           description: ''
+      summary: Tenancy contact assignments retrieve
+      x-summary-source: derived
     put:
       operationId: tenancy_contact_assignments_update
       description: Put a contact assignment object.
@@ -721,7 +735,7 @@ paths:
         description: A unique integer value identifying this contact assignment.
         required: true
       tags:
-      - tenancy
+      - Tenancy
       requestBody:
         content:
           application/json:
@@ -741,6 +755,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ContactAssignment'
           description: ''
+      summary: Tenancy contact assignments update
+      x-summary-source: derived
     patch:
       operationId: tenancy_contact_assignments_partial_update
       description: Patch a contact assignment object.
@@ -752,7 +768,7 @@ paths:
         description: A unique integer value identifying this contact assignment.
         required: true
       tags:
-      - tenancy
+      - Tenancy
       requestBody:
         content:
           application/json:
@@ -771,6 +787,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ContactAssignment'
           description: ''
+      summary: Tenancy contact assignments partial update
+      x-summary-source: derived
     delete:
       operationId: tenancy_contact_assignments_destroy
       description: Delete a contact assignment object.
@@ -782,13 +800,15 @@ paths:
         description: A unique integer value identifying this contact assignment.
         required: true
       tags:
-      - tenancy
+      - Tenancy
       security:
       - cookieAuth: []
       - tokenAuth: []
       responses:
         '204':
           description: No response body
+      summary: Tenancy contact assignments destroy
+      x-summary-source: derived
   /api/tenancy/contact-groups/:
     get:
       operationId: tenancy_contact_groups_list
@@ -1315,8 +1335,9 @@ paths:
         schema:
           type: array
           items:
-            type: integer
-            nullable: true
+            type:
+            - integer
+            - 'null'
         description: Owner (ID)
         explode: true
         style: form
@@ -1325,8 +1346,9 @@ paths:
         schema:
           type: array
           items:
-            type: integer
-            nullable: true
+            type:
+            - integer
+            - 'null'
         description: Owner (ID)
         explode: true
         style: form
@@ -1353,8 +1375,9 @@ paths:
         schema:
           type: array
           items:
-            type: integer
-            nullable: true
+            type:
+            - integer
+            - 'null'
         description: Parent contact group (ID)
         explode: true
         style: form
@@ -1363,8 +1386,9 @@ paths:
         schema:
           type: array
           items:
-            type: integer
-            nullable: true
+            type:
+            - integer
+            - 'null'
         description: Parent contact group (ID)
         explode: true
         style: form
@@ -1511,7 +1535,7 @@ paths:
           type: string
           format: uuid
       tags:
-      - tenancy
+      - Tenancy
       security:
       - cookieAuth: []
       - tokenAuth: []
@@ -1522,11 +1546,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/PaginatedContactGroupList'
           description: ''
+      summary: Tenancy contact groups list
+      x-summary-source: derived
     post:
       operationId: tenancy_contact_groups_create
       description: Post a list of contact group objects.
       tags:
-      - tenancy
+      - Tenancy
       requestBody:
         content:
           application/json:
@@ -1554,11 +1580,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/ContactGroup'
           description: ''
+      summary: Tenancy contact groups create
+      x-summary-source: derived
     put:
       operationId: tenancy_contact_groups_bulk_update
       description: Put a list of contact group objects.
       tags:
-      - tenancy
+      - Tenancy
       requestBody:
         content:
           application/json:
@@ -1584,11 +1612,13 @@ paths:
                 items:
                   $ref: '#/components/schemas/ContactGroup'
           description: ''
+      summary: Tenancy contact groups bulk update
+      x-summary-source: derived
     patch:
       operationId: tenancy_contact_groups_bulk_partial_update
       description: Patch a list of contact group objects.
       tags:
-      - tenancy
+      - Tenancy
       requestBody:
         content:
           application/json:
@@ -1614,11 +1644,13 @@ paths:
                 items:
                   $ref: '#/components/schemas/ContactGroup'
           description: ''
+      summary: Tenancy contact groups bulk partial update
+      x-summary-source: derived
     delete:
       operationId: tenancy_contact_groups_bulk_destroy
       description: Delete a list of contact group objects.
       tags:
-      - tenancy
+      - Tenancy
       requestBody:
         content:
           application/json:
@@ -1638,6 +1670,8 @@ paths:
       responses:
         '204':
           description: No response body
+      summary: Tenancy contact groups bulk destroy
+      x-summary-source: derived
   /api/tenancy/contact-groups/{id}/:
     get:
       operationId: tenancy_contact_groups_retrieve
@@ -1650,7 +1684,7 @@ paths:
         description: A unique integer value identifying this contact group.
         required: true
       tags:
-      - tenancy
+      - Tenancy
       security:
       - cookieAuth: []
       - tokenAuth: []
@@ -1661,6 +1695,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ContactGroup'
           description: ''
+      summary: Tenancy contact groups retrieve
+      x-summary-source: derived
     put:
       operationId: tenancy_contact_groups_update
       description: Put a contact group object.
@@ -1672,7 +1708,7 @@ paths:
         description: A unique integer value identifying this contact group.
         required: true
       tags:
-      - tenancy
+      - Tenancy
       requestBody:
         content:
           application/json:
@@ -1692,6 +1728,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ContactGroup'
           description: ''
+      summary: Tenancy contact groups update
+      x-summary-source: derived
     patch:
       operationId: tenancy_contact_groups_partial_update
       description: Patch a contact group object.
@@ -1703,7 +1741,7 @@ paths:
         description: A unique integer value identifying this contact group.
         required: true
       tags:
-      - tenancy
+      - Tenancy
       requestBody:
         content:
           application/json:
@@ -1722,6 +1760,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ContactGroup'
           description: ''
+      summary: Tenancy contact groups partial update
+      x-summary-source: derived
     delete:
       operationId: tenancy_contact_groups_destroy
       description: Delete a contact group object.
@@ -1733,13 +1773,15 @@ paths:
         description: A unique integer value identifying this contact group.
         required: true
       tags:
-      - tenancy
+      - Tenancy
       security:
       - cookieAuth: []
       - tokenAuth: []
       responses:
         '204':
           description: No response body
+      summary: Tenancy contact groups destroy
+      x-summary-source: derived
   /api/tenancy/contact-roles/:
     get:
       operationId: tenancy_contact_roles_list
@@ -2216,8 +2258,9 @@ paths:
         schema:
           type: array
           items:
-            type: integer
-            nullable: true
+            type:
+            - integer
+            - 'null'
         description: Owner (ID)
         explode: true
         style: form
@@ -2226,8 +2269,9 @@ paths:
         schema:
           type: array
           items:
-            type: integer
-            nullable: true
+            type:
+            - integer
+            - 'null'
         description: Owner (ID)
         explode: true
         style: form
@@ -2374,7 +2418,7 @@ paths:
           type: string
           format: uuid
       tags:
-      - tenancy
+      - Tenancy
       security:
       - cookieAuth: []
       - tokenAuth: []
@@ -2385,11 +2429,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/PaginatedContactRoleList'
           description: ''
+      summary: Tenancy contact roles list
+      x-summary-source: derived
     post:
       operationId: tenancy_contact_roles_create
       description: Post a list of contact role objects.
       tags:
-      - tenancy
+      - Tenancy
       requestBody:
         content:
           application/json:
@@ -2417,11 +2463,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/ContactRole'
           description: ''
+      summary: Tenancy contact roles create
+      x-summary-source: derived
     put:
       operationId: tenancy_contact_roles_bulk_update
       description: Put a list of contact role objects.
       tags:
-      - tenancy
+      - Tenancy
       requestBody:
         content:
           application/json:
@@ -2447,11 +2495,13 @@ paths:
                 items:
                   $ref: '#/components/schemas/ContactRole'
           description: ''
+      summary: Tenancy contact roles bulk update
+      x-summary-source: derived
     patch:
       operationId: tenancy_contact_roles_bulk_partial_update
       description: Patch a list of contact role objects.
       tags:
-      - tenancy
+      - Tenancy
       requestBody:
         content:
           application/json:
@@ -2477,11 +2527,13 @@ paths:
                 items:
                   $ref: '#/components/schemas/ContactRole'
           description: ''
+      summary: Tenancy contact roles bulk partial update
+      x-summary-source: derived
     delete:
       operationId: tenancy_contact_roles_bulk_destroy
       description: Delete a list of contact role objects.
       tags:
-      - tenancy
+      - Tenancy
       requestBody:
         content:
           application/json:
@@ -2501,6 +2553,8 @@ paths:
       responses:
         '204':
           description: No response body
+      summary: Tenancy contact roles bulk destroy
+      x-summary-source: derived
   /api/tenancy/contact-roles/{id}/:
     get:
       operationId: tenancy_contact_roles_retrieve
@@ -2513,7 +2567,7 @@ paths:
         description: A unique integer value identifying this contact role.
         required: true
       tags:
-      - tenancy
+      - Tenancy
       security:
       - cookieAuth: []
       - tokenAuth: []
@@ -2524,6 +2578,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ContactRole'
           description: ''
+      summary: Tenancy contact roles retrieve
+      x-summary-source: derived
     put:
       operationId: tenancy_contact_roles_update
       description: Put a contact role object.
@@ -2535,7 +2591,7 @@ paths:
         description: A unique integer value identifying this contact role.
         required: true
       tags:
-      - tenancy
+      - Tenancy
       requestBody:
         content:
           application/json:
@@ -2555,6 +2611,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ContactRole'
           description: ''
+      summary: Tenancy contact roles update
+      x-summary-source: derived
     patch:
       operationId: tenancy_contact_roles_partial_update
       description: Patch a contact role object.
@@ -2566,7 +2624,7 @@ paths:
         description: A unique integer value identifying this contact role.
         required: true
       tags:
-      - tenancy
+      - Tenancy
       requestBody:
         content:
           application/json:
@@ -2585,6 +2643,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ContactRole'
           description: ''
+      summary: Tenancy contact roles partial update
+      x-summary-source: derived
     delete:
       operationId: tenancy_contact_roles_destroy
       description: Delete a contact role object.
@@ -2596,13 +2656,15 @@ paths:
         description: A unique integer value identifying this contact role.
         required: true
       tags:
-      - tenancy
+      - Tenancy
       security:
       - cookieAuth: []
       - tokenAuth: []
       responses:
         '204':
           description: No response body
+      summary: Tenancy contact roles destroy
+      x-summary-source: derived
   /api/tenancy/contacts/:
     get:
       operationId: tenancy_contacts_list
@@ -3411,8 +3473,9 @@ paths:
         schema:
           type: array
           items:
-            type: integer
-            nullable: true
+            type:
+            - integer
+            - 'null'
         description: Owner (ID)
         explode: true
         style: form
@@ -3421,8 +3484,9 @@ paths:
         schema:
           type: array
           items:
-            type: integer
-            nullable: true
+            type:
+            - integer
+            - 'null'
         description: Owner (ID)
         explode: true
         style: form
@@ -3669,7 +3733,7 @@ paths:
           type: string
           format: uuid
       tags:
-      - tenancy
+      - Tenancy
       security:
       - cookieAuth: []
       - tokenAuth: []
@@ -3680,11 +3744,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/PaginatedContactList'
           description: ''
+      summary: Tenancy contacts list
+      x-summary-source: derived
     post:
       operationId: tenancy_contacts_create
       description: Post a list of contact objects.
       tags:
-      - tenancy
+      - Tenancy
       requestBody:
         content:
           application/json:
@@ -3712,11 +3778,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/Contact'
           description: ''
+      summary: Tenancy contacts create
+      x-summary-source: derived
     put:
       operationId: tenancy_contacts_bulk_update
       description: Put a list of contact objects.
       tags:
-      - tenancy
+      - Tenancy
       requestBody:
         content:
           application/json:
@@ -3742,11 +3810,13 @@ paths:
                 items:
                   $ref: '#/components/schemas/Contact'
           description: ''
+      summary: Tenancy contacts bulk update
+      x-summary-source: derived
     patch:
       operationId: tenancy_contacts_bulk_partial_update
       description: Patch a list of contact objects.
       tags:
-      - tenancy
+      - Tenancy
       requestBody:
         content:
           application/json:
@@ -3772,11 +3842,13 @@ paths:
                 items:
                   $ref: '#/components/schemas/Contact'
           description: ''
+      summary: Tenancy contacts bulk partial update
+      x-summary-source: derived
     delete:
       operationId: tenancy_contacts_bulk_destroy
       description: Delete a list of contact objects.
       tags:
-      - tenancy
+      - Tenancy
       requestBody:
         content:
           application/json:
@@ -3796,6 +3868,8 @@ paths:
       responses:
         '204':
           description: No response body
+      summary: Tenancy contacts bulk destroy
+      x-summary-source: derived
   /api/tenancy/contacts/{id}/:
     get:
       operationId: tenancy_contacts_retrieve
@@ -3808,7 +3882,7 @@ paths:
         description: A unique integer value identifying this contact.
         required: true
       tags:
-      - tenancy
+      - Tenancy
       security:
       - cookieAuth: []
       - tokenAuth: []
@@ -3819,6 +3893,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/Contact'
           description: ''
+      summary: Tenancy contacts retrieve
+      x-summary-source: derived
     put:
       operationId: tenancy_contacts_update
       description: Put a contact object.
@@ -3830,7 +3906,7 @@ paths:
         description: A unique integer value identifying this contact.
         required: true
       tags:
-      - tenancy
+      - Tenancy
       requestBody:
         content:
           application/json:
@@ -3850,6 +3926,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/Contact'
           description: ''
+      summary: Tenancy contacts update
+      x-summary-source: derived
     patch:
       operationId: tenancy_contacts_partial_update
       description: Patch a contact object.
@@ -3861,7 +3939,7 @@ paths:
         description: A unique integer value identifying this contact.
         required: true
       tags:
-      - tenancy
+      - Tenancy
       requestBody:
         content:
           application/json:
@@ -3880,6 +3958,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/Contact'
           description: ''
+      summary: Tenancy contacts partial update
+      x-summary-source: derived
     delete:
       operationId: tenancy_contacts_destroy
       description: Delete a contact object.
@@ -3891,13 +3971,15 @@ paths:
         description: A unique integer value identifying this contact.
         required: true
       tags:
-      - tenancy
+      - Tenancy
       security:
       - cookieAuth: []
       - tokenAuth: []
       responses:
         '204':
           description: No response body
+      summary: Tenancy contacts destroy
+      x-summary-source: derived
   /api/tenancy/tenant-groups/:
     get:
       operationId: tenancy_tenant_groups_list
@@ -4406,8 +4488,9 @@ paths:
         schema:
           type: array
           items:
-            type: integer
-            nullable: true
+            type:
+            - integer
+            - 'null'
         description: Owner (ID)
         explode: true
         style: form
@@ -4416,8 +4499,9 @@ paths:
         schema:
           type: array
           items:
-            type: integer
-            nullable: true
+            type:
+            - integer
+            - 'null'
         description: Owner (ID)
         explode: true
         style: form
@@ -4444,8 +4528,9 @@ paths:
         schema:
           type: array
           items:
-            type: integer
-            nullable: true
+            type:
+            - integer
+            - 'null'
         description: Parent tenant group (ID)
         explode: true
         style: form
@@ -4454,8 +4539,9 @@ paths:
         schema:
           type: array
           items:
-            type: integer
-            nullable: true
+            type:
+            - integer
+            - 'null'
         description: Parent tenant group (ID)
         explode: true
         style: form
@@ -4602,7 +4688,7 @@ paths:
           type: string
           format: uuid
       tags:
-      - tenancy
+      - Tenancy
       security:
       - cookieAuth: []
       - tokenAuth: []
@@ -4613,11 +4699,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/PaginatedTenantGroupList'
           description: ''
+      summary: Tenancy tenant groups list
+      x-summary-source: derived
     post:
       operationId: tenancy_tenant_groups_create
       description: Post a list of tenant group objects.
       tags:
-      - tenancy
+      - Tenancy
       requestBody:
         content:
           application/json:
@@ -4645,11 +4733,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/TenantGroup'
           description: ''
+      summary: Tenancy tenant groups create
+      x-summary-source: derived
     put:
       operationId: tenancy_tenant_groups_bulk_update
       description: Put a list of tenant group objects.
       tags:
-      - tenancy
+      - Tenancy
       requestBody:
         content:
           application/json:
@@ -4675,11 +4765,13 @@ paths:
                 items:
                   $ref: '#/components/schemas/TenantGroup'
           description: ''
+      summary: Tenancy tenant groups bulk update
+      x-summary-source: derived
     patch:
       operationId: tenancy_tenant_groups_bulk_partial_update
       description: Patch a list of tenant group objects.
       tags:
-      - tenancy
+      - Tenancy
       requestBody:
         content:
           application/json:
@@ -4705,11 +4797,13 @@ paths:
                 items:
                   $ref: '#/components/schemas/TenantGroup'
           description: ''
+      summary: Tenancy tenant groups bulk partial update
+      x-summary-source: derived
     delete:
       operationId: tenancy_tenant_groups_bulk_destroy
       description: Delete a list of tenant group objects.
       tags:
-      - tenancy
+      - Tenancy
       requestBody:
         content:
           application/json:
@@ -4729,6 +4823,8 @@ paths:
       responses:
         '204':
           description: No response body
+      summary: Tenancy tenant groups bulk destroy
+      x-summary-source: derived
   /api/tenancy/tenant-groups/{id}/:
     get:
       operationId: tenancy_tenant_groups_retrieve
@@ -4741,7 +4837,7 @@ paths:
         description: A unique integer value identifying this tenant group.
         required: true
       tags:
-      - tenancy
+      - Tenancy
       security:
       - cookieAuth: []
       - tokenAuth: []
@@ -4752,6 +4848,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/TenantGroup'
           description: ''
+      summary: Tenancy tenant groups retrieve
+      x-summary-source: derived
     put:
       operationId: tenancy_tenant_groups_update
       description: Put a tenant group object.
@@ -4763,7 +4861,7 @@ paths:
         description: A unique integer value identifying this tenant group.
         required: true
       tags:
-      - tenancy
+      - Tenancy
       requestBody:
         content:
           application/json:
@@ -4783,6 +4881,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/TenantGroup'
           description: ''
+      summary: Tenancy tenant groups update
+      x-summary-source: derived
     patch:
       operationId: tenancy_tenant_groups_partial_update
       description: Patch a tenant group object.
@@ -4794,7 +4894,7 @@ paths:
         description: A unique integer value identifying this tenant group.
         required: true
       tags:
-      - tenancy
+      - Tenancy
       requestBody:
         content:
           application/json:
@@ -4813,6 +4913,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/TenantGroup'
           description: ''
+      summary: Tenancy tenant groups partial update
+      x-summary-source: derived
     delete:
       operationId: tenancy_tenant_groups_destroy
       description: Delete a tenant group object.
@@ -4824,13 +4926,15 @@ paths:
         description: A unique integer value identifying this tenant group.
         required: true
       tags:
-      - tenancy
+      - Tenancy
       security:
       - cookieAuth: []
       - tokenAuth: []
       responses:
         '204':
           description: No response body
+      summary: Tenancy tenant groups destroy
+      x-summary-source: derived
   /api/tenancy/tenants/:
     get:
       operationId: tenancy_tenants_list
@@ -5391,8 +5495,9 @@ paths:
         schema:
           type: array
           items:
-            type: integer
-            nullable: true
+            type:
+            - integer
+            - 'null'
         description: Owner (ID)
         explode: true
         style: form
@@ -5401,8 +5506,9 @@ paths:
         schema:
           type: array
           items:
-            type: integer
-            nullable: true
+            type:
+            - integer
+            - 'null'
         description: Owner (ID)
         explode: true
         style: form
@@ -5549,7 +5655,7 @@ paths:
           type: string
           format: uuid
       tags:
-      - tenancy
+      - Tenancy
       security:
       - cookieAuth: []
       - tokenAuth: []
@@ -5560,11 +5666,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/PaginatedTenantList'
           description: ''
+      summary: Tenancy tenants list
+      x-summary-source: derived
     post:
       operationId: tenancy_tenants_create
       description: Post a list of tenant objects.
       tags:
-      - tenancy
+      - Tenancy
       requestBody:
         content:
           application/json:
@@ -5592,11 +5700,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/Tenant'
           description: ''
+      summary: Tenancy tenants create
+      x-summary-source: derived
     put:
       operationId: tenancy_tenants_bulk_update
       description: Put a list of tenant objects.
       tags:
-      - tenancy
+      - Tenancy
       requestBody:
         content:
           application/json:
@@ -5622,11 +5732,13 @@ paths:
                 items:
                   $ref: '#/components/schemas/Tenant'
           description: ''
+      summary: Tenancy tenants bulk update
+      x-summary-source: derived
     patch:
       operationId: tenancy_tenants_bulk_partial_update
       description: Patch a list of tenant objects.
       tags:
-      - tenancy
+      - Tenancy
       requestBody:
         content:
           application/json:
@@ -5652,11 +5764,13 @@ paths:
                 items:
                   $ref: '#/components/schemas/Tenant'
           description: ''
+      summary: Tenancy tenants bulk partial update
+      x-summary-source: derived
     delete:
       operationId: tenancy_tenants_bulk_destroy
       description: Delete a list of tenant objects.
       tags:
-      - tenancy
+      - Tenancy
       requestBody:
         content:
           application/json:
@@ -5676,6 +5790,8 @@ paths:
       responses:
         '204':
           description: No response body
+      summary: Tenancy tenants bulk destroy
+      x-summary-source: derived
   /api/tenancy/tenants/{id}/:
     get:
       operationId: tenancy_tenants_retrieve
@@ -5688,7 +5804,7 @@ paths:
         description: A unique integer value identifying this tenant.
         required: true
       tags:
-      - tenancy
+      - Tenancy
       security:
       - cookieAuth: []
       - tokenAuth: []
@@ -5699,6 +5815,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/Tenant'
           description: ''
+      summary: Tenancy tenants retrieve
+      x-summary-source: derived
     put:
       operationId: tenancy_tenants_update
       description: Put a tenant object.
@@ -5710,7 +5828,7 @@ paths:
         description: A unique integer value identifying this tenant.
         required: true
       tags:
-      - tenancy
+      - Tenancy
       requestBody:
         content:
           application/json:
@@ -5730,6 +5848,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/Tenant'
           description: ''
+      summary: Tenancy tenants update
+      x-summary-source: derived
     patch:
       operationId: tenancy_tenants_partial_update
       description: Patch a tenant object.
@@ -5741,7 +5861,7 @@ paths:
         description: A unique integer value identifying this tenant.
         required: true
       tags:
-      - tenancy
+      - Tenancy
       requestBody:
         content:
           application/json:
@@ -5760,6 +5880,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/Tenant'
           description: ''
+      summary: Tenancy tenants partial update
+      x-summary-source: derived
     delete:
       operationId: tenancy_tenants_destroy
       description: Delete a tenant object.
@@ -5771,15 +5893,269 @@ paths:
         description: A unique integer value identifying this tenant.
         required: true
       tags:
-      - tenancy
+      - Tenancy
       security:
       - cookieAuth: []
       - tokenAuth: []
       responses:
         '204':
           description: No response body
+      summary: Tenancy tenants destroy
+      x-summary-source: derived
 components:
   schemas:
+    TenantRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        group:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefTenantGroupRequest'
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+      required:
+      - name
+      - slug
+    ContactAssignment:
+      type: object
+      description: Adds support for custom fields and tags.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        object_type:
+          type: string
+        object_id:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        object:
+          readOnly: true
+        contact:
+          $ref: '#/components/schemas/BriefContact'
+        role:
+          allOf:
+          - $ref: '#/components/schemas/BriefContactRole'
+        priority:
+          type: object
+          properties:
+            value:
+              enum:
+              - primary
+              - secondary
+              - tertiary
+              - inactive
+              - ''
+              type: string
+              description: '* `primary` - Primary
+
+                * `secondary` - Secondary
+
+                * `tertiary` - Tertiary
+
+                * `inactive` - Inactive'
+              x-spec-enum-id: 0548fc537440bf9d
+            label:
+              type: string
+              enum:
+              - Primary
+              - Secondary
+              - Tertiary
+              - Inactive
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTag'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        created:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        last_updated:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+      required:
+      - contact
+      - created
+      - display
+      - id
+      - last_updated
+      - object
+      - object_id
+      - object_type
+      - url
+    BriefContact:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - display
+      - id
+      - name
+      - url
+    PaginatedTenantList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tenant'
+    NestedContactGroupRequest:
+      type: object
+      description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
+
+        dictionary of attributes which can be used to uniquely identify the related object. This class should be
+
+        subclassed to return a full representation of the related object on read.'
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+      required:
+      - name
+      - slug
+    TenantGroupRequest:
+      type: object
+      description: Base serializer class for models inheriting from NestedGroupModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        parent:
+          allOf:
+          - $ref: '#/components/schemas/NestedTenantGroupRequest'
+        description:
+          type: string
+          maxLength: 200
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+      required:
+      - name
+      - slug
+    PaginatedContactList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Contact'
     NestedTenantGroup:
       type: object
       description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
@@ -5821,42 +6197,7 @@ components:
       - name
       - slug
       - url
-    PatchedWritableContactGroupRequest:
-      type: object
-      description: Base serializer class for models inheriting from NestedGroupModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        slug:
-          type: string
-          minLength: 1
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        parent:
-          type: integer
-          nullable: true
-        description:
-          type: string
-          maxLength: 200
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-            nullable: true
-          nullable: true
-        comments:
-          type: string
-    NestedContactGroupRequest:
+    NestedTenantGroupRequest:
       type: object
       description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
 
@@ -5876,48 +6217,6 @@ components:
       required:
       - name
       - slug
-    BriefContactRoleRequest:
-      type: object
-      description: Base serializer class for models inheriting from OrganizationalModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        slug:
-          type: string
-          minLength: 1
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - name
-      - slug
-    PaginatedContactGroupList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/ContactGroup'
     Tenant:
       type: object
       description: Base serializer class for models inheriting from PrimaryModel.
@@ -5946,14 +6245,12 @@ components:
         group:
           allOf:
           - $ref: '#/components/schemas/BriefTenantGroup'
-          nullable: true
         description:
           type: string
           maxLength: 200
         owner:
           allOf:
           - $ref: '#/components/schemas/BriefOwner'
-          nullable: true
         comments:
           type: string
         tags:
@@ -5964,15 +6261,17 @@ components:
           type: object
           additionalProperties: {}
         created:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
           readOnly: true
-          nullable: true
         last_updated:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
           readOnly: true
-          nullable: true
         circuit_count:
           type: integer
           format: int64
@@ -6032,81 +6331,7 @@ components:
       - virtualmachine_count
       - vlan_count
       - vrf_count
-    TenantGroup:
-      type: object
-      description: Base serializer class for models inheriting from NestedGroupModel.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display_url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          maxLength: 100
-        slug:
-          type: string
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        parent:
-          allOf:
-          - $ref: '#/components/schemas/NestedTenantGroup'
-          nullable: true
-        description:
-          type: string
-          maxLength: 200
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTag'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-        created:
-          type: string
-          format: date-time
-          readOnly: true
-          nullable: true
-        last_updated:
-          type: string
-          format: date-time
-          readOnly: true
-          nullable: true
-        tenant_count:
-          type: integer
-          readOnly: true
-          default: 0
-        owner:
-          allOf:
-          - $ref: '#/components/schemas/BriefOwner'
-          nullable: true
-        comments:
-          type: string
-        _depth:
-          type: integer
-          readOnly: true
-          title: ' depth'
-      required:
-      - _depth
-      - created
-      - display
-      - display_url
-      - id
-      - last_updated
-      - name
-      - slug
-      - tenant_count
-      - url
-    PatchedWritableContactAssignmentRequest:
+    ContactAssignmentRequest:
       type: object
       description: Adds support for custom fields and tags.
       properties:
@@ -6126,8 +6351,6 @@ components:
           - type: integer
           - allOf:
             - $ref: '#/components/schemas/BriefContactRoleRequest'
-            nullable: true
-          nullable: true
         priority:
           enum:
           - primary
@@ -6135,7 +6358,6 @@ components:
           - tertiary
           - inactive
           - ''
-          - null
           type: string
           description: '* `primary` - Primary
 
@@ -6145,185 +6367,6 @@ components:
 
             * `inactive` - Inactive'
           x-spec-enum-id: 0548fc537440bf9d
-          nullable: true
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-    PatchedContactRoleRequest:
-      type: object
-      description: Base serializer class for models inheriting from OrganizationalModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        slug:
-          type: string
-          minLength: 1
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-            nullable: true
-          nullable: true
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-    TenantGroupRequest:
-      type: object
-      description: Base serializer class for models inheriting from NestedGroupModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        slug:
-          type: string
-          minLength: 1
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        parent:
-          allOf:
-          - $ref: '#/components/schemas/NestedTenantGroupRequest'
-          nullable: true
-        description:
-          type: string
-          maxLength: 200
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-            nullable: true
-          nullable: true
-        comments:
-          type: string
-      required:
-      - name
-      - slug
-    ContactRole:
-      type: object
-      description: Base serializer class for models inheriting from OrganizationalModel.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display_url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          maxLength: 100
-        slug:
-          type: string
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          allOf:
-          - $ref: '#/components/schemas/BriefOwner'
-          nullable: true
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTag'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-        created:
-          type: string
-          format: date-time
-          readOnly: true
-          nullable: true
-        last_updated:
-          type: string
-          format: date-time
-          readOnly: true
-          nullable: true
-      required:
-      - created
-      - display
-      - display_url
-      - id
-      - last_updated
-      - name
-      - slug
-      - url
-    WritableContactAssignmentRequest:
-      type: object
-      description: Adds support for custom fields and tags.
-      properties:
-        object_type:
-          type: string
-        object_id:
-          type: integer
-          maximum: 9223372036854775807
-          minimum: 0
-          format: int64
-        contact:
-          oneOf:
-          - type: integer
-          - $ref: '#/components/schemas/BriefContactRequest'
-        role:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefContactRoleRequest'
-            nullable: true
-          nullable: true
-        priority:
-          enum:
-          - primary
-          - secondary
-          - tertiary
-          - inactive
-          - ''
-          - null
-          type: string
-          description: '* `primary` - Primary
-
-            * `secondary` - Secondary
-
-            * `tertiary` - Tertiary
-
-            * `inactive` - Inactive'
-          x-spec-enum-id: 0548fc537440bf9d
-          nullable: true
         tags:
           type: array
           items:
@@ -6335,600 +6378,6 @@ components:
       - contact
       - object_id
       - object_type
-    TenantRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        slug:
-          type: string
-          minLength: 1
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        group:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefTenantGroupRequest'
-            nullable: true
-          nullable: true
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-            nullable: true
-          nullable: true
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-      required:
-      - name
-      - slug
-    ContactGroupRequest:
-      type: object
-      description: Base serializer class for models inheriting from NestedGroupModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        slug:
-          type: string
-          minLength: 1
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        parent:
-          allOf:
-          - $ref: '#/components/schemas/NestedContactGroupRequest'
-          nullable: true
-        description:
-          type: string
-          maxLength: 200
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-            nullable: true
-          nullable: true
-        comments:
-          type: string
-      required:
-      - name
-      - slug
-    BriefTenantGroupRequest:
-      type: object
-      description: Base serializer class for models inheriting from NestedGroupModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        slug:
-          type: string
-          minLength: 1
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - name
-      - slug
-    PaginatedContactRoleList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/ContactRole'
-    PatchedWritableTenantGroupRequest:
-      type: object
-      description: Base serializer class for models inheriting from NestedGroupModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        slug:
-          type: string
-          minLength: 1
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        parent:
-          type: integer
-          nullable: true
-        description:
-          type: string
-          maxLength: 200
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-            nullable: true
-          nullable: true
-        comments:
-          type: string
-    ContactRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        groups:
-          type: array
-          items:
-            type: integer
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        title:
-          type: string
-          maxLength: 100
-        phone:
-          type: string
-          maxLength: 50
-        email:
-          type: string
-          format: email
-          maxLength: 254
-        address:
-          type: string
-          maxLength: 200
-        link:
-          type: string
-          format: uri
-          maxLength: 200
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-            nullable: true
-          nullable: true
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-      required:
-      - name
-    BriefTenantGroup:
-      type: object
-      description: Base serializer class for models inheriting from NestedGroupModel.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          maxLength: 100
-        slug:
-          type: string
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        description:
-          type: string
-          maxLength: 200
-        tenant_count:
-          type: integer
-          readOnly: true
-          default: 0
-        _depth:
-          type: integer
-          readOnly: true
-          title: ' depth'
-      required:
-      - _depth
-      - display
-      - id
-      - name
-      - slug
-      - tenant_count
-      - url
-    PaginatedTenantList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/Tenant'
-    PaginatedContactList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/Contact'
-    WritableContactGroupRequest:
-      type: object
-      description: Base serializer class for models inheriting from NestedGroupModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        slug:
-          type: string
-          minLength: 1
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        parent:
-          type: integer
-          nullable: true
-        description:
-          type: string
-          maxLength: 200
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-            nullable: true
-          nullable: true
-        comments:
-          type: string
-      required:
-      - name
-      - slug
-    BriefContactRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - name
-    NestedTag:
-      type: object
-      description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
-
-        dictionary of attributes which can be used to uniquely identify the related object. This class should be
-
-        subclassed to return a full representation of the related object on read.'
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display_url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          maxLength: 100
-        slug:
-          type: string
-          pattern: ^[-\w]+$
-          maxLength: 100
-        color:
-          type: string
-          pattern: ^[0-9a-f]{6}$
-          maxLength: 6
-      required:
-      - display
-      - display_url
-      - id
-      - name
-      - slug
-      - url
-    BriefOwnerRequest:
-      type: object
-      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
-
-        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - name
-    PaginatedContactAssignmentList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/ContactAssignment'
-    ContactRoleRequest:
-      type: object
-      description: Base serializer class for models inheriting from OrganizationalModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        slug:
-          type: string
-          minLength: 1
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-            nullable: true
-          nullable: true
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-      required:
-      - name
-      - slug
-    PaginatedTenantGroupList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/TenantGroup'
-    ContactGroup:
-      type: object
-      description: Base serializer class for models inheriting from NestedGroupModel.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display_url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          maxLength: 100
-        slug:
-          type: string
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        parent:
-          allOf:
-          - $ref: '#/components/schemas/NestedContactGroup'
-          nullable: true
-        description:
-          type: string
-          maxLength: 200
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTag'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-        created:
-          type: string
-          format: date-time
-          readOnly: true
-          nullable: true
-        last_updated:
-          type: string
-          format: date-time
-          readOnly: true
-          nullable: true
-        contact_count:
-          type: integer
-          readOnly: true
-          default: 0
-        owner:
-          allOf:
-          - $ref: '#/components/schemas/BriefOwner'
-          nullable: true
-        comments:
-          type: string
-        _depth:
-          type: integer
-          readOnly: true
-          title: ' depth'
-      required:
-      - _depth
-      - contact_count
-      - created
-      - display
-      - display_url
-      - id
-      - last_updated
-      - name
-      - slug
-      - url
-    PatchedTenantRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        slug:
-          type: string
-          minLength: 1
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        group:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefTenantGroupRequest'
-            nullable: true
-          nullable: true
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-            nullable: true
-          nullable: true
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
     NestedContactGroup:
       type: object
       description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
@@ -6970,6 +6419,347 @@ components:
       - name
       - slug
       - url
+    PaginatedContactGroupList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactGroup'
+    BriefTenantGroup:
+      type: object
+      description: Base serializer class for models inheriting from NestedGroupModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        slug:
+          type: string
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+          maxLength: 200
+        tenant_count:
+          type: integer
+          readOnly: true
+          default: 0
+        _depth:
+          type: integer
+          readOnly: true
+          title: ' depth'
+      required:
+      - _depth
+      - display
+      - id
+      - name
+      - slug
+      - tenant_count
+      - url
+    PatchedWritableTenantGroupRequest:
+      type: object
+      description: Base serializer class for models inheriting from NestedGroupModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        parent:
+          type:
+          - integer
+          - 'null'
+        description:
+          type: string
+          maxLength: 200
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+    PatchedWritableContactAssignmentRequest:
+      type: object
+      description: Adds support for custom fields and tags.
+      properties:
+        object_type:
+          type: string
+        object_id:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        contact:
+          oneOf:
+          - type: integer
+          - $ref: '#/components/schemas/BriefContactRequest'
+        role:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefContactRoleRequest'
+        priority:
+          enum:
+          - primary
+          - secondary
+          - tertiary
+          - inactive
+          - ''
+          - null
+          type:
+          - string
+          - 'null'
+          description: '* `primary` - Primary
+
+            * `secondary` - Secondary
+
+            * `tertiary` - Tertiary
+
+            * `inactive` - Inactive'
+          x-spec-enum-id: 0548fc537440bf9d
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+    ContactGroup:
+      type: object
+      description: Base serializer class for models inheriting from NestedGroupModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        slug:
+          type: string
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        parent:
+          allOf:
+          - $ref: '#/components/schemas/NestedContactGroup'
+        description:
+          type: string
+          maxLength: 200
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTag'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        created:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        last_updated:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        contact_count:
+          type: integer
+          readOnly: true
+          default: 0
+        owner:
+          allOf:
+          - $ref: '#/components/schemas/BriefOwner'
+        comments:
+          type: string
+        _depth:
+          type: integer
+          readOnly: true
+          title: ' depth'
+      required:
+      - _depth
+      - contact_count
+      - created
+      - display
+      - display_url
+      - id
+      - last_updated
+      - name
+      - slug
+      - url
+    PaginatedContactRoleList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactRole'
+    WritableContactGroupRequest:
+      type: object
+      description: Base serializer class for models inheriting from NestedGroupModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        parent:
+          type:
+          - integer
+          - 'null'
+        description:
+          type: string
+          maxLength: 200
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+      required:
+      - name
+      - slug
+    PaginatedTenantGroupList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/TenantGroup'
+    PatchedTenantRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        group:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefTenantGroupRequest'
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
     Contact:
       type: object
       description: Base serializer class for models inheriting from PrimaryModel.
@@ -7018,7 +6808,6 @@ components:
         owner:
           allOf:
           - $ref: '#/components/schemas/BriefOwner'
-          nullable: true
         comments:
           type: string
         tags:
@@ -7029,15 +6818,17 @@ components:
           type: object
           additionalProperties: {}
         created:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
           readOnly: true
-          nullable: true
         last_updated:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
           readOnly: true
-          nullable: true
       required:
       - created
       - display
@@ -7046,7 +6837,37 @@ components:
       - last_updated
       - name
       - url
-    NestedTenantGroupRequest:
+    PatchedContactRoleRequest:
+      type: object
+      description: Base serializer class for models inheriting from OrganizationalModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+    NestedTagRequest:
       type: object
       description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
 
@@ -7061,14 +6882,254 @@ components:
         slug:
           type: string
           minLength: 1
+          pattern: ^[-\w]+$
           maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
+        color:
+          type: string
+          minLength: 1
+          pattern: ^[0-9a-f]{6}$
+          maxLength: 6
       required:
       - name
       - slug
-    BriefContactRole:
+    ContactGroupRequest:
+      type: object
+      description: Base serializer class for models inheriting from NestedGroupModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        parent:
+          allOf:
+          - $ref: '#/components/schemas/NestedContactGroupRequest'
+        description:
+          type: string
+          maxLength: 200
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+      required:
+      - name
+      - slug
+    NestedTag:
+      type: object
+      description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
+
+        dictionary of attributes which can be used to uniquely identify the related object. This class should be
+
+        subclassed to return a full representation of the related object on read.'
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        slug:
+          type: string
+          pattern: ^[-\w]+$
+          maxLength: 100
+        color:
+          type: string
+          pattern: ^[0-9a-f]{6}$
+          maxLength: 6
+      required:
+      - display
+      - display_url
+      - id
+      - name
+      - slug
+      - url
+    BriefTenantGroupRequest:
+      type: object
+      description: Base serializer class for models inheriting from NestedGroupModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - name
+      - slug
+    ContactRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        groups:
+          type: array
+          items:
+            type: integer
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        title:
+          type: string
+          maxLength: 100
+        phone:
+          type: string
+          maxLength: 50
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        address:
+          type: string
+          maxLength: 200
+        link:
+          type: string
+          format: uri
+          maxLength: 200
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+      required:
+      - name
+    PatchedWritableContactGroupRequest:
+      type: object
+      description: Base serializer class for models inheriting from NestedGroupModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        parent:
+          type:
+          - integer
+          - 'null'
+        description:
+          type: string
+          maxLength: 200
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+    WritableTenantGroupRequest:
+      type: object
+      description: Base serializer class for models inheriting from NestedGroupModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        parent:
+          type:
+          - integer
+          - 'null'
+        description:
+          type: string
+          maxLength: 200
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+      required:
+      - name
+      - slug
+    BriefContactRoleRequest:
       type: object
       description: Base serializer class for models inheriting from OrganizationalModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - name
+      - slug
+    BriefOwner:
+      type: object
+      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
+
+        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
       properties:
         id:
           type: integer
@@ -7083,10 +7144,6 @@ components:
         name:
           type: string
           maxLength: 100
-        slug:
-          type: string
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
         description:
           type: string
           maxLength: 200
@@ -7094,46 +7151,30 @@ components:
       - display
       - id
       - name
-      - slug
       - url
-    ContactAssignmentRequest:
+    ContactRoleRequest:
       type: object
-      description: Adds support for custom fields and tags.
+      description: Base serializer class for models inheriting from OrganizationalModel.
       properties:
-        object_type:
+        name:
           type: string
-        object_id:
-          type: integer
-          maximum: 9223372036854775807
-          minimum: 0
-          format: int64
-        contact:
-          oneOf:
-          - type: integer
-          - $ref: '#/components/schemas/BriefContactRequest'
-        role:
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+          maxLength: 200
+        owner:
           oneOf:
           - type: integer
           - allOf:
-            - $ref: '#/components/schemas/BriefContactRoleRequest'
-            nullable: true
-          nullable: true
-        priority:
-          enum:
-          - primary
-          - secondary
-          - tertiary
-          - inactive
-          - ''
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
           type: string
-          description: '* `primary` - Primary
-
-            * `secondary` - Secondary
-
-            * `tertiary` - Tertiary
-
-            * `inactive` - Inactive'
-          x-spec-enum-id: 0548fc537440bf9d
         tags:
           type: array
           items:
@@ -7142,9 +7183,21 @@ components:
           type: object
           additionalProperties: {}
       required:
-      - contact
-      - object_id
-      - object_type
+      - name
+      - slug
+    BriefContactRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - name
     PatchedContactRequest:
       type: object
       description: Base serializer class for models inheriting from PrimaryModel.
@@ -7182,8 +7235,6 @@ components:
           - type: integer
           - allOf:
             - $ref: '#/components/schemas/BriefOwnerRequest'
-            nullable: true
-          nullable: true
         comments:
           type: string
         tags:
@@ -7193,11 +7244,9 @@ components:
         custom_fields:
           type: object
           additionalProperties: {}
-    BriefOwner:
+    BriefContactRole:
       type: object
-      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
-
-        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
+      description: Base serializer class for models inheriting from OrganizationalModel.
       properties:
         id:
           type: integer
@@ -7212,6 +7261,10 @@ components:
         name:
           type: string
           maxLength: 100
+        slug:
+          type: string
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
         description:
           type: string
           maxLength: 200
@@ -7219,10 +7272,26 @@ components:
       - display
       - id
       - name
+      - slug
       - url
-    ContactAssignment:
+    BriefOwnerRequest:
       type: object
-      description: Adds support for custom fields and tags.
+      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
+
+        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - name
+    TenantGroup:
+      type: object
+      description: Base serializer class for models inheriting from NestedGroupModel.
       properties:
         id:
           type: integer
@@ -7231,51 +7300,26 @@ components:
           type: string
           format: uri
           readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
         display:
           type: string
           readOnly: true
-        object_type:
+        name:
           type: string
-        object_id:
-          type: integer
-          maximum: 9223372036854775807
-          minimum: 0
-          format: int64
-        object:
-          readOnly: true
-          nullable: true
-        contact:
-          $ref: '#/components/schemas/BriefContact'
-        role:
+          maxLength: 100
+        slug:
+          type: string
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        parent:
           allOf:
-          - $ref: '#/components/schemas/BriefContactRole'
-          nullable: true
-        priority:
-          type: object
-          properties:
-            value:
-              enum:
-              - primary
-              - secondary
-              - tertiary
-              - inactive
-              - ''
-              type: string
-              description: '* `primary` - Primary
-
-                * `secondary` - Secondary
-
-                * `tertiary` - Tertiary
-
-                * `inactive` - Inactive'
-              x-spec-enum-id: 0548fc537440bf9d
-            label:
-              type: string
-              enum:
-              - Primary
-              - Secondary
-              - Tertiary
-              - Inactive
+          - $ref: '#/components/schemas/NestedTenantGroup'
+        description:
+          type: string
+          maxLength: 200
         tags:
           type: array
           items:
@@ -7284,44 +7328,80 @@ components:
           type: object
           additionalProperties: {}
         created:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
           readOnly: true
-          nullable: true
         last_updated:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
           readOnly: true
-          nullable: true
+        tenant_count:
+          type: integer
+          readOnly: true
+          default: 0
+        owner:
+          allOf:
+          - $ref: '#/components/schemas/BriefOwner'
+        comments:
+          type: string
+        _depth:
+          type: integer
+          readOnly: true
+          title: ' depth'
       required:
-      - contact
+      - _depth
       - created
       - display
+      - display_url
       - id
       - last_updated
-      - object
-      - object_id
-      - object_type
+      - name
+      - slug
+      - tenant_count
       - url
-    WritableTenantGroupRequest:
+    WritableContactAssignmentRequest:
       type: object
-      description: Base serializer class for models inheriting from NestedGroupModel.
+      description: Adds support for custom fields and tags.
       properties:
-        name:
+        object_type:
           type: string
-          minLength: 1
-          maxLength: 100
-        slug:
-          type: string
-          minLength: 1
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        parent:
+        object_id:
           type: integer
-          nullable: true
-        description:
-          type: string
-          maxLength: 200
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        contact:
+          oneOf:
+          - type: integer
+          - $ref: '#/components/schemas/BriefContactRequest'
+        role:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefContactRoleRequest'
+        priority:
+          enum:
+          - primary
+          - secondary
+          - tertiary
+          - inactive
+          - ''
+          - null
+          type:
+          - string
+          - 'null'
+          description: '* `primary` - Primary
+
+            * `secondary` - Secondary
+
+            * `tertiary` - Tertiary
+
+            * `inactive` - Inactive'
+          x-spec-enum-id: 0548fc537440bf9d
         tags:
           type: array
           items:
@@ -7329,26 +7409,47 @@ components:
         custom_fields:
           type: object
           additionalProperties: {}
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-            nullable: true
-          nullable: true
-        comments:
-          type: string
       required:
-      - name
-      - slug
-    BriefContact:
+      - contact
+      - object_id
+      - object_type
+    PaginatedContactAssignmentList:
       type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactAssignment'
+    ContactRole:
+      type: object
+      description: Base serializer class for models inheriting from OrganizationalModel.
       properties:
         id:
           type: integer
           readOnly: true
         url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
           type: string
           format: uri
           readOnly: true
@@ -7358,39 +7459,46 @@ components:
         name:
           type: string
           maxLength: 100
+        slug:
+          type: string
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
         description:
           type: string
           maxLength: 200
+        owner:
+          allOf:
+          - $ref: '#/components/schemas/BriefOwner'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTag'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        created:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        last_updated:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
       required:
+      - created
       - display
+      - display_url
       - id
-      - name
-      - url
-    NestedTagRequest:
-      type: object
-      description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
-
-        dictionary of attributes which can be used to uniquely identify the related object. This class should be
-
-        subclassed to return a full representation of the related object on read.'
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        slug:
-          type: string
-          minLength: 1
-          pattern: ^[-\w]+$
-          maxLength: 100
-        color:
-          type: string
-          minLength: 1
-          pattern: ^[0-9a-f]{6}$
-          maxLength: 6
-      required:
+      - last_updated
       - name
       - slug
+      - url
   securitySchemes:
     cookieAuth:
       type: apiKey
