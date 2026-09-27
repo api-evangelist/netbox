@@ -54,7 +54,7 @@ apis:
   - url: graphql/netbox-graphql.md
     type: GraphQL
 - aid: netbox:netbox-authentication-check-api
-  name: NetBox authentication-check API
+  name: NetBox Authentication Check API
   description: The authentication-check API from NetBox — 1 operation(s) for authentication-check.
   humanURL: https://docs.netbox.dev/en/stable/
   baseURL: https://demo.netbox.dev/api
@@ -68,7 +68,7 @@ apis:
   - type: Authentication
     url: https://docs.netbox.dev/en/stable/integrations/rest-api/#authentication
 - aid: netbox:netbox-circuits-api
-  name: NetBox circuits API
+  name: NetBox Circuits API
   description: The circuits API from NetBox — 24 operation(s) for circuits.
   humanURL: https://docs.netbox.dev/en/stable/
   baseURL: https://demo.netbox.dev/api
@@ -84,7 +84,7 @@ apis:
   - type: Authentication
     url: https://docs.netbox.dev/en/stable/integrations/rest-api/#authentication
 - aid: netbox:netbox-core-api
-  name: NetBox core API
+  name: NetBox Core API
   description: The core API from NetBox — 21 operation(s) for core.
   humanURL: https://docs.netbox.dev/en/stable/
   baseURL: https://demo.netbox.dev/api
@@ -100,7 +100,7 @@ apis:
   - type: Authentication
     url: https://docs.netbox.dev/en/stable/integrations/rest-api/#authentication
 - aid: netbox:netbox-dcim-api
-  name: NetBox dcim API
+  name: NetBox Dcim API
   description: The dcim API from NetBox — 99 operation(s) for dcim.
   humanURL: https://docs.netbox.dev/en/stable/
   baseURL: https://demo.netbox.dev/api
@@ -116,7 +116,7 @@ apis:
   - type: Authentication
     url: https://docs.netbox.dev/en/stable/integrations/rest-api/#authentication
 - aid: netbox:netbox-extras-api
-  name: NetBox extras API
+  name: NetBox Extras API
   description: The extras API from NetBox — 48 operation(s) for extras.
   humanURL: https://docs.netbox.dev/en/stable/
   baseURL: https://demo.netbox.dev/api
@@ -130,7 +130,7 @@ apis:
   - type: Authentication
     url: https://docs.netbox.dev/en/stable/integrations/rest-api/#authentication
 - aid: netbox:netbox-ipam-api
-  name: NetBox ipam API
+  name: NetBox Ipam API
   description: The ipam API from NetBox — 41 operation(s) for ipam.
   humanURL: https://docs.netbox.dev/en/stable/
   baseURL: https://demo.netbox.dev/api
@@ -146,7 +146,7 @@ apis:
   - type: Authentication
     url: https://docs.netbox.dev/en/stable/integrations/rest-api/#authentication
 - aid: netbox:netbox-schema-api
-  name: NetBox schema API
+  name: NetBox Schema API
   description: The schema API from NetBox — 1 operation(s) for schema.
   humanURL: https://docs.netbox.dev/en/stable/
   baseURL: https://demo.netbox.dev/api
@@ -162,7 +162,7 @@ apis:
   - type: Authentication
     url: https://docs.netbox.dev/en/stable/integrations/rest-api/#authentication
 - aid: netbox:netbox-status-api
-  name: NetBox status API
+  name: NetBox Status API
   description: The status API from NetBox — 1 operation(s) for status.
   humanURL: https://docs.netbox.dev/en/stable/
   baseURL: https://demo.netbox.dev/api
@@ -178,7 +178,7 @@ apis:
   - type: Authentication
     url: https://docs.netbox.dev/en/stable/integrations/rest-api/#authentication
 - aid: netbox:netbox-tenancy-api
-  name: NetBox tenancy API
+  name: NetBox Tenancy API
   description: The tenancy API from NetBox — 12 operation(s) for tenancy.
   humanURL: https://docs.netbox.dev/en/stable/
   baseURL: https://demo.netbox.dev/api
@@ -194,7 +194,7 @@ apis:
   - type: Authentication
     url: https://docs.netbox.dev/en/stable/integrations/rest-api/#authentication
 - aid: netbox:netbox-users-api
-  name: NetBox users API
+  name: NetBox Users API
   description: The users API from NetBox — 14 operation(s) for users.
   humanURL: https://docs.netbox.dev/en/stable/
   baseURL: https://demo.netbox.dev/api
@@ -210,7 +210,7 @@ apis:
   - type: Authentication
     url: https://docs.netbox.dev/en/stable/integrations/rest-api/#authentication
 - aid: netbox:netbox-virtualization-api
-  name: NetBox virtualization API
+  name: NetBox Virtualization API
   description: The virtualization API from NetBox — 13 operation(s) for virtualization.
   humanURL: https://docs.netbox.dev/en/stable/
   baseURL: https://demo.netbox.dev/api
@@ -226,7 +226,7 @@ apis:
   - type: Authentication
     url: https://docs.netbox.dev/en/stable/integrations/rest-api/#authentication
 - aid: netbox:netbox-vpn-api
-  name: NetBox vpn API
+  name: NetBox Vpn API
   description: The vpn API from NetBox — 20 operation(s) for vpn.
   humanURL: https://docs.netbox.dev/en/stable/
   baseURL: https://demo.netbox.dev/api
@@ -242,7 +242,7 @@ apis:
   - type: Authentication
     url: https://docs.netbox.dev/en/stable/integrations/rest-api/#authentication
 - aid: netbox:netbox-wireless-api
-  name: NetBox wireless API
+  name: NetBox Wireless API
   description: The wireless API from NetBox — 6 operation(s) for wireless.
   humanURL: https://docs.netbox.dev/en/stable/
   baseURL: https://demo.netbox.dev/api
@@ -291,13 +291,13 @@ maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 tags:
-- Data-Center
+- Data Center
 - DCIM
 - Infrastructure as Code
 - IPAM
 - Network Automation
 - Network Management
-- Open-Source
+- Open Source
 - Source of Truth
 tags_raw:
 - Data Center
@@ -308,3 +308,5 @@ tags_raw:
 - Network Management
 - Open Source
 - Source of Truth
+- Data-Center
+- Open-Source
