@@ -11864,27 +11864,227 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    BriefProviderAccountRequest:
+    PaginatedCircuitGroupAssignmentList:
       type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/CircuitGroupAssignment'
+    BriefOwnerRequest:
+      type: object
+      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
+
+        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
       properties:
         name:
           type: string
-          default: ''
-          maxLength: 100
-        account:
-          type: string
           minLength: 1
-          title: Account ID
           maxLength: 100
         description:
           type: string
           maxLength: 200
       required:
-      - account
-    ProviderNetwork:
+      - name
+    PatchedWritableCircuitRequest:
       type: object
       description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        cid:
+          type: string
+          minLength: 1
+          title: Circuit ID
+          description: Unique circuit ID
+          maxLength: 100
+        provider:
+          oneOf:
+          - type: integer
+          - $ref: '#/components/schemas/BriefProviderRequest'
+        provider_account:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefProviderAccountRequest'
+        type:
+          oneOf:
+          - type: integer
+          - $ref: '#/components/schemas/BriefCircuitTypeRequest'
+        status:
+          enum:
+          - planned
+          - provisioning
+          - active
+          - offline
+          - deprovisioning
+          - decommissioned
+          type: string
+          description: '* `planned` - Planned
+
+            * `provisioning` - Provisioning
+
+            * `active` - Active
+
+            * `offline` - Offline
+
+            * `deprovisioning` - Deprovisioning
+
+            * `decommissioned` - Decommissioned'
+          x-spec-enum-id: 0a239d878b6666a4
+        tenant:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefTenantRequest'
+        install_date:
+          type:
+          - string
+          - 'null'
+          format: date
+          title: Installed
+        termination_date:
+          type:
+          - string
+          - 'null'
+          format: date
+          title: Terminates
+        commit_rate:
+          type:
+          - integer
+          - 'null'
+          maximum: 2147483647
+          minimum: 0
+          title: Commit rate (Kbps)
+          description: Committed rate
+        description:
+          type: string
+          maxLength: 200
+        distance:
+          type:
+          - number
+          - 'null'
+          format: double
+          exclusiveMinimum: -1000000
+          exclusiveMaximum: 1000000
+        distance_unit:
+          enum:
+          - km
+          - m
+          - mi
+          - ft
+          - ''
+          - null
+          type:
+          - string
+          - 'null'
+          description: '* `km` - Kilometers
+
+            * `m` - Meters
+
+            * `mi` - Miles
+
+            * `ft` - Feet'
+          x-spec-enum-id: b1169a409430c02e
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        assignments:
+          type: array
+          items:
+            $ref: '#/components/schemas/BriefCircuitGroupAssignmentSerializer_Request'
+    BriefVirtualCircuitRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        cid:
+          type: string
+          minLength: 1
+          title: Circuit ID
+          description: Unique circuit ID
+          maxLength: 100
+        provider_network:
+          oneOf:
+          - type: integer
+          - $ref: '#/components/schemas/BriefProviderNetworkRequest'
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - cid
+      - provider_network
+    PaginatedProviderNetworkList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProviderNetwork'
+    BriefProviderNetworkRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - name
+    NestedProviderAccount:
+      type: object
+      description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
+
+        dictionary of attributes which can be used to uniquely identify the related object. This class should be
+
+        subclassed to return a full representation of the related object on read.'
       properties:
         id:
           type: integer
@@ -11900,201 +12100,20 @@ components:
         display:
           type: string
           readOnly: true
-        provider:
-          $ref: '#/components/schemas/BriefProvider'
         name:
           type: string
-          maxLength: 100
-        service_id:
-          type: string
-          maxLength: 100
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          allOf:
-          - $ref: '#/components/schemas/BriefOwner'
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTag'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-        created:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          readOnly: true
-        last_updated:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          readOnly: true
-      required:
-      - created
-      - display
-      - display_url
-      - id
-      - last_updated
-      - name
-      - provider
-      - url
-    BriefCircuitGroupAssignmentSerializer_Request:
-      type: object
-      description: Base serializer for group assignments under CircuitSerializer.
-      properties:
-        group:
-          oneOf:
-          - type: integer
-          - $ref: '#/components/schemas/BriefCircuitGroupRequest'
-        priority:
-          enum:
-          - primary
-          - secondary
-          - tertiary
-          - inactive
-          - ''
-          type: string
-          description: '* `primary` - Primary
-
-            * `secondary` - Secondary
-
-            * `tertiary` - Tertiary
-
-            * `inactive` - Inactive'
-          x-spec-enum-id: 0548fc537440bf9d
-      required:
-      - group
-    BriefProviderNetwork:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          maxLength: 100
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - display
-      - id
-      - name
-      - url
-    PatchedProviderAccountRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        provider:
-          oneOf:
-          - type: integer
-          - $ref: '#/components/schemas/BriefProviderRequest'
-        name:
-          type: string
-          default: ''
-          maxLength: 100
-        account:
-          type: string
-          minLength: 1
-          title: Account ID
-          maxLength: 100
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-    BriefVirtualCircuitType:
-      type: object
-      description: Base serializer class for models inheriting from OrganizationalModel.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          maxLength: 100
-        slug:
-          type: string
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        description:
-          type: string
-          maxLength: 200
-        virtual_circuit_count:
-          type: integer
-          format: int64
-          readOnly: true
-      required:
-      - display
-      - id
-      - name
-      - slug
-      - url
-      - virtual_circuit_count
-    BriefProviderAccount:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          default: ''
           maxLength: 100
         account:
           type: string
           title: Account ID
           maxLength: 100
-        description:
-          type: string
-          maxLength: 200
       required:
       - account
       - display
+      - display_url
       - id
       - url
-    WritableCircuitRequest:
+    CircuitRequest:
       type: object
       description: Base serializer class for models inheriting from PrimaryModel.
       properties:
@@ -12244,366 +12263,7 @@ components:
       - id
       - provider
       - url
-    Provider:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display_url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          description: Full name of the provider
-          maxLength: 100
-        slug:
-          type: string
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        accounts:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedProviderAccount'
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          allOf:
-          - $ref: '#/components/schemas/BriefOwner'
-        comments:
-          type: string
-        asns:
-          type: array
-          items:
-            $ref: '#/components/schemas/ASN'
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTag'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-        created:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          readOnly: true
-        last_updated:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          readOnly: true
-        circuit_count:
-          type: integer
-          format: int64
-          readOnly: true
-      required:
-      - circuit_count
-      - created
-      - display
-      - display_url
-      - id
-      - last_updated
-      - name
-      - slug
-      - url
-    CircuitGroupAssignmentRequest:
-      type: object
-      description: Base serializer for group assignments under CircuitSerializer.
-      properties:
-        group:
-          oneOf:
-          - type: integer
-          - $ref: '#/components/schemas/BriefCircuitGroupRequest'
-        member_type:
-          type: string
-        member_id:
-          type: integer
-          maximum: 9223372036854775807
-          minimum: 0
-          format: int64
-        priority:
-          enum:
-          - primary
-          - secondary
-          - tertiary
-          - inactive
-          - ''
-          type: string
-          description: '* `primary` - Primary
-
-            * `secondary` - Secondary
-
-            * `tertiary` - Tertiary
-
-            * `inactive` - Inactive'
-          x-spec-enum-id: 0548fc537440bf9d
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-      required:
-      - group
-      - member_id
-      - member_type
-    WritableCircuitGroupAssignmentRequest:
-      type: object
-      description: Base serializer for group assignments under CircuitSerializer.
-      properties:
-        group:
-          oneOf:
-          - type: integer
-          - $ref: '#/components/schemas/BriefCircuitGroupRequest'
-        member_type:
-          type: string
-        member_id:
-          type: integer
-          maximum: 9223372036854775807
-          minimum: 0
-          format: int64
-        priority:
-          enum:
-          - primary
-          - secondary
-          - tertiary
-          - inactive
-          - ''
-          - null
-          type:
-          - string
-          - 'null'
-          description: '* `primary` - Primary
-
-            * `secondary` - Secondary
-
-            * `tertiary` - Tertiary
-
-            * `inactive` - Inactive'
-          x-spec-enum-id: 0548fc537440bf9d
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-      required:
-      - group
-      - member_id
-      - member_type
-    CircuitType:
-      type: object
-      description: Base serializer class for models inheriting from OrganizationalModel.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display_url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          maxLength: 100
-        slug:
-          type: string
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        color:
-          type: string
-          pattern: ^[0-9a-f]{6}$
-          maxLength: 6
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          allOf:
-          - $ref: '#/components/schemas/BriefOwner'
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTag'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-        created:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          readOnly: true
-        last_updated:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          readOnly: true
-        circuit_count:
-          type: integer
-          format: int64
-          readOnly: true
-      required:
-      - circuit_count
-      - created
-      - display
-      - display_url
-      - id
-      - last_updated
-      - name
-      - slug
-      - url
-    WritableVirtualCircuitTerminationRequest:
-      type: object
-      description: Adds support for custom fields and tags.
-      properties:
-        virtual_circuit:
-          oneOf:
-          - type: integer
-          - $ref: '#/components/schemas/BriefVirtualCircuitRequest'
-        role:
-          enum:
-          - peer
-          - hub
-          - spoke
-          type: string
-          description: '* `peer` - Peer
-
-            * `hub` - Hub
-
-            * `spoke` - Spoke'
-          x-spec-enum-id: 0b3bfadcebd86b58
-        interface:
-          oneOf:
-          - type: integer
-          - $ref: '#/components/schemas/BriefInterfaceRequest'
-        description:
-          type: string
-          maxLength: 200
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-      required:
-      - interface
-      - virtual_circuit
-    VirtualCircuitTerminationRequest:
-      type: object
-      description: Adds support for custom fields and tags.
-      properties:
-        virtual_circuit:
-          oneOf:
-          - type: integer
-          - $ref: '#/components/schemas/BriefVirtualCircuitRequest'
-        role:
-          enum:
-          - peer
-          - hub
-          - spoke
-          type: string
-          description: '* `peer` - Peer
-
-            * `hub` - Hub
-
-            * `spoke` - Spoke'
-          x-spec-enum-id: 0b3bfadcebd86b58
-        interface:
-          oneOf:
-          - type: integer
-          - $ref: '#/components/schemas/BriefInterfaceRequest'
-        description:
-          type: string
-          maxLength: 200
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-      required:
-      - interface
-      - virtual_circuit
-    PaginatedVirtualCircuitList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/VirtualCircuit'
-    PatchedVirtualCircuitTypeRequest:
-      type: object
-      description: Base serializer class for models inheriting from OrganizationalModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        slug:
-          type: string
-          minLength: 1
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        color:
-          type: string
-          pattern: ^[0-9a-f]{6}$
-          maxLength: 6
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-    CircuitGroupRequest:
+    PatchedCircuitGroupRequest:
       type: object
       description: Base serializer class for models inheriting from OrganizationalModel.
       properties:
@@ -12638,72 +12298,21 @@ components:
         custom_fields:
           type: object
           additionalProperties: {}
-      required:
-      - name
-      - slug
-    ProviderRequest:
+    BriefDeviceRequest:
       type: object
       description: Base serializer class for models inheriting from PrimaryModel.
       properties:
         name:
-          type: string
-          minLength: 1
-          description: Full name of the provider
-          maxLength: 100
-        slug:
-          type: string
-          minLength: 1
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        accounts:
-          type: array
-          items:
-            type: integer
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-        comments:
-          type: string
-        asns:
-          type: array
-          items:
-            type: integer
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-      required:
-      - name
-      - slug
-    BriefInterfaceRequest:
-      type: object
-      description: Adds an `owner` field for models which have a ForeignKey to users.Owner.
-      properties:
-        device:
-          oneOf:
-          - type: integer
-          - $ref: '#/components/schemas/BriefDeviceRequest'
-        name:
-          type: string
-          minLength: 1
+          type:
+          - string
+          - 'null'
           maxLength: 64
         description:
           type: string
           maxLength: 200
-      required:
-      - device
-      - name
-    BriefTenant:
+    BriefCircuitType:
       type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
+      description: Base serializer class for models inheriting from OrganizationalModel.
       properties:
         id:
           type: integer
@@ -12725,15 +12334,20 @@ components:
         description:
           type: string
           maxLength: 200
+        circuit_count:
+          type: integer
+          format: int64
+          readOnly: true
       required:
+      - circuit_count
       - display
       - id
       - name
       - slug
       - url
-    VirtualCircuitTermination:
+    CircuitGroup:
       type: object
-      description: Adds support for custom fields and tags.
+      description: Base serializer class for models inheriting from OrganizationalModel.
       properties:
         id:
           type: integer
@@ -12749,34 +12363,265 @@ components:
         display:
           type: string
           readOnly: true
-        virtual_circuit:
-          $ref: '#/components/schemas/BriefVirtualCircuit'
-        role:
+        name:
+          type: string
+          maxLength: 100
+        slug:
+          type: string
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+          maxLength: 200
+        tenant:
+          allOf:
+          - $ref: '#/components/schemas/BriefTenant'
+        owner:
+          allOf:
+          - $ref: '#/components/schemas/BriefOwner'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTag'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        created:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        last_updated:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        circuit_count:
+          type: integer
+          format: int64
+          readOnly: true
+      required:
+      - circuit_count
+      - created
+      - display
+      - display_url
+      - id
+      - last_updated
+      - name
+      - slug
+      - url
+    BriefCircuitRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        cid:
+          type: string
+          minLength: 1
+          title: Circuit ID
+          description: Unique circuit ID
+          maxLength: 100
+        provider:
+          oneOf:
+          - type: integer
+          - $ref: '#/components/schemas/BriefProviderRequest'
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - cid
+      - provider
+    PaginatedCircuitList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Circuit'
+    PaginatedCircuitTypeList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/CircuitType'
+    BriefCable:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        label:
+          type: string
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - display
+      - id
+      - url
+    NestedTag:
+      type: object
+      description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
+
+        dictionary of attributes which can be used to uniquely identify the related object. This class should be
+
+        subclassed to return a full representation of the related object on read.'
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        slug:
+          type: string
+          pattern: ^[-\w]+$
+          maxLength: 100
+        color:
+          type: string
+          pattern: ^[0-9a-f]{6}$
+          maxLength: 6
+      required:
+      - display
+      - display_url
+      - id
+      - name
+      - slug
+      - url
+    VirtualCircuit:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        cid:
+          type: string
+          title: Circuit ID
+          description: Unique circuit ID
+          maxLength: 100
+        provider_network:
+          $ref: '#/components/schemas/BriefProviderNetwork'
+        provider_account:
+          allOf:
+          - $ref: '#/components/schemas/BriefProviderAccount'
+        type:
+          $ref: '#/components/schemas/BriefVirtualCircuitType'
+        status:
           type: object
           properties:
             value:
               enum:
-              - peer
-              - hub
-              - spoke
+              - planned
+              - provisioning
+              - active
+              - offline
+              - deprovisioning
+              - decommissioned
               type: string
-              description: '* `peer` - Peer
+              description: '* `planned` - Planned
 
-                * `hub` - Hub
+                * `provisioning` - Provisioning
 
-                * `spoke` - Spoke'
-              x-spec-enum-id: 0b3bfadcebd86b58
+                * `active` - Active
+
+                * `offline` - Offline
+
+                * `deprovisioning` - Deprovisioning
+
+                * `decommissioned` - Decommissioned'
+              x-spec-enum-id: 0a239d878b6666a4
             label:
               type: string
               enum:
-              - Peer
-              - Hub
-              - Spoke
-        interface:
-          $ref: '#/components/schemas/BriefInterface'
+              - Planned
+              - Provisioning
+              - Active
+              - Offline
+              - Deprovisioning
+              - Decommissioned
+        tenant:
+          allOf:
+          - $ref: '#/components/schemas/BriefTenant'
         description:
           type: string
           maxLength: 200
+        owner:
+          allOf:
+          - $ref: '#/components/schemas/BriefOwner'
+        comments:
+          type: string
         tags:
           type: array
           items:
@@ -12797,91 +12642,15 @@ components:
           format: date-time
           readOnly: true
       required:
+      - cid
       - created
       - display
       - display_url
       - id
-      - interface
       - last_updated
+      - provider_network
+      - type
       - url
-      - virtual_circuit
-    BriefDeviceRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        name:
-          type:
-          - string
-          - 'null'
-          maxLength: 64
-        description:
-          type: string
-          maxLength: 200
-    PatchedCircuitTerminationRequest:
-      type: object
-      description: Adds support for custom fields and tags.
-      properties:
-        circuit:
-          oneOf:
-          - type: integer
-          - $ref: '#/components/schemas/BriefCircuitRequest'
-        term_side:
-          enum:
-          - A
-          - Z
-          type: string
-          description: '* `A` - A
-
-            * `Z` - Z'
-          x-spec-enum-id: 95b8fcc737f355d0
-          title: Termination side
-        termination_type:
-          type:
-          - string
-          - 'null'
-        termination_id:
-          type:
-          - integer
-          - 'null'
-        port_speed:
-          type:
-          - integer
-          - 'null'
-          maximum: 2147483647
-          minimum: 0
-          title: Port speed (Kbps)
-          description: Physical circuit speed
-        upstream_speed:
-          type:
-          - integer
-          - 'null'
-          maximum: 2147483647
-          minimum: 0
-          title: Upstream speed (Kbps)
-          description: Upstream speed, if different from port speed
-        xconnect_id:
-          type: string
-          title: Cross-connect ID
-          description: ID of the local cross-connect
-          maxLength: 50
-        pp_info:
-          type: string
-          title: Patch panel/port(s)
-          description: Patch panel ID and port number(s)
-          maxLength: 100
-        description:
-          type: string
-          maxLength: 200
-        mark_connected:
-          type: boolean
-          description: Treat as if a cable is connected
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
     ASNSite:
       type: object
       description: 'This serializer is meant for inclusion in ASNSerializer and is only used
@@ -12915,7 +12684,69 @@ components:
       - name
       - slug
       - url
-    PatchedWritableCircuitRequest:
+    CircuitCircuitTermination:
+      type: object
+      description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
+
+        dictionary of attributes which can be used to uniquely identify the related object. This class should be
+
+        subclassed to return a full representation of the related object on read.'
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        termination_type:
+          type:
+          - string
+          - 'null'
+        termination_id:
+          type:
+          - integer
+          - 'null'
+        termination:
+          readOnly: true
+        port_speed:
+          type:
+          - integer
+          - 'null'
+          maximum: 2147483647
+          minimum: 0
+          title: Port speed (Kbps)
+          description: Physical circuit speed
+        upstream_speed:
+          type:
+          - integer
+          - 'null'
+          maximum: 2147483647
+          minimum: 0
+          title: Upstream speed (Kbps)
+          description: Upstream speed, if different from port speed
+        xconnect_id:
+          type: string
+          title: Cross-connect ID
+          description: ID of the local cross-connect
+          maxLength: 50
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - display
+      - display_url
+      - id
+      - termination
+      - url
+    WritableCircuitRequest:
       type: object
       description: Base serializer class for models inheriting from PrimaryModel.
       properties:
@@ -13031,7 +12862,82 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/BriefCircuitGroupAssignmentSerializer_Request'
-    PatchedWritableVirtualCircuitTerminationRequest:
+      required:
+      - cid
+      - provider
+      - type
+    BriefRIR:
+      type: object
+      description: Base serializer class for models inheriting from OrganizationalModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        slug:
+          type: string
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+          maxLength: 200
+        aggregate_count:
+          type: integer
+          format: int64
+          readOnly: true
+      required:
+      - aggregate_count
+      - display
+      - id
+      - name
+      - slug
+      - url
+    BriefProvider:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          description: Full name of the provider
+          maxLength: 100
+        slug:
+          type: string
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+          maxLength: 200
+        circuit_count:
+          type: integer
+          format: int64
+          readOnly: true
+      required:
+      - circuit_count
+      - display
+      - id
+      - name
+      - slug
+      - url
+    WritableVirtualCircuitTerminationRequest:
       type: object
       description: Adds support for custom fields and tags.
       properties:
@@ -13065,52 +12971,45 @@ components:
         custom_fields:
           type: object
           additionalProperties: {}
-    PaginatedProviderNetworkList:
-      type: object
       required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProviderNetwork'
-    BriefVirtualCircuitRequest:
+      - interface
+      - virtual_circuit
+    ProviderNetworkRequest:
       type: object
       description: Base serializer class for models inheriting from PrimaryModel.
       properties:
-        cid:
-          type: string
-          minLength: 1
-          title: Circuit ID
-          description: Unique circuit ID
-          maxLength: 100
-        provider_network:
+        provider:
           oneOf:
           - type: integer
-          - $ref: '#/components/schemas/BriefProviderNetworkRequest'
+          - $ref: '#/components/schemas/BriefProviderRequest'
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        service_id:
+          type: string
+          maxLength: 100
         description:
           type: string
           maxLength: 200
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
       required:
-      - cid
-      - provider_network
-    VirtualCircuit:
+      - name
+      - provider
+    ASN:
       type: object
       description: Base serializer class for models inheriting from PrimaryModel.
       properties:
@@ -13128,51 +13027,15 @@ components:
         display:
           type: string
           readOnly: true
-        cid:
-          type: string
-          title: Circuit ID
-          description: Unique circuit ID
-          maxLength: 100
-        provider_network:
-          $ref: '#/components/schemas/BriefProviderNetwork'
-        provider_account:
+        asn:
+          type: integer
+          maximum: 4294967295
+          minimum: 1
+          format: int64
+          description: 16- or 32-bit autonomous system number
+        rir:
           allOf:
-          - $ref: '#/components/schemas/BriefProviderAccount'
-        type:
-          $ref: '#/components/schemas/BriefVirtualCircuitType'
-        status:
-          type: object
-          properties:
-            value:
-              enum:
-              - planned
-              - provisioning
-              - active
-              - offline
-              - deprovisioning
-              - decommissioned
-              type: string
-              description: '* `planned` - Planned
-
-                * `provisioning` - Provisioning
-
-                * `active` - Active
-
-                * `offline` - Offline
-
-                * `deprovisioning` - Deprovisioning
-
-                * `decommissioned` - Decommissioned'
-              x-spec-enum-id: 0a239d878b6666a4
-            label:
-              type: string
-              enum:
-              - Planned
-              - Provisioning
-              - Active
-              - Offline
-              - Deprovisioning
-              - Decommissioned
+          - $ref: '#/components/schemas/BriefRIR'
         tenant:
           allOf:
           - $ref: '#/components/schemas/BriefTenant'
@@ -13203,16 +13066,384 @@ components:
           - 'null'
           format: date-time
           readOnly: true
+        site_count:
+          type: integer
+          format: int64
+          readOnly: true
+        provider_count:
+          type: integer
+          format: int64
+          readOnly: true
+        sites:
+          type: array
+          items:
+            $ref: '#/components/schemas/ASNSite'
       required:
-      - cid
+      - asn
       - created
       - display
       - display_url
       - id
       - last_updated
+      - provider_count
+      - site_count
+      - url
+    CircuitTermination:
+      type: object
+      description: Adds support for custom fields and tags.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        circuit:
+          $ref: '#/components/schemas/BriefCircuit'
+        term_side:
+          enum:
+          - A
+          - Z
+          type: string
+          description: '* `A` - A
+
+            * `Z` - Z'
+          x-spec-enum-id: 95b8fcc737f355d0
+          title: Termination side
+        termination_type:
+          type:
+          - string
+          - 'null'
+        termination_id:
+          type:
+          - integer
+          - 'null'
+        termination:
+          readOnly: true
+        port_speed:
+          type:
+          - integer
+          - 'null'
+          maximum: 2147483647
+          minimum: 0
+          title: Port speed (Kbps)
+          description: Physical circuit speed
+        upstream_speed:
+          type:
+          - integer
+          - 'null'
+          maximum: 2147483647
+          minimum: 0
+          title: Upstream speed (Kbps)
+          description: Upstream speed, if different from port speed
+        xconnect_id:
+          type: string
+          title: Cross-connect ID
+          description: ID of the local cross-connect
+          maxLength: 50
+        pp_info:
+          type: string
+          title: Patch panel/port(s)
+          description: Patch panel ID and port number(s)
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+        mark_connected:
+          type: boolean
+          description: Treat as if a cable is connected
+        cable:
+          allOf:
+          - $ref: '#/components/schemas/BriefCable'
+          readOnly: true
+        cable_end:
+          type: string
+          readOnly: true
+        link_peers:
+          type: array
+          items: {}
+          readOnly: true
+        link_peers_type:
+          type:
+          - string
+          - 'null'
+          description: Return the type of the peer link terminations, or None.
+          readOnly: true
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTag'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        created:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        last_updated:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        _occupied:
+          type: boolean
+          readOnly: true
+          title: ' occupied'
+      required:
+      - _occupied
+      - cable
+      - cable_end
+      - circuit
+      - created
+      - display
+      - display_url
+      - id
+      - last_updated
+      - link_peers
+      - link_peers_type
+      - term_side
+      - termination
+      - url
+    ProviderRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          description: Full name of the provider
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        accounts:
+          type: array
+          items:
+            type: integer
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        asns:
+          type: array
+          items:
+            type: integer
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+      required:
+      - name
+      - slug
+    BriefDevice:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type:
+          - string
+          - 'null'
+          maxLength: 64
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - display
+      - id
+      - url
+    BriefProviderRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          description: Full name of the provider
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - name
+      - slug
+    VirtualCircuitRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        cid:
+          type: string
+          minLength: 1
+          title: Circuit ID
+          description: Unique circuit ID
+          maxLength: 100
+        provider_network:
+          oneOf:
+          - type: integer
+          - $ref: '#/components/schemas/BriefProviderNetworkRequest'
+        provider_account:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefProviderAccountRequest'
+        type:
+          oneOf:
+          - type: integer
+          - $ref: '#/components/schemas/BriefVirtualCircuitTypeRequest'
+        status:
+          enum:
+          - planned
+          - provisioning
+          - active
+          - offline
+          - deprovisioning
+          - decommissioned
+          type: string
+          description: '* `planned` - Planned
+
+            * `provisioning` - Provisioning
+
+            * `active` - Active
+
+            * `offline` - Offline
+
+            * `deprovisioning` - Deprovisioning
+
+            * `decommissioned` - Decommissioned'
+          x-spec-enum-id: 0a239d878b6666a4
+        tenant:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefTenantRequest'
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+      required:
+      - cid
       - provider_network
       - type
-      - url
+    CircuitTypeRequest:
+      type: object
+      description: Base serializer class for models inheriting from OrganizationalModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        color:
+          type: string
+          pattern: ^[0-9a-f]{6}$
+          maxLength: 6
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+      required:
+      - name
+      - slug
+    PatchedVirtualCircuitTypeRequest:
+      type: object
+      description: Base serializer class for models inheriting from OrganizationalModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        color:
+          type: string
+          pattern: ^[0-9a-f]{6}$
+          maxLength: 6
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
     Circuit:
       type: object
       description: Base serializer class for models inheriting from PrimaryModel.
@@ -13386,42 +13617,74 @@ components:
       - termination_z
       - type
       - url
-    NestedProviderAccount:
+    PaginatedVirtualCircuitTypeList:
       type: object
-      description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
-
-        dictionary of attributes which can be used to uniquely identify the related object. This class should be
-
-        subclassed to return a full representation of the related object on read.'
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display_url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          maxLength: 100
-        account:
-          type: string
-          title: Account ID
-          maxLength: 100
       required:
-      - account
-      - display
-      - display_url
-      - id
-      - url
-    VirtualCircuitRequest:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/VirtualCircuitType'
+    WritableCircuitGroupAssignmentRequest:
+      type: object
+      description: Base serializer for group assignments under CircuitSerializer.
+      properties:
+        group:
+          oneOf:
+          - type: integer
+          - $ref: '#/components/schemas/BriefCircuitGroupRequest'
+        member_type:
+          type: string
+        member_id:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        priority:
+          enum:
+          - primary
+          - secondary
+          - tertiary
+          - inactive
+          - ''
+          - null
+          type:
+          - string
+          - 'null'
+          description: '* `primary` - Primary
+
+            * `secondary` - Secondary
+
+            * `tertiary` - Tertiary
+
+            * `inactive` - Inactive'
+          x-spec-enum-id: 0548fc537440bf9d
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+      required:
+      - group
+      - member_id
+      - member_type
+    PatchedWritableVirtualCircuitRequest:
       type: object
       description: Base serializer class for models inheriting from PrimaryModel.
       properties:
@@ -13487,13 +13750,9 @@ components:
         custom_fields:
           type: object
           additionalProperties: {}
-      required:
-      - cid
-      - provider_network
-      - type
-    BriefCircuitGroupAssignmentSerializer_:
+    VirtualCircuitType:
       type: object
-      description: Base serializer for group assignments under CircuitSerializer.
+      description: Base serializer class for models inheriting from OrganizationalModel.
       properties:
         id:
           type: integer
@@ -13502,117 +13761,18 @@ components:
           type: string
           format: uri
           readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
         display:
           type: string
           readOnly: true
-        group:
-          $ref: '#/components/schemas/BriefCircuitGroup'
-        priority:
-          type: object
-          properties:
-            value:
-              enum:
-              - primary
-              - secondary
-              - tertiary
-              - inactive
-              - ''
-              type: string
-              description: '* `primary` - Primary
-
-                * `secondary` - Secondary
-
-                * `tertiary` - Tertiary
-
-                * `inactive` - Inactive'
-              x-spec-enum-id: 0548fc537440bf9d
-            label:
-              type: string
-              enum:
-              - Primary
-              - Secondary
-              - Tertiary
-              - Inactive
-      required:
-      - display
-      - group
-      - id
-      - url
-    PatchedCircuitGroupRequest:
-      type: object
-      description: Base serializer class for models inheriting from OrganizationalModel.
-      properties:
         name:
           type: string
-          minLength: 1
           maxLength: 100
         slug:
           type: string
-          minLength: 1
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        description:
-          type: string
-          maxLength: 200
-        tenant:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefTenantRequest'
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-    BriefCircuitGroupRequest:
-      type: object
-      description: Base serializer class for models inheriting from OrganizationalModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-      required:
-      - name
-    BriefCircuitTypeRequest:
-      type: object
-      description: Base serializer class for models inheriting from OrganizationalModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        slug:
-          type: string
-          minLength: 1
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - name
-      - slug
-    PatchedCircuitTypeRequest:
-      type: object
-      description: Base serializer class for models inheriting from OrganizationalModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        slug:
-          type: string
-          minLength: 1
           maxLength: 100
           pattern: ^[-a-zA-Z0-9_]+$
         color:
@@ -13623,19 +13783,43 @@ components:
           type: string
           maxLength: 200
         owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
+          allOf:
+          - $ref: '#/components/schemas/BriefOwner'
         comments:
           type: string
         tags:
           type: array
           items:
-            $ref: '#/components/schemas/NestedTagRequest'
+            $ref: '#/components/schemas/NestedTag'
         custom_fields:
           type: object
           additionalProperties: {}
+        created:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        last_updated:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        virtual_circuit_count:
+          type: integer
+          format: int64
+          readOnly: true
+      required:
+      - created
+      - display
+      - display_url
+      - id
+      - last_updated
+      - name
+      - slug
+      - url
+      - virtual_circuit_count
     ProviderAccount:
       type: object
       description: Base serializer class for models inheriting from PrimaryModel.
@@ -13700,252 +13884,7 @@ components:
       - last_updated
       - provider
       - url
-    WritableVirtualCircuitRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        cid:
-          type: string
-          minLength: 1
-          title: Circuit ID
-          description: Unique circuit ID
-          maxLength: 100
-        provider_network:
-          oneOf:
-          - type: integer
-          - $ref: '#/components/schemas/BriefProviderNetworkRequest'
-        provider_account:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefProviderAccountRequest'
-        type:
-          oneOf:
-          - type: integer
-          - $ref: '#/components/schemas/BriefVirtualCircuitTypeRequest'
-        status:
-          enum:
-          - planned
-          - provisioning
-          - active
-          - offline
-          - deprovisioning
-          - decommissioned
-          type: string
-          description: '* `planned` - Planned
-
-            * `provisioning` - Provisioning
-
-            * `active` - Active
-
-            * `offline` - Offline
-
-            * `deprovisioning` - Deprovisioning
-
-            * `decommissioned` - Decommissioned'
-          x-spec-enum-id: 0a239d878b6666a4
-        tenant:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefTenantRequest'
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-      required:
-      - cid
-      - provider_network
-      - type
-    BriefInterface:
-      type: object
-      description: Adds an `owner` field for models which have a ForeignKey to users.Owner.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        device:
-          $ref: '#/components/schemas/BriefDevice'
-        name:
-          type: string
-          maxLength: 64
-        description:
-          type: string
-          maxLength: 200
-        cable:
-          allOf:
-          - $ref: '#/components/schemas/BriefCable'
-          readOnly: true
-        _occupied:
-          type: boolean
-          readOnly: true
-          title: ' occupied'
-      required:
-      - _occupied
-      - cable
-      - device
-      - display
-      - id
-      - name
-      - url
-    BriefVirtualCircuitTypeRequest:
-      type: object
-      description: Base serializer class for models inheriting from OrganizationalModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        slug:
-          type: string
-          minLength: 1
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - name
-      - slug
-    PatchedProviderRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          description: Full name of the provider
-          maxLength: 100
-        slug:
-          type: string
-          minLength: 1
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        accounts:
-          type: array
-          items:
-            type: integer
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-        comments:
-          type: string
-        asns:
-          type: array
-          items:
-            type: integer
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-    ASN:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display_url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        asn:
-          type: integer
-          maximum: 4294967295
-          minimum: 1
-          format: int64
-          description: 16- or 32-bit autonomous system number
-        rir:
-          allOf:
-          - $ref: '#/components/schemas/BriefRIR'
-        tenant:
-          allOf:
-          - $ref: '#/components/schemas/BriefTenant'
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          allOf:
-          - $ref: '#/components/schemas/BriefOwner'
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTag'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-        created:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          readOnly: true
-        last_updated:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          readOnly: true
-        site_count:
-          type: integer
-          format: int64
-          readOnly: true
-        provider_count:
-          type: integer
-          format: int64
-          readOnly: true
-        sites:
-          type: array
-          items:
-            $ref: '#/components/schemas/ASNSite'
-      required:
-      - asn
-      - created
-      - display
-      - display_url
-      - id
-      - last_updated
-      - provider_count
-      - site_count
-      - url
-    CircuitTypeRequest:
+    VirtualCircuitTypeRequest:
       type: object
       description: Base serializer class for models inheriting from OrganizationalModel.
       properties:
@@ -13982,64 +13921,366 @@ components:
       required:
       - name
       - slug
-    BriefCircuitRequest:
+    BriefProviderAccountRequest:
       type: object
       description: Base serializer class for models inheriting from PrimaryModel.
       properties:
-        cid:
+        name:
+          type: string
+          default: ''
+          maxLength: 100
+        account:
           type: string
           minLength: 1
-          title: Circuit ID
-          description: Unique circuit ID
+          title: Account ID
           maxLength: 100
-        provider:
-          oneOf:
-          - type: integer
-          - $ref: '#/components/schemas/BriefProviderRequest'
         description:
           type: string
           maxLength: 200
       required:
-      - cid
-      - provider
-    PatchedWritableCircuitGroupAssignmentRequest:
+      - account
+    VirtualCircuitTerminationRequest:
       type: object
-      description: Base serializer for group assignments under CircuitSerializer.
+      description: Adds support for custom fields and tags.
       properties:
-        group:
+        virtual_circuit:
           oneOf:
           - type: integer
-          - $ref: '#/components/schemas/BriefCircuitGroupRequest'
-        member_type:
-          type: string
-        member_id:
-          type: integer
-          maximum: 9223372036854775807
-          minimum: 0
-          format: int64
-        priority:
+          - $ref: '#/components/schemas/BriefVirtualCircuitRequest'
+        role:
           enum:
-          - primary
-          - secondary
-          - tertiary
-          - inactive
-          - ''
-          - null
-          type:
-          - string
-          - 'null'
-          description: '* `primary` - Primary
+          - peer
+          - hub
+          - spoke
+          type: string
+          description: '* `peer` - Peer
 
-            * `secondary` - Secondary
+            * `hub` - Hub
 
-            * `tertiary` - Tertiary
-
-            * `inactive` - Inactive'
-          x-spec-enum-id: 0548fc537440bf9d
+            * `spoke` - Spoke'
+          x-spec-enum-id: 0b3bfadcebd86b58
+        interface:
+          oneOf:
+          - type: integer
+          - $ref: '#/components/schemas/BriefInterfaceRequest'
+        description:
+          type: string
+          maxLength: 200
         tags:
           type: array
           items:
             $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+      required:
+      - interface
+      - virtual_circuit
+    BriefTenantRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - name
+      - slug
+    NestedTagRequest:
+      type: object
+      description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
+
+        dictionary of attributes which can be used to uniquely identify the related object. This class should be
+
+        subclassed to return a full representation of the related object on read.'
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          pattern: ^[-\w]+$
+          maxLength: 100
+        color:
+          type: string
+          minLength: 1
+          pattern: ^[0-9a-f]{6}$
+          maxLength: 6
+      required:
+      - name
+      - slug
+    PaginatedProviderAccountList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProviderAccount'
+    BriefCircuitGroupAssignmentSerializer_:
+      type: object
+      description: Base serializer for group assignments under CircuitSerializer.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        group:
+          $ref: '#/components/schemas/BriefCircuitGroup'
+        priority:
+          type: object
+          properties:
+            value:
+              enum:
+              - primary
+              - secondary
+              - tertiary
+              - inactive
+              - ''
+              type: string
+              description: '* `primary` - Primary
+
+                * `secondary` - Secondary
+
+                * `tertiary` - Tertiary
+
+                * `inactive` - Inactive'
+              x-spec-enum-id: 0548fc537440bf9d
+            label:
+              type: string
+              enum:
+              - Primary
+              - Secondary
+              - Tertiary
+              - Inactive
+      required:
+      - display
+      - group
+      - id
+      - url
+    BriefVirtualCircuitTypeRequest:
+      type: object
+      description: Base serializer class for models inheriting from OrganizationalModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - name
+      - slug
+    PaginatedVirtualCircuitTerminationList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/VirtualCircuitTermination'
+    BriefProviderNetwork:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - display
+      - id
+      - name
+      - url
+    PaginatedProviderList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Provider'
+    CircuitType:
+      type: object
+      description: Base serializer class for models inheriting from OrganizationalModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        slug:
+          type: string
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        color:
+          type: string
+          pattern: ^[0-9a-f]{6}$
+          maxLength: 6
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          allOf:
+          - $ref: '#/components/schemas/BriefOwner'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTag'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        created:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        last_updated:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        circuit_count:
+          type: integer
+          format: int64
+          readOnly: true
+      required:
+      - circuit_count
+      - created
+      - display
+      - display_url
+      - id
+      - last_updated
+      - name
+      - slug
+      - url
+    PaginatedCircuitGroupList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/CircuitGroup'
     CircuitGroupAssignment:
       type: object
       description: Base serializer for group assignments under CircuitSerializer.
@@ -14122,1083 +14363,6 @@ components:
       - member_id
       - member_type
       - url
-    PaginatedProviderAccountList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProviderAccount'
-    NestedTagRequest:
-      type: object
-      description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
-
-        dictionary of attributes which can be used to uniquely identify the related object. This class should be
-
-        subclassed to return a full representation of the related object on read.'
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        slug:
-          type: string
-          minLength: 1
-          pattern: ^[-\w]+$
-          maxLength: 100
-        color:
-          type: string
-          minLength: 1
-          pattern: ^[0-9a-f]{6}$
-          maxLength: 6
-      required:
-      - name
-      - slug
-    PaginatedCircuitGroupAssignmentList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/CircuitGroupAssignment'
-    NestedTag:
-      type: object
-      description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
-
-        dictionary of attributes which can be used to uniquely identify the related object. This class should be
-
-        subclassed to return a full representation of the related object on read.'
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display_url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          maxLength: 100
-        slug:
-          type: string
-          pattern: ^[-\w]+$
-          maxLength: 100
-        color:
-          type: string
-          pattern: ^[0-9a-f]{6}$
-          maxLength: 6
-      required:
-      - display
-      - display_url
-      - id
-      - name
-      - slug
-      - url
-    PatchedProviderNetworkRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        provider:
-          oneOf:
-          - type: integer
-          - $ref: '#/components/schemas/BriefProviderRequest'
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        service_id:
-          type: string
-          maxLength: 100
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-    PaginatedCircuitTypeList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/CircuitType'
-    PaginatedVirtualCircuitTypeList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/VirtualCircuitType'
-    BriefProviderRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          description: Full name of the provider
-          maxLength: 100
-        slug:
-          type: string
-          minLength: 1
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - name
-      - slug
-    PaginatedProviderList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/Provider'
-    PaginatedCircuitGroupList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/CircuitGroup'
-    VirtualCircuitType:
-      type: object
-      description: Base serializer class for models inheriting from OrganizationalModel.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display_url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          maxLength: 100
-        slug:
-          type: string
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        color:
-          type: string
-          pattern: ^[0-9a-f]{6}$
-          maxLength: 6
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          allOf:
-          - $ref: '#/components/schemas/BriefOwner'
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTag'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-        created:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          readOnly: true
-        last_updated:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          readOnly: true
-        virtual_circuit_count:
-          type: integer
-          format: int64
-          readOnly: true
-      required:
-      - created
-      - display
-      - display_url
-      - id
-      - last_updated
-      - name
-      - slug
-      - url
-      - virtual_circuit_count
-    BriefVirtualCircuit:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        cid:
-          type: string
-          title: Circuit ID
-          description: Unique circuit ID
-          maxLength: 100
-        provider_network:
-          $ref: '#/components/schemas/BriefProviderNetwork'
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - cid
-      - display
-      - id
-      - provider_network
-      - url
-    CircuitCircuitTermination:
-      type: object
-      description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
-
-        dictionary of attributes which can be used to uniquely identify the related object. This class should be
-
-        subclassed to return a full representation of the related object on read.'
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display_url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        termination_type:
-          type:
-          - string
-          - 'null'
-        termination_id:
-          type:
-          - integer
-          - 'null'
-        termination:
-          readOnly: true
-        port_speed:
-          type:
-          - integer
-          - 'null'
-          maximum: 2147483647
-          minimum: 0
-          title: Port speed (Kbps)
-          description: Physical circuit speed
-        upstream_speed:
-          type:
-          - integer
-          - 'null'
-          maximum: 2147483647
-          minimum: 0
-          title: Upstream speed (Kbps)
-          description: Upstream speed, if different from port speed
-        xconnect_id:
-          type: string
-          title: Cross-connect ID
-          description: ID of the local cross-connect
-          maxLength: 50
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - display
-      - display_url
-      - id
-      - termination
-      - url
-    ProviderNetworkRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        provider:
-          oneOf:
-          - type: integer
-          - $ref: '#/components/schemas/BriefProviderRequest'
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        service_id:
-          type: string
-          maxLength: 100
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-      required:
-      - name
-      - provider
-    PaginatedCircuitList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/Circuit'
-    CircuitTermination:
-      type: object
-      description: Adds support for custom fields and tags.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display_url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        circuit:
-          $ref: '#/components/schemas/BriefCircuit'
-        term_side:
-          enum:
-          - A
-          - Z
-          type: string
-          description: '* `A` - A
-
-            * `Z` - Z'
-          x-spec-enum-id: 95b8fcc737f355d0
-          title: Termination side
-        termination_type:
-          type:
-          - string
-          - 'null'
-        termination_id:
-          type:
-          - integer
-          - 'null'
-        termination:
-          readOnly: true
-        port_speed:
-          type:
-          - integer
-          - 'null'
-          maximum: 2147483647
-          minimum: 0
-          title: Port speed (Kbps)
-          description: Physical circuit speed
-        upstream_speed:
-          type:
-          - integer
-          - 'null'
-          maximum: 2147483647
-          minimum: 0
-          title: Upstream speed (Kbps)
-          description: Upstream speed, if different from port speed
-        xconnect_id:
-          type: string
-          title: Cross-connect ID
-          description: ID of the local cross-connect
-          maxLength: 50
-        pp_info:
-          type: string
-          title: Patch panel/port(s)
-          description: Patch panel ID and port number(s)
-          maxLength: 100
-        description:
-          type: string
-          maxLength: 200
-        mark_connected:
-          type: boolean
-          description: Treat as if a cable is connected
-        cable:
-          allOf:
-          - $ref: '#/components/schemas/BriefCable'
-          readOnly: true
-        cable_end:
-          type: string
-          readOnly: true
-        link_peers:
-          type: array
-          items: {}
-          readOnly: true
-        link_peers_type:
-          type:
-          - string
-          - 'null'
-          description: Return the type of the peer link terminations, or None.
-          readOnly: true
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTag'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-        created:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          readOnly: true
-        last_updated:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          readOnly: true
-        _occupied:
-          type: boolean
-          readOnly: true
-          title: ' occupied'
-      required:
-      - _occupied
-      - cable
-      - cable_end
-      - circuit
-      - created
-      - display
-      - display_url
-      - id
-      - last_updated
-      - link_peers
-      - link_peers_type
-      - term_side
-      - termination
-      - url
-    BriefOwnerRequest:
-      type: object
-      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
-
-        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - name
-    PaginatedVirtualCircuitTerminationList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/VirtualCircuitTermination'
-    BriefCable:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        label:
-          type: string
-          maxLength: 100
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - display
-      - id
-      - url
-    CircuitGroup:
-      type: object
-      description: Base serializer class for models inheriting from OrganizationalModel.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display_url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          maxLength: 100
-        slug:
-          type: string
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        description:
-          type: string
-          maxLength: 200
-        tenant:
-          allOf:
-          - $ref: '#/components/schemas/BriefTenant'
-        owner:
-          allOf:
-          - $ref: '#/components/schemas/BriefOwner'
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTag'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-        created:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          readOnly: true
-        last_updated:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          readOnly: true
-        circuit_count:
-          type: integer
-          format: int64
-          readOnly: true
-      required:
-      - circuit_count
-      - created
-      - display
-      - display_url
-      - id
-      - last_updated
-      - name
-      - slug
-      - url
-    BriefCircuitGroup:
-      type: object
-      description: Base serializer class for models inheriting from OrganizationalModel.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          maxLength: 100
-      required:
-      - display
-      - id
-      - name
-      - url
-    BriefProvider:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          description: Full name of the provider
-          maxLength: 100
-        slug:
-          type: string
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        description:
-          type: string
-          maxLength: 200
-        circuit_count:
-          type: integer
-          format: int64
-          readOnly: true
-      required:
-      - circuit_count
-      - display
-      - id
-      - name
-      - slug
-      - url
-    PaginatedCircuitTerminationList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/CircuitTermination'
-    PatchedWritableVirtualCircuitRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        cid:
-          type: string
-          minLength: 1
-          title: Circuit ID
-          description: Unique circuit ID
-          maxLength: 100
-        provider_network:
-          oneOf:
-          - type: integer
-          - $ref: '#/components/schemas/BriefProviderNetworkRequest'
-        provider_account:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefProviderAccountRequest'
-        type:
-          oneOf:
-          - type: integer
-          - $ref: '#/components/schemas/BriefVirtualCircuitTypeRequest'
-        status:
-          enum:
-          - planned
-          - provisioning
-          - active
-          - offline
-          - deprovisioning
-          - decommissioned
-          type: string
-          description: '* `planned` - Planned
-
-            * `provisioning` - Provisioning
-
-            * `active` - Active
-
-            * `offline` - Offline
-
-            * `deprovisioning` - Deprovisioning
-
-            * `decommissioned` - Decommissioned'
-          x-spec-enum-id: 0a239d878b6666a4
-        tenant:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefTenantRequest'
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-    BriefTenantRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        slug:
-          type: string
-          minLength: 1
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - name
-      - slug
-    BriefRIR:
-      type: object
-      description: Base serializer class for models inheriting from OrganizationalModel.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          maxLength: 100
-        slug:
-          type: string
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        description:
-          type: string
-          maxLength: 200
-        aggregate_count:
-          type: integer
-          format: int64
-          readOnly: true
-      required:
-      - aggregate_count
-      - display
-      - id
-      - name
-      - slug
-      - url
-    BriefDevice:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        name:
-          type:
-          - string
-          - 'null'
-          maxLength: 64
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - display
-      - id
-      - url
-    ProviderAccountRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        provider:
-          oneOf:
-          - type: integer
-          - $ref: '#/components/schemas/BriefProviderRequest'
-        name:
-          type: string
-          default: ''
-          maxLength: 100
-        account:
-          type: string
-          minLength: 1
-          title: Account ID
-          maxLength: 100
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-      required:
-      - account
-      - provider
-    BriefOwner:
-      type: object
-      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
-
-        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          maxLength: 100
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - display
-      - id
-      - name
-      - url
-    BriefCircuitType:
-      type: object
-      description: Base serializer class for models inheriting from OrganizationalModel.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          maxLength: 100
-        slug:
-          type: string
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        description:
-          type: string
-          maxLength: 200
-        circuit_count:
-          type: integer
-          format: int64
-          readOnly: true
-      required:
-      - circuit_count
-      - display
-      - id
-      - name
-      - slug
-      - url
     CircuitTerminationRequest:
       type: object
       description: Adds support for custom fields and tags.
@@ -15267,104 +14431,42 @@ components:
       required:
       - circuit
       - term_side
-    CircuitRequest:
+    BriefInterfaceRequest:
+      type: object
+      description: Adds an `owner` field for models which have a ForeignKey to users.Owner.
+      properties:
+        device:
+          oneOf:
+          - type: integer
+          - $ref: '#/components/schemas/BriefDeviceRequest'
+        name:
+          type: string
+          minLength: 1
+          maxLength: 64
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - device
+      - name
+    PatchedProviderNetworkRequest:
       type: object
       description: Base serializer class for models inheriting from PrimaryModel.
       properties:
-        cid:
-          type: string
-          minLength: 1
-          title: Circuit ID
-          description: Unique circuit ID
-          maxLength: 100
         provider:
           oneOf:
           - type: integer
           - $ref: '#/components/schemas/BriefProviderRequest'
-        provider_account:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefProviderAccountRequest'
-        type:
-          oneOf:
-          - type: integer
-          - $ref: '#/components/schemas/BriefCircuitTypeRequest'
-        status:
-          enum:
-          - planned
-          - provisioning
-          - active
-          - offline
-          - deprovisioning
-          - decommissioned
+        name:
           type: string
-          description: '* `planned` - Planned
-
-            * `provisioning` - Provisioning
-
-            * `active` - Active
-
-            * `offline` - Offline
-
-            * `deprovisioning` - Deprovisioning
-
-            * `decommissioned` - Decommissioned'
-          x-spec-enum-id: 0a239d878b6666a4
-        tenant:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefTenantRequest'
-        install_date:
-          type:
-          - string
-          - 'null'
-          format: date
-          title: Installed
-        termination_date:
-          type:
-          - string
-          - 'null'
-          format: date
-          title: Terminates
-        commit_rate:
-          type:
-          - integer
-          - 'null'
-          maximum: 2147483647
-          minimum: 0
-          title: Commit rate (Kbps)
-          description: Committed rate
+          minLength: 1
+          maxLength: 100
+        service_id:
+          type: string
+          maxLength: 100
         description:
           type: string
           maxLength: 200
-        distance:
-          type:
-          - number
-          - 'null'
-          format: double
-          exclusiveMinimum: -1000000
-          exclusiveMaximum: 1000000
-        distance_unit:
-          enum:
-          - km
-          - m
-          - mi
-          - ft
-          - ''
-          - null
-          type:
-          - string
-          - 'null'
-          description: '* `km` - Kilometers
-
-            * `m` - Meters
-
-            * `mi` - Miles
-
-            * `ft` - Feet'
-          x-spec-enum-id: b1169a409430c02e
         owner:
           oneOf:
           - type: integer
@@ -15379,15 +14481,258 @@ components:
         custom_fields:
           type: object
           additionalProperties: {}
-        assignments:
+    CircuitGroupAssignmentRequest:
+      type: object
+      description: Base serializer for group assignments under CircuitSerializer.
+      properties:
+        group:
+          oneOf:
+          - type: integer
+          - $ref: '#/components/schemas/BriefCircuitGroupRequest'
+        member_type:
+          type: string
+        member_id:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        priority:
+          enum:
+          - primary
+          - secondary
+          - tertiary
+          - inactive
+          - ''
+          type: string
+          description: '* `primary` - Primary
+
+            * `secondary` - Secondary
+
+            * `tertiary` - Tertiary
+
+            * `inactive` - Inactive'
+          x-spec-enum-id: 0548fc537440bf9d
+        tags:
           type: array
           items:
-            $ref: '#/components/schemas/BriefCircuitGroupAssignmentSerializer_Request'
+            $ref: '#/components/schemas/NestedTagRequest'
       required:
-      - cid
-      - provider
-      - type
-    VirtualCircuitTypeRequest:
+      - group
+      - member_id
+      - member_type
+    PaginatedCircuitTerminationList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/CircuitTermination'
+    PatchedCircuitTerminationRequest:
+      type: object
+      description: Adds support for custom fields and tags.
+      properties:
+        circuit:
+          oneOf:
+          - type: integer
+          - $ref: '#/components/schemas/BriefCircuitRequest'
+        term_side:
+          enum:
+          - A
+          - Z
+          type: string
+          description: '* `A` - A
+
+            * `Z` - Z'
+          x-spec-enum-id: 95b8fcc737f355d0
+          title: Termination side
+        termination_type:
+          type:
+          - string
+          - 'null'
+        termination_id:
+          type:
+          - integer
+          - 'null'
+        port_speed:
+          type:
+          - integer
+          - 'null'
+          maximum: 2147483647
+          minimum: 0
+          title: Port speed (Kbps)
+          description: Physical circuit speed
+        upstream_speed:
+          type:
+          - integer
+          - 'null'
+          maximum: 2147483647
+          minimum: 0
+          title: Upstream speed (Kbps)
+          description: Upstream speed, if different from port speed
+        xconnect_id:
+          type: string
+          title: Cross-connect ID
+          description: ID of the local cross-connect
+          maxLength: 50
+        pp_info:
+          type: string
+          title: Patch panel/port(s)
+          description: Patch panel ID and port number(s)
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+        mark_connected:
+          type: boolean
+          description: Treat as if a cable is connected
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+    BriefCircuitGroupRequest:
+      type: object
+      description: Base serializer class for models inheriting from OrganizationalModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+      required:
+      - name
+    VirtualCircuitTermination:
+      type: object
+      description: Adds support for custom fields and tags.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        virtual_circuit:
+          $ref: '#/components/schemas/BriefVirtualCircuit'
+        role:
+          type: object
+          properties:
+            value:
+              enum:
+              - peer
+              - hub
+              - spoke
+              type: string
+              description: '* `peer` - Peer
+
+                * `hub` - Hub
+
+                * `spoke` - Spoke'
+              x-spec-enum-id: 0b3bfadcebd86b58
+            label:
+              type: string
+              enum:
+              - Peer
+              - Hub
+              - Spoke
+        interface:
+          $ref: '#/components/schemas/BriefInterface'
+        description:
+          type: string
+          maxLength: 200
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTag'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        created:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        last_updated:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+      required:
+      - created
+      - display
+      - display_url
+      - id
+      - interface
+      - last_updated
+      - url
+      - virtual_circuit
+    BriefInterface:
+      type: object
+      description: Adds an `owner` field for models which have a ForeignKey to users.Owner.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        device:
+          $ref: '#/components/schemas/BriefDevice'
+        name:
+          type: string
+          maxLength: 64
+        description:
+          type: string
+          maxLength: 200
+        cable:
+          allOf:
+          - $ref: '#/components/schemas/BriefCable'
+          readOnly: true
+        _occupied:
+          type: boolean
+          readOnly: true
+          title: ' occupied'
+      required:
+      - _occupied
+      - cable
+      - device
+      - display
+      - id
+      - name
+      - url
+    PatchedCircuitTypeRequest:
       type: object
       description: Base serializer class for models inheriting from OrganizationalModel.
       properties:
@@ -15421,22 +14766,677 @@ components:
         custom_fields:
           type: object
           additionalProperties: {}
+    PatchedWritableVirtualCircuitTerminationRequest:
+      type: object
+      description: Adds support for custom fields and tags.
+      properties:
+        virtual_circuit:
+          oneOf:
+          - type: integer
+          - $ref: '#/components/schemas/BriefVirtualCircuitRequest'
+        role:
+          enum:
+          - peer
+          - hub
+          - spoke
+          type: string
+          description: '* `peer` - Peer
+
+            * `hub` - Hub
+
+            * `spoke` - Spoke'
+          x-spec-enum-id: 0b3bfadcebd86b58
+        interface:
+          oneOf:
+          - type: integer
+          - $ref: '#/components/schemas/BriefInterfaceRequest'
+        description:
+          type: string
+          maxLength: 200
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+    BriefCircuitGroup:
+      type: object
+      description: Base serializer class for models inheriting from OrganizationalModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+      required:
+      - display
+      - id
+      - name
+      - url
+    ProviderNetwork:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        provider:
+          $ref: '#/components/schemas/BriefProvider'
+        name:
+          type: string
+          maxLength: 100
+        service_id:
+          type: string
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          allOf:
+          - $ref: '#/components/schemas/BriefOwner'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTag'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        created:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        last_updated:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+      required:
+      - created
+      - display
+      - display_url
+      - id
+      - last_updated
+      - name
+      - provider
+      - url
+    PaginatedVirtualCircuitList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/VirtualCircuit'
+    BriefCircuitGroupAssignmentSerializer_Request:
+      type: object
+      description: Base serializer for group assignments under CircuitSerializer.
+      properties:
+        group:
+          oneOf:
+          - type: integer
+          - $ref: '#/components/schemas/BriefCircuitGroupRequest'
+        priority:
+          enum:
+          - primary
+          - secondary
+          - tertiary
+          - inactive
+          - ''
+          type: string
+          description: '* `primary` - Primary
+
+            * `secondary` - Secondary
+
+            * `tertiary` - Tertiary
+
+            * `inactive` - Inactive'
+          x-spec-enum-id: 0548fc537440bf9d
+      required:
+      - group
+    BriefOwner:
+      type: object
+      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
+
+        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - display
+      - id
+      - name
+      - url
+    BriefCircuitTypeRequest:
+      type: object
+      description: Base serializer class for models inheriting from OrganizationalModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+          maxLength: 200
       required:
       - name
       - slug
-    BriefProviderNetworkRequest:
+    BriefTenant:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        slug:
+          type: string
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - display
+      - id
+      - name
+      - slug
+      - url
+    BriefVirtualCircuitType:
+      type: object
+      description: Base serializer class for models inheriting from OrganizationalModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        slug:
+          type: string
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+          maxLength: 200
+        virtual_circuit_count:
+          type: integer
+          format: int64
+          readOnly: true
+      required:
+      - display
+      - id
+      - name
+      - slug
+      - url
+      - virtual_circuit_count
+    PatchedWritableCircuitGroupAssignmentRequest:
+      type: object
+      description: Base serializer for group assignments under CircuitSerializer.
+      properties:
+        group:
+          oneOf:
+          - type: integer
+          - $ref: '#/components/schemas/BriefCircuitGroupRequest'
+        member_type:
+          type: string
+        member_id:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        priority:
+          enum:
+          - primary
+          - secondary
+          - tertiary
+          - inactive
+          - ''
+          - null
+          type:
+          - string
+          - 'null'
+          description: '* `primary` - Primary
+
+            * `secondary` - Secondary
+
+            * `tertiary` - Tertiary
+
+            * `inactive` - Inactive'
+          x-spec-enum-id: 0548fc537440bf9d
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+    PatchedProviderAccountRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        provider:
+          oneOf:
+          - type: integer
+          - $ref: '#/components/schemas/BriefProviderRequest'
+        name:
+          type: string
+          default: ''
+          maxLength: 100
+        account:
+          type: string
+          minLength: 1
+          title: Account ID
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+    PatchedProviderRequest:
       type: object
       description: Base serializer class for models inheriting from PrimaryModel.
       properties:
         name:
           type: string
           minLength: 1
+          description: Full name of the provider
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        accounts:
+          type: array
+          items:
+            type: integer
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        asns:
+          type: array
+          items:
+            type: integer
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+    BriefProviderAccount:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          default: ''
+          maxLength: 100
+        account:
+          type: string
+          title: Account ID
           maxLength: 100
         description:
           type: string
           maxLength: 200
       required:
+      - account
+      - display
+      - id
+      - url
+    ProviderAccountRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        provider:
+          oneOf:
+          - type: integer
+          - $ref: '#/components/schemas/BriefProviderRequest'
+        name:
+          type: string
+          default: ''
+          maxLength: 100
+        account:
+          type: string
+          minLength: 1
+          title: Account ID
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+      required:
+      - account
+      - provider
+    Provider:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          description: Full name of the provider
+          maxLength: 100
+        slug:
+          type: string
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        accounts:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedProviderAccount'
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          allOf:
+          - $ref: '#/components/schemas/BriefOwner'
+        comments:
+          type: string
+        asns:
+          type: array
+          items:
+            $ref: '#/components/schemas/ASN'
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTag'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        created:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        last_updated:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        circuit_count:
+          type: integer
+          format: int64
+          readOnly: true
+      required:
+      - circuit_count
+      - created
+      - display
+      - display_url
+      - id
+      - last_updated
       - name
+      - slug
+      - url
+    CircuitGroupRequest:
+      type: object
+      description: Base serializer class for models inheriting from OrganizationalModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+          maxLength: 200
+        tenant:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefTenantRequest'
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+      required:
+      - name
+      - slug
+    WritableVirtualCircuitRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        cid:
+          type: string
+          minLength: 1
+          title: Circuit ID
+          description: Unique circuit ID
+          maxLength: 100
+        provider_network:
+          oneOf:
+          - type: integer
+          - $ref: '#/components/schemas/BriefProviderNetworkRequest'
+        provider_account:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefProviderAccountRequest'
+        type:
+          oneOf:
+          - type: integer
+          - $ref: '#/components/schemas/BriefVirtualCircuitTypeRequest'
+        status:
+          enum:
+          - planned
+          - provisioning
+          - active
+          - offline
+          - deprovisioning
+          - decommissioned
+          type: string
+          description: '* `planned` - Planned
+
+            * `provisioning` - Provisioning
+
+            * `active` - Active
+
+            * `offline` - Offline
+
+            * `deprovisioning` - Deprovisioning
+
+            * `decommissioned` - Decommissioned'
+          x-spec-enum-id: 0a239d878b6666a4
+        tenant:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefTenantRequest'
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+      required:
+      - cid
+      - provider_network
+      - type
+    BriefVirtualCircuit:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        cid:
+          type: string
+          title: Circuit ID
+          description: Unique circuit ID
+          maxLength: 100
+        provider_network:
+          $ref: '#/components/schemas/BriefProviderNetwork'
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - cid
+      - display
+      - id
+      - provider_network
+      - url
   securitySchemes:
     cookieAuth:
       type: apiKey

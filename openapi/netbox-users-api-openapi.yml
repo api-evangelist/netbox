@@ -4384,6 +4384,20 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    BriefUserRequest:
+      type: object
+      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
+
+        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
+      properties:
+        username:
+          type: string
+          minLength: 1
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
+          pattern: ^[\w.@+-]+$
+          maxLength: 150
+      required:
+      - username
     PatchedTokenRequest:
       type: object
       description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
@@ -4434,7 +4448,7 @@ components:
         token:
           type: string
           minLength: 1
-    PatchedGroupRequest:
+    GroupRequest:
       type: object
       description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
 
@@ -4448,6 +4462,84 @@ components:
           type: string
           maxLength: 200
         permissions:
+          type: array
+          items:
+            type: integer
+      required:
+      - name
+    PaginatedObjectPermissionList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ObjectPermission'
+    BriefOwnerGroupRequest:
+      type: object
+      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
+
+        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - name
+    PatchedObjectPermissionRequest:
+      type: object
+      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
+
+        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+        enabled:
+          type: boolean
+        object_types:
+          type: array
+          items:
+            type: string
+        actions:
+          type: array
+          items:
+            type: string
+            minLength: 1
+            maxLength: 30
+          description: The list of actions granted by this permission
+        constraints:
+          description: Queryset filter matching the applicable objects of the selected type(s)
+        groups:
+          type: array
+          items:
+            type: integer
+        users:
           type: array
           items:
             type: integer
@@ -4488,7 +4580,7 @@ components:
       - member_count
       - name
       - url
-    PaginatedUserList:
+    PaginatedOwnerList:
       type: object
       required:
       - count
@@ -4512,33 +4604,7 @@ components:
         results:
           type: array
           items:
-            $ref: '#/components/schemas/User'
-    PatchedOwnerRequest:
-      type: object
-      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
-
-        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        group:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerGroupRequest'
-        description:
-          type: string
-          maxLength: 200
-        user_groups:
-          type: array
-          items:
-            type: integer
-        users:
-          type: array
-          items:
-            type: integer
+            $ref: '#/components/schemas/Owner'
     ObjectPermission:
       type: object
       description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
@@ -4595,179 +4661,6 @@ components:
       - name
       - object_types
       - url
-    UserRequest:
-      type: object
-      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
-
-        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
-      properties:
-        username:
-          type: string
-          minLength: 1
-          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
-          pattern: ^[\w.@+-]+$
-          maxLength: 150
-        password:
-          type: string
-          writeOnly: true
-          minLength: 1
-          maxLength: 128
-        first_name:
-          type: string
-          maxLength: 150
-        last_name:
-          type: string
-          maxLength: 150
-        email:
-          type: string
-          format: email
-          title: Email address
-          maxLength: 254
-        is_active:
-          type: boolean
-          title: Active
-          description: Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
-        date_joined:
-          type: string
-          format: date-time
-        last_login:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        groups:
-          type: array
-          items:
-            type: integer
-        permissions:
-          type: array
-          items:
-            type: integer
-      required:
-      - password
-      - username
-    BriefUser:
-      type: object
-      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
-
-        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        username:
-          type: string
-          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
-          pattern: ^[\w.@+-]+$
-          maxLength: 150
-      required:
-      - display
-      - id
-      - url
-      - username
-    PaginatedOwnerGroupList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/OwnerGroup'
-    TokenProvision:
-      type: object
-      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
-
-        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display_url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        version:
-          enum:
-          - 1
-          - 2
-          type: integer
-          description: '* `1` - v1
-
-            * `2` - v2'
-          x-spec-enum-id: b5df70f0bffd12cb
-          minimum: 0
-          maximum: 32767
-        user:
-          allOf:
-          - $ref: '#/components/schemas/BriefUser'
-          readOnly: true
-        key:
-          type: string
-          readOnly: true
-        created:
-          type: string
-          format: date-time
-          readOnly: true
-        expires:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        last_used:
-          type: string
-          format: date-time
-          readOnly: true
-        enabled:
-          type: boolean
-          description: Disable to temporarily revoke this token without deleting it.
-        write_enabled:
-          type: boolean
-          description: Permit create/update/delete operations using this token
-        description:
-          type: string
-          maxLength: 200
-        token:
-          type: string
-      required:
-      - created
-      - display
-      - display_url
-      - id
-      - key
-      - last_used
-      - url
-      - user
     OwnerGroupRequest:
       type: object
       description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
@@ -4783,109 +4676,6 @@ components:
           maxLength: 200
       required:
       - name
-    BriefOwnerGroup:
-      type: object
-      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
-
-        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          maxLength: 100
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - display
-      - id
-      - name
-      - url
-    ObjectPermissionRequest:
-      type: object
-      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
-
-        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        description:
-          type: string
-          maxLength: 200
-        enabled:
-          type: boolean
-        object_types:
-          type: array
-          items:
-            type: string
-        actions:
-          type: array
-          items:
-            type: string
-            minLength: 1
-            maxLength: 30
-          description: The list of actions granted by this permission
-        constraints:
-          description: Queryset filter matching the applicable objects of the selected type(s)
-        groups:
-          type: array
-          items:
-            type: integer
-        users:
-          type: array
-          items:
-            type: integer
-      required:
-      - actions
-      - name
-      - object_types
-    PatchedObjectPermissionRequest:
-      type: object
-      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
-
-        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        description:
-          type: string
-          maxLength: 200
-        enabled:
-          type: boolean
-        object_types:
-          type: array
-          items:
-            type: string
-        actions:
-          type: array
-          items:
-            type: string
-            minLength: 1
-            maxLength: 30
-          description: The list of actions granted by this permission
-        constraints:
-          description: Queryset filter matching the applicable objects of the selected type(s)
-        groups:
-          type: array
-          items:
-            type: integer
-        users:
-          type: array
-          items:
-            type: integer
     Group:
       type: object
       description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
@@ -4926,22 +4716,16 @@ components:
       - name
       - url
       - user_count
-    NestedUser:
+    BriefUser:
       type: object
-      description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
+      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
 
-        dictionary of attributes which can be used to uniquely identify the related object. This class should be
-
-        subclassed to return a full representation of the related object on read.'
+        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
       properties:
         id:
           type: integer
           readOnly: true
         url:
-          type: string
-          format: uri
-          readOnly: true
-        display_url:
           type: string
           format: uri
           readOnly: true
@@ -4955,54 +4739,59 @@ components:
           maxLength: 150
       required:
       - display
-      - display_url
       - id
       - url
       - username
-    Owner:
+    PaginatedUserList:
       type: object
-      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
-
-        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
+      required:
+      - count
+      - results
       properties:
-        id:
+        count:
           type: integer
-          readOnly: true
-        url:
-          type: string
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
           format: uri
-          readOnly: true
-        display_url:
-          type: string
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
           format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          maxLength: 100
-        group:
-          allOf:
-          - $ref: '#/components/schemas/BriefOwnerGroup'
-        description:
-          type: string
-          maxLength: 200
-        user_groups:
-          type: array
-          items:
-            $ref: '#/components/schemas/Group'
-        users:
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
           type: array
           items:
             $ref: '#/components/schemas/User'
+    PaginatedOwnerGroupList:
+      type: object
       required:
-      - display
-      - display_url
-      - group
-      - id
-      - name
-      - url
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/OwnerGroup'
     NestedGroup:
       type: object
       description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
@@ -5086,111 +4875,7 @@ components:
           minLength: 1
       required:
       - user
-    GroupRequest:
-      type: object
-      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
-
-        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 150
-        description:
-          type: string
-          maxLength: 200
-        permissions:
-          type: array
-          items:
-            type: integer
-      required:
-      - name
-    BriefOwnerGroupRequest:
-      type: object
-      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
-
-        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - name
-    TokenProvisionRequest:
-      type: object
-      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
-
-        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
-      properties:
-        version:
-          enum:
-          - 1
-          - 2
-          type: integer
-          description: '* `1` - v1
-
-            * `2` - v2'
-          x-spec-enum-id: b5df70f0bffd12cb
-          minimum: 0
-          maximum: 32767
-        expires:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        enabled:
-          type: boolean
-          description: Disable to temporarily revoke this token without deleting it.
-        write_enabled:
-          type: boolean
-          description: Permit create/update/delete operations using this token
-        description:
-          type: string
-          maxLength: 200
-        username:
-          type: string
-          writeOnly: true
-          minLength: 1
-        password:
-          type: string
-          writeOnly: true
-          minLength: 1
-        token:
-          type: string
-          minLength: 1
-      required:
-      - password
-      - username
-    PaginatedTokenList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/Token'
-    PatchedUserRequest:
+    UserRequest:
       type: object
       description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
 
@@ -5238,6 +4923,171 @@ components:
           type: array
           items:
             type: integer
+      required:
+      - password
+      - username
+    PatchedGroupRequest:
+      type: object
+      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
+
+        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 150
+        description:
+          type: string
+          maxLength: 200
+        permissions:
+          type: array
+          items:
+            type: integer
+    OwnerRequest:
+      type: object
+      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
+
+        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        group:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerGroupRequest'
+        description:
+          type: string
+          maxLength: 200
+        user_groups:
+          type: array
+          items:
+            type: integer
+        users:
+          type: array
+          items:
+            type: integer
+      required:
+      - group
+      - name
+    TokenProvision:
+      type: object
+      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
+
+        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        version:
+          enum:
+          - 1
+          - 2
+          type: integer
+          description: '* `1` - v1
+
+            * `2` - v2'
+          x-spec-enum-id: b5df70f0bffd12cb
+          minimum: 0
+          maximum: 32767
+        user:
+          allOf:
+          - $ref: '#/components/schemas/BriefUser'
+          readOnly: true
+        key:
+          type: string
+          readOnly: true
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        expires:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        last_used:
+          type: string
+          format: date-time
+          readOnly: true
+        enabled:
+          type: boolean
+          description: Disable to temporarily revoke this token without deleting it.
+        write_enabled:
+          type: boolean
+          description: Permit create/update/delete operations using this token
+        description:
+          type: string
+          maxLength: 200
+        token:
+          type: string
+      required:
+      - created
+      - display
+      - display_url
+      - id
+      - key
+      - last_used
+      - url
+      - user
+    TokenProvisionRequest:
+      type: object
+      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
+
+        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
+      properties:
+        version:
+          enum:
+          - 1
+          - 2
+          type: integer
+          description: '* `1` - v1
+
+            * `2` - v2'
+          x-spec-enum-id: b5df70f0bffd12cb
+          minimum: 0
+          maximum: 32767
+        expires:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        enabled:
+          type: boolean
+          description: Disable to temporarily revoke this token without deleting it.
+        write_enabled:
+          type: boolean
+          description: Permit create/update/delete operations using this token
+        description:
+          type: string
+          maxLength: 200
+        username:
+          type: string
+          writeOnly: true
+          minLength: 1
+        password:
+          type: string
+          writeOnly: true
+          minLength: 1
+        token:
+          type: string
+          minLength: 1
+      required:
+      - password
+      - username
     User:
       type: object
       description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
@@ -5300,21 +5150,53 @@ components:
       - id
       - url
       - username
-    BriefUserRequest:
+    PatchedOwnerGroupRequest:
       type: object
       description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
 
         validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
       properties:
-        username:
+        name:
           type: string
           minLength: 1
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+    NestedUser:
+      type: object
+      description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
+
+        dictionary of attributes which can be used to uniquely identify the related object. This class should be
+
+        subclassed to return a full representation of the related object on read.'
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        username:
+          type: string
           description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
           pattern: ^[\w.@+-]+$
           maxLength: 150
       required:
+      - display
+      - display_url
+      - id
+      - url
       - username
-    OwnerRequest:
+    PatchedOwnerRequest:
       type: object
       description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
 
@@ -5340,23 +5222,7 @@ components:
           type: array
           items:
             type: integer
-      required:
-      - group
-      - name
-    PatchedOwnerGroupRequest:
-      type: object
-      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
-
-        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        description:
-          type: string
-          maxLength: 200
-    PaginatedObjectPermissionList:
+    PaginatedGroupList:
       type: object
       required:
       - count
@@ -5380,7 +5246,7 @@ components:
         results:
           type: array
           items:
-            $ref: '#/components/schemas/ObjectPermission'
+            $ref: '#/components/schemas/Group'
     Token:
       type: object
       description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
@@ -5460,7 +5326,7 @@ components:
       - key
       - url
       - user
-    PaginatedGroupList:
+    PaginatedTokenList:
       type: object
       required:
       - count
@@ -5482,34 +5348,168 @@ components:
           format: uri
           example: http://api.example.org/accounts/?offset=200&limit=100
         results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Token'
+    ObjectPermissionRequest:
+      type: object
+      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
+
+        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+        enabled:
+          type: boolean
+        object_types:
+          type: array
+          items:
+            type: string
+        actions:
+          type: array
+          items:
+            type: string
+            minLength: 1
+            maxLength: 30
+          description: The list of actions granted by this permission
+        constraints:
+          description: Queryset filter matching the applicable objects of the selected type(s)
+        groups:
+          type: array
+          items:
+            type: integer
+        users:
+          type: array
+          items:
+            type: integer
+      required:
+      - actions
+      - name
+      - object_types
+    Owner:
+      type: object
+      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
+
+        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        group:
+          allOf:
+          - $ref: '#/components/schemas/BriefOwnerGroup'
+        description:
+          type: string
+          maxLength: 200
+        user_groups:
           type: array
           items:
             $ref: '#/components/schemas/Group'
-    PaginatedOwnerList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
+        users:
           type: array
           items:
-            $ref: '#/components/schemas/Owner'
+            $ref: '#/components/schemas/User'
+      required:
+      - display
+      - display_url
+      - group
+      - id
+      - name
+      - url
+    PatchedUserRequest:
+      type: object
+      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
+
+        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
+      properties:
+        username:
+          type: string
+          minLength: 1
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
+          pattern: ^[\w.@+-]+$
+          maxLength: 150
+        password:
+          type: string
+          writeOnly: true
+          minLength: 1
+          maxLength: 128
+        first_name:
+          type: string
+          maxLength: 150
+        last_name:
+          type: string
+          maxLength: 150
+        email:
+          type: string
+          format: email
+          title: Email address
+          maxLength: 254
+        is_active:
+          type: boolean
+          title: Active
+          description: Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
+        date_joined:
+          type: string
+          format: date-time
+        last_login:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        groups:
+          type: array
+          items:
+            type: integer
+        permissions:
+          type: array
+          items:
+            type: integer
+    BriefOwnerGroup:
+      type: object
+      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
+
+        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - display
+      - id
+      - name
+      - url
   securitySchemes:
     cookieAuth:
       type: apiKey
