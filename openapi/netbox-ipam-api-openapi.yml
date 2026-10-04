@@ -19385,7 +19385,57 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    BriefVLANGroup:
+    BriefTenantRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - name
+      - slug
+    PatchedRouteTargetRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          description: Route target value (formatted in accordance with RFC 4360)
+          maxLength: 21
+        tenant:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefTenantRequest'
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+    BriefRIR:
       type: object
       description: Base serializer class for models inheriting from OrganizationalModel.
       properties:
@@ -19409,17 +19459,589 @@ components:
         description:
           type: string
           maxLength: 200
-        vlan_count:
+        aggregate_count:
           type: integer
           format: int64
           readOnly: true
       required:
+      - aggregate_count
       - display
       - id
       - name
       - slug
       - url
-      - vlan_count
+    ASNRange:
+      type: object
+      description: Base serializer class for models inheriting from OrganizationalModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        slug:
+          type: string
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        rir:
+          $ref: '#/components/schemas/BriefRIR'
+        start:
+          type: integer
+          maximum: 4294967295
+          minimum: 1
+          format: int64
+        end:
+          type: integer
+          maximum: 4294967295
+          minimum: 1
+          format: int64
+        tenant:
+          allOf:
+          - $ref: '#/components/schemas/BriefTenant'
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          allOf:
+          - $ref: '#/components/schemas/BriefOwner'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTag'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        created:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        last_updated:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        asn_count:
+          type: integer
+          readOnly: true
+      required:
+      - asn_count
+      - created
+      - display
+      - display_url
+      - end
+      - id
+      - last_updated
+      - name
+      - rir
+      - slug
+      - start
+      - url
+    PatchedWritableAggregateRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        prefix:
+          type: string
+          minLength: 1
+        rir:
+          oneOf:
+          - type: integer
+          - $ref: '#/components/schemas/BriefRIRRequest'
+        tenant:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefTenantRequest'
+        date_added:
+          type:
+          - string
+          - 'null'
+          format: date
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+    PatchedWritableIPAddressRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        address:
+          type: string
+          minLength: 1
+        vrf:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefVRFRequest'
+        tenant:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefTenantRequest'
+        status:
+          enum:
+          - active
+          - reserved
+          - deprecated
+          - dhcp
+          - slaac
+          type: string
+          x-spec-enum-id: c421c4c4a0fa7a2a
+          description: 'The operational status of this IP
+
+
+            * `active` - Active
+
+            * `reserved` - Reserved
+
+            * `deprecated` - Deprecated
+
+            * `dhcp` - DHCP
+
+            * `slaac` - SLAAC'
+        role:
+          enum:
+          - loopback
+          - secondary
+          - anycast
+          - vip
+          - vrrp
+          - hsrp
+          - glbp
+          - carp
+          - ''
+          - null
+          type:
+          - string
+          - 'null'
+          x-spec-enum-id: 53dca4cddd7b344a
+          description: 'The functional role of this IP
+
+
+            * `loopback` - Loopback
+
+            * `secondary` - Secondary
+
+            * `anycast` - Anycast
+
+            * `vip` - VIP
+
+            * `vrrp` - VRRP
+
+            * `hsrp` - HSRP
+
+            * `glbp` - GLBP
+
+            * `carp` - CARP'
+        assigned_object_type:
+          type:
+          - string
+          - 'null'
+        assigned_object_id:
+          type:
+          - integer
+          - 'null'
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        nat_inside:
+          type:
+          - integer
+          - 'null'
+          title: NAT (inside)
+          description: The IP for which this address is the "outside" IP
+        dns_name:
+          type: string
+          description: Hostname or FQDN (not case-sensitive)
+          pattern: ^([0-9A-Za-z_-]+|\*)(\.[0-9A-Za-z_-]+)*\.?$
+          maxLength: 255
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+    PaginatedASNRangeList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ASNRange'
+    ASNRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        asn:
+          type: integer
+          maximum: 4294967295
+          minimum: 1
+          format: int64
+          description: 16- or 32-bit autonomous system number
+        rir:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefRIRRequest'
+        tenant:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefTenantRequest'
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        sites:
+          type: array
+          items:
+            type: integer
+      required:
+      - asn
+    WritableServiceTemplateRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        protocol:
+          enum:
+          - tcp
+          - udp
+          - sctp
+          type: string
+          description: '* `tcp` - TCP
+
+            * `udp` - UDP
+
+            * `sctp` - SCTP'
+          x-spec-enum-id: e4b15bec749a2a32
+        ports:
+          type: array
+          items:
+            type: integer
+            maximum: 65535
+            minimum: 1
+          title: Port numbers
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+      required:
+      - name
+      - ports
+      - protocol
+    Service:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        parent_object_type:
+          type: string
+        parent_object_id:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        parent:
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        protocol:
+          type: object
+          properties:
+            value:
+              enum:
+              - tcp
+              - udp
+              - sctp
+              type: string
+              description: '* `tcp` - TCP
+
+                * `udp` - UDP
+
+                * `sctp` - SCTP'
+              x-spec-enum-id: e4b15bec749a2a32
+            label:
+              type: string
+              enum:
+              - TCP
+              - UDP
+              - SCTP
+        ports:
+          type: array
+          items:
+            type: integer
+            maximum: 65535
+            minimum: 1
+          title: Port numbers
+        ipaddresses:
+          type: array
+          items:
+            $ref: '#/components/schemas/IPAddress'
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          allOf:
+          - $ref: '#/components/schemas/BriefOwner'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTag'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        created:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        last_updated:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+      required:
+      - created
+      - display
+      - display_url
+      - id
+      - last_updated
+      - name
+      - parent
+      - parent_object_id
+      - parent_object_type
+      - ports
+      - url
+    BriefFHRPGroupRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        protocol:
+          enum:
+          - vrrp2
+          - vrrp3
+          - carp
+          - clusterxl
+          - hsrp
+          - glbp
+          - other
+          type: string
+          description: '* `vrrp2` - VRRPv2
+
+            * `vrrp3` - VRRPv3
+
+            * `carp` - CARP
+
+            * `clusterxl` - ClusterXL
+
+            * `hsrp` - HSRP
+
+            * `glbp` - GLBP
+
+            * `other` - Other'
+          x-spec-enum-id: 98de93c9f65d1c65
+        group_id:
+          type: integer
+          maximum: 32767
+          minimum: 0
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - group_id
+      - protocol
+    BriefFHRPGroup:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        protocol:
+          enum:
+          - vrrp2
+          - vrrp3
+          - carp
+          - clusterxl
+          - hsrp
+          - glbp
+          - other
+          type: string
+          description: '* `vrrp2` - VRRPv2
+
+            * `vrrp3` - VRRPv3
+
+            * `carp` - CARP
+
+            * `clusterxl` - ClusterXL
+
+            * `hsrp` - HSRP
+
+            * `glbp` - GLBP
+
+            * `other` - Other'
+          x-spec-enum-id: 98de93c9f65d1c65
+        group_id:
+          type: integer
+          maximum: 32767
+          minimum: 0
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - display
+      - group_id
+      - id
+      - protocol
+      - url
+    PatchedRoleRequest:
+      type: object
+      description: Base serializer class for models inheriting from OrganizationalModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        weight:
+          type: integer
+          maximum: 32767
+          minimum: 0
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
     PaginatedFHRPGroupList:
       type: object
       required:
@@ -19445,14 +20067,23 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/FHRPGroup'
-    PatchedVLANTranslationPolicyRequest:
+    RoleRequest:
       type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
+      description: Base serializer class for models inheriting from OrganizationalModel.
       properties:
         name:
           type: string
           minLength: 1
           maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        weight:
+          type: integer
+          maximum: 32767
+          minimum: 0
         description:
           type: string
           maxLength: 200
@@ -19463,72 +20094,17 @@ components:
             - $ref: '#/components/schemas/BriefOwnerRequest'
         comments:
           type: string
-    BriefOwnerRequest:
-      type: object
-      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
-
-        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        description:
-          type: string
-          maxLength: 200
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
       required:
       - name
-    PaginatedVRFList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/VRF'
-    PaginatedASNList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/ASN'
-    BriefIPAddress:
+      - slug
+    BriefL2VPN:
       type: object
       description: Base serializer class for models inheriting from PrimaryModel.
       properties:
@@ -19542,36 +20118,95 @@ components:
         display:
           type: string
           readOnly: true
-        family:
+        identifier:
+          type:
+          - integer
+          - 'null'
+          maximum: 9223372036854775807
+          minimum: -9223372036854775808
+          format: int64
+        name:
+          type: string
+          maxLength: 100
+        slug:
+          type: string
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        type:
           type: object
           properties:
             value:
               enum:
-              - 4
-              - 6
-              type: integer
-              description: '* `4` - IPv4
+              - vpws
+              - vpls
+              - vxlan
+              - vxlan-evpn
+              - mpls-evpn
+              - pbb-evpn
+              - evpn-vpws
+              - epl
+              - evpl
+              - ep-lan
+              - evp-lan
+              - ep-tree
+              - evp-tree
+              - spb
+              type: string
+              description: '* `vpws` - VPWS
 
-                * `6` - IPv6'
-              x-spec-enum-id: d72003fd1af3603d
+                * `vpls` - VPLS
+
+                * `vxlan` - VXLAN
+
+                * `vxlan-evpn` - VXLAN-EVPN
+
+                * `mpls-evpn` - MPLS EVPN
+
+                * `pbb-evpn` - PBB EVPN
+
+                * `evpn-vpws` - EVPN VPWS
+
+                * `epl` - EPL
+
+                * `evpl` - EVPL
+
+                * `ep-lan` - Ethernet Private LAN
+
+                * `evp-lan` - Ethernet Virtual Private LAN
+
+                * `ep-tree` - Ethernet Private Tree
+
+                * `evp-tree` - Ethernet Virtual Private Tree
+
+                * `spb` - SPB'
+              x-spec-enum-id: 0a46f8056d717efc
             label:
               type: string
               enum:
-              - IPv4
-              - IPv6
-          readOnly: true
-        address:
-          type: string
+              - VPWS
+              - VPLS
+              - VXLAN
+              - VXLAN-EVPN
+              - MPLS EVPN
+              - PBB EVPN
+              - EVPN VPWS
+              - EPL
+              - EVPL
+              - Ethernet Private LAN
+              - Ethernet Virtual Private LAN
+              - Ethernet Private Tree
+              - Ethernet Virtual Private Tree
+              - SPB
         description:
           type: string
           maxLength: 200
       required:
-      - address
       - display
-      - family
       - id
+      - name
+      - slug
       - url
-    BriefVLAN:
+    BriefSite:
       type: object
       description: Base serializer class for models inheriting from PrimaryModel.
       properties:
@@ -19585,15 +20220,14 @@ components:
         display:
           type: string
           readOnly: true
-        vid:
-          type: integer
-          maximum: 4094
-          minimum: 1
-          title: VLAN ID
-          description: Numeric VLAN ID (1-4094)
         name:
           type: string
-          maxLength: 64
+          description: Full name of the site
+          maxLength: 100
+        slug:
+          type: string
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
         description:
           type: string
           maxLength: 200
@@ -19601,8 +20235,8 @@ components:
       - display
       - id
       - name
+      - slug
       - url
-      - vid
     WritablePrefixRequest:
       type: object
       description: Base serializer class for models inheriting from PrimaryModel.
@@ -19682,19 +20316,93 @@ components:
           additionalProperties: {}
       required:
       - prefix
-    CreateAvailableVLANRequest:
+    PatchedWritableIPRangeRequest:
       type: object
-      description: Adds support for custom fields and tags.
+      description: Base serializer class for models inheriting from PrimaryModel.
       properties:
-        name:
+        start_address:
           type: string
           minLength: 1
-          maxLength: 64
+        end_address:
+          type: string
+          minLength: 1
+        vrf:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefVRFRequest'
+        tenant:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefTenantRequest'
+        status:
+          enum:
+          - active
+          - reserved
+          - deprecated
+          type: string
+          x-spec-enum-id: ca933c38b935e547
+          description: 'Operational status of this range
+
+
+            * `active` - Active
+
+            * `reserved` - Reserved
+
+            * `deprecated` - Deprecated'
+        role:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefRoleRequest'
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        mark_populated:
+          type: boolean
+          description: Prevent the creation of IP addresses within this range
+        mark_utilized:
+          type: boolean
+          description: Report space as fully utilized
+    VLANRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
         site:
           oneOf:
           - type: integer
           - allOf:
             - $ref: '#/components/schemas/BriefSiteRequest'
+        group:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefVLANGroupRequest'
+        vid:
+          type: integer
+          maximum: 4094
+          minimum: 1
+          title: VLAN ID
+          description: Numeric VLAN ID (1-4094)
+        name:
+          type: string
+          minLength: 1
+          maxLength: 64
         tenant:
           oneOf:
           - type: integer
@@ -19720,6 +20428,28 @@ components:
         description:
           type: string
           maxLength: 200
+        qinq_role:
+          enum:
+          - svlan
+          - cvlan
+          - null
+          type:
+          - string
+          - 'null'
+          description: '* `svlan` - Service
+
+            * `cvlan` - Customer'
+          x-spec-enum-id: fa0abd59fb1a7312
+        qinq_svlan:
+          allOf:
+          - $ref: '#/components/schemas/NestedVLANRequest'
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
         tags:
           type: array
           items:
@@ -19729,7 +20459,8 @@ components:
           additionalProperties: {}
       required:
       - name
-    PaginatedServiceTemplateList:
+      - vid
+    PaginatedVLANList:
       type: object
       required:
       - count
@@ -19753,28 +20484,8 @@ components:
         results:
           type: array
           items:
-            $ref: '#/components/schemas/ServiceTemplate'
-    BriefVLANRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        vid:
-          type: integer
-          maximum: 4094
-          minimum: 1
-          title: VLAN ID
-          description: Numeric VLAN ID (1-4094)
-        name:
-          type: string
-          minLength: 1
-          maxLength: 64
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - name
-      - vid
-    BriefVRFRequest:
+            $ref: '#/components/schemas/VLAN'
+    VRFRequest:
       type: object
       description: Base serializer class for models inheriting from PrimaryModel.
       properties:
@@ -19789,11 +20500,115 @@ components:
           title: Route distinguisher
           description: Unique route distinguisher (as defined in RFC 4364)
           maxLength: 21
+        tenant:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefTenantRequest'
+        enforce_unique:
+          type: boolean
+          title: Enforce unique space
+          description: Prevent duplicate prefixes/IP addresses within this VRF
         description:
           type: string
           maxLength: 200
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        import_targets:
+          type: array
+          items:
+            type: integer
+        export_targets:
+          type: array
+          items:
+            type: integer
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
       required:
       - name
+    BriefVRF:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        rd:
+          type:
+          - string
+          - 'null'
+          title: Route distinguisher
+          description: Unique route distinguisher (as defined in RFC 4364)
+          maxLength: 21
+        description:
+          type: string
+          maxLength: 200
+        prefix_count:
+          type: integer
+          format: int64
+          readOnly: true
+      required:
+      - display
+      - id
+      - name
+      - prefix_count
+      - url
+    AvailableASN:
+      type: object
+      description: Representation of an ASN which does not exist in the database.
+      properties:
+        asn:
+          type: integer
+          readOnly: true
+        description:
+          type: string
+      required:
+      - asn
+    PaginatedRIRList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/RIR'
     PatchedVLANTranslationRuleRequest:
       type: object
       description: Adds support for custom fields and tags.
@@ -19815,6 +20630,276 @@ components:
         description:
           type: string
           maxLength: 200
+    Aggregate:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        family:
+          type: object
+          properties:
+            value:
+              enum:
+              - 4
+              - 6
+              type: integer
+              description: '* `4` - IPv4
+
+                * `6` - IPv6'
+              x-spec-enum-id: d72003fd1af3603d
+            label:
+              type: string
+              enum:
+              - IPv4
+              - IPv6
+          readOnly: true
+        prefix:
+          type: string
+        rir:
+          $ref: '#/components/schemas/BriefRIR'
+        tenant:
+          allOf:
+          - $ref: '#/components/schemas/BriefTenant'
+        date_added:
+          type:
+          - string
+          - 'null'
+          format: date
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          allOf:
+          - $ref: '#/components/schemas/BriefOwner'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTag'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        created:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        last_updated:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+      required:
+      - created
+      - display
+      - display_url
+      - family
+      - id
+      - last_updated
+      - prefix
+      - rir
+      - url
+    Prefix:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        family:
+          type: object
+          properties:
+            value:
+              enum:
+              - 4
+              - 6
+              type: integer
+              description: '* `4` - IPv4
+
+                * `6` - IPv6'
+              x-spec-enum-id: d72003fd1af3603d
+            label:
+              type: string
+              enum:
+              - IPv4
+              - IPv6
+          readOnly: true
+        prefix:
+          type: string
+        vrf:
+          allOf:
+          - $ref: '#/components/schemas/BriefVRF'
+        scope_type:
+          type:
+          - string
+          - 'null'
+        scope_id:
+          type:
+          - integer
+          - 'null'
+        scope:
+          readOnly: true
+        tenant:
+          allOf:
+          - $ref: '#/components/schemas/BriefTenant'
+        vlan:
+          allOf:
+          - $ref: '#/components/schemas/BriefVLAN'
+        status:
+          type: object
+          properties:
+            value:
+              enum:
+              - container
+              - active
+              - reserved
+              - deprecated
+              type: string
+              description: '* `container` - Container
+
+                * `active` - Active
+
+                * `reserved` - Reserved
+
+                * `deprecated` - Deprecated'
+              x-spec-enum-id: 026173ce39f2ee63
+            label:
+              type: string
+              enum:
+              - Container
+              - Active
+              - Reserved
+              - Deprecated
+        role:
+          allOf:
+          - $ref: '#/components/schemas/BriefRole'
+        is_pool:
+          type: boolean
+          title: Is a pool
+          description: All IP addresses within this prefix are considered usable
+        mark_utilized:
+          type: boolean
+          description: Treat as fully utilized
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          allOf:
+          - $ref: '#/components/schemas/BriefOwner'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTag'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        created:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        last_updated:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        children:
+          type: integer
+          readOnly: true
+        _depth:
+          type: integer
+          readOnly: true
+          title: ' depth'
+      required:
+      - _depth
+      - children
+      - created
+      - display
+      - display_url
+      - family
+      - id
+      - last_updated
+      - prefix
+      - scope
+      - url
+    PatchedVLANGroupRequest:
+      type: object
+      description: Base serializer class for models inheriting from OrganizationalModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        scope_type:
+          type:
+          - string
+          - 'null'
+        scope_id:
+          type:
+          - integer
+          - 'null'
+        vid_ranges:
+          type: array
+          items:
+            $ref: '#/components/schemas/IntegerRangeRequest'
+        tenant:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefTenantRequest'
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
     PatchedWritableVLANRequest:
       type: object
       description: Base serializer class for models inheriting from PrimaryModel.
@@ -19902,288 +20987,6 @@ components:
         custom_fields:
           type: object
           additionalProperties: {}
-    PatchedRouteTargetRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          description: Route target value (formatted in accordance with RFC 4360)
-          maxLength: 21
-        tenant:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefTenantRequest'
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-    FHRPGroupAssignment:
-      type: object
-      description: Adds support for custom fields and tags.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        group:
-          $ref: '#/components/schemas/BriefFHRPGroup'
-        interface_type:
-          type: string
-        interface_id:
-          type: integer
-          maximum: 9223372036854775807
-          minimum: 0
-          format: int64
-        interface:
-          readOnly: true
-        priority:
-          type: integer
-          maximum: 255
-          minimum: 0
-        created:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          readOnly: true
-        last_updated:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          readOnly: true
-      required:
-      - created
-      - display
-      - group
-      - id
-      - interface
-      - interface_id
-      - interface_type
-      - last_updated
-      - priority
-      - url
-    AvailableASN:
-      type: object
-      description: Representation of an ASN which does not exist in the database.
-      properties:
-        asn:
-          type: integer
-          readOnly: true
-        description:
-          type: string
-      required:
-      - asn
-    IntegerRange:
-      type: array
-      items:
-        type: integer
-      minItems: 2
-      maxItems: 2
-      example:
-      - 10
-      - 20
-    RIRRequest:
-      type: object
-      description: Base serializer class for models inheriting from OrganizationalModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        slug:
-          type: string
-          minLength: 1
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        is_private:
-          type: boolean
-          title: Private
-          description: IP space managed by this RIR is considered private
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-      required:
-      - name
-      - slug
-    NestedVLANRequest:
-      type: object
-      description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
-
-        dictionary of attributes which can be used to uniquely identify the related object. This class should be
-
-        subclassed to return a full representation of the related object on read.'
-      properties:
-        vid:
-          type: integer
-          maximum: 4094
-          minimum: 1
-          title: VLAN ID
-          description: Numeric VLAN ID (1-4094)
-        name:
-          type: string
-          minLength: 1
-          maxLength: 64
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - name
-      - vid
-    PaginatedServiceList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/Service'
-    ASNRangeRequest:
-      type: object
-      description: Base serializer class for models inheriting from OrganizationalModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        slug:
-          type: string
-          minLength: 1
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        rir:
-          oneOf:
-          - type: integer
-          - $ref: '#/components/schemas/BriefRIRRequest'
-        start:
-          type: integer
-          maximum: 4294967295
-          minimum: 1
-          format: int64
-        end:
-          type: integer
-          maximum: 4294967295
-          minimum: 1
-          format: int64
-        tenant:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefTenantRequest'
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-      required:
-      - end
-      - name
-      - rir
-      - slug
-      - start
-    BriefFHRPGroupRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        protocol:
-          enum:
-          - vrrp2
-          - vrrp3
-          - carp
-          - clusterxl
-          - hsrp
-          - glbp
-          - other
-          type: string
-          description: '* `vrrp2` - VRRPv2
-
-            * `vrrp3` - VRRPv3
-
-            * `carp` - CARP
-
-            * `clusterxl` - ClusterXL
-
-            * `hsrp` - HSRP
-
-            * `glbp` - GLBP
-
-            * `other` - Other'
-          x-spec-enum-id: 98de93c9f65d1c65
-        group_id:
-          type: integer
-          maximum: 32767
-          minimum: 0
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - group_id
-      - protocol
     IPAddress:
       type: object
       description: Base serializer class for models inheriting from PrimaryModel.
@@ -20363,6 +21166,105 @@ components:
       - last_updated
       - nat_outside
       - url
+    PaginatedVRFList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/VRF'
+    WritableAggregateRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        prefix:
+          type: string
+          minLength: 1
+        rir:
+          oneOf:
+          - type: integer
+          - $ref: '#/components/schemas/BriefRIRRequest'
+        tenant:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefTenantRequest'
+        date_added:
+          type:
+          - string
+          - 'null'
+          format: date
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+      required:
+      - prefix
+      - rir
+    ASNSite:
+      type: object
+      description: 'This serializer is meant for inclusion in ASNSerializer and is only used
+
+        to avoid a circular import of SiteSerializer.'
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          description: Full name of the site
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+        slug:
+          type: string
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+      required:
+      - display
+      - id
+      - name
+      - slug
+      - url
     PatchedRIRRequest:
       type: object
       description: Base serializer class for models inheriting from OrganizationalModel.
@@ -20397,84 +21299,7 @@ components:
         custom_fields:
           type: object
           additionalProperties: {}
-    NestedTag:
-      type: object
-      description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
-
-        dictionary of attributes which can be used to uniquely identify the related object. This class should be
-
-        subclassed to return a full representation of the related object on read.'
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display_url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          maxLength: 100
-        slug:
-          type: string
-          pattern: ^[-\w]+$
-          maxLength: 100
-        color:
-          type: string
-          pattern: ^[0-9a-f]{6}$
-          maxLength: 6
-      required:
-      - display
-      - display_url
-      - id
-      - name
-      - slug
-      - url
-    RoleRequest:
-      type: object
-      description: Base serializer class for models inheriting from OrganizationalModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        slug:
-          type: string
-          minLength: 1
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        weight:
-          type: integer
-          maximum: 32767
-          minimum: 0
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-      required:
-      - name
-      - slug
-    PaginatedRoleList:
+    PaginatedVLANTranslationRuleList:
       type: object
       required:
       - count
@@ -20498,41 +21323,143 @@ components:
         results:
           type: array
           items:
-            $ref: '#/components/schemas/Role'
-    ASNSite:
+            $ref: '#/components/schemas/VLANTranslationRule'
+    PatchedFHRPGroupRequest:
       type: object
-      description: 'This serializer is meant for inclusion in ASNSerializer and is only used
-
-        to avoid a circular import of SiteSerializer.'
+      description: Base serializer class for models inheriting from PrimaryModel.
       properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
         name:
           type: string
-          description: Full name of the site
           maxLength: 100
+        protocol:
+          enum:
+          - vrrp2
+          - vrrp3
+          - carp
+          - clusterxl
+          - hsrp
+          - glbp
+          - other
+          type: string
+          description: '* `vrrp2` - VRRPv2
+
+            * `vrrp3` - VRRPv3
+
+            * `carp` - CARP
+
+            * `clusterxl` - ClusterXL
+
+            * `hsrp` - HSRP
+
+            * `glbp` - GLBP
+
+            * `other` - Other'
+          x-spec-enum-id: 98de93c9f65d1c65
+        group_id:
+          type: integer
+          maximum: 32767
+          minimum: 0
+        auth_type:
+          enum:
+          - plaintext
+          - md5
+          - ''
+          - null
+          type:
+          - string
+          - 'null'
+          description: '* `plaintext` - Plaintext
+
+            * `md5` - MD5'
+          x-spec-enum-id: 565396e386e1542a
+          title: Authentication type
+        auth_key:
+          type: string
+          title: Authentication key
+          maxLength: 255
         description:
           type: string
           maxLength: 200
-        slug:
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
           type: string
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+    FHRPGroupAssignmentRequest:
+      type: object
+      description: Adds support for custom fields and tags.
+      properties:
+        group:
+          oneOf:
+          - type: integer
+          - $ref: '#/components/schemas/BriefFHRPGroupRequest'
+        interface_type:
+          type: string
+        interface_id:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        priority:
+          type: integer
+          maximum: 255
+          minimum: 0
       required:
-      - display
-      - id
-      - name
-      - slug
-      - url
-    VRF:
+      - group
+      - interface_id
+      - interface_type
+      - priority
+    PatchedASNRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        asn:
+          type: integer
+          maximum: 4294967295
+          minimum: 1
+          format: int64
+          description: 16- or 32-bit autonomous system number
+        rir:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefRIRRequest'
+        tenant:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefTenantRequest'
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        sites:
+          type: array
+          items:
+            type: integer
+    BriefTenant:
       type: object
       description: Base serializer class for models inheriting from PrimaryModel.
       properties:
@@ -20543,94 +21470,6 @@ components:
           type: string
           format: uri
           readOnly: true
-        display_url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          maxLength: 100
-        rd:
-          type:
-          - string
-          - 'null'
-          title: Route distinguisher
-          description: Unique route distinguisher (as defined in RFC 4364)
-          maxLength: 21
-        tenant:
-          allOf:
-          - $ref: '#/components/schemas/BriefTenant'
-        enforce_unique:
-          type: boolean
-          title: Enforce unique space
-          description: Prevent duplicate prefixes/IP addresses within this VRF
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          allOf:
-          - $ref: '#/components/schemas/BriefOwner'
-        comments:
-          type: string
-        import_targets:
-          type: array
-          items:
-            $ref: '#/components/schemas/RouteTarget'
-        export_targets:
-          type: array
-          items:
-            $ref: '#/components/schemas/RouteTarget'
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTag'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-        created:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          readOnly: true
-        last_updated:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          readOnly: true
-        ipaddress_count:
-          type: integer
-          format: int64
-          readOnly: true
-        prefix_count:
-          type: integer
-          format: int64
-          readOnly: true
-      required:
-      - created
-      - display
-      - display_url
-      - id
-      - ipaddress_count
-      - last_updated
-      - name
-      - prefix_count
-      - url
-    BriefRole:
-      type: object
-      description: Base serializer class for models inheriting from OrganizationalModel.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
         display:
           type: string
           readOnly: true
@@ -20644,22 +21483,175 @@ components:
         description:
           type: string
           maxLength: 200
-        prefix_count:
-          type: integer
-          format: int64
-          readOnly: true
-        vlan_count:
-          type: integer
-          format: int64
-          readOnly: true
       required:
       - display
       - id
       - name
-      - prefix_count
       - slug
       - url
-      - vlan_count
+    ASNRangeRequest:
+      type: object
+      description: Base serializer class for models inheriting from OrganizationalModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        rir:
+          oneOf:
+          - type: integer
+          - $ref: '#/components/schemas/BriefRIRRequest'
+        start:
+          type: integer
+          maximum: 4294967295
+          minimum: 1
+          format: int64
+        end:
+          type: integer
+          maximum: 4294967295
+          minimum: 1
+          format: int64
+        tenant:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefTenantRequest'
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+      required:
+      - end
+      - name
+      - rir
+      - slug
+      - start
+    PaginatedVLANGroupList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/VLANGroup'
+    BriefL2VPNTermination:
+      type: object
+      description: Adds support for custom fields and tags.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        l2vpn:
+          $ref: '#/components/schemas/BriefL2VPN'
+      required:
+      - display
+      - id
+      - l2vpn
+      - url
+    AvailablePrefix:
+      type: object
+      description: Representation of a prefix which does not exist in the database.
+      properties:
+        family:
+          type: integer
+          readOnly: true
+        prefix:
+          type: string
+          readOnly: true
+        vrf:
+          allOf:
+          - $ref: '#/components/schemas/BriefVRF'
+          readOnly: true
+      required:
+      - family
+      - prefix
+      - vrf
+    PatchedWritableServiceTemplateRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        protocol:
+          enum:
+          - tcp
+          - udp
+          - sctp
+          type: string
+          description: '* `tcp` - TCP
+
+            * `udp` - UDP
+
+            * `sctp` - SCTP'
+          x-spec-enum-id: e4b15bec749a2a32
+        ports:
+          type: array
+          items:
+            type: integer
+            maximum: 65535
+            minimum: 1
+          title: Port numbers
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
     WritableIPAddressRequest:
       type: object
       description: Base serializer class for models inheriting from PrimaryModel.
@@ -20773,125 +21765,7 @@ components:
           additionalProperties: {}
       required:
       - address
-    NestedIPAddressRequest:
-      type: object
-      description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
-
-        dictionary of attributes which can be used to uniquely identify the related object. This class should be
-
-        subclassed to return a full representation of the related object on read.'
-      properties:
-        address:
-          type: string
-          minLength: 1
-      required:
-      - address
-    PatchedFHRPGroupRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        name:
-          type: string
-          maxLength: 100
-        protocol:
-          enum:
-          - vrrp2
-          - vrrp3
-          - carp
-          - clusterxl
-          - hsrp
-          - glbp
-          - other
-          type: string
-          description: '* `vrrp2` - VRRPv2
-
-            * `vrrp3` - VRRPv3
-
-            * `carp` - CARP
-
-            * `clusterxl` - ClusterXL
-
-            * `hsrp` - HSRP
-
-            * `glbp` - GLBP
-
-            * `other` - Other'
-          x-spec-enum-id: 98de93c9f65d1c65
-        group_id:
-          type: integer
-          maximum: 32767
-          minimum: 0
-        auth_type:
-          enum:
-          - plaintext
-          - md5
-          - ''
-          - null
-          type:
-          - string
-          - 'null'
-          description: '* `plaintext` - Plaintext
-
-            * `md5` - MD5'
-          x-spec-enum-id: 565396e386e1542a
-          title: Authentication type
-        auth_key:
-          type: string
-          title: Authentication key
-          maxLength: 255
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-    BriefRIR:
-      type: object
-      description: Base serializer class for models inheriting from OrganizationalModel.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          maxLength: 100
-        slug:
-          type: string
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        description:
-          type: string
-          maxLength: 200
-        aggregate_count:
-          type: integer
-          format: int64
-          readOnly: true
-      required:
-      - aggregate_count
-      - display
-      - id
-      - name
-      - slug
-      - url
-    PaginatedRIRList:
+    PaginatedPrefixList:
       type: object
       required:
       - count
@@ -20915,8 +21789,43 @@ components:
         results:
           type: array
           items:
-            $ref: '#/components/schemas/RIR'
-    BriefVLANGroupRequest:
+            $ref: '#/components/schemas/Prefix'
+    BriefVLANGroup:
+      type: object
+      description: Base serializer class for models inheriting from OrganizationalModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        slug:
+          type: string
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+          maxLength: 200
+        vlan_count:
+          type: integer
+          format: int64
+          readOnly: true
+      required:
+      - display
+      - id
+      - name
+      - slug
+      - url
+      - vlan_count
+    BriefRIRRequest:
       type: object
       description: Base serializer class for models inheriting from OrganizationalModel.
       properties:
@@ -20935,108 +21844,93 @@ components:
       required:
       - name
       - slug
-    Service:
+    AvailableVLAN:
       type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
+      description: Representation of a VLAN which does not exist in the database.
       properties:
-        id:
+        vid:
           type: integer
           readOnly: true
-        url:
-          type: string
-          format: uri
+        group:
+          allOf:
+          - $ref: '#/components/schemas/BriefVLANGroup'
           readOnly: true
-        display_url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        parent_object_type:
-          type: string
-        parent_object_id:
+      required:
+      - group
+      - vid
+    PaginatedAggregateList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
           type: integer
-          maximum: 9223372036854775807
-          minimum: 0
-          format: int64
-        parent:
-          readOnly: true
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Aggregate'
+    CreateAvailableVLANRequest:
+      type: object
+      description: Adds support for custom fields and tags.
+      properties:
         name:
           type: string
-          maxLength: 100
-        protocol:
-          type: object
-          properties:
-            value:
-              enum:
-              - tcp
-              - udp
-              - sctp
-              type: string
-              description: '* `tcp` - TCP
+          minLength: 1
+          maxLength: 64
+        site:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefSiteRequest'
+        tenant:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefTenantRequest'
+        status:
+          enum:
+          - active
+          - reserved
+          - deprecated
+          type: string
+          description: '* `active` - Active
 
-                * `udp` - UDP
+            * `reserved` - Reserved
 
-                * `sctp` - SCTP'
-              x-spec-enum-id: e4b15bec749a2a32
-            label:
-              type: string
-              enum:
-              - TCP
-              - UDP
-              - SCTP
-        ports:
-          type: array
-          items:
-            type: integer
-            maximum: 65535
-            minimum: 1
-          title: Port numbers
-        ipaddresses:
-          type: array
-          items:
-            $ref: '#/components/schemas/IPAddress'
+            * `deprecated` - Deprecated'
+          x-spec-enum-id: ca933c38b935e547
+        role:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefRoleRequest'
         description:
           type: string
           maxLength: 200
-        owner:
-          allOf:
-          - $ref: '#/components/schemas/BriefOwner'
-        comments:
-          type: string
         tags:
           type: array
           items:
-            $ref: '#/components/schemas/NestedTag'
+            $ref: '#/components/schemas/NestedTagRequest'
         custom_fields:
           type: object
           additionalProperties: {}
-        created:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          readOnly: true
-        last_updated:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          readOnly: true
       required:
-      - created
-      - display
-      - display_url
-      - id
-      - last_updated
       - name
-      - parent
-      - parent_object_id
-      - parent_object_type
-      - ports
-      - url
-    NestedIPAddress:
+    NestedVLAN:
       type: object
       description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
 
@@ -21051,33 +21945,41 @@ components:
           type: string
           format: uri
           readOnly: true
-        display_url:
-          type: string
-          format: uri
-          readOnly: true
         display:
           type: string
           readOnly: true
-        family:
+        vid:
           type: integer
-          readOnly: true
-        address:
+          maximum: 4094
+          minimum: 1
+          title: VLAN ID
+          description: Numeric VLAN ID (1-4094)
+        name:
           type: string
+          maxLength: 64
+        description:
+          type: string
+          maxLength: 200
       required:
-      - address
       - display
-      - display_url
-      - family
       - id
+      - name
       - url
-    WritableIPRangeRequest:
+      - vid
+    IntegerRange:
+      type: array
+      items:
+        type: integer
+      minItems: 2
+      maxItems: 2
+      example:
+      - 10
+      - 20
+    IPAddressRequest:
       type: object
       description: Base serializer class for models inheriting from PrimaryModel.
       properties:
-        start_address:
-          type: string
-          minLength: 1
-        end_address:
+        address:
           type: string
           minLength: 1
         vrf:
@@ -21095,21 +21997,66 @@ components:
           - active
           - reserved
           - deprecated
+          - dhcp
+          - slaac
           type: string
-          x-spec-enum-id: ca933c38b935e547
-          description: 'Operational status of this range
-
-
-            * `active` - Active
+          description: '* `active` - Active
 
             * `reserved` - Reserved
 
-            * `deprecated` - Deprecated'
+            * `deprecated` - Deprecated
+
+            * `dhcp` - DHCP
+
+            * `slaac` - SLAAC'
+          x-spec-enum-id: c421c4c4a0fa7a2a
         role:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefRoleRequest'
+          enum:
+          - loopback
+          - secondary
+          - anycast
+          - vip
+          - vrrp
+          - hsrp
+          - glbp
+          - carp
+          - ''
+          type: string
+          description: '* `loopback` - Loopback
+
+            * `secondary` - Secondary
+
+            * `anycast` - Anycast
+
+            * `vip` - VIP
+
+            * `vrrp` - VRRP
+
+            * `hsrp` - HSRP
+
+            * `glbp` - GLBP
+
+            * `carp` - CARP'
+          x-spec-enum-id: 53dca4cddd7b344a
+        assigned_object_type:
+          type:
+          - string
+          - 'null'
+        assigned_object_id:
+          type:
+          - integer
+          - 'null'
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        nat_inside:
+          allOf:
+          - $ref: '#/components/schemas/NestedIPAddressRequest'
+        dns_name:
+          type: string
+          description: Hostname or FQDN (not case-sensitive)
+          pattern: ^([0-9A-Za-z_-]+|\*)(\.[0-9A-Za-z_-]+)*\.?$
+          maxLength: 255
         description:
           type: string
           maxLength: 200
@@ -21127,266 +22074,20 @@ components:
         custom_fields:
           type: object
           additionalProperties: {}
-        mark_populated:
-          type: boolean
-          description: Prevent the creation of IP addresses within this range
-        mark_utilized:
-          type: boolean
-          description: Report space as fully utilized
       required:
-      - end_address
-      - start_address
-    VLANTranslationRule:
-      type: object
-      description: Adds support for custom fields and tags.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        policy:
-          type: integer
-        local_vid:
-          type: integer
-          maximum: 4094
-          minimum: 1
-          title: Local VLAN ID
-          description: Numeric VLAN ID (1-4094)
-        remote_vid:
-          type: integer
-          maximum: 4094
-          minimum: 1
-          title: Remote VLAN ID
-          description: Numeric VLAN ID (1-4094)
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - display
-      - id
-      - local_vid
-      - policy
-      - remote_vid
-      - url
-    PatchedWritableAggregateRequest:
+      - address
+    PrefixRequest:
       type: object
       description: Base serializer class for models inheriting from PrimaryModel.
       properties:
         prefix:
           type: string
           minLength: 1
-        rir:
-          oneOf:
-          - type: integer
-          - $ref: '#/components/schemas/BriefRIRRequest'
-        tenant:
+        vrf:
           oneOf:
           - type: integer
           - allOf:
-            - $ref: '#/components/schemas/BriefTenantRequest'
-        date_added:
-          type:
-          - string
-          - 'null'
-          format: date
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-    ASN:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display_url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        asn:
-          type: integer
-          maximum: 4294967295
-          minimum: 1
-          format: int64
-          description: 16- or 32-bit autonomous system number
-        rir:
-          allOf:
-          - $ref: '#/components/schemas/BriefRIR'
-        tenant:
-          allOf:
-          - $ref: '#/components/schemas/BriefTenant'
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          allOf:
-          - $ref: '#/components/schemas/BriefOwner'
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTag'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-        created:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          readOnly: true
-        last_updated:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          readOnly: true
-        site_count:
-          type: integer
-          format: int64
-          readOnly: true
-        provider_count:
-          type: integer
-          format: int64
-          readOnly: true
-        sites:
-          type: array
-          items:
-            $ref: '#/components/schemas/ASNSite'
-      required:
-      - asn
-      - created
-      - display
-      - display_url
-      - id
-      - last_updated
-      - provider_count
-      - site_count
-      - url
-    FHRPGroupAssignmentRequest:
-      type: object
-      description: Adds support for custom fields and tags.
-      properties:
-        group:
-          oneOf:
-          - type: integer
-          - $ref: '#/components/schemas/BriefFHRPGroupRequest'
-        interface_type:
-          type: string
-        interface_id:
-          type: integer
-          maximum: 9223372036854775807
-          minimum: 0
-          format: int64
-        priority:
-          type: integer
-          maximum: 255
-          minimum: 0
-      required:
-      - group
-      - interface_id
-      - interface_type
-      - priority
-    ServiceTemplateRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        protocol:
-          enum:
-          - tcp
-          - udp
-          - sctp
-          type: string
-          description: '* `tcp` - TCP
-
-            * `udp` - UDP
-
-            * `sctp` - SCTP'
-          x-spec-enum-id: e4b15bec749a2a32
-        ports:
-          type: array
-          items:
-            type: integer
-            maximum: 65535
-            minimum: 1
-          title: Port numbers
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-      required:
-      - name
-      - ports
-    VLANGroup:
-      type: object
-      description: Base serializer class for models inheriting from OrganizationalModel.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display_url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          maxLength: 100
-        slug:
-          type: string
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
+            - $ref: '#/components/schemas/BriefVRFRequest'
         scope_type:
           type:
           - string
@@ -21395,80 +22096,62 @@ components:
           type:
           - integer
           - 'null'
-        scope:
-          readOnly: true
-        vid_ranges:
-          type: array
-          items:
-            $ref: '#/components/schemas/IntegerRange'
         tenant:
-          allOf:
-          - $ref: '#/components/schemas/BriefTenant'
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefTenantRequest'
+        vlan:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefVLANRequest'
+        status:
+          enum:
+          - container
+          - active
+          - reserved
+          - deprecated
+          type: string
+          description: '* `container` - Container
+
+            * `active` - Active
+
+            * `reserved` - Reserved
+
+            * `deprecated` - Deprecated'
+          x-spec-enum-id: 026173ce39f2ee63
+        role:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefRoleRequest'
+        is_pool:
+          type: boolean
+          title: Is a pool
+          description: All IP addresses within this prefix are considered usable
+        mark_utilized:
+          type: boolean
+          description: Treat as fully utilized
         description:
           type: string
           maxLength: 200
         owner:
-          allOf:
-          - $ref: '#/components/schemas/BriefOwner'
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
         comments:
           type: string
         tags:
           type: array
           items:
-            $ref: '#/components/schemas/NestedTag'
+            $ref: '#/components/schemas/NestedTagRequest'
         custom_fields:
           type: object
           additionalProperties: {}
-        created:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          readOnly: true
-        last_updated:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          readOnly: true
-        vlan_count:
-          type: integer
-          format: int64
-          readOnly: true
-        utilization:
-          type: string
-          readOnly: true
       required:
-      - created
-      - display
-      - display_url
-      - id
-      - last_updated
-      - name
-      - scope
-      - slug
-      - url
-      - utilization
-      - vlan_count
-    PatchedFHRPGroupAssignmentRequest:
-      type: object
-      description: Adds support for custom fields and tags.
-      properties:
-        group:
-          oneOf:
-          - type: integer
-          - $ref: '#/components/schemas/BriefFHRPGroupRequest'
-        interface_type:
-          type: string
-        interface_id:
-          type: integer
-          maximum: 9223372036854775807
-          minimum: 0
-          format: int64
-        priority:
-          type: integer
-          maximum: 255
-          minimum: 0
+      - prefix
     FHRPGroup:
       type: object
       description: Base serializer class for models inheriting from PrimaryModel.
@@ -21578,7 +22261,86 @@ components:
       - last_updated
       - protocol
       - url
-    PaginatedVLANTranslationPolicyList:
+    BriefVLAN:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        vid:
+          type: integer
+          maximum: 4094
+          minimum: 1
+          title: VLAN ID
+          description: Numeric VLAN ID (1-4094)
+        name:
+          type: string
+          maxLength: 64
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - display
+      - id
+      - name
+      - url
+      - vid
+    BriefOwner:
+      type: object
+      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
+
+        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - display
+      - id
+      - name
+      - url
+    BriefVLANRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        vid:
+          type: integer
+          maximum: 4094
+          minimum: 1
+          title: VLAN ID
+          description: Numeric VLAN ID (1-4094)
+        name:
+          type: string
+          minLength: 1
+          maxLength: 64
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - name
+      - vid
+    PaginatedIPAddressList:
       type: object
       required:
       - count
@@ -21602,560 +22364,7 @@ components:
         results:
           type: array
           items:
-            $ref: '#/components/schemas/VLANTranslationPolicy'
-    PatchedVRFRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        rd:
-          type:
-          - string
-          - 'null'
-          title: Route distinguisher
-          description: Unique route distinguisher (as defined in RFC 4364)
-          maxLength: 21
-        tenant:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefTenantRequest'
-        enforce_unique:
-          type: boolean
-          title: Enforce unique space
-          description: Prevent duplicate prefixes/IP addresses within this VRF
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-        comments:
-          type: string
-        import_targets:
-          type: array
-          items:
-            type: integer
-        export_targets:
-          type: array
-          items:
-            type: integer
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-    PatchedRoleRequest:
-      type: object
-      description: Base serializer class for models inheriting from OrganizationalModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        slug:
-          type: string
-          minLength: 1
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        weight:
-          type: integer
-          maximum: 32767
-          minimum: 0
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-    WritableVLANRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        site:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefSiteRequest'
-        group:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefVLANGroupRequest'
-        vid:
-          type: integer
-          maximum: 4094
-          minimum: 1
-          title: VLAN ID
-          description: Numeric VLAN ID (1-4094)
-        name:
-          type: string
-          minLength: 1
-          maxLength: 64
-        tenant:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefTenantRequest'
-        status:
-          enum:
-          - active
-          - reserved
-          - deprecated
-          type: string
-          x-spec-enum-id: ca933c38b935e547
-          description: 'Operational status of this VLAN
-
-
-            * `active` - Active
-
-            * `reserved` - Reserved
-
-            * `deprecated` - Deprecated'
-        role:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefRoleRequest'
-        description:
-          type: string
-          maxLength: 200
-        qinq_role:
-          enum:
-          - svlan
-          - cvlan
-          - ''
-          - null
-          type:
-          - string
-          - 'null'
-          x-spec-enum-id: fa0abd59fb1a7312
-          title: Q-in-Q role
-          description: 'Customer/service VLAN designation (for Q-in-Q/IEEE 802.1ad)
-
-
-            * `svlan` - Service
-
-            * `cvlan` - Customer'
-        qinq_svlan:
-          type:
-          - integer
-          - 'null'
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-      required:
-      - name
-      - vid
-    BriefRoleRequest:
-      type: object
-      description: Base serializer class for models inheriting from OrganizationalModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        slug:
-          type: string
-          minLength: 1
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - name
-      - slug
-    WritableServiceTemplateRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        protocol:
-          enum:
-          - tcp
-          - udp
-          - sctp
-          type: string
-          description: '* `tcp` - TCP
-
-            * `udp` - UDP
-
-            * `sctp` - SCTP'
-          x-spec-enum-id: e4b15bec749a2a32
-        ports:
-          type: array
-          items:
-            type: integer
-            maximum: 65535
-            minimum: 1
-          title: Port numbers
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-      required:
-      - name
-      - ports
-      - protocol
-    BriefL2VPN:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        identifier:
-          type:
-          - integer
-          - 'null'
-          maximum: 9223372036854775807
-          minimum: -9223372036854775808
-          format: int64
-        name:
-          type: string
-          maxLength: 100
-        slug:
-          type: string
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        type:
-          type: object
-          properties:
-            value:
-              enum:
-              - vpws
-              - vpls
-              - vxlan
-              - vxlan-evpn
-              - mpls-evpn
-              - pbb-evpn
-              - evpn-vpws
-              - epl
-              - evpl
-              - ep-lan
-              - evp-lan
-              - ep-tree
-              - evp-tree
-              - spb
-              type: string
-              description: '* `vpws` - VPWS
-
-                * `vpls` - VPLS
-
-                * `vxlan` - VXLAN
-
-                * `vxlan-evpn` - VXLAN-EVPN
-
-                * `mpls-evpn` - MPLS EVPN
-
-                * `pbb-evpn` - PBB EVPN
-
-                * `evpn-vpws` - EVPN VPWS
-
-                * `epl` - EPL
-
-                * `evpl` - EVPL
-
-                * `ep-lan` - Ethernet Private LAN
-
-                * `evp-lan` - Ethernet Virtual Private LAN
-
-                * `ep-tree` - Ethernet Private Tree
-
-                * `evp-tree` - Ethernet Virtual Private Tree
-
-                * `spb` - SPB'
-              x-spec-enum-id: 0a46f8056d717efc
-            label:
-              type: string
-              enum:
-              - VPWS
-              - VPLS
-              - VXLAN
-              - VXLAN-EVPN
-              - MPLS EVPN
-              - PBB EVPN
-              - EVPN VPWS
-              - EPL
-              - EVPL
-              - Ethernet Private LAN
-              - Ethernet Virtual Private LAN
-              - Ethernet Private Tree
-              - Ethernet Virtual Private Tree
-              - SPB
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - display
-      - id
-      - name
-      - slug
-      - url
-    BriefSiteRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          description: Full name of the site
-          maxLength: 100
-        slug:
-          type: string
-          minLength: 1
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - name
-      - slug
-    VLANTranslationPolicy:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          maxLength: 100
-        description:
-          type: string
-          maxLength: 200
-        rules:
-          type: array
-          items:
-            $ref: '#/components/schemas/VLANTranslationRule'
-          readOnly: true
-        owner:
-          allOf:
-          - $ref: '#/components/schemas/BriefOwner'
-        comments:
-          type: string
-      required:
-      - display
-      - id
-      - name
-      - rules
-      - url
-    PatchedWritableServiceTemplateRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        protocol:
-          enum:
-          - tcp
-          - udp
-          - sctp
-          type: string
-          description: '* `tcp` - TCP
-
-            * `udp` - UDP
-
-            * `sctp` - SCTP'
-          x-spec-enum-id: e4b15bec749a2a32
-        ports:
-          type: array
-          items:
-            type: integer
-            maximum: 65535
-            minimum: 1
-          title: Port numbers
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-    BriefTenantRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        slug:
-          type: string
-          minLength: 1
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - name
-      - slug
-    ASNRange:
-      type: object
-      description: Base serializer class for models inheriting from OrganizationalModel.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display_url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          maxLength: 100
-        slug:
-          type: string
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        rir:
-          $ref: '#/components/schemas/BriefRIR'
-        start:
-          type: integer
-          maximum: 4294967295
-          minimum: 1
-          format: int64
-        end:
-          type: integer
-          maximum: 4294967295
-          minimum: 1
-          format: int64
-        tenant:
-          allOf:
-          - $ref: '#/components/schemas/BriefTenant'
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          allOf:
-          - $ref: '#/components/schemas/BriefOwner'
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTag'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-        created:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          readOnly: true
-        last_updated:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          readOnly: true
-        asn_count:
-          type: integer
-          readOnly: true
-      required:
-      - asn_count
-      - created
-      - display
-      - display_url
-      - end
-      - id
-      - last_updated
-      - name
-      - rir
-      - slug
-      - start
-      - url
-    IntegerRangeRequest:
-      type: array
-      items:
-        type: integer
-      minItems: 2
-      maxItems: 2
-      example:
-      - 10
-      - 20
+            $ref: '#/components/schemas/IPAddress'
     PaginatedRouteTargetList:
       type: object
       required:
@@ -22181,13 +22390,90 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/RouteTarget'
-    NestedTagRequest:
+    PaginatedServiceTemplateList:
       type: object
-      description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ServiceTemplate'
+    AggregateRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        prefix:
+          type: string
+          minLength: 1
+        rir:
+          oneOf:
+          - type: integer
+          - $ref: '#/components/schemas/BriefRIRRequest'
+        tenant:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefTenantRequest'
+        date_added:
+          type:
+          - string
+          - 'null'
+          format: date
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+      required:
+      - prefix
+      - rir
+    BriefOwnerRequest:
+      type: object
+      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
 
-        dictionary of attributes which can be used to uniquely identify the related object. This class should be
-
-        subclassed to return a full representation of the related object on read.'
+        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - name
+    VLANGroupRequest:
+      type: object
+      description: Base serializer class for models inheriting from OrganizationalModel.
       properties:
         name:
           type: string
@@ -22196,16 +22482,147 @@ components:
         slug:
           type: string
           minLength: 1
-          pattern: ^[-\w]+$
           maxLength: 100
-        color:
+          pattern: ^[-a-zA-Z0-9_]+$
+        scope_type:
+          type:
+          - string
+          - 'null'
+        scope_id:
+          type:
+          - integer
+          - 'null'
+        vid_ranges:
+          type: array
+          items:
+            $ref: '#/components/schemas/IntegerRangeRequest'
+        tenant:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefTenantRequest'
+        description:
           type: string
-          minLength: 1
-          pattern: ^[0-9a-f]{6}$
-          maxLength: 6
+          maxLength: 200
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
       required:
       - name
       - slug
+    PaginatedServiceList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Service'
+    PaginatedRoleList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Role'
+    PrefixLengthRequest:
+      type: object
+      properties:
+        prefix_length:
+          type: integer
+      required:
+      - prefix_length
+    PaginatedVLANTranslationPolicyList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/VLANTranslationPolicy'
+    AvailableIP:
+      type: object
+      description: Representation of an IP address which does not exist in the database.
+      properties:
+        family:
+          type: integer
+          readOnly: true
+        address:
+          type: string
+          readOnly: true
+        vrf:
+          allOf:
+          - $ref: '#/components/schemas/BriefVRF'
+          readOnly: true
+        description:
+          type: string
+      required:
+      - address
+      - family
+      - vrf
     RouteTarget:
       type: object
       description: Base serializer class for models inheriting from PrimaryModel.
@@ -22266,6 +22683,148 @@ components:
       - last_updated
       - name
       - url
+    VLANTranslationRuleRequest:
+      type: object
+      description: Adds support for custom fields and tags.
+      properties:
+        policy:
+          type: integer
+        local_vid:
+          type: integer
+          maximum: 4094
+          minimum: 1
+          title: Local VLAN ID
+          description: Numeric VLAN ID (1-4094)
+        remote_vid:
+          type: integer
+          maximum: 4094
+          minimum: 1
+          title: Remote VLAN ID
+          description: Numeric VLAN ID (1-4094)
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - local_vid
+      - policy
+      - remote_vid
+    BriefIPAddress:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        family:
+          type: object
+          properties:
+            value:
+              enum:
+              - 4
+              - 6
+              type: integer
+              description: '* `4` - IPv4
+
+                * `6` - IPv6'
+              x-spec-enum-id: d72003fd1af3603d
+            label:
+              type: string
+              enum:
+              - IPv4
+              - IPv6
+          readOnly: true
+        address:
+          type: string
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - address
+      - display
+      - family
+      - id
+      - url
+    VLANTranslationPolicy:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+        rules:
+          type: array
+          items:
+            $ref: '#/components/schemas/VLANTranslationRule'
+          readOnly: true
+        owner:
+          allOf:
+          - $ref: '#/components/schemas/BriefOwner'
+        comments:
+          type: string
+      required:
+      - display
+      - id
+      - name
+      - rules
+      - url
+    NestedTagRequest:
+      type: object
+      description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
+
+        dictionary of attributes which can be used to uniquely identify the related object. This class should be
+
+        subclassed to return a full representation of the related object on read.'
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          pattern: ^[-\w]+$
+          maxLength: 100
+        color:
+          type: string
+          minLength: 1
+          pattern: ^[0-9a-f]{6}$
+          maxLength: 6
+      required:
+      - name
+      - slug
+    NestedIPAddressRequest:
+      type: object
+      description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
+
+        dictionary of attributes which can be used to uniquely identify the related object. This class should be
+
+        subclassed to return a full representation of the related object on read.'
+      properties:
+        address:
+          type: string
+          minLength: 1
+      required:
+      - address
     PaginatedIPRangeList:
       type: object
       required:
@@ -22291,44 +22850,49 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/IPRange'
-    WritableServiceRequest:
+    BriefVLANGroupRequest:
       type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
+      description: Base serializer class for models inheriting from OrganizationalModel.
       properties:
-        parent_object_type:
-          type: string
-        parent_object_id:
-          type: integer
-          maximum: 9223372036854775807
-          minimum: 0
-          format: int64
         name:
           type: string
           minLength: 1
           maxLength: 100
-        protocol:
-          enum:
-          - tcp
-          - udp
-          - sctp
+        slug:
           type: string
-          description: '* `tcp` - TCP
-
-            * `udp` - UDP
-
-            * `sctp` - SCTP'
-          x-spec-enum-id: e4b15bec749a2a32
-        ports:
-          type: array
-          items:
-            type: integer
-            maximum: 65535
-            minimum: 1
-          title: Port numbers
-        ipaddresses:
-          type: array
-          items:
-            type: integer
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - name
+      - slug
+    PatchedVRFRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        rd:
+          type:
+          - string
+          - 'null'
+          title: Route distinguisher
+          description: Unique route distinguisher (as defined in RFC 4364)
+          maxLength: 21
+        tenant:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefTenantRequest'
+        enforce_unique:
+          type: boolean
+          title: Enforce unique space
+          description: Prevent duplicate prefixes/IP addresses within this VRF
         description:
           type: string
           maxLength: 200
@@ -22339,6 +22903,14 @@ components:
             - $ref: '#/components/schemas/BriefOwnerRequest'
         comments:
           type: string
+        import_targets:
+          type: array
+          items:
+            type: integer
+        export_targets:
+          type: array
+          items:
+            type: integer
         tags:
           type: array
           items:
@@ -22346,63 +22918,13 @@ components:
         custom_fields:
           type: object
           additionalProperties: {}
-      required:
-      - name
-      - parent_object_id
-      - parent_object_type
-      - ports
-      - protocol
-    BriefVRF:
+    FHRPGroupRequest:
       type: object
       description: Base serializer class for models inheriting from PrimaryModel.
       properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
         name:
           type: string
           maxLength: 100
-        rd:
-          type:
-          - string
-          - 'null'
-          title: Route distinguisher
-          description: Unique route distinguisher (as defined in RFC 4364)
-          maxLength: 21
-        description:
-          type: string
-          maxLength: 200
-        prefix_count:
-          type: integer
-          format: int64
-          readOnly: true
-      required:
-      - display
-      - id
-      - name
-      - prefix_count
-      - url
-    BriefFHRPGroup:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
         protocol:
           enum:
           - vrrp2
@@ -22431,108 +22953,23 @@ components:
           type: integer
           maximum: 32767
           minimum: 0
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - display
-      - group_id
-      - id
-      - protocol
-      - url
-    PatchedWritableIPAddressRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        address:
-          type: string
-          minLength: 1
-        vrf:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefVRFRequest'
-        tenant:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefTenantRequest'
-        status:
+        auth_type:
           enum:
-          - active
-          - reserved
-          - deprecated
-          - dhcp
-          - slaac
-          type: string
-          x-spec-enum-id: c421c4c4a0fa7a2a
-          description: 'The operational status of this IP
-
-
-            * `active` - Active
-
-            * `reserved` - Reserved
-
-            * `deprecated` - Deprecated
-
-            * `dhcp` - DHCP
-
-            * `slaac` - SLAAC'
-        role:
-          enum:
-          - loopback
-          - secondary
-          - anycast
-          - vip
-          - vrrp
-          - hsrp
-          - glbp
-          - carp
+          - plaintext
+          - md5
           - ''
           - null
           type:
           - string
           - 'null'
-          x-spec-enum-id: 53dca4cddd7b344a
-          description: 'The functional role of this IP
+          description: '* `plaintext` - Plaintext
 
-
-            * `loopback` - Loopback
-
-            * `secondary` - Secondary
-
-            * `anycast` - Anycast
-
-            * `vip` - VIP
-
-            * `vrrp` - VRRP
-
-            * `hsrp` - HSRP
-
-            * `glbp` - GLBP
-
-            * `carp` - CARP'
-        assigned_object_type:
-          type:
-          - string
-          - 'null'
-        assigned_object_id:
-          type:
-          - integer
-          - 'null'
-          maximum: 9223372036854775807
-          minimum: 0
-          format: int64
-        nat_inside:
-          type:
-          - integer
-          - 'null'
-          title: NAT (inside)
-          description: The IP for which this address is the "outside" IP
-        dns_name:
+            * `md5` - MD5'
+          x-spec-enum-id: 565396e386e1542a
+          title: Authentication type
+        auth_key:
           type: string
-          description: Hostname or FQDN (not case-sensitive)
-          pattern: ^([0-9A-Za-z_-]+|\*)(\.[0-9A-Za-z_-]+)*\.?$
+          title: Authentication key
           maxLength: 255
         description:
           type: string
@@ -22551,206 +22988,16 @@ components:
         custom_fields:
           type: object
           additionalProperties: {}
-    PaginatedFHRPGroupAssignmentList:
-      type: object
       required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/FHRPGroupAssignment'
-    PatchedASNRequest:
+      - group_id
+      - protocol
+    NestedTag:
       type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        asn:
-          type: integer
-          maximum: 4294967295
-          minimum: 1
-          format: int64
-          description: 16- or 32-bit autonomous system number
-        rir:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefRIRRequest'
-        tenant:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefTenantRequest'
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-        sites:
-          type: array
-          items:
-            type: integer
-    VLANRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        site:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefSiteRequest'
-        group:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefVLANGroupRequest'
-        vid:
-          type: integer
-          maximum: 4094
-          minimum: 1
-          title: VLAN ID
-          description: Numeric VLAN ID (1-4094)
-        name:
-          type: string
-          minLength: 1
-          maxLength: 64
-        tenant:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefTenantRequest'
-        status:
-          enum:
-          - active
-          - reserved
-          - deprecated
-          type: string
-          description: '* `active` - Active
+      description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
 
-            * `reserved` - Reserved
+        dictionary of attributes which can be used to uniquely identify the related object. This class should be
 
-            * `deprecated` - Deprecated'
-          x-spec-enum-id: ca933c38b935e547
-        role:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefRoleRequest'
-        description:
-          type: string
-          maxLength: 200
-        qinq_role:
-          enum:
-          - svlan
-          - cvlan
-          - null
-          type:
-          - string
-          - 'null'
-          description: '* `svlan` - Service
-
-            * `cvlan` - Customer'
-          x-spec-enum-id: fa0abd59fb1a7312
-        qinq_svlan:
-          allOf:
-          - $ref: '#/components/schemas/NestedVLANRequest'
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-      required:
-      - name
-      - vid
-    VLANGroupRequest:
-      type: object
-      description: Base serializer class for models inheriting from OrganizationalModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        slug:
-          type: string
-          minLength: 1
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        scope_type:
-          type:
-          - string
-          - 'null'
-        scope_id:
-          type:
-          - integer
-          - 'null'
-        vid_ranges:
-          type: array
-          items:
-            $ref: '#/components/schemas/IntegerRangeRequest'
-        tenant:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefTenantRequest'
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-      required:
-      - name
-      - slug
-    BriefSite:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
+        subclassed to return a full representation of the related object on read.'
       properties:
         id:
           type: integer
@@ -22759,225 +23006,107 @@ components:
           type: string
           format: uri
           readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
         display:
           type: string
           readOnly: true
         name:
           type: string
-          description: Full name of the site
           maxLength: 100
         slug:
           type: string
+          pattern: ^[-\w]+$
           maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        description:
+        color:
           type: string
-          maxLength: 200
+          pattern: ^[0-9a-f]{6}$
+          maxLength: 6
       required:
       - display
+      - display_url
       - id
       - name
       - slug
       - url
-    IPRangeRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        start_address:
-          type: string
-          minLength: 1
-        end_address:
-          type: string
-          minLength: 1
-        vrf:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefVRFRequest'
-        tenant:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefTenantRequest'
-        status:
-          enum:
-          - active
-          - reserved
-          - deprecated
-          type: string
-          description: '* `active` - Active
-
-            * `reserved` - Reserved
-
-            * `deprecated` - Deprecated'
-          x-spec-enum-id: ca933c38b935e547
-        role:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefRoleRequest'
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-        mark_populated:
-          type: boolean
-          description: Prevent the creation of IP addresses within this range
-        mark_utilized:
-          type: boolean
-          description: Report space as fully utilized
-      required:
-      - end_address
-      - start_address
-    PatchedASNRangeRequest:
+    Role:
       type: object
       description: Base serializer class for models inheriting from OrganizationalModel.
       properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
         name:
           type: string
-          minLength: 1
           maxLength: 100
         slug:
           type: string
-          minLength: 1
           maxLength: 100
           pattern: ^[-a-zA-Z0-9_]+$
-        rir:
-          oneOf:
-          - type: integer
-          - $ref: '#/components/schemas/BriefRIRRequest'
-        start:
+        weight:
           type: integer
-          maximum: 4294967295
-          minimum: 1
-          format: int64
-        end:
-          type: integer
-          maximum: 4294967295
-          minimum: 1
-          format: int64
-        tenant:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefTenantRequest'
+          maximum: 32767
+          minimum: 0
         description:
           type: string
           maxLength: 200
         owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-    PaginatedVLANGroupList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/VLANGroup'
-    AvailableIP:
-      type: object
-      description: Representation of an IP address which does not exist in the database.
-      properties:
-        family:
-          type: integer
-          readOnly: true
-        address:
-          type: string
-          readOnly: true
-        vrf:
           allOf:
-          - $ref: '#/components/schemas/BriefVRF'
-          readOnly: true
-        description:
-          type: string
-      required:
-      - address
-      - family
-      - vrf
-    WritableAggregateRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        prefix:
-          type: string
-          minLength: 1
-        rir:
-          oneOf:
-          - type: integer
-          - $ref: '#/components/schemas/BriefRIRRequest'
-        tenant:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefTenantRequest'
-        date_added:
-          type:
-          - string
-          - 'null'
-          format: date
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
+          - $ref: '#/components/schemas/BriefOwner'
         comments:
           type: string
         tags:
           type: array
           items:
-            $ref: '#/components/schemas/NestedTagRequest'
+            $ref: '#/components/schemas/NestedTag'
         custom_fields:
           type: object
           additionalProperties: {}
+        created:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        last_updated:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        prefix_count:
+          type: integer
+          format: int64
+          readOnly: true
+        vlan_count:
+          type: integer
+          format: int64
+          readOnly: true
       required:
-      - prefix
-      - rir
-    PatchedWritableIPRangeRequest:
+      - created
+      - display
+      - display_url
+      - id
+      - last_updated
+      - name
+      - prefix_count
+      - slug
+      - url
+      - vlan_count
+    WritableIPRangeRequest:
       type: object
       description: Base serializer class for models inheriting from PrimaryModel.
       properties:
@@ -23040,31 +23169,70 @@ components:
         mark_utilized:
           type: boolean
           description: Report space as fully utilized
-    PaginatedVLANTranslationRuleList:
-      type: object
       required:
-      - count
-      - results
+      - end_address
+      - start_address
+    WritableServiceRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
       properties:
-        count:
+        parent_object_type:
+          type: string
+        parent_object_id:
           type: integer
-          example: 123
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        protocol:
+          enum:
+          - tcp
+          - udp
+          - sctp
+          type: string
+          description: '* `tcp` - TCP
+
+            * `udp` - UDP
+
+            * `sctp` - SCTP'
+          x-spec-enum-id: e4b15bec749a2a32
+        ports:
           type: array
           items:
-            $ref: '#/components/schemas/VLANTranslationRule'
+            type: integer
+            maximum: 65535
+            minimum: 1
+          title: Port numbers
+        ipaddresses:
+          type: array
+          items:
+            type: integer
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+      required:
+      - name
+      - parent_object_id
+      - parent_object_type
+      - ports
+      - protocol
     ServiceTemplate:
       type: object
       description: Base serializer class for models inheriting from PrimaryModel.
@@ -23150,135 +23318,13 @@ components:
       - name
       - ports
       - url
-    PatchedVLANGroupRequest:
-      type: object
-      description: Base serializer class for models inheriting from OrganizationalModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        slug:
-          type: string
-          minLength: 1
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        scope_type:
-          type:
-          - string
-          - 'null'
-        scope_id:
-          type:
-          - integer
-          - 'null'
-        vid_ranges:
-          type: array
-          items:
-            $ref: '#/components/schemas/IntegerRangeRequest'
-        tenant:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefTenantRequest'
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-    ASNRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        asn:
-          type: integer
-          maximum: 4294967295
-          minimum: 1
-          format: int64
-          description: 16- or 32-bit autonomous system number
-        rir:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefRIRRequest'
-        tenant:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefTenantRequest'
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-        sites:
-          type: array
-          items:
-            type: integer
-      required:
-      - asn
-    NestedVLAN:
+    NestedIPAddress:
       type: object
       description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
 
         dictionary of attributes which can be used to uniquely identify the related object. This class should be
 
         subclassed to return a full representation of the related object on read.'
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        vid:
-          type: integer
-          maximum: 4094
-          minimum: 1
-          title: VLAN ID
-          description: Numeric VLAN ID (1-4094)
-        name:
-          type: string
-          maxLength: 64
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - display
-      - id
-      - name
-      - url
-      - vid
-    Prefix:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
       properties:
         id:
           type: integer
@@ -23295,409 +23341,16 @@ components:
           type: string
           readOnly: true
         family:
-          type: object
-          properties:
-            value:
-              enum:
-              - 4
-              - 6
-              type: integer
-              description: '* `4` - IPv4
-
-                * `6` - IPv6'
-              x-spec-enum-id: d72003fd1af3603d
-            label:
-              type: string
-              enum:
-              - IPv4
-              - IPv6
-          readOnly: true
-        prefix:
-          type: string
-        vrf:
-          allOf:
-          - $ref: '#/components/schemas/BriefVRF'
-        scope_type:
-          type:
-          - string
-          - 'null'
-        scope_id:
-          type:
-          - integer
-          - 'null'
-        scope:
-          readOnly: true
-        tenant:
-          allOf:
-          - $ref: '#/components/schemas/BriefTenant'
-        vlan:
-          allOf:
-          - $ref: '#/components/schemas/BriefVLAN'
-        status:
-          type: object
-          properties:
-            value:
-              enum:
-              - container
-              - active
-              - reserved
-              - deprecated
-              type: string
-              description: '* `container` - Container
-
-                * `active` - Active
-
-                * `reserved` - Reserved
-
-                * `deprecated` - Deprecated'
-              x-spec-enum-id: 026173ce39f2ee63
-            label:
-              type: string
-              enum:
-              - Container
-              - Active
-              - Reserved
-              - Deprecated
-        role:
-          allOf:
-          - $ref: '#/components/schemas/BriefRole'
-        is_pool:
-          type: boolean
-          title: Is a pool
-          description: All IP addresses within this prefix are considered usable
-        mark_utilized:
-          type: boolean
-          description: Treat as fully utilized
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          allOf:
-          - $ref: '#/components/schemas/BriefOwner'
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTag'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-        created:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          readOnly: true
-        last_updated:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          readOnly: true
-        children:
           type: integer
           readOnly: true
-        _depth:
-          type: integer
-          readOnly: true
-          title: ' depth'
+        address:
+          type: string
       required:
-      - _depth
-      - children
-      - created
+      - address
       - display
       - display_url
       - family
       - id
-      - last_updated
-      - prefix
-      - scope
-      - url
-    VLANTranslationPolicyRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-        comments:
-          type: string
-      required:
-      - name
-    PatchedWritablePrefixRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        prefix:
-          type: string
-          minLength: 1
-        vrf:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefVRFRequest'
-        scope_type:
-          type:
-          - string
-          - 'null'
-        scope_id:
-          type:
-          - integer
-          - 'null'
-        tenant:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefTenantRequest'
-        vlan:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefVLANRequest'
-        status:
-          enum:
-          - container
-          - active
-          - reserved
-          - deprecated
-          type: string
-          x-spec-enum-id: 026173ce39f2ee63
-          description: 'Operational status of this prefix
-
-
-            * `container` - Container
-
-            * `active` - Active
-
-            * `reserved` - Reserved
-
-            * `deprecated` - Deprecated'
-        role:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefRoleRequest'
-        is_pool:
-          type: boolean
-          title: Is a pool
-          description: All IP addresses within this prefix are considered usable
-        mark_utilized:
-          type: boolean
-          description: Treat as fully utilized
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-    PaginatedIPAddressList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/IPAddress'
-    AggregateRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        prefix:
-          type: string
-          minLength: 1
-        rir:
-          oneOf:
-          - type: integer
-          - $ref: '#/components/schemas/BriefRIRRequest'
-        tenant:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefTenantRequest'
-        date_added:
-          type:
-          - string
-          - 'null'
-          format: date
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-      required:
-      - prefix
-      - rir
-    PaginatedAggregateList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/Aggregate'
-    RIR:
-      type: object
-      description: Base serializer class for models inheriting from OrganizationalModel.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display_url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          maxLength: 100
-        slug:
-          type: string
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        is_private:
-          type: boolean
-          title: Private
-          description: IP space managed by this RIR is considered private
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          allOf:
-          - $ref: '#/components/schemas/BriefOwner'
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTag'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-        created:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          readOnly: true
-        last_updated:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          readOnly: true
-        aggregate_count:
-          type: integer
-          format: int64
-          readOnly: true
-      required:
-      - aggregate_count
-      - created
-      - display
-      - display_url
-      - id
-      - last_updated
-      - name
-      - slug
-      - url
-    BriefOwner:
-      type: object
-      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
-
-        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          maxLength: 100
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - display
-      - id
-      - name
       - url
     RouteTargetRequest:
       type: object
@@ -23732,68 +23385,7 @@ components:
           additionalProperties: {}
       required:
       - name
-    PaginatedVLANList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/VLAN'
-    BriefTenant:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          maxLength: 100
-        slug:
-          type: string
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - display
-      - id
-      - name
-      - slug
-      - url
-    AvailableIPRequestRequest:
-      type: object
-      description: Request payload for creating IP addresses from the available-ips endpoint.
-      properties:
-        prefix_length:
-          type: integer
-    Role:
+    BriefRole:
       type: object
       description: Base serializer class for models inheriting from OrganizationalModel.
       properties:
@@ -23804,10 +23396,6 @@ components:
           type: string
           format: uri
           readOnly: true
-        display_url:
-          type: string
-          format: uri
-          readOnly: true
         display:
           type: string
           readOnly: true
@@ -23818,37 +23406,9 @@ components:
           type: string
           maxLength: 100
           pattern: ^[-a-zA-Z0-9_]+$
-        weight:
-          type: integer
-          maximum: 32767
-          minimum: 0
         description:
           type: string
           maxLength: 200
-        owner:
-          allOf:
-          - $ref: '#/components/schemas/BriefOwner'
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTag'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-        created:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          readOnly: true
-        last_updated:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          readOnly: true
         prefix_count:
           type: integer
           format: int64
@@ -23858,19 +23418,45 @@ components:
           format: int64
           readOnly: true
       required:
-      - created
       - display
-      - display_url
       - id
-      - last_updated
       - name
       - prefix_count
       - slug
       - url
       - vlan_count
-    Aggregate:
+    BriefVRFRequest:
       type: object
       description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        rd:
+          type:
+          - string
+          - 'null'
+          title: Route distinguisher
+          description: Unique route distinguisher (as defined in RFC 4364)
+          maxLength: 21
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - name
+    IntegerRangeRequest:
+      type: array
+      items:
+        type: integer
+      minItems: 2
+      maxItems: 2
+      example:
+      - 10
+      - 20
+    FHRPGroupAssignment:
+      type: object
+      description: Adds support for custom fields and tags.
       properties:
         id:
           type: integer
@@ -23879,58 +23465,24 @@ components:
           type: string
           format: uri
           readOnly: true
-        display_url:
-          type: string
-          format: uri
-          readOnly: true
         display:
           type: string
           readOnly: true
-        family:
-          type: object
-          properties:
-            value:
-              enum:
-              - 4
-              - 6
-              type: integer
-              description: '* `4` - IPv4
-
-                * `6` - IPv6'
-              x-spec-enum-id: d72003fd1af3603d
-            label:
-              type: string
-              enum:
-              - IPv4
-              - IPv6
+        group:
+          $ref: '#/components/schemas/BriefFHRPGroup'
+        interface_type:
+          type: string
+        interface_id:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        interface:
           readOnly: true
-        prefix:
-          type: string
-        rir:
-          $ref: '#/components/schemas/BriefRIR'
-        tenant:
-          allOf:
-          - $ref: '#/components/schemas/BriefTenant'
-        date_added:
-          type:
-          - string
-          - 'null'
-          format: date
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          allOf:
-          - $ref: '#/components/schemas/BriefOwner'
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTag'
-        custom_fields:
-          type: object
-          additionalProperties: {}
+        priority:
+          type: integer
+          maximum: 255
+          minimum: 0
         created:
           type:
           - string
@@ -23946,66 +23498,41 @@ components:
       required:
       - created
       - display
-      - display_url
-      - family
+      - group
       - id
+      - interface
+      - interface_id
+      - interface_type
       - last_updated
-      - prefix
-      - rir
+      - priority
       - url
-    FHRPGroupRequest:
+    ServiceTemplateRequest:
       type: object
       description: Base serializer class for models inheriting from PrimaryModel.
       properties:
         name:
           type: string
+          minLength: 1
           maxLength: 100
         protocol:
           enum:
-          - vrrp2
-          - vrrp3
-          - carp
-          - clusterxl
-          - hsrp
-          - glbp
-          - other
+          - tcp
+          - udp
+          - sctp
           type: string
-          description: '* `vrrp2` - VRRPv2
+          description: '* `tcp` - TCP
 
-            * `vrrp3` - VRRPv3
+            * `udp` - UDP
 
-            * `carp` - CARP
-
-            * `clusterxl` - ClusterXL
-
-            * `hsrp` - HSRP
-
-            * `glbp` - GLBP
-
-            * `other` - Other'
-          x-spec-enum-id: 98de93c9f65d1c65
-        group_id:
-          type: integer
-          maximum: 32767
-          minimum: 0
-        auth_type:
-          enum:
-          - plaintext
-          - md5
-          - ''
-          - null
-          type:
-          - string
-          - 'null'
-          description: '* `plaintext` - Plaintext
-
-            * `md5` - MD5'
-          x-spec-enum-id: 565396e386e1542a
-          title: Authentication type
-        auth_key:
-          type: string
-          title: Authentication key
-          maxLength: 255
+            * `sctp` - SCTP'
+          x-spec-enum-id: e4b15bec749a2a32
+        ports:
+          type: array
+          items:
+            type: integer
+            maximum: 65535
+            minimum: 1
+          title: Port numbers
         description:
           type: string
           maxLength: 200
@@ -24024,8 +23551,8 @@ components:
           type: object
           additionalProperties: {}
       required:
-      - group_id
-      - protocol
+      - name
+      - ports
     ServiceRequest:
       type: object
       description: Base serializer class for models inheriting from PrimaryModel.
@@ -24086,6 +23613,86 @@ components:
       - parent_object_id
       - parent_object_type
       - ports
+    PatchedVLANTranslationPolicyRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+    RIRRequest:
+      type: object
+      description: Base serializer class for models inheriting from OrganizationalModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        is_private:
+          type: boolean
+          title: Private
+          description: IP space managed by this RIR is considered private
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+      required:
+      - name
+      - slug
+    AvailableIPRequestRequest:
+      type: object
+      description: Request payload for creating IP addresses from the available-ips endpoint.
+      properties:
+        prefix_length:
+          type: integer
+    BriefRoleRequest:
+      type: object
+      description: Base serializer class for models inheriting from OrganizationalModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - name
+      - slug
     VLAN:
       type: object
       description: Base serializer class for models inheriting from PrimaryModel.
@@ -24215,6 +23822,422 @@ components:
       - prefix_count
       - url
       - vid
+    PatchedFHRPGroupAssignmentRequest:
+      type: object
+      description: Adds support for custom fields and tags.
+      properties:
+        group:
+          oneOf:
+          - type: integer
+          - $ref: '#/components/schemas/BriefFHRPGroupRequest'
+        interface_type:
+          type: string
+        interface_id:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        priority:
+          type: integer
+          maximum: 255
+          minimum: 0
+    BriefSiteRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          description: Full name of the site
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - name
+      - slug
+    PaginatedFHRPGroupAssignmentList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/FHRPGroupAssignment'
+    VLANTranslationRule:
+      type: object
+      description: Adds support for custom fields and tags.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        policy:
+          type: integer
+        local_vid:
+          type: integer
+          maximum: 4094
+          minimum: 1
+          title: Local VLAN ID
+          description: Numeric VLAN ID (1-4094)
+        remote_vid:
+          type: integer
+          maximum: 4094
+          minimum: 1
+          title: Remote VLAN ID
+          description: Numeric VLAN ID (1-4094)
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - display
+      - id
+      - local_vid
+      - policy
+      - remote_vid
+      - url
+    VRF:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        rd:
+          type:
+          - string
+          - 'null'
+          title: Route distinguisher
+          description: Unique route distinguisher (as defined in RFC 4364)
+          maxLength: 21
+        tenant:
+          allOf:
+          - $ref: '#/components/schemas/BriefTenant'
+        enforce_unique:
+          type: boolean
+          title: Enforce unique space
+          description: Prevent duplicate prefixes/IP addresses within this VRF
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          allOf:
+          - $ref: '#/components/schemas/BriefOwner'
+        comments:
+          type: string
+        import_targets:
+          type: array
+          items:
+            $ref: '#/components/schemas/RouteTarget'
+        export_targets:
+          type: array
+          items:
+            $ref: '#/components/schemas/RouteTarget'
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTag'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        created:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        last_updated:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        ipaddress_count:
+          type: integer
+          format: int64
+          readOnly: true
+        prefix_count:
+          type: integer
+          format: int64
+          readOnly: true
+      required:
+      - created
+      - display
+      - display_url
+      - id
+      - ipaddress_count
+      - last_updated
+      - name
+      - prefix_count
+      - url
+    PatchedWritablePrefixRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        prefix:
+          type: string
+          minLength: 1
+        vrf:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefVRFRequest'
+        scope_type:
+          type:
+          - string
+          - 'null'
+        scope_id:
+          type:
+          - integer
+          - 'null'
+        tenant:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefTenantRequest'
+        vlan:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefVLANRequest'
+        status:
+          enum:
+          - container
+          - active
+          - reserved
+          - deprecated
+          type: string
+          x-spec-enum-id: 026173ce39f2ee63
+          description: 'Operational status of this prefix
+
+
+            * `container` - Container
+
+            * `active` - Active
+
+            * `reserved` - Reserved
+
+            * `deprecated` - Deprecated'
+        role:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefRoleRequest'
+        is_pool:
+          type: boolean
+          title: Is a pool
+          description: All IP addresses within this prefix are considered usable
+        mark_utilized:
+          type: boolean
+          description: Treat as fully utilized
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+    ASN:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        asn:
+          type: integer
+          maximum: 4294967295
+          minimum: 1
+          format: int64
+          description: 16- or 32-bit autonomous system number
+        rir:
+          allOf:
+          - $ref: '#/components/schemas/BriefRIR'
+        tenant:
+          allOf:
+          - $ref: '#/components/schemas/BriefTenant'
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          allOf:
+          - $ref: '#/components/schemas/BriefOwner'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTag'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        created:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        last_updated:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        site_count:
+          type: integer
+          format: int64
+          readOnly: true
+        provider_count:
+          type: integer
+          format: int64
+          readOnly: true
+        sites:
+          type: array
+          items:
+            $ref: '#/components/schemas/ASNSite'
+      required:
+      - asn
+      - created
+      - display
+      - display_url
+      - id
+      - last_updated
+      - provider_count
+      - site_count
+      - url
+    RIR:
+      type: object
+      description: Base serializer class for models inheriting from OrganizationalModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        slug:
+          type: string
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        is_private:
+          type: boolean
+          title: Private
+          description: IP space managed by this RIR is considered private
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          allOf:
+          - $ref: '#/components/schemas/BriefOwner'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTag'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        created:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        last_updated:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        aggregate_count:
+          type: integer
+          format: int64
+          readOnly: true
+      required:
+      - aggregate_count
+      - created
+      - display
+      - display_url
+      - id
+      - last_updated
+      - name
+      - slug
+      - url
     IPRange:
       type: object
       description: Base serializer class for models inheriting from PrimaryModel.
@@ -24332,233 +24355,6 @@ components:
       - size
       - start_address
       - url
-    AvailableVLAN:
-      type: object
-      description: Representation of a VLAN which does not exist in the database.
-      properties:
-        vid:
-          type: integer
-          readOnly: true
-        group:
-          allOf:
-          - $ref: '#/components/schemas/BriefVLANGroup'
-          readOnly: true
-      required:
-      - group
-      - vid
-    AvailablePrefix:
-      type: object
-      description: Representation of a prefix which does not exist in the database.
-      properties:
-        family:
-          type: integer
-          readOnly: true
-        prefix:
-          type: string
-          readOnly: true
-        vrf:
-          allOf:
-          - $ref: '#/components/schemas/BriefVRF'
-          readOnly: true
-      required:
-      - family
-      - prefix
-      - vrf
-    PaginatedPrefixList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/Prefix'
-    PaginatedASNRangeList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/ASNRange'
-    IPAddressRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        address:
-          type: string
-          minLength: 1
-        vrf:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefVRFRequest'
-        tenant:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefTenantRequest'
-        status:
-          enum:
-          - active
-          - reserved
-          - deprecated
-          - dhcp
-          - slaac
-          type: string
-          description: '* `active` - Active
-
-            * `reserved` - Reserved
-
-            * `deprecated` - Deprecated
-
-            * `dhcp` - DHCP
-
-            * `slaac` - SLAAC'
-          x-spec-enum-id: c421c4c4a0fa7a2a
-        role:
-          enum:
-          - loopback
-          - secondary
-          - anycast
-          - vip
-          - vrrp
-          - hsrp
-          - glbp
-          - carp
-          - ''
-          type: string
-          description: '* `loopback` - Loopback
-
-            * `secondary` - Secondary
-
-            * `anycast` - Anycast
-
-            * `vip` - VIP
-
-            * `vrrp` - VRRP
-
-            * `hsrp` - HSRP
-
-            * `glbp` - GLBP
-
-            * `carp` - CARP'
-          x-spec-enum-id: 53dca4cddd7b344a
-        assigned_object_type:
-          type:
-          - string
-          - 'null'
-        assigned_object_id:
-          type:
-          - integer
-          - 'null'
-          maximum: 9223372036854775807
-          minimum: 0
-          format: int64
-        nat_inside:
-          allOf:
-          - $ref: '#/components/schemas/NestedIPAddressRequest'
-        dns_name:
-          type: string
-          description: Hostname or FQDN (not case-sensitive)
-          pattern: ^([0-9A-Za-z_-]+|\*)(\.[0-9A-Za-z_-]+)*\.?$
-          maxLength: 255
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-      required:
-      - address
-    BriefRIRRequest:
-      type: object
-      description: Base serializer class for models inheriting from OrganizationalModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        slug:
-          type: string
-          minLength: 1
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - name
-      - slug
-    VLANTranslationRuleRequest:
-      type: object
-      description: Adds support for custom fields and tags.
-      properties:
-        policy:
-          type: integer
-        local_vid:
-          type: integer
-          maximum: 4094
-          minimum: 1
-          title: Local VLAN ID
-          description: Numeric VLAN ID (1-4094)
-        remote_vid:
-          type: integer
-          maximum: 4094
-          minimum: 1
-          title: Remote VLAN ID
-          description: Numeric VLAN ID (1-4094)
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - local_vid
-      - policy
-      - remote_vid
     PatchedWritableServiceRequest:
       type: object
       description: Base serializer class for models inheriting from PrimaryModel.
@@ -24614,7 +24410,32 @@ components:
         custom_fields:
           type: object
           additionalProperties: {}
-    VRFRequest:
+    PaginatedASNList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ASN'
+    VLANTranslationPolicyRequest:
       type: object
       description: Base serializer class for models inheriting from PrimaryModel.
       properties:
@@ -24622,22 +24443,6 @@ components:
           type: string
           minLength: 1
           maxLength: 100
-        rd:
-          type:
-          - string
-          - 'null'
-          title: Route distinguisher
-          description: Unique route distinguisher (as defined in RFC 4364)
-          maxLength: 21
-        tenant:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefTenantRequest'
-        enforce_unique:
-          type: boolean
-          title: Enforce unique space
-          description: Prevent duplicate prefixes/IP addresses within this VRF
         description:
           type: string
           maxLength: 200
@@ -24648,14 +24453,239 @@ components:
             - $ref: '#/components/schemas/BriefOwnerRequest'
         comments:
           type: string
-        import_targets:
+      required:
+      - name
+    VLANGroup:
+      type: object
+      description: Base serializer class for models inheriting from OrganizationalModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        slug:
+          type: string
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        scope_type:
+          type:
+          - string
+          - 'null'
+        scope_id:
+          type:
+          - integer
+          - 'null'
+        scope:
+          readOnly: true
+        vid_ranges:
           type: array
           items:
-            type: integer
-        export_targets:
+            $ref: '#/components/schemas/IntegerRange'
+        tenant:
+          allOf:
+          - $ref: '#/components/schemas/BriefTenant'
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          allOf:
+          - $ref: '#/components/schemas/BriefOwner'
+        comments:
+          type: string
+        tags:
           type: array
           items:
-            type: integer
+            $ref: '#/components/schemas/NestedTag'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        created:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        last_updated:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        vlan_count:
+          type: integer
+          format: int64
+          readOnly: true
+        utilization:
+          type: string
+          readOnly: true
+      required:
+      - created
+      - display
+      - display_url
+      - id
+      - last_updated
+      - name
+      - scope
+      - slug
+      - url
+      - utilization
+      - vlan_count
+    IPRangeRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        start_address:
+          type: string
+          minLength: 1
+        end_address:
+          type: string
+          minLength: 1
+        vrf:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefVRFRequest'
+        tenant:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefTenantRequest'
+        status:
+          enum:
+          - active
+          - reserved
+          - deprecated
+          type: string
+          description: '* `active` - Active
+
+            * `reserved` - Reserved
+
+            * `deprecated` - Deprecated'
+          x-spec-enum-id: ca933c38b935e547
+        role:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefRoleRequest'
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        mark_populated:
+          type: boolean
+          description: Prevent the creation of IP addresses within this range
+        mark_utilized:
+          type: boolean
+          description: Report space as fully utilized
+      required:
+      - end_address
+      - start_address
+    WritableVLANRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        site:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefSiteRequest'
+        group:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefVLANGroupRequest'
+        vid:
+          type: integer
+          maximum: 4094
+          minimum: 1
+          title: VLAN ID
+          description: Numeric VLAN ID (1-4094)
+        name:
+          type: string
+          minLength: 1
+          maxLength: 64
+        tenant:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefTenantRequest'
+        status:
+          enum:
+          - active
+          - reserved
+          - deprecated
+          type: string
+          x-spec-enum-id: ca933c38b935e547
+          description: 'Operational status of this VLAN
+
+
+            * `active` - Active
+
+            * `reserved` - Reserved
+
+            * `deprecated` - Deprecated'
+        role:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefRoleRequest'
+        description:
+          type: string
+          maxLength: 200
+        qinq_role:
+          enum:
+          - svlan
+          - cvlan
+          - ''
+          - null
+          type:
+          - string
+          - 'null'
+          x-spec-enum-id: fa0abd59fb1a7312
+          title: Q-in-Q role
+          description: 'Customer/service VLAN designation (for Q-in-Q/IEEE 802.1ad)
+
+
+            * `svlan` - Service
+
+            * `cvlan` - Customer'
+        qinq_svlan:
+          type:
+          - integer
+          - 'null'
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
         tags:
           type: array
           items:
@@ -24665,63 +24695,39 @@ components:
           additionalProperties: {}
       required:
       - name
-    PrefixRequest:
+      - vid
+    PatchedASNRangeRequest:
       type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
+      description: Base serializer class for models inheriting from OrganizationalModel.
       properties:
-        prefix:
+        name:
           type: string
           minLength: 1
-        vrf:
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        rir:
           oneOf:
           - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefVRFRequest'
-        scope_type:
-          type:
-          - string
-          - 'null'
-        scope_id:
-          type:
-          - integer
-          - 'null'
+          - $ref: '#/components/schemas/BriefRIRRequest'
+        start:
+          type: integer
+          maximum: 4294967295
+          minimum: 1
+          format: int64
+        end:
+          type: integer
+          maximum: 4294967295
+          minimum: 1
+          format: int64
         tenant:
           oneOf:
           - type: integer
           - allOf:
             - $ref: '#/components/schemas/BriefTenantRequest'
-        vlan:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefVLANRequest'
-        status:
-          enum:
-          - container
-          - active
-          - reserved
-          - deprecated
-          type: string
-          description: '* `container` - Container
-
-            * `active` - Active
-
-            * `reserved` - Reserved
-
-            * `deprecated` - Deprecated'
-          x-spec-enum-id: 026173ce39f2ee63
-        role:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefRoleRequest'
-        is_pool:
-          type: boolean
-          title: Is a pool
-          description: All IP addresses within this prefix are considered usable
-        mark_utilized:
-          type: boolean
-          description: Treat as fully utilized
         description:
           type: string
           maxLength: 200
@@ -24739,36 +24745,30 @@ components:
         custom_fields:
           type: object
           additionalProperties: {}
-      required:
-      - prefix
-    BriefL2VPNTermination:
+    NestedVLANRequest:
       type: object
-      description: Adds support for custom fields and tags.
+      description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
+
+        dictionary of attributes which can be used to uniquely identify the related object. This class should be
+
+        subclassed to return a full representation of the related object on read.'
       properties:
-        id:
+        vid:
           type: integer
-          readOnly: true
-        url:
+          maximum: 4094
+          minimum: 1
+          title: VLAN ID
+          description: Numeric VLAN ID (1-4094)
+        name:
           type: string
-          format: uri
-          readOnly: true
-        display:
+          minLength: 1
+          maxLength: 64
+        description:
           type: string
-          readOnly: true
-        l2vpn:
-          $ref: '#/components/schemas/BriefL2VPN'
+          maxLength: 200
       required:
-      - display
-      - id
-      - l2vpn
-      - url
-    PrefixLengthRequest:
-      type: object
-      properties:
-        prefix_length:
-          type: integer
-      required:
-      - prefix_length
+      - name
+      - vid
   securitySchemes:
     cookieAuth:
       type: apiKey

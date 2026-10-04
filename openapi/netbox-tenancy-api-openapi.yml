@@ -5904,121 +5904,11 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    BriefTenantGroupRequest:
+    BriefOwner:
       type: object
-      description: Base serializer class for models inheriting from NestedGroupModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        slug:
-          type: string
-          minLength: 1
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - name
-      - slug
-    PatchedWritableContactGroupRequest:
-      type: object
-      description: Base serializer class for models inheriting from NestedGroupModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        slug:
-          type: string
-          minLength: 1
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        parent:
-          type:
-          - integer
-          - 'null'
-        description:
-          type: string
-          maxLength: 200
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-        comments:
-          type: string
-    PatchedWritableTenantGroupRequest:
-      type: object
-      description: Base serializer class for models inheriting from NestedGroupModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        slug:
-          type: string
-          minLength: 1
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        parent:
-          type:
-          - integer
-          - 'null'
-        description:
-          type: string
-          maxLength: 200
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-        comments:
-          type: string
-    NestedTagRequest:
-      type: object
-      description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
+      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
 
-        dictionary of attributes which can be used to uniquely identify the related object. This class should be
-
-        subclassed to return a full representation of the related object on read.'
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        slug:
-          type: string
-          minLength: 1
-          pattern: ^[-\w]+$
-          maxLength: 100
-        color:
-          type: string
-          minLength: 1
-          pattern: ^[0-9a-f]{6}$
-          maxLength: 6
-      required:
-      - name
-      - slug
-    BriefContact:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
+        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
       properties:
         id:
           type: integer
@@ -6041,24 +5931,9 @@ components:
       - id
       - name
       - url
-    BriefOwnerRequest:
+    ContactGroupRequest:
       type: object
-      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
-
-        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - name
-    BriefContactRoleRequest:
-      type: object
-      description: Base serializer class for models inheriting from OrganizationalModel.
+      description: Base serializer class for models inheriting from NestedGroupModel.
       properties:
         name:
           type: string
@@ -6069,13 +5944,30 @@ components:
           minLength: 1
           maxLength: 100
           pattern: ^[-a-zA-Z0-9_]+$
+        parent:
+          allOf:
+          - $ref: '#/components/schemas/NestedContactGroupRequest'
         description:
           type: string
           maxLength: 200
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
       required:
       - name
       - slug
-    PaginatedContactList:
+    PaginatedContactAssignmentList:
       type: object
       required:
       - count
@@ -6099,7 +5991,48 @@ components:
         results:
           type: array
           items:
-            $ref: '#/components/schemas/Contact'
+            $ref: '#/components/schemas/ContactAssignment'
+    NestedContactGroup:
+      type: object
+      description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
+
+        dictionary of attributes which can be used to uniquely identify the related object. This class should be
+
+        subclassed to return a full representation of the related object on read.'
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        slug:
+          type: string
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        _depth:
+          type: integer
+          readOnly: true
+          title: ' depth'
+      required:
+      - _depth
+      - display
+      - display_url
+      - id
+      - name
+      - slug
+      - url
     WritableTenantGroupRequest:
       type: object
       description: Base serializer class for models inheriting from NestedGroupModel.
@@ -6137,6 +6070,70 @@ components:
       required:
       - name
       - slug
+    BriefContactRoleRequest:
+      type: object
+      description: Base serializer class for models inheriting from OrganizationalModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - name
+      - slug
+    PatchedContactRoleRequest:
+      type: object
+      description: Base serializer class for models inheriting from OrganizationalModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+    BriefOwnerRequest:
+      type: object
+      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
+
+        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - name
     PatchedWritableContactAssignmentRequest:
       type: object
       description: Adds support for custom fields and tags.
@@ -6183,7 +6180,53 @@ components:
         custom_fields:
           type: object
           additionalProperties: {}
-    ContactGroupRequest:
+    PatchedContactRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        groups:
+          type: array
+          items:
+            type: integer
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        title:
+          type: string
+          maxLength: 100
+        phone:
+          type: string
+          maxLength: 50
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        address:
+          type: string
+          maxLength: 200
+        link:
+          type: string
+          format: uri
+          maxLength: 200
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+    WritableContactGroupRequest:
       type: object
       description: Base serializer class for models inheriting from NestedGroupModel.
       properties:
@@ -6197,8 +6240,9 @@ components:
           maxLength: 100
           pattern: ^[-a-zA-Z0-9_]+$
         parent:
-          allOf:
-          - $ref: '#/components/schemas/NestedContactGroupRequest'
+          type:
+          - integer
+          - 'null'
         description:
           type: string
           maxLength: 200
@@ -6219,6 +6263,40 @@ components:
       required:
       - name
       - slug
+    PatchedWritableContactGroupRequest:
+      type: object
+      description: Base serializer class for models inheriting from NestedGroupModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        parent:
+          type:
+          - integer
+          - 'null'
+        description:
+          type: string
+          maxLength: 200
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
     BriefTenantGroup:
       type: object
       description: Base serializer class for models inheriting from NestedGroupModel.
@@ -6259,22 +6337,14 @@ components:
       - slug
       - tenant_count
       - url
-    NestedTenantGroup:
+    BriefContact:
       type: object
-      description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
-
-        dictionary of attributes which can be used to uniquely identify the related object. This class should be
-
-        subclassed to return a full representation of the related object on read.'
+      description: Base serializer class for models inheriting from PrimaryModel.
       properties:
         id:
           type: integer
           readOnly: true
         url:
-          type: string
-          format: uri
-          readOnly: true
-        display_url:
           type: string
           format: uri
           readOnly: true
@@ -6284,60 +6354,181 @@ components:
         name:
           type: string
           maxLength: 100
-        slug:
+        description:
           type: string
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        _depth:
-          type: integer
-          readOnly: true
-          title: ' depth'
+          maxLength: 200
       required:
-      - _depth
       - display
-      - display_url
       - id
       - name
-      - slug
       - url
-    BriefContactRequest:
+    TenantGroupRequest:
       type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
+      description: Base serializer class for models inheriting from NestedGroupModel.
       properties:
         name:
           type: string
           minLength: 1
           maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        parent:
+          allOf:
+          - $ref: '#/components/schemas/NestedTenantGroupRequest'
         description:
           type: string
           maxLength: 200
-      required:
-      - name
-    PaginatedContactAssignmentList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
+        tags:
           type: array
           items:
-            $ref: '#/components/schemas/ContactAssignment'
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+      required:
+      - name
+      - slug
+    ContactRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        groups:
+          type: array
+          items:
+            type: integer
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        title:
+          type: string
+          maxLength: 100
+        phone:
+          type: string
+          maxLength: 50
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        address:
+          type: string
+          maxLength: 200
+        link:
+          type: string
+          format: uri
+          maxLength: 200
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+      required:
+      - name
+    ContactAssignment:
+      type: object
+      description: Adds support for custom fields and tags.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        object_type:
+          type: string
+        object_id:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        object:
+          readOnly: true
+        contact:
+          $ref: '#/components/schemas/BriefContact'
+        role:
+          allOf:
+          - $ref: '#/components/schemas/BriefContactRole'
+        priority:
+          type: object
+          properties:
+            value:
+              enum:
+              - primary
+              - secondary
+              - tertiary
+              - inactive
+              - ''
+              type: string
+              description: '* `primary` - Primary
+
+                * `secondary` - Secondary
+
+                * `tertiary` - Tertiary
+
+                * `inactive` - Inactive'
+              x-spec-enum-id: 0548fc537440bf9d
+            label:
+              type: string
+              enum:
+              - Primary
+              - Secondary
+              - Tertiary
+              - Inactive
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTag'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        created:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        last_updated:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+      required:
+      - contact
+      - created
+      - display
+      - id
+      - last_updated
+      - object
+      - object_id
+      - object_type
+      - url
     ContactGroup:
       type: object
       description: Base serializer class for models inheriting from NestedGroupModel.
@@ -6412,16 +6603,152 @@ components:
       - name
       - slug
       - url
-    BriefOwner:
+    ContactRoleRequest:
       type: object
-      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
-
-        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
+      description: Base serializer class for models inheriting from OrganizationalModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+      required:
+      - name
+      - slug
+    Contact:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
       properties:
         id:
           type: integer
           readOnly: true
         url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactGroup'
+        name:
+          type: string
+          maxLength: 100
+        title:
+          type: string
+          maxLength: 100
+        phone:
+          type: string
+          maxLength: 50
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        address:
+          type: string
+          maxLength: 200
+        link:
+          type: string
+          format: uri
+          maxLength: 200
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          allOf:
+          - $ref: '#/components/schemas/BriefOwner'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTag'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        created:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        last_updated:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+      required:
+      - created
+      - display
+      - display_url
+      - id
+      - last_updated
+      - name
+      - url
+    NestedContactGroupRequest:
+      type: object
+      description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
+
+        dictionary of attributes which can be used to uniquely identify the related object. This class should be
+
+        subclassed to return a full representation of the related object on read.'
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+      required:
+      - name
+      - slug
+    NestedTenantGroup:
+      type: object
+      description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
+
+        dictionary of attributes which can be used to uniquely identify the related object. This class should be
+
+        subclassed to return a full representation of the related object on read.'
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
           type: string
           format: uri
           readOnly: true
@@ -6431,14 +6758,193 @@ components:
         name:
           type: string
           maxLength: 100
+        slug:
+          type: string
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        _depth:
+          type: integer
+          readOnly: true
+          title: ' depth'
+      required:
+      - _depth
+      - display
+      - display_url
+      - id
+      - name
+      - slug
+      - url
+    NestedTagRequest:
+      type: object
+      description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
+
+        dictionary of attributes which can be used to uniquely identify the related object. This class should be
+
+        subclassed to return a full representation of the related object on read.'
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          pattern: ^[-\w]+$
+          maxLength: 100
+        color:
+          type: string
+          minLength: 1
+          pattern: ^[0-9a-f]{6}$
+          maxLength: 6
+      required:
+      - name
+      - slug
+    PaginatedTenantGroupList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/TenantGroup'
+    TenantGroup:
+      type: object
+      description: Base serializer class for models inheriting from NestedGroupModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        slug:
+          type: string
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        parent:
+          allOf:
+          - $ref: '#/components/schemas/NestedTenantGroup'
         description:
           type: string
           maxLength: 200
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTag'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        created:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        last_updated:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        tenant_count:
+          type: integer
+          readOnly: true
+          default: 0
+        owner:
+          allOf:
+          - $ref: '#/components/schemas/BriefOwner'
+        comments:
+          type: string
+        _depth:
+          type: integer
+          readOnly: true
+          title: ' depth'
       required:
+      - _depth
+      - created
       - display
+      - display_url
       - id
+      - last_updated
       - name
+      - slug
+      - tenant_count
       - url
+    ContactAssignmentRequest:
+      type: object
+      description: Adds support for custom fields and tags.
+      properties:
+        object_type:
+          type: string
+        object_id:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        contact:
+          oneOf:
+          - type: integer
+          - $ref: '#/components/schemas/BriefContactRequest'
+        role:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefContactRoleRequest'
+        priority:
+          enum:
+          - primary
+          - secondary
+          - tertiary
+          - inactive
+          - ''
+          type: string
+          description: '* `primary` - Primary
+
+            * `secondary` - Secondary
+
+            * `tertiary` - Tertiary
+
+            * `inactive` - Inactive'
+          x-spec-enum-id: 0548fc537440bf9d
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+      required:
+      - contact
+      - object_id
+      - object_type
     Tenant:
       type: object
       description: Base serializer class for models inheriting from PrimaryModel.
@@ -6553,35 +7059,24 @@ components:
       - virtualmachine_count
       - vlan_count
       - vrf_count
-    PatchedContactRequest:
+    PatchedTenantRequest:
       type: object
       description: Base serializer class for models inheriting from PrimaryModel.
       properties:
-        groups:
-          type: array
-          items:
-            type: integer
         name:
           type: string
           minLength: 1
           maxLength: 100
-        title:
+        slug:
           type: string
+          minLength: 1
           maxLength: 100
-        phone:
-          type: string
-          maxLength: 50
-        email:
-          type: string
-          format: email
-          maxLength: 254
-        address:
-          type: string
-          maxLength: 200
-        link:
-          type: string
-          format: uri
-          maxLength: 200
+          pattern: ^[-a-zA-Z0-9_]+$
+        group:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefTenantGroupRequest'
         description:
           type: string
           maxLength: 200
@@ -6599,188 +7094,6 @@ components:
         custom_fields:
           type: object
           additionalProperties: {}
-    TenantGroup:
-      type: object
-      description: Base serializer class for models inheriting from NestedGroupModel.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display_url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          maxLength: 100
-        slug:
-          type: string
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        parent:
-          allOf:
-          - $ref: '#/components/schemas/NestedTenantGroup'
-        description:
-          type: string
-          maxLength: 200
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTag'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-        created:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          readOnly: true
-        last_updated:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          readOnly: true
-        tenant_count:
-          type: integer
-          readOnly: true
-          default: 0
-        owner:
-          allOf:
-          - $ref: '#/components/schemas/BriefOwner'
-        comments:
-          type: string
-        _depth:
-          type: integer
-          readOnly: true
-          title: ' depth'
-      required:
-      - _depth
-      - created
-      - display
-      - display_url
-      - id
-      - last_updated
-      - name
-      - slug
-      - tenant_count
-      - url
-    ContactAssignment:
-      type: object
-      description: Adds support for custom fields and tags.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        object_type:
-          type: string
-        object_id:
-          type: integer
-          maximum: 9223372036854775807
-          minimum: 0
-          format: int64
-        object:
-          readOnly: true
-        contact:
-          $ref: '#/components/schemas/BriefContact'
-        role:
-          allOf:
-          - $ref: '#/components/schemas/BriefContactRole'
-        priority:
-          type: object
-          properties:
-            value:
-              enum:
-              - primary
-              - secondary
-              - tertiary
-              - inactive
-              - ''
-              type: string
-              description: '* `primary` - Primary
-
-                * `secondary` - Secondary
-
-                * `tertiary` - Tertiary
-
-                * `inactive` - Inactive'
-              x-spec-enum-id: 0548fc537440bf9d
-            label:
-              type: string
-              enum:
-              - Primary
-              - Secondary
-              - Tertiary
-              - Inactive
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTag'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-        created:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          readOnly: true
-        last_updated:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          readOnly: true
-      required:
-      - contact
-      - created
-      - display
-      - id
-      - last_updated
-      - object
-      - object_id
-      - object_type
-      - url
-    PaginatedTenantGroupList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/TenantGroup'
     PaginatedContactGroupList:
       type: object
       required:
@@ -6806,6 +7119,70 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ContactGroup'
+    BriefContactRole:
+      type: object
+      description: Base serializer class for models inheriting from OrganizationalModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        slug:
+          type: string
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - display
+      - id
+      - name
+      - slug
+      - url
+    PatchedWritableTenantGroupRequest:
+      type: object
+      description: Base serializer class for models inheriting from NestedGroupModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        parent:
+          type:
+          - integer
+          - 'null'
+        description:
+          type: string
+          maxLength: 200
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
     WritableContactAssignmentRequest:
       type: object
       description: Adds support for custom fields and tags.
@@ -6856,6 +7233,26 @@ components:
       - contact
       - object_id
       - object_type
+    NestedTenantGroupRequest:
+      type: object
+      description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
+
+        dictionary of attributes which can be used to uniquely identify the related object. This class should be
+
+        subclassed to return a full representation of the related object on read.'
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+      required:
+      - name
+      - slug
     PaginatedContactRoleList:
       type: object
       required:
@@ -6881,7 +7278,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ContactRole'
-    NestedContactGroup:
+    NestedTag:
       type: object
       description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
 
@@ -6908,165 +7305,19 @@ components:
           maxLength: 100
         slug:
           type: string
+          pattern: ^[-\w]+$
           maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        _depth:
-          type: integer
-          readOnly: true
-          title: ' depth'
+        color:
+          type: string
+          pattern: ^[0-9a-f]{6}$
+          maxLength: 6
       required:
-      - _depth
       - display
       - display_url
       - id
       - name
       - slug
       - url
-    ContactRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        groups:
-          type: array
-          items:
-            type: integer
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        title:
-          type: string
-          maxLength: 100
-        phone:
-          type: string
-          maxLength: 50
-        email:
-          type: string
-          format: email
-          maxLength: 254
-        address:
-          type: string
-          maxLength: 200
-        link:
-          type: string
-          format: uri
-          maxLength: 200
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-      required:
-      - name
-    BriefContactRole:
-      type: object
-      description: Base serializer class for models inheriting from OrganizationalModel.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          maxLength: 100
-        slug:
-          type: string
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - display
-      - id
-      - name
-      - slug
-      - url
-    ContactAssignmentRequest:
-      type: object
-      description: Adds support for custom fields and tags.
-      properties:
-        object_type:
-          type: string
-        object_id:
-          type: integer
-          maximum: 9223372036854775807
-          minimum: 0
-          format: int64
-        contact:
-          oneOf:
-          - type: integer
-          - $ref: '#/components/schemas/BriefContactRequest'
-        role:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefContactRoleRequest'
-        priority:
-          enum:
-          - primary
-          - secondary
-          - tertiary
-          - inactive
-          - ''
-          type: string
-          description: '* `primary` - Primary
-
-            * `secondary` - Secondary
-
-            * `tertiary` - Tertiary
-
-            * `inactive` - Inactive'
-          x-spec-enum-id: 0548fc537440bf9d
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-      required:
-      - contact
-      - object_id
-      - object_type
-    NestedContactGroupRequest:
-      type: object
-      description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
-
-        dictionary of attributes which can be used to uniquely identify the related object. This class should be
-
-        subclassed to return a full representation of the related object on read.'
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        slug:
-          type: string
-          minLength: 1
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-      required:
-      - name
-      - slug
     TenantRequest:
       type: object
       description: Base serializer class for models inheriting from PrimaryModel.
@@ -7105,105 +7356,44 @@ components:
       required:
       - name
       - slug
-    TenantGroupRequest:
+    BriefContactRequest:
       type: object
-      description: Base serializer class for models inheriting from NestedGroupModel.
+      description: Base serializer class for models inheriting from PrimaryModel.
       properties:
         name:
           type: string
           minLength: 1
           maxLength: 100
-        slug:
-          type: string
-          minLength: 1
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        parent:
-          allOf:
-          - $ref: '#/components/schemas/NestedTenantGroupRequest'
         description:
           type: string
           maxLength: 200
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-        comments:
-          type: string
       required:
       - name
-      - slug
-    ContactRoleRequest:
+    PaginatedContactList:
       type: object
-      description: Base serializer class for models inheriting from OrganizationalModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        slug:
-          type: string
-          minLength: 1
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
       required:
-      - name
-      - slug
-    PatchedContactRoleRequest:
-      type: object
-      description: Base serializer class for models inheriting from OrganizationalModel.
+      - count
+      - results
       properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        slug:
-          type: string
-          minLength: 1
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-        comments:
-          type: string
-        tags:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
           type: array
           items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
+            $ref: '#/components/schemas/Contact'
     ContactRole:
       type: object
       description: Base serializer class for models inheriting from OrganizationalModel.
@@ -7265,9 +7455,9 @@ components:
       - name
       - slug
       - url
-    PatchedTenantRequest:
+    BriefTenantGroupRequest:
       type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
+      description: Base serializer class for models inheriting from NestedGroupModel.
       properties:
         name:
           type: string
@@ -7278,28 +7468,12 @@ components:
           minLength: 1
           maxLength: 100
           pattern: ^[-a-zA-Z0-9_]+$
-        group:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefTenantGroupRequest'
         description:
           type: string
           maxLength: 200
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
+      required:
+      - name
+      - slug
     PaginatedTenantList:
       type: object
       required:
@@ -7325,180 +7499,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Tenant'
-    NestedTag:
-      type: object
-      description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
-
-        dictionary of attributes which can be used to uniquely identify the related object. This class should be
-
-        subclassed to return a full representation of the related object on read.'
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display_url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          maxLength: 100
-        slug:
-          type: string
-          pattern: ^[-\w]+$
-          maxLength: 100
-        color:
-          type: string
-          pattern: ^[0-9a-f]{6}$
-          maxLength: 6
-      required:
-      - display
-      - display_url
-      - id
-      - name
-      - slug
-      - url
-    WritableContactGroupRequest:
-      type: object
-      description: Base serializer class for models inheriting from NestedGroupModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        slug:
-          type: string
-          minLength: 1
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        parent:
-          type:
-          - integer
-          - 'null'
-        description:
-          type: string
-          maxLength: 200
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-        comments:
-          type: string
-      required:
-      - name
-      - slug
-    Contact:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display_url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        groups:
-          type: array
-          items:
-            $ref: '#/components/schemas/ContactGroup'
-        name:
-          type: string
-          maxLength: 100
-        title:
-          type: string
-          maxLength: 100
-        phone:
-          type: string
-          maxLength: 50
-        email:
-          type: string
-          format: email
-          maxLength: 254
-        address:
-          type: string
-          maxLength: 200
-        link:
-          type: string
-          format: uri
-          maxLength: 200
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          allOf:
-          - $ref: '#/components/schemas/BriefOwner'
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTag'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-        created:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          readOnly: true
-        last_updated:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          readOnly: true
-      required:
-      - created
-      - display
-      - display_url
-      - id
-      - last_updated
-      - name
-      - url
-    NestedTenantGroupRequest:
-      type: object
-      description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
-
-        dictionary of attributes which can be used to uniquely identify the related object. This class should be
-
-        subclassed to return a full representation of the related object on read.'
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        slug:
-          type: string
-          minLength: 1
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-      required:
-      - name
-      - slug
   securitySchemes:
     cookieAuth:
       type: apiKey
