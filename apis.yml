@@ -258,6 +258,10 @@ apis:
   - type: Authentication
     url: https://docs.netbox.dev/en/stable/integrations/rest-api/#authentication
 common:
+- type: RateLimits
+  url: rate-limits/netbox-rate-limits.yml
+- type: FinOps
+  url: finops/netbox-finops.yml
 - type: Pricing
   url: https://netboxlabs.com/pricing/
 - type: Plans
