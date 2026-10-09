@@ -36,3 +36,30 @@ plans:
   period: none
   included_quota: Everything in Professional, plus SOC2 access, Enterprise SAML/Custom SSO, HA deployment,
     24×7 support with SLAs, private plugins
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models: []
+  units: []
+  plans:
+  - name: Starter
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods:
+    - none
+  - name: Professional
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods:
+    - none
+  - name: Premium
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods:
+    - none
