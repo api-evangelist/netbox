@@ -10903,147 +10903,7 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    BriefOwner:
-      type: object
-      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
-
-        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          maxLength: 100
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - display
-      - id
-      - name
-      - url
-    BriefTunnelGroup:
-      type: object
-      description: Base serializer class for models inheriting from OrganizationalModel.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          maxLength: 100
-        slug:
-          type: string
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        description:
-          type: string
-          maxLength: 200
-        tunnel_count:
-          type: integer
-          format: int64
-          readOnly: true
-      required:
-      - display
-      - id
-      - name
-      - slug
-      - tunnel_count
-      - url
-    BriefTenantRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        slug:
-          type: string
-          minLength: 1
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - name
-      - slug
-    L2VPNTermination:
-      type: object
-      description: Adds support for custom fields and tags.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display_url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        l2vpn:
-          $ref: '#/components/schemas/BriefL2VPN'
-        assigned_object_type:
-          type: string
-        assigned_object_id:
-          type: integer
-          maximum: 9223372036854775807
-          minimum: 0
-          format: int64
-        assigned_object:
-          readOnly: true
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTag'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-        created:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          readOnly: true
-        last_updated:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          readOnly: true
-      required:
-      - assigned_object
-      - assigned_object_id
-      - assigned_object_type
-      - created
-      - display
-      - display_url
-      - id
-      - l2vpn
-      - last_updated
-      - url
-    WritableIPSecProfileRequest:
+    WritableIKEProposalRequest:
       type: object
       description: Base serializer class for models inheriting from PrimaryModel.
       properties:
@@ -11054,341 +10914,157 @@ components:
         description:
           type: string
           maxLength: 200
-        mode:
+        authentication_method:
           enum:
-          - esp
-          - ah
+          - preshared-keys
+          - certificates
+          - rsa-signatures
+          - dsa-signatures
           type: string
-          description: '* `esp` - ESP
+          description: '* `preshared-keys` - Pre-shared keys
 
-            * `ah` - AH'
-          x-spec-enum-id: 87ac6ada0da14ccf
-        ike_policy:
-          oneOf:
-          - type: integer
-          - $ref: '#/components/schemas/BriefIKEPolicyRequest'
-        ipsec_policy:
-          oneOf:
-          - type: integer
-          - $ref: '#/components/schemas/BriefIPSecPolicyRequest'
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-      required:
-      - ike_policy
-      - ipsec_policy
-      - mode
-      - name
-    PaginatedTunnelList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/Tunnel'
-    PaginatedIKEPolicyList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/IKEPolicy'
-    BriefIPSecProfileRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - name
-    BriefOwnerRequest:
-      type: object
-      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
+            * `certificates` - Certificates
 
-        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
-      properties:
-        name:
+            * `rsa-signatures` - RSA signatures
+
+            * `dsa-signatures` - DSA signatures'
+          x-spec-enum-id: a21158c52d0c455a
+        encryption_algorithm:
+          enum:
+          - aes-128-cbc
+          - aes-128-gcm
+          - aes-192-cbc
+          - aes-192-gcm
+          - aes-256-cbc
+          - aes-256-gcm
+          - 3des-cbc
+          - des-cbc
           type: string
-          minLength: 1
-          maxLength: 100
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - name
-    BriefTenant:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        id:
+          description: '* `aes-128-cbc` - 128-bit AES (CBC)
+
+            * `aes-128-gcm` - 128-bit AES (GCM)
+
+            * `aes-192-cbc` - 192-bit AES (CBC)
+
+            * `aes-192-gcm` - 192-bit AES (GCM)
+
+            * `aes-256-cbc` - 256-bit AES (CBC)
+
+            * `aes-256-gcm` - 256-bit AES (GCM)
+
+            * `3des-cbc` - 3DES
+
+            * `des-cbc` - DES'
+          x-spec-enum-id: ae3dabd7b2b3cba2
+        authentication_algorithm:
+          enum:
+          - hmac-sha1
+          - hmac-sha256
+          - hmac-sha384
+          - hmac-sha512
+          - hmac-md5
+          - ''
+          - null
+          type:
+          - string
+          - 'null'
+          description: '* `hmac-sha1` - SHA-1 HMAC
+
+            * `hmac-sha256` - SHA-256 HMAC
+
+            * `hmac-sha384` - SHA-384 HMAC
+
+            * `hmac-sha512` - SHA-512 HMAC
+
+            * `hmac-md5` - MD5 HMAC'
+          x-spec-enum-id: 0a7ca69695b483a7
+        group:
+          enum:
+          - 1
+          - 2
+          - 5
+          - 14
+          - 15
+          - 16
+          - 17
+          - 18
+          - 19
+          - 20
+          - 21
+          - 22
+          - 23
+          - 24
+          - 25
+          - 26
+          - 27
+          - 28
+          - 29
+          - 30
+          - 31
+          - 32
+          - 33
+          - 34
           type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          maxLength: 100
-        slug:
-          type: string
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - display
-      - id
-      - name
-      - slug
-      - url
-    BriefIPAddressRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        address:
-          type: string
-          minLength: 1
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - address
-    BriefL2VPNRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        identifier:
+          x-spec-enum-id: dbef43be795462a8
+          description: 'Diffie-Hellman group ID
+
+
+            * `1` - Group 1
+
+            * `2` - Group 2
+
+            * `5` - Group 5
+
+            * `14` - Group 14
+
+            * `15` - Group 15
+
+            * `16` - Group 16
+
+            * `17` - Group 17
+
+            * `18` - Group 18
+
+            * `19` - Group 19
+
+            * `20` - Group 20
+
+            * `21` - Group 21
+
+            * `22` - Group 22
+
+            * `23` - Group 23
+
+            * `24` - Group 24
+
+            * `25` - Group 25
+
+            * `26` - Group 26
+
+            * `27` - Group 27
+
+            * `28` - Group 28
+
+            * `29` - Group 29
+
+            * `30` - Group 30
+
+            * `31` - Group 31
+
+            * `32` - Group 32
+
+            * `33` - Group 33
+
+            * `34` - Group 34'
+          minimum: 0
+          maximum: 32767
+        sa_lifetime:
           type:
           - integer
           - 'null'
-          maximum: 9223372036854775807
-          minimum: -9223372036854775808
-          format: int64
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        slug:
-          type: string
-          minLength: 1
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        type:
-          enum:
-          - vpws
-          - vpls
-          - vxlan
-          - vxlan-evpn
-          - mpls-evpn
-          - pbb-evpn
-          - evpn-vpws
-          - epl
-          - evpl
-          - ep-lan
-          - evp-lan
-          - ep-tree
-          - evp-tree
-          - spb
-          type: string
-          description: '* `vpws` - VPWS
-
-            * `vpls` - VPLS
-
-            * `vxlan` - VXLAN
-
-            * `vxlan-evpn` - VXLAN-EVPN
-
-            * `mpls-evpn` - MPLS EVPN
-
-            * `pbb-evpn` - PBB EVPN
-
-            * `evpn-vpws` - EVPN VPWS
-
-            * `epl` - EPL
-
-            * `evpl` - EVPL
-
-            * `ep-lan` - Ethernet Private LAN
-
-            * `evp-lan` - Ethernet Virtual Private LAN
-
-            * `ep-tree` - Ethernet Private Tree
-
-            * `evp-tree` - Ethernet Virtual Private Tree
-
-            * `spb` - SPB'
-          x-spec-enum-id: 0a46f8056d717efc
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - name
-      - slug
-    IPSecProfile:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display_url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          maxLength: 100
-        description:
-          type: string
-          maxLength: 200
-        mode:
-          type: object
-          properties:
-            value:
-              enum:
-              - esp
-              - ah
-              type: string
-              description: '* `esp` - ESP
-
-                * `ah` - AH'
-              x-spec-enum-id: 87ac6ada0da14ccf
-            label:
-              type: string
-              enum:
-              - ESP
-              - AH
-        ike_policy:
-          $ref: '#/components/schemas/BriefIKEPolicy'
-        ipsec_policy:
-          $ref: '#/components/schemas/BriefIPSecPolicy'
-        owner:
-          allOf:
-          - $ref: '#/components/schemas/BriefOwner'
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTag'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-        created:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          readOnly: true
-        last_updated:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          readOnly: true
-      required:
-      - created
-      - display
-      - display_url
-      - id
-      - ike_policy
-      - ipsec_policy
-      - last_updated
-      - mode
-      - name
-      - url
-    IPSecProfileRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        description:
-          type: string
-          maxLength: 200
-        mode:
-          enum:
-          - esp
-          - ah
-          type: string
-          description: '* `esp` - ESP
-
-            * `ah` - AH'
-          x-spec-enum-id: 87ac6ada0da14ccf
-        ike_policy:
-          oneOf:
-          - type: integer
-          - $ref: '#/components/schemas/BriefIKEPolicyRequest'
-        ipsec_policy:
-          oneOf:
-          - type: integer
-          - $ref: '#/components/schemas/BriefIPSecPolicyRequest'
+          maximum: 2147483647
+          minimum: 0
+          description: Security association lifetime (in seconds)
         owner:
           oneOf:
           - type: integer
@@ -11404,48 +11080,35 @@ components:
           type: object
           additionalProperties: {}
       required:
-      - ike_policy
-      - ipsec_policy
-      - mode
+      - authentication_method
+      - encryption_algorithm
+      - group
       - name
-    BriefIKEPolicy:
+    NestedTagRequest:
       type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          maxLength: 100
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - display
-      - id
-      - name
-      - url
-    BriefIPSecPolicyRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
+      description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
+
+        dictionary of attributes which can be used to uniquely identify the related object. This class should be
+
+        subclassed to return a full representation of the related object on read.'
       properties:
         name:
           type: string
           minLength: 1
           maxLength: 100
-        description:
+        slug:
           type: string
-          maxLength: 200
+          minLength: 1
+          pattern: ^[-\w]+$
+          maxLength: 100
+        color:
+          type: string
+          minLength: 1
+          pattern: ^[0-9a-f]{6}$
+          maxLength: 6
       required:
       - name
+      - slug
     IPSecPolicy:
       type: object
       description: Base serializer class for models inheriting from PrimaryModel.
@@ -11611,114 +11274,7 @@ components:
       - last_updated
       - name
       - url
-    PatchedWritableL2VPNRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        identifier:
-          type:
-          - integer
-          - 'null'
-          maximum: 9223372036854775807
-          minimum: -9223372036854775808
-          format: int64
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        slug:
-          type: string
-          minLength: 1
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        type:
-          enum:
-          - vpws
-          - vpls
-          - vxlan
-          - vxlan-evpn
-          - mpls-evpn
-          - pbb-evpn
-          - evpn-vpws
-          - epl
-          - evpl
-          - ep-lan
-          - evp-lan
-          - ep-tree
-          - evp-tree
-          - spb
-          type: string
-          description: '* `vpws` - VPWS
-
-            * `vpls` - VPLS
-
-            * `vxlan` - VXLAN
-
-            * `vxlan-evpn` - VXLAN-EVPN
-
-            * `mpls-evpn` - MPLS EVPN
-
-            * `pbb-evpn` - PBB EVPN
-
-            * `evpn-vpws` - EVPN VPWS
-
-            * `epl` - EPL
-
-            * `evpl` - EVPL
-
-            * `ep-lan` - Ethernet Private LAN
-
-            * `evp-lan` - Ethernet Virtual Private LAN
-
-            * `ep-tree` - Ethernet Private Tree
-
-            * `evp-tree` - Ethernet Virtual Private Tree
-
-            * `spb` - SPB'
-          x-spec-enum-id: 0a46f8056d717efc
-        status:
-          enum:
-          - active
-          - planned
-          - decommissioning
-          type: string
-          description: '* `active` - Active
-
-            * `planned` - Planned
-
-            * `decommissioning` - Decommissioning'
-          x-spec-enum-id: 8b9dc8efc7c3d5b0
-        import_targets:
-          type: array
-          items:
-            type: integer
-        export_targets:
-          type: array
-          items:
-            type: integer
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-        comments:
-          type: string
-        tenant:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefTenantRequest'
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-    BriefIKEPolicyRequest:
+    PatchedWritableIKEProposalRequest:
       type: object
       description: Base serializer class for models inheriting from PrimaryModel.
       properties:
@@ -11729,136 +11285,199 @@ components:
         description:
           type: string
           maxLength: 200
-      required:
-      - name
-    PatchedWritableTunnelRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        status:
+        authentication_method:
           enum:
-          - planned
-          - active
-          - disabled
+          - preshared-keys
+          - certificates
+          - rsa-signatures
+          - dsa-signatures
           type: string
-          description: '* `planned` - Planned
+          description: '* `preshared-keys` - Pre-shared keys
 
-            * `active` - Active
+            * `certificates` - Certificates
 
-            * `disabled` - Disabled'
-          x-spec-enum-id: 2431ef62c418f485
-        group:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefTunnelGroupRequest'
-        encapsulation:
+            * `rsa-signatures` - RSA signatures
+
+            * `dsa-signatures` - DSA signatures'
+          x-spec-enum-id: a21158c52d0c455a
+        encryption_algorithm:
           enum:
-          - ipsec-transport
-          - ipsec-tunnel
-          - ip-ip
-          - gre
-          - wireguard
-          - openvpn
-          - l2tp
-          - pptp
+          - aes-128-cbc
+          - aes-128-gcm
+          - aes-192-cbc
+          - aes-192-gcm
+          - aes-256-cbc
+          - aes-256-gcm
+          - 3des-cbc
+          - des-cbc
           type: string
-          description: '* `ipsec-transport` - IPsec - Transport
+          description: '* `aes-128-cbc` - 128-bit AES (CBC)
 
-            * `ipsec-tunnel` - IPsec - Tunnel
+            * `aes-128-gcm` - 128-bit AES (GCM)
 
-            * `ip-ip` - IP-in-IP
+            * `aes-192-cbc` - 192-bit AES (CBC)
 
-            * `gre` - GRE
+            * `aes-192-gcm` - 192-bit AES (GCM)
 
-            * `wireguard` - WireGuard
+            * `aes-256-cbc` - 256-bit AES (CBC)
 
-            * `openvpn` - OpenVPN
+            * `aes-256-gcm` - 256-bit AES (GCM)
 
-            * `l2tp` - L2TP
+            * `3des-cbc` - 3DES
 
-            * `pptp` - PPTP'
-          x-spec-enum-id: 4f3254459f0e94f0
-        ipsec_profile:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefIPSecProfileRequest'
-        tenant:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefTenantRequest'
-        tunnel_id:
-          type:
-          - integer
-          - 'null'
-          maximum: 9223372036854775807
-          minimum: 0
-          format: int64
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-    WritableIKEPolicyRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        description:
-          type: string
-          maxLength: 200
-        version:
+            * `des-cbc` - DES'
+          x-spec-enum-id: ae3dabd7b2b3cba2
+        authentication_algorithm:
           enum:
-          - 1
-          - 2
-          type: integer
-          description: '* `1` - IKEv1
-
-            * `2` - IKEv2'
-          x-spec-enum-id: 00872b77916a1fde
-          minimum: 0
-          maximum: 32767
-        mode:
-          enum:
-          - aggressive
-          - main
+          - hmac-sha1
+          - hmac-sha256
+          - hmac-sha384
+          - hmac-sha512
+          - hmac-md5
           - ''
           - null
           type:
           - string
           - 'null'
-          description: '* `aggressive` - Aggressive
+          description: '* `hmac-sha1` - SHA-1 HMAC
 
-            * `main` - Main'
-          x-spec-enum-id: 64c1be7bdb2548ca
-        proposals:
+            * `hmac-sha256` - SHA-256 HMAC
+
+            * `hmac-sha384` - SHA-384 HMAC
+
+            * `hmac-sha512` - SHA-512 HMAC
+
+            * `hmac-md5` - MD5 HMAC'
+          x-spec-enum-id: 0a7ca69695b483a7
+        group:
+          enum:
+          - 1
+          - 2
+          - 5
+          - 14
+          - 15
+          - 16
+          - 17
+          - 18
+          - 19
+          - 20
+          - 21
+          - 22
+          - 23
+          - 24
+          - 25
+          - 26
+          - 27
+          - 28
+          - 29
+          - 30
+          - 31
+          - 32
+          - 33
+          - 34
+          type: integer
+          x-spec-enum-id: dbef43be795462a8
+          description: 'Diffie-Hellman group ID
+
+
+            * `1` - Group 1
+
+            * `2` - Group 2
+
+            * `5` - Group 5
+
+            * `14` - Group 14
+
+            * `15` - Group 15
+
+            * `16` - Group 16
+
+            * `17` - Group 17
+
+            * `18` - Group 18
+
+            * `19` - Group 19
+
+            * `20` - Group 20
+
+            * `21` - Group 21
+
+            * `22` - Group 22
+
+            * `23` - Group 23
+
+            * `24` - Group 24
+
+            * `25` - Group 25
+
+            * `26` - Group 26
+
+            * `27` - Group 27
+
+            * `28` - Group 28
+
+            * `29` - Group 29
+
+            * `30` - Group 30
+
+            * `31` - Group 31
+
+            * `32` - Group 32
+
+            * `33` - Group 33
+
+            * `34` - Group 34'
+          minimum: 0
+          maximum: 32767
+        sa_lifetime:
+          type:
+          - integer
+          - 'null'
+          maximum: 2147483647
+          minimum: 0
+          description: Security association lifetime (in seconds)
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        tags:
           type: array
           items:
-            type: integer
-        preshared_key:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+    IPSecProfileRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        name:
           type: string
-          title: Pre-shared key
+          minLength: 1
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+        mode:
+          enum:
+          - esp
+          - ah
+          type: string
+          description: '* `esp` - ESP
+
+            * `ah` - AH'
+          x-spec-enum-id: 87ac6ada0da14ccf
+        ike_policy:
+          oneOf:
+          - type: integer
+          - $ref: '#/components/schemas/BriefIKEPolicyRequest'
+        ipsec_policy:
+          oneOf:
+          - type: integer
+          - $ref: '#/components/schemas/BriefIPSecPolicyRequest'
         owner:
           oneOf:
           - type: integer
@@ -11874,32 +11493,69 @@ components:
           type: object
           additionalProperties: {}
       required:
+      - ike_policy
+      - ipsec_policy
+      - mode
       - name
-    PaginatedL2VPNTerminationList:
+    L2VPNTermination:
       type: object
-      required:
-      - count
-      - results
+      description: Adds support for custom fields and tags.
       properties:
-        count:
+        id:
           type: integer
-          example: 123
-        next:
-          type:
-          - string
-          - 'null'
+          readOnly: true
+        url:
+          type: string
           format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type:
-          - string
-          - 'null'
+          readOnly: true
+        display_url:
+          type: string
           format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        l2vpn:
+          $ref: '#/components/schemas/BriefL2VPN'
+        assigned_object_type:
+          type: string
+        assigned_object_id:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        assigned_object:
+          readOnly: true
+        tags:
           type: array
           items:
-            $ref: '#/components/schemas/L2VPNTermination'
+            $ref: '#/components/schemas/NestedTag'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        created:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        last_updated:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+      required:
+      - assigned_object
+      - assigned_object_id
+      - assigned_object_type
+      - created
+      - display
+      - display_url
+      - id
+      - l2vpn
+      - last_updated
+      - url
     WritableIPSecProposalRequest:
       type: object
       description: Base serializer class for models inheriting from PrimaryModel.
@@ -11998,17 +11654,10 @@ components:
           additionalProperties: {}
       required:
       - name
-    WritableL2VPNRequest:
+    PatchedTunnelGroupRequest:
       type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
+      description: Base serializer class for models inheriting from OrganizationalModel.
       properties:
-        identifier:
-          type:
-          - integer
-          - 'null'
-          maximum: 9223372036854775807
-          minimum: -9223372036854775808
-          format: int64
         name:
           type: string
           minLength: 1
@@ -12018,71 +11667,6 @@ components:
           minLength: 1
           maxLength: 100
           pattern: ^[-a-zA-Z0-9_]+$
-        type:
-          enum:
-          - vpws
-          - vpls
-          - vxlan
-          - vxlan-evpn
-          - mpls-evpn
-          - pbb-evpn
-          - evpn-vpws
-          - epl
-          - evpl
-          - ep-lan
-          - evp-lan
-          - ep-tree
-          - evp-tree
-          - spb
-          type: string
-          description: '* `vpws` - VPWS
-
-            * `vpls` - VPLS
-
-            * `vxlan` - VXLAN
-
-            * `vxlan-evpn` - VXLAN-EVPN
-
-            * `mpls-evpn` - MPLS EVPN
-
-            * `pbb-evpn` - PBB EVPN
-
-            * `evpn-vpws` - EVPN VPWS
-
-            * `epl` - EPL
-
-            * `evpl` - EVPL
-
-            * `ep-lan` - Ethernet Private LAN
-
-            * `evp-lan` - Ethernet Virtual Private LAN
-
-            * `ep-tree` - Ethernet Private Tree
-
-            * `evp-tree` - Ethernet Virtual Private Tree
-
-            * `spb` - SPB'
-          x-spec-enum-id: 0a46f8056d717efc
-        status:
-          enum:
-          - active
-          - planned
-          - decommissioning
-          type: string
-          description: '* `active` - Active
-
-            * `planned` - Planned
-
-            * `decommissioning` - Decommissioning'
-          x-spec-enum-id: 8b9dc8efc7c3d5b0
-        import_targets:
-          type: array
-          items:
-            type: integer
-        export_targets:
-          type: array
-          items:
-            type: integer
         description:
           type: string
           maxLength: 200
@@ -12093,11 +11677,6 @@ components:
             - $ref: '#/components/schemas/BriefOwnerRequest'
         comments:
           type: string
-        tenant:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefTenantRequest'
         tags:
           type: array
           items:
@@ -12105,11 +11684,7 @@ components:
         custom_fields:
           type: object
           additionalProperties: {}
-      required:
-      - name
-      - slug
-      - type
-    IKEPolicyRequest:
+    BriefIKEPolicyRequest:
       type: object
       description: Base serializer class for models inheriting from PrimaryModel.
       properties:
@@ -12120,49 +11695,228 @@ components:
         description:
           type: string
           maxLength: 200
-        version:
-          enum:
-          - 1
-          - 2
+      required:
+      - name
+    NestedTag:
+      type: object
+      description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
+
+        dictionary of attributes which can be used to uniquely identify the related object. This class should be
+
+        subclassed to return a full representation of the related object on read.'
+      properties:
+        id:
           type: integer
-          description: '* `1` - IKEv1
-
-            * `2` - IKEv2'
-          x-spec-enum-id: 00872b77916a1fde
-        mode:
-          enum:
-          - aggressive
-          - main
+          readOnly: true
+        url:
           type: string
-          description: '* `aggressive` - Aggressive
-
-            * `main` - Main'
-          x-spec-enum-id: 64c1be7bdb2548ca
-        proposals:
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        slug:
+          type: string
+          pattern: ^[-\w]+$
+          maxLength: 100
+        color:
+          type: string
+          pattern: ^[0-9a-f]{6}$
+          maxLength: 6
+      required:
+      - display
+      - display_url
+      - id
+      - name
+      - slug
+      - url
+    BriefIPAddressRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        address:
+          type: string
+          minLength: 1
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - address
+    PaginatedIKEProposalList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
           type: array
           items:
-            type: integer
-        preshared_key:
+            $ref: '#/components/schemas/IKEProposal'
+    IPSecProposal:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
           type: string
-          title: Pre-shared key
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+        encryption_algorithm:
+          type: object
+          properties:
+            value:
+              enum:
+              - aes-128-cbc
+              - aes-128-gcm
+              - aes-192-cbc
+              - aes-192-gcm
+              - aes-256-cbc
+              - aes-256-gcm
+              - 3des-cbc
+              - des-cbc
+              type: string
+              description: '* `aes-128-cbc` - 128-bit AES (CBC)
+
+                * `aes-128-gcm` - 128-bit AES (GCM)
+
+                * `aes-192-cbc` - 192-bit AES (CBC)
+
+                * `aes-192-gcm` - 192-bit AES (GCM)
+
+                * `aes-256-cbc` - 256-bit AES (CBC)
+
+                * `aes-256-gcm` - 256-bit AES (GCM)
+
+                * `3des-cbc` - 3DES
+
+                * `des-cbc` - DES'
+              x-spec-enum-id: ae3dabd7b2b3cba2
+            label:
+              type: string
+              enum:
+              - 128-bit AES (CBC)
+              - 128-bit AES (GCM)
+              - 192-bit AES (CBC)
+              - 192-bit AES (GCM)
+              - 256-bit AES (CBC)
+              - 256-bit AES (GCM)
+              - 3DES
+              - DES
+        authentication_algorithm:
+          type: object
+          properties:
+            value:
+              enum:
+              - hmac-sha1
+              - hmac-sha256
+              - hmac-sha384
+              - hmac-sha512
+              - hmac-md5
+              type: string
+              description: '* `hmac-sha1` - SHA-1 HMAC
+
+                * `hmac-sha256` - SHA-256 HMAC
+
+                * `hmac-sha384` - SHA-384 HMAC
+
+                * `hmac-sha512` - SHA-512 HMAC
+
+                * `hmac-md5` - MD5 HMAC'
+              x-spec-enum-id: 0a7ca69695b483a7
+            label:
+              type: string
+              enum:
+              - SHA-1 HMAC
+              - SHA-256 HMAC
+              - SHA-384 HMAC
+              - SHA-512 HMAC
+              - MD5 HMAC
+        sa_lifetime_seconds:
+          type:
+          - integer
+          - 'null'
+          maximum: 2147483647
+          minimum: 0
+          title: SA lifetime (seconds)
+          description: Security association lifetime (seconds)
+        sa_lifetime_data:
+          type:
+          - integer
+          - 'null'
+          maximum: 2147483647
+          minimum: 0
+          title: SA lifetime (KB)
+          description: Security association lifetime (in kilobytes)
         owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
+          allOf:
+          - $ref: '#/components/schemas/BriefOwner'
         comments:
           type: string
         tags:
           type: array
           items:
-            $ref: '#/components/schemas/NestedTagRequest'
+            $ref: '#/components/schemas/NestedTag'
         custom_fields:
           type: object
           additionalProperties: {}
+        created:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        last_updated:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
       required:
+      - created
+      - display
+      - display_url
+      - id
+      - last_updated
       - name
-      - version
-    TunnelRequest:
+      - url
+    PatchedWritableTunnelRequest:
       type: object
       description: Base serializer class for models inheriting from PrimaryModel.
       properties:
@@ -12248,101 +12002,6 @@ components:
         custom_fields:
           type: object
           additionalProperties: {}
-      required:
-      - encapsulation
-      - name
-      - status
-    TunnelGroup:
-      type: object
-      description: Base serializer class for models inheriting from OrganizationalModel.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display_url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          maxLength: 100
-        slug:
-          type: string
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          allOf:
-          - $ref: '#/components/schemas/BriefOwner'
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTag'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-        created:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          readOnly: true
-        last_updated:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          readOnly: true
-        tunnel_count:
-          type: integer
-          format: int64
-          readOnly: true
-      required:
-      - created
-      - display
-      - display_url
-      - id
-      - last_updated
-      - name
-      - slug
-      - tunnel_count
-      - url
-    BriefIPSecPolicy:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          maxLength: 100
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - display
-      - id
-      - name
-      - url
     IPSecPolicyRequest:
       type: object
       description: Base serializer class for models inheriting from PrimaryModel.
@@ -12449,31 +12108,63 @@ components:
           additionalProperties: {}
       required:
       - name
-    BriefIPSecProfile:
+    PatchedWritableIPSecProfileRequest:
       type: object
       description: Base serializer class for models inheriting from PrimaryModel.
       properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
         name:
           type: string
+          minLength: 1
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+        mode:
+          enum:
+          - esp
+          - ah
+          type: string
+          description: '* `esp` - ESP
+
+            * `ah` - AH'
+          x-spec-enum-id: 87ac6ada0da14ccf
+        ike_policy:
+          oneOf:
+          - type: integer
+          - $ref: '#/components/schemas/BriefIKEPolicyRequest'
+        ipsec_policy:
+          oneOf:
+          - type: integer
+          - $ref: '#/components/schemas/BriefIPSecPolicyRequest'
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+    BriefOwnerRequest:
+      type: object
+      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
+
+        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
+      properties:
+        name:
+          type: string
+          minLength: 1
           maxLength: 100
         description:
           type: string
           maxLength: 200
       required:
-      - display
-      - id
       - name
-      - url
     RouteTarget:
       type: object
       description: Base serializer class for models inheriting from PrimaryModel.
@@ -12533,6 +12224,824 @@ components:
       - id
       - last_updated
       - name
+      - url
+    BriefIPSecPolicyRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - name
+    TunnelTermination:
+      type: object
+      description: Adds support for custom fields and tags.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        tunnel:
+          $ref: '#/components/schemas/BriefTunnel'
+        role:
+          type: object
+          properties:
+            value:
+              enum:
+              - peer
+              - hub
+              - spoke
+              type: string
+              description: '* `peer` - Peer
+
+                * `hub` - Hub
+
+                * `spoke` - Spoke'
+              x-spec-enum-id: 0b3bfadcebd86b58
+            label:
+              type: string
+              enum:
+              - Peer
+              - Hub
+              - Spoke
+        termination_type:
+          type: string
+        termination_id:
+          type:
+          - integer
+          - 'null'
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        termination:
+          readOnly: true
+        outside_ip:
+          allOf:
+          - $ref: '#/components/schemas/BriefIPAddress'
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTag'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        created:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        last_updated:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+      required:
+      - created
+      - display
+      - display_url
+      - id
+      - last_updated
+      - role
+      - termination
+      - termination_type
+      - tunnel
+      - url
+    PaginatedIPSecPolicyList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/IPSecPolicy'
+    BriefTenant:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        slug:
+          type: string
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - display
+      - id
+      - name
+      - slug
+      - url
+    WritableTunnelTerminationRequest:
+      type: object
+      description: Adds support for custom fields and tags.
+      properties:
+        tunnel:
+          oneOf:
+          - type: integer
+          - $ref: '#/components/schemas/BriefTunnelRequest'
+        role:
+          enum:
+          - peer
+          - hub
+          - spoke
+          type: string
+          description: '* `peer` - Peer
+
+            * `hub` - Hub
+
+            * `spoke` - Spoke'
+          x-spec-enum-id: 0b3bfadcebd86b58
+        termination_type:
+          type: string
+        termination_id:
+          type:
+          - integer
+          - 'null'
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        outside_ip:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefIPAddressRequest'
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+      required:
+      - termination_type
+      - tunnel
+    IKEPolicyRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+        version:
+          enum:
+          - 1
+          - 2
+          type: integer
+          description: '* `1` - IKEv1
+
+            * `2` - IKEv2'
+          x-spec-enum-id: 00872b77916a1fde
+        mode:
+          enum:
+          - aggressive
+          - main
+          type: string
+          description: '* `aggressive` - Aggressive
+
+            * `main` - Main'
+          x-spec-enum-id: 64c1be7bdb2548ca
+        proposals:
+          type: array
+          items:
+            type: integer
+        preshared_key:
+          type: string
+          title: Pre-shared key
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+      required:
+      - name
+      - version
+    WritableIKEPolicyRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+        version:
+          enum:
+          - 1
+          - 2
+          type: integer
+          description: '* `1` - IKEv1
+
+            * `2` - IKEv2'
+          x-spec-enum-id: 00872b77916a1fde
+          minimum: 0
+          maximum: 32767
+        mode:
+          enum:
+          - aggressive
+          - main
+          - ''
+          - null
+          type:
+          - string
+          - 'null'
+          description: '* `aggressive` - Aggressive
+
+            * `main` - Main'
+          x-spec-enum-id: 64c1be7bdb2548ca
+        proposals:
+          type: array
+          items:
+            type: integer
+        preshared_key:
+          type: string
+          title: Pre-shared key
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+      required:
+      - name
+    PatchedWritableTunnelTerminationRequest:
+      type: object
+      description: Adds support for custom fields and tags.
+      properties:
+        tunnel:
+          oneOf:
+          - type: integer
+          - $ref: '#/components/schemas/BriefTunnelRequest'
+        role:
+          enum:
+          - peer
+          - hub
+          - spoke
+          type: string
+          description: '* `peer` - Peer
+
+            * `hub` - Hub
+
+            * `spoke` - Spoke'
+          x-spec-enum-id: 0b3bfadcebd86b58
+        termination_type:
+          type: string
+        termination_id:
+          type:
+          - integer
+          - 'null'
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        outside_ip:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefIPAddressRequest'
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+    PatchedWritableIPSecProposalRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+        encryption_algorithm:
+          enum:
+          - aes-128-cbc
+          - aes-128-gcm
+          - aes-192-cbc
+          - aes-192-gcm
+          - aes-256-cbc
+          - aes-256-gcm
+          - 3des-cbc
+          - des-cbc
+          - ''
+          - null
+          type:
+          - string
+          - 'null'
+          description: '* `aes-128-cbc` - 128-bit AES (CBC)
+
+            * `aes-128-gcm` - 128-bit AES (GCM)
+
+            * `aes-192-cbc` - 192-bit AES (CBC)
+
+            * `aes-192-gcm` - 192-bit AES (GCM)
+
+            * `aes-256-cbc` - 256-bit AES (CBC)
+
+            * `aes-256-gcm` - 256-bit AES (GCM)
+
+            * `3des-cbc` - 3DES
+
+            * `des-cbc` - DES'
+          x-spec-enum-id: ae3dabd7b2b3cba2
+          title: Encryption
+        authentication_algorithm:
+          enum:
+          - hmac-sha1
+          - hmac-sha256
+          - hmac-sha384
+          - hmac-sha512
+          - hmac-md5
+          - ''
+          - null
+          type:
+          - string
+          - 'null'
+          description: '* `hmac-sha1` - SHA-1 HMAC
+
+            * `hmac-sha256` - SHA-256 HMAC
+
+            * `hmac-sha384` - SHA-384 HMAC
+
+            * `hmac-sha512` - SHA-512 HMAC
+
+            * `hmac-md5` - MD5 HMAC'
+          x-spec-enum-id: 0a7ca69695b483a7
+          title: Authentication
+        sa_lifetime_seconds:
+          type:
+          - integer
+          - 'null'
+          maximum: 2147483647
+          minimum: 0
+          title: SA lifetime (seconds)
+          description: Security association lifetime (seconds)
+        sa_lifetime_data:
+          type:
+          - integer
+          - 'null'
+          maximum: 2147483647
+          minimum: 0
+          title: SA lifetime (KB)
+          description: Security association lifetime (in kilobytes)
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+    BriefIKEPolicy:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - display
+      - id
+      - name
+      - url
+    TunnelGroup:
+      type: object
+      description: Base serializer class for models inheriting from OrganizationalModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        slug:
+          type: string
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          allOf:
+          - $ref: '#/components/schemas/BriefOwner'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTag'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        created:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        last_updated:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        tunnel_count:
+          type: integer
+          format: int64
+          readOnly: true
+      required:
+      - created
+      - display
+      - display_url
+      - id
+      - last_updated
+      - name
+      - slug
+      - tunnel_count
+      - url
+    PaginatedTunnelGroupList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/TunnelGroup'
+    BriefIPAddress:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        family:
+          type: object
+          properties:
+            value:
+              enum:
+              - 4
+              - 6
+              type: integer
+              description: '* `4` - IPv4
+
+                * `6` - IPv6'
+              x-spec-enum-id: d72003fd1af3603d
+            label:
+              type: string
+              enum:
+              - IPv4
+              - IPv6
+          readOnly: true
+        address:
+          type: string
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - address
+      - display
+      - family
+      - id
+      - url
+    PatchedWritableIPSecPolicyRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+        proposals:
+          type: array
+          items:
+            type: integer
+        pfs_group:
+          enum:
+          - 1
+          - 2
+          - 5
+          - 14
+          - 15
+          - 16
+          - 17
+          - 18
+          - 19
+          - 20
+          - 21
+          - 22
+          - 23
+          - 24
+          - 25
+          - 26
+          - 27
+          - 28
+          - 29
+          - 30
+          - 31
+          - 32
+          - 33
+          - 34
+          - null
+          type:
+          - integer
+          - 'null'
+          x-spec-enum-id: dbef43be795462a8
+          description: 'Diffie-Hellman group for Perfect Forward Secrecy
+
+
+            * `1` - Group 1
+
+            * `2` - Group 2
+
+            * `5` - Group 5
+
+            * `14` - Group 14
+
+            * `15` - Group 15
+
+            * `16` - Group 16
+
+            * `17` - Group 17
+
+            * `18` - Group 18
+
+            * `19` - Group 19
+
+            * `20` - Group 20
+
+            * `21` - Group 21
+
+            * `22` - Group 22
+
+            * `23` - Group 23
+
+            * `24` - Group 24
+
+            * `25` - Group 25
+
+            * `26` - Group 26
+
+            * `27` - Group 27
+
+            * `28` - Group 28
+
+            * `29` - Group 29
+
+            * `30` - Group 30
+
+            * `31` - Group 31
+
+            * `32` - Group 32
+
+            * `33` - Group 33
+
+            * `34` - Group 34'
+          minimum: 0
+          maximum: 32767
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+    BriefL2VPN:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        identifier:
+          type:
+          - integer
+          - 'null'
+          maximum: 9223372036854775807
+          minimum: -9223372036854775808
+          format: int64
+        name:
+          type: string
+          maxLength: 100
+        slug:
+          type: string
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        type:
+          type: object
+          properties:
+            value:
+              enum:
+              - vpws
+              - vpls
+              - vxlan
+              - vxlan-evpn
+              - mpls-evpn
+              - pbb-evpn
+              - evpn-vpws
+              - epl
+              - evpl
+              - ep-lan
+              - evp-lan
+              - ep-tree
+              - evp-tree
+              - spb
+              type: string
+              description: '* `vpws` - VPWS
+
+                * `vpls` - VPLS
+
+                * `vxlan` - VXLAN
+
+                * `vxlan-evpn` - VXLAN-EVPN
+
+                * `mpls-evpn` - MPLS EVPN
+
+                * `pbb-evpn` - PBB EVPN
+
+                * `evpn-vpws` - EVPN VPWS
+
+                * `epl` - EPL
+
+                * `evpl` - EVPL
+
+                * `ep-lan` - Ethernet Private LAN
+
+                * `evp-lan` - Ethernet Virtual Private LAN
+
+                * `ep-tree` - Ethernet Private Tree
+
+                * `evp-tree` - Ethernet Virtual Private Tree
+
+                * `spb` - SPB'
+              x-spec-enum-id: 0a46f8056d717efc
+            label:
+              type: string
+              enum:
+              - VPWS
+              - VPLS
+              - VXLAN
+              - VXLAN-EVPN
+              - MPLS EVPN
+              - PBB EVPN
+              - EVPN VPWS
+              - EPL
+              - EVPL
+              - Ethernet Private LAN
+              - Ethernet Virtual Private LAN
+              - Ethernet Private Tree
+              - Ethernet Virtual Private Tree
+              - SPB
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - display
+      - id
+      - name
+      - slug
       - url
     L2VPNRequest:
       type: object
@@ -12644,6 +13153,1786 @@ components:
       required:
       - name
       - slug
+    L2VPNTerminationRequest:
+      type: object
+      description: Adds support for custom fields and tags.
+      properties:
+        l2vpn:
+          oneOf:
+          - type: integer
+          - $ref: '#/components/schemas/BriefL2VPNRequest'
+        assigned_object_type:
+          type: string
+        assigned_object_id:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+      required:
+      - assigned_object_id
+      - assigned_object_type
+      - l2vpn
+    BriefIPSecProfile:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - display
+      - id
+      - name
+      - url
+    BriefTunnelRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - name
+    PaginatedIPSecProfileList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/IPSecProfile'
+    PaginatedTunnelList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tunnel'
+    BriefIPSecProfileRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - name
+    Tunnel:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        status:
+          type: object
+          properties:
+            value:
+              enum:
+              - planned
+              - active
+              - disabled
+              type: string
+              description: '* `planned` - Planned
+
+                * `active` - Active
+
+                * `disabled` - Disabled'
+              x-spec-enum-id: 2431ef62c418f485
+            label:
+              type: string
+              enum:
+              - Planned
+              - Active
+              - Disabled
+        group:
+          allOf:
+          - $ref: '#/components/schemas/BriefTunnelGroup'
+        encapsulation:
+          type: object
+          properties:
+            value:
+              enum:
+              - ipsec-transport
+              - ipsec-tunnel
+              - ip-ip
+              - gre
+              - wireguard
+              - openvpn
+              - l2tp
+              - pptp
+              type: string
+              description: '* `ipsec-transport` - IPsec - Transport
+
+                * `ipsec-tunnel` - IPsec - Tunnel
+
+                * `ip-ip` - IP-in-IP
+
+                * `gre` - GRE
+
+                * `wireguard` - WireGuard
+
+                * `openvpn` - OpenVPN
+
+                * `l2tp` - L2TP
+
+                * `pptp` - PPTP'
+              x-spec-enum-id: 4f3254459f0e94f0
+            label:
+              type: string
+              enum:
+              - IPsec - Transport
+              - IPsec - Tunnel
+              - IP-in-IP
+              - GRE
+              - WireGuard
+              - OpenVPN
+              - L2TP
+              - PPTP
+        ipsec_profile:
+          allOf:
+          - $ref: '#/components/schemas/BriefIPSecProfile'
+        tenant:
+          allOf:
+          - $ref: '#/components/schemas/BriefTenant'
+        tunnel_id:
+          type:
+          - integer
+          - 'null'
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          allOf:
+          - $ref: '#/components/schemas/BriefOwner'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTag'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        created:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        last_updated:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        terminations_count:
+          type: integer
+          format: int64
+          readOnly: true
+      required:
+      - created
+      - display
+      - display_url
+      - encapsulation
+      - id
+      - last_updated
+      - name
+      - status
+      - terminations_count
+      - url
+    PaginatedL2VPNTerminationList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/L2VPNTermination'
+    WritableTunnelRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        status:
+          enum:
+          - planned
+          - active
+          - disabled
+          type: string
+          description: '* `planned` - Planned
+
+            * `active` - Active
+
+            * `disabled` - Disabled'
+          x-spec-enum-id: 2431ef62c418f485
+        group:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefTunnelGroupRequest'
+        encapsulation:
+          enum:
+          - ipsec-transport
+          - ipsec-tunnel
+          - ip-ip
+          - gre
+          - wireguard
+          - openvpn
+          - l2tp
+          - pptp
+          type: string
+          description: '* `ipsec-transport` - IPsec - Transport
+
+            * `ipsec-tunnel` - IPsec - Tunnel
+
+            * `ip-ip` - IP-in-IP
+
+            * `gre` - GRE
+
+            * `wireguard` - WireGuard
+
+            * `openvpn` - OpenVPN
+
+            * `l2tp` - L2TP
+
+            * `pptp` - PPTP'
+          x-spec-enum-id: 4f3254459f0e94f0
+        ipsec_profile:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefIPSecProfileRequest'
+        tenant:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefTenantRequest'
+        tunnel_id:
+          type:
+          - integer
+          - 'null'
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+      required:
+      - encapsulation
+      - name
+    BriefOwner:
+      type: object
+      description: 'Extends the built-in ModelSerializer to enforce calling full_clean() on a copy of the associated instance during
+
+        validation. (DRF does not do this by default; see https://github.com/encode/django-rest-framework/issues/3144)'
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - display
+      - id
+      - name
+      - url
+    BriefTunnelGroupRequest:
+      type: object
+      description: Base serializer class for models inheriting from OrganizationalModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - name
+      - slug
+    IKEPolicy:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+        version:
+          type: object
+          properties:
+            value:
+              enum:
+              - 1
+              - 2
+              type: integer
+              description: '* `1` - IKEv1
+
+                * `2` - IKEv2'
+              x-spec-enum-id: 00872b77916a1fde
+            label:
+              type: string
+              enum:
+              - IKEv1
+              - IKEv2
+        mode:
+          type: object
+          properties:
+            value:
+              enum:
+              - aggressive
+              - main
+              type: string
+              description: '* `aggressive` - Aggressive
+
+                * `main` - Main'
+              x-spec-enum-id: 64c1be7bdb2548ca
+            label:
+              type: string
+              enum:
+              - Aggressive
+              - Main
+        proposals:
+          type: array
+          items:
+            $ref: '#/components/schemas/IKEProposal'
+        preshared_key:
+          type: string
+          title: Pre-shared key
+        owner:
+          allOf:
+          - $ref: '#/components/schemas/BriefOwner'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTag'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        created:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        last_updated:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+      required:
+      - created
+      - display
+      - display_url
+      - id
+      - last_updated
+      - name
+      - url
+      - version
+    BriefTenantRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - name
+      - slug
+    WritableIPSecProfileRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+        mode:
+          enum:
+          - esp
+          - ah
+          type: string
+          description: '* `esp` - ESP
+
+            * `ah` - AH'
+          x-spec-enum-id: 87ac6ada0da14ccf
+        ike_policy:
+          oneOf:
+          - type: integer
+          - $ref: '#/components/schemas/BriefIKEPolicyRequest'
+        ipsec_policy:
+          oneOf:
+          - type: integer
+          - $ref: '#/components/schemas/BriefIPSecPolicyRequest'
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+      required:
+      - ike_policy
+      - ipsec_policy
+      - mode
+      - name
+    BriefTunnelGroup:
+      type: object
+      description: Base serializer class for models inheriting from OrganizationalModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        slug:
+          type: string
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+          maxLength: 200
+        tunnel_count:
+          type: integer
+          format: int64
+          readOnly: true
+      required:
+      - display
+      - id
+      - name
+      - slug
+      - tunnel_count
+      - url
+    PaginatedTunnelTerminationList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/TunnelTermination'
+    PatchedWritableL2VPNRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        identifier:
+          type:
+          - integer
+          - 'null'
+          maximum: 9223372036854775807
+          minimum: -9223372036854775808
+          format: int64
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        type:
+          enum:
+          - vpws
+          - vpls
+          - vxlan
+          - vxlan-evpn
+          - mpls-evpn
+          - pbb-evpn
+          - evpn-vpws
+          - epl
+          - evpl
+          - ep-lan
+          - evp-lan
+          - ep-tree
+          - evp-tree
+          - spb
+          type: string
+          description: '* `vpws` - VPWS
+
+            * `vpls` - VPLS
+
+            * `vxlan` - VXLAN
+
+            * `vxlan-evpn` - VXLAN-EVPN
+
+            * `mpls-evpn` - MPLS EVPN
+
+            * `pbb-evpn` - PBB EVPN
+
+            * `evpn-vpws` - EVPN VPWS
+
+            * `epl` - EPL
+
+            * `evpl` - EVPL
+
+            * `ep-lan` - Ethernet Private LAN
+
+            * `evp-lan` - Ethernet Virtual Private LAN
+
+            * `ep-tree` - Ethernet Private Tree
+
+            * `evp-tree` - Ethernet Virtual Private Tree
+
+            * `spb` - SPB'
+          x-spec-enum-id: 0a46f8056d717efc
+        status:
+          enum:
+          - active
+          - planned
+          - decommissioning
+          type: string
+          description: '* `active` - Active
+
+            * `planned` - Planned
+
+            * `decommissioning` - Decommissioning'
+          x-spec-enum-id: 8b9dc8efc7c3d5b0
+        import_targets:
+          type: array
+          items:
+            type: integer
+        export_targets:
+          type: array
+          items:
+            type: integer
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        tenant:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefTenantRequest'
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+    TunnelRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        status:
+          enum:
+          - planned
+          - active
+          - disabled
+          type: string
+          description: '* `planned` - Planned
+
+            * `active` - Active
+
+            * `disabled` - Disabled'
+          x-spec-enum-id: 2431ef62c418f485
+        group:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefTunnelGroupRequest'
+        encapsulation:
+          enum:
+          - ipsec-transport
+          - ipsec-tunnel
+          - ip-ip
+          - gre
+          - wireguard
+          - openvpn
+          - l2tp
+          - pptp
+          type: string
+          description: '* `ipsec-transport` - IPsec - Transport
+
+            * `ipsec-tunnel` - IPsec - Tunnel
+
+            * `ip-ip` - IP-in-IP
+
+            * `gre` - GRE
+
+            * `wireguard` - WireGuard
+
+            * `openvpn` - OpenVPN
+
+            * `l2tp` - L2TP
+
+            * `pptp` - PPTP'
+          x-spec-enum-id: 4f3254459f0e94f0
+        ipsec_profile:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefIPSecProfileRequest'
+        tenant:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefTenantRequest'
+        tunnel_id:
+          type:
+          - integer
+          - 'null'
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+      required:
+      - encapsulation
+      - name
+      - status
+    TunnelGroupRequest:
+      type: object
+      description: Base serializer class for models inheriting from OrganizationalModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+      required:
+      - name
+      - slug
+    IPSecProfile:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+        mode:
+          type: object
+          properties:
+            value:
+              enum:
+              - esp
+              - ah
+              type: string
+              description: '* `esp` - ESP
+
+                * `ah` - AH'
+              x-spec-enum-id: 87ac6ada0da14ccf
+            label:
+              type: string
+              enum:
+              - ESP
+              - AH
+        ike_policy:
+          $ref: '#/components/schemas/BriefIKEPolicy'
+        ipsec_policy:
+          $ref: '#/components/schemas/BriefIPSecPolicy'
+        owner:
+          allOf:
+          - $ref: '#/components/schemas/BriefOwner'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTag'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        created:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        last_updated:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+      required:
+      - created
+      - display
+      - display_url
+      - id
+      - ike_policy
+      - ipsec_policy
+      - last_updated
+      - mode
+      - name
+      - url
+    WritableIPSecPolicyRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+        proposals:
+          type: array
+          items:
+            type: integer
+        pfs_group:
+          enum:
+          - 1
+          - 2
+          - 5
+          - 14
+          - 15
+          - 16
+          - 17
+          - 18
+          - 19
+          - 20
+          - 21
+          - 22
+          - 23
+          - 24
+          - 25
+          - 26
+          - 27
+          - 28
+          - 29
+          - 30
+          - 31
+          - 32
+          - 33
+          - 34
+          - null
+          type:
+          - integer
+          - 'null'
+          x-spec-enum-id: dbef43be795462a8
+          description: 'Diffie-Hellman group for Perfect Forward Secrecy
+
+
+            * `1` - Group 1
+
+            * `2` - Group 2
+
+            * `5` - Group 5
+
+            * `14` - Group 14
+
+            * `15` - Group 15
+
+            * `16` - Group 16
+
+            * `17` - Group 17
+
+            * `18` - Group 18
+
+            * `19` - Group 19
+
+            * `20` - Group 20
+
+            * `21` - Group 21
+
+            * `22` - Group 22
+
+            * `23` - Group 23
+
+            * `24` - Group 24
+
+            * `25` - Group 25
+
+            * `26` - Group 26
+
+            * `27` - Group 27
+
+            * `28` - Group 28
+
+            * `29` - Group 29
+
+            * `30` - Group 30
+
+            * `31` - Group 31
+
+            * `32` - Group 32
+
+            * `33` - Group 33
+
+            * `34` - Group 34'
+          minimum: 0
+          maximum: 32767
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+      required:
+      - name
+    IKEProposalRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+        authentication_method:
+          enum:
+          - preshared-keys
+          - certificates
+          - rsa-signatures
+          - dsa-signatures
+          type: string
+          description: '* `preshared-keys` - Pre-shared keys
+
+            * `certificates` - Certificates
+
+            * `rsa-signatures` - RSA signatures
+
+            * `dsa-signatures` - DSA signatures'
+          x-spec-enum-id: a21158c52d0c455a
+        encryption_algorithm:
+          enum:
+          - aes-128-cbc
+          - aes-128-gcm
+          - aes-192-cbc
+          - aes-192-gcm
+          - aes-256-cbc
+          - aes-256-gcm
+          - 3des-cbc
+          - des-cbc
+          type: string
+          description: '* `aes-128-cbc` - 128-bit AES (CBC)
+
+            * `aes-128-gcm` - 128-bit AES (GCM)
+
+            * `aes-192-cbc` - 192-bit AES (CBC)
+
+            * `aes-192-gcm` - 192-bit AES (GCM)
+
+            * `aes-256-cbc` - 256-bit AES (CBC)
+
+            * `aes-256-gcm` - 256-bit AES (GCM)
+
+            * `3des-cbc` - 3DES
+
+            * `des-cbc` - DES'
+          x-spec-enum-id: ae3dabd7b2b3cba2
+        authentication_algorithm:
+          enum:
+          - hmac-sha1
+          - hmac-sha256
+          - hmac-sha384
+          - hmac-sha512
+          - hmac-md5
+          type: string
+          description: '* `hmac-sha1` - SHA-1 HMAC
+
+            * `hmac-sha256` - SHA-256 HMAC
+
+            * `hmac-sha384` - SHA-384 HMAC
+
+            * `hmac-sha512` - SHA-512 HMAC
+
+            * `hmac-md5` - MD5 HMAC'
+          x-spec-enum-id: 0a7ca69695b483a7
+        group:
+          enum:
+          - 1
+          - 2
+          - 5
+          - 14
+          - 15
+          - 16
+          - 17
+          - 18
+          - 19
+          - 20
+          - 21
+          - 22
+          - 23
+          - 24
+          - 25
+          - 26
+          - 27
+          - 28
+          - 29
+          - 30
+          - 31
+          - 32
+          - 33
+          - 34
+          type: integer
+          description: '* `1` - Group 1
+
+            * `2` - Group 2
+
+            * `5` - Group 5
+
+            * `14` - Group 14
+
+            * `15` - Group 15
+
+            * `16` - Group 16
+
+            * `17` - Group 17
+
+            * `18` - Group 18
+
+            * `19` - Group 19
+
+            * `20` - Group 20
+
+            * `21` - Group 21
+
+            * `22` - Group 22
+
+            * `23` - Group 23
+
+            * `24` - Group 24
+
+            * `25` - Group 25
+
+            * `26` - Group 26
+
+            * `27` - Group 27
+
+            * `28` - Group 28
+
+            * `29` - Group 29
+
+            * `30` - Group 30
+
+            * `31` - Group 31
+
+            * `32` - Group 32
+
+            * `33` - Group 33
+
+            * `34` - Group 34'
+          x-spec-enum-id: dbef43be795462a8
+        sa_lifetime:
+          type:
+          - integer
+          - 'null'
+          maximum: 2147483647
+          minimum: 0
+          description: Security association lifetime (in seconds)
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+      required:
+      - authentication_method
+      - encryption_algorithm
+      - group
+      - name
+    PatchedL2VPNTerminationRequest:
+      type: object
+      description: Adds support for custom fields and tags.
+      properties:
+        l2vpn:
+          oneOf:
+          - type: integer
+          - $ref: '#/components/schemas/BriefL2VPNRequest'
+        assigned_object_type:
+          type: string
+        assigned_object_id:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+    BriefL2VPNRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        identifier:
+          type:
+          - integer
+          - 'null'
+          maximum: 9223372036854775807
+          minimum: -9223372036854775808
+          format: int64
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        type:
+          enum:
+          - vpws
+          - vpls
+          - vxlan
+          - vxlan-evpn
+          - mpls-evpn
+          - pbb-evpn
+          - evpn-vpws
+          - epl
+          - evpl
+          - ep-lan
+          - evp-lan
+          - ep-tree
+          - evp-tree
+          - spb
+          type: string
+          description: '* `vpws` - VPWS
+
+            * `vpls` - VPLS
+
+            * `vxlan` - VXLAN
+
+            * `vxlan-evpn` - VXLAN-EVPN
+
+            * `mpls-evpn` - MPLS EVPN
+
+            * `pbb-evpn` - PBB EVPN
+
+            * `evpn-vpws` - EVPN VPWS
+
+            * `epl` - EPL
+
+            * `evpl` - EVPL
+
+            * `ep-lan` - Ethernet Private LAN
+
+            * `evp-lan` - Ethernet Virtual Private LAN
+
+            * `ep-tree` - Ethernet Private Tree
+
+            * `evp-tree` - Ethernet Virtual Private Tree
+
+            * `spb` - SPB'
+          x-spec-enum-id: 0a46f8056d717efc
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - name
+      - slug
+    PaginatedL2VPNList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/L2VPN'
+    L2VPN:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display_url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        identifier:
+          type:
+          - integer
+          - 'null'
+          maximum: 9223372036854775807
+          minimum: -9223372036854775808
+          format: int64
+        name:
+          type: string
+          maxLength: 100
+        slug:
+          type: string
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        type:
+          type: object
+          properties:
+            value:
+              enum:
+              - vpws
+              - vpls
+              - vxlan
+              - vxlan-evpn
+              - mpls-evpn
+              - pbb-evpn
+              - evpn-vpws
+              - epl
+              - evpl
+              - ep-lan
+              - evp-lan
+              - ep-tree
+              - evp-tree
+              - spb
+              type: string
+              description: '* `vpws` - VPWS
+
+                * `vpls` - VPLS
+
+                * `vxlan` - VXLAN
+
+                * `vxlan-evpn` - VXLAN-EVPN
+
+                * `mpls-evpn` - MPLS EVPN
+
+                * `pbb-evpn` - PBB EVPN
+
+                * `evpn-vpws` - EVPN VPWS
+
+                * `epl` - EPL
+
+                * `evpl` - EVPL
+
+                * `ep-lan` - Ethernet Private LAN
+
+                * `evp-lan` - Ethernet Virtual Private LAN
+
+                * `ep-tree` - Ethernet Private Tree
+
+                * `evp-tree` - Ethernet Virtual Private Tree
+
+                * `spb` - SPB'
+              x-spec-enum-id: 0a46f8056d717efc
+            label:
+              type: string
+              enum:
+              - VPWS
+              - VPLS
+              - VXLAN
+              - VXLAN-EVPN
+              - MPLS EVPN
+              - PBB EVPN
+              - EVPN VPWS
+              - EPL
+              - EVPL
+              - Ethernet Private LAN
+              - Ethernet Virtual Private LAN
+              - Ethernet Private Tree
+              - Ethernet Virtual Private Tree
+              - SPB
+        status:
+          type: object
+          properties:
+            value:
+              enum:
+              - active
+              - planned
+              - decommissioning
+              type: string
+              description: '* `active` - Active
+
+                * `planned` - Planned
+
+                * `decommissioning` - Decommissioning'
+              x-spec-enum-id: 8b9dc8efc7c3d5b0
+            label:
+              type: string
+              enum:
+              - Active
+              - Planned
+              - Decommissioning
+        import_targets:
+          type: array
+          items:
+            $ref: '#/components/schemas/RouteTarget'
+        export_targets:
+          type: array
+          items:
+            $ref: '#/components/schemas/RouteTarget'
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          allOf:
+          - $ref: '#/components/schemas/BriefOwner'
+        comments:
+          type: string
+        tenant:
+          allOf:
+          - $ref: '#/components/schemas/BriefTenant'
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTag'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+        created:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        last_updated:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+      required:
+      - created
+      - display
+      - display_url
+      - id
+      - last_updated
+      - name
+      - slug
+      - url
+    BriefIPSecPolicy:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - display
+      - id
+      - name
+      - url
+    WritableL2VPNRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        identifier:
+          type:
+          - integer
+          - 'null'
+          maximum: 9223372036854775807
+          minimum: -9223372036854775808
+          format: int64
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        type:
+          enum:
+          - vpws
+          - vpls
+          - vxlan
+          - vxlan-evpn
+          - mpls-evpn
+          - pbb-evpn
+          - evpn-vpws
+          - epl
+          - evpl
+          - ep-lan
+          - evp-lan
+          - ep-tree
+          - evp-tree
+          - spb
+          type: string
+          description: '* `vpws` - VPWS
+
+            * `vpls` - VPLS
+
+            * `vxlan` - VXLAN
+
+            * `vxlan-evpn` - VXLAN-EVPN
+
+            * `mpls-evpn` - MPLS EVPN
+
+            * `pbb-evpn` - PBB EVPN
+
+            * `evpn-vpws` - EVPN VPWS
+
+            * `epl` - EPL
+
+            * `evpl` - EVPL
+
+            * `ep-lan` - Ethernet Private LAN
+
+            * `evp-lan` - Ethernet Virtual Private LAN
+
+            * `ep-tree` - Ethernet Private Tree
+
+            * `evp-tree` - Ethernet Virtual Private Tree
+
+            * `spb` - SPB'
+          x-spec-enum-id: 0a46f8056d717efc
+        status:
+          enum:
+          - active
+          - planned
+          - decommissioning
+          type: string
+          description: '* `active` - Active
+
+            * `planned` - Planned
+
+            * `decommissioning` - Decommissioning'
+          x-spec-enum-id: 8b9dc8efc7c3d5b0
+        import_targets:
+          type: array
+          items:
+            type: integer
+        export_targets:
+          type: array
+          items:
+            type: integer
+        description:
+          type: string
+          maxLength: 200
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        tenant:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefTenantRequest'
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+      required:
+      - name
+      - slug
+      - type
+    IPSecProposalRequest:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+        encryption_algorithm:
+          enum:
+          - aes-128-cbc
+          - aes-128-gcm
+          - aes-192-cbc
+          - aes-192-gcm
+          - aes-256-cbc
+          - aes-256-gcm
+          - 3des-cbc
+          - des-cbc
+          type: string
+          description: '* `aes-128-cbc` - 128-bit AES (CBC)
+
+            * `aes-128-gcm` - 128-bit AES (GCM)
+
+            * `aes-192-cbc` - 192-bit AES (CBC)
+
+            * `aes-192-gcm` - 192-bit AES (GCM)
+
+            * `aes-256-cbc` - 256-bit AES (CBC)
+
+            * `aes-256-gcm` - 256-bit AES (GCM)
+
+            * `3des-cbc` - 3DES
+
+            * `des-cbc` - DES'
+          x-spec-enum-id: ae3dabd7b2b3cba2
+        authentication_algorithm:
+          enum:
+          - hmac-sha1
+          - hmac-sha256
+          - hmac-sha384
+          - hmac-sha512
+          - hmac-md5
+          type: string
+          description: '* `hmac-sha1` - SHA-1 HMAC
+
+            * `hmac-sha256` - SHA-256 HMAC
+
+            * `hmac-sha384` - SHA-384 HMAC
+
+            * `hmac-sha512` - SHA-512 HMAC
+
+            * `hmac-md5` - MD5 HMAC'
+          x-spec-enum-id: 0a7ca69695b483a7
+        sa_lifetime_seconds:
+          type:
+          - integer
+          - 'null'
+          maximum: 2147483647
+          minimum: 0
+          title: SA lifetime (seconds)
+          description: Security association lifetime (seconds)
+        sa_lifetime_data:
+          type:
+          - integer
+          - 'null'
+          maximum: 2147483647
+          minimum: 0
+          title: SA lifetime (KB)
+          description: Security association lifetime (in kilobytes)
+        owner:
+          oneOf:
+          - type: integer
+          - allOf:
+            - $ref: '#/components/schemas/BriefOwnerRequest'
+        comments:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedTagRequest'
+        custom_fields:
+          type: object
+          additionalProperties: {}
+      required:
+      - name
+    BriefTunnel:
+      type: object
+      description: Base serializer class for models inheriting from PrimaryModel.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          format: uri
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - display
+      - id
+      - name
+      - url
     IKEProposal:
       type: object
       description: Base serializer class for models inheriting from PrimaryModel.
@@ -12910,636 +15199,6 @@ components:
       - last_updated
       - name
       - url
-    BriefTunnelRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - name
-    TunnelTermination:
-      type: object
-      description: Adds support for custom fields and tags.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display_url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        tunnel:
-          $ref: '#/components/schemas/BriefTunnel'
-        role:
-          type: object
-          properties:
-            value:
-              enum:
-              - peer
-              - hub
-              - spoke
-              type: string
-              description: '* `peer` - Peer
-
-                * `hub` - Hub
-
-                * `spoke` - Spoke'
-              x-spec-enum-id: 0b3bfadcebd86b58
-            label:
-              type: string
-              enum:
-              - Peer
-              - Hub
-              - Spoke
-        termination_type:
-          type: string
-        termination_id:
-          type:
-          - integer
-          - 'null'
-          maximum: 9223372036854775807
-          minimum: 0
-          format: int64
-        termination:
-          readOnly: true
-        outside_ip:
-          allOf:
-          - $ref: '#/components/schemas/BriefIPAddress'
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTag'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-        created:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          readOnly: true
-        last_updated:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          readOnly: true
-      required:
-      - created
-      - display
-      - display_url
-      - id
-      - last_updated
-      - role
-      - termination
-      - termination_type
-      - tunnel
-      - url
-    BriefIPAddress:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        family:
-          type: object
-          properties:
-            value:
-              enum:
-              - 4
-              - 6
-              type: integer
-              description: '* `4` - IPv4
-
-                * `6` - IPv6'
-              x-spec-enum-id: d72003fd1af3603d
-            label:
-              type: string
-              enum:
-              - IPv4
-              - IPv6
-          readOnly: true
-        address:
-          type: string
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - address
-      - display
-      - family
-      - id
-      - url
-    L2VPN:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display_url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        identifier:
-          type:
-          - integer
-          - 'null'
-          maximum: 9223372036854775807
-          minimum: -9223372036854775808
-          format: int64
-        name:
-          type: string
-          maxLength: 100
-        slug:
-          type: string
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        type:
-          type: object
-          properties:
-            value:
-              enum:
-              - vpws
-              - vpls
-              - vxlan
-              - vxlan-evpn
-              - mpls-evpn
-              - pbb-evpn
-              - evpn-vpws
-              - epl
-              - evpl
-              - ep-lan
-              - evp-lan
-              - ep-tree
-              - evp-tree
-              - spb
-              type: string
-              description: '* `vpws` - VPWS
-
-                * `vpls` - VPLS
-
-                * `vxlan` - VXLAN
-
-                * `vxlan-evpn` - VXLAN-EVPN
-
-                * `mpls-evpn` - MPLS EVPN
-
-                * `pbb-evpn` - PBB EVPN
-
-                * `evpn-vpws` - EVPN VPWS
-
-                * `epl` - EPL
-
-                * `evpl` - EVPL
-
-                * `ep-lan` - Ethernet Private LAN
-
-                * `evp-lan` - Ethernet Virtual Private LAN
-
-                * `ep-tree` - Ethernet Private Tree
-
-                * `evp-tree` - Ethernet Virtual Private Tree
-
-                * `spb` - SPB'
-              x-spec-enum-id: 0a46f8056d717efc
-            label:
-              type: string
-              enum:
-              - VPWS
-              - VPLS
-              - VXLAN
-              - VXLAN-EVPN
-              - MPLS EVPN
-              - PBB EVPN
-              - EVPN VPWS
-              - EPL
-              - EVPL
-              - Ethernet Private LAN
-              - Ethernet Virtual Private LAN
-              - Ethernet Private Tree
-              - Ethernet Virtual Private Tree
-              - SPB
-        status:
-          type: object
-          properties:
-            value:
-              enum:
-              - active
-              - planned
-              - decommissioning
-              type: string
-              description: '* `active` - Active
-
-                * `planned` - Planned
-
-                * `decommissioning` - Decommissioning'
-              x-spec-enum-id: 8b9dc8efc7c3d5b0
-            label:
-              type: string
-              enum:
-              - Active
-              - Planned
-              - Decommissioning
-        import_targets:
-          type: array
-          items:
-            $ref: '#/components/schemas/RouteTarget'
-        export_targets:
-          type: array
-          items:
-            $ref: '#/components/schemas/RouteTarget'
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          allOf:
-          - $ref: '#/components/schemas/BriefOwner'
-        comments:
-          type: string
-        tenant:
-          allOf:
-          - $ref: '#/components/schemas/BriefTenant'
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTag'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-        created:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          readOnly: true
-        last_updated:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          readOnly: true
-      required:
-      - created
-      - display
-      - display_url
-      - id
-      - last_updated
-      - name
-      - slug
-      - url
-    PatchedTunnelGroupRequest:
-      type: object
-      description: Base serializer class for models inheriting from OrganizationalModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        slug:
-          type: string
-          minLength: 1
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-    BriefL2VPN:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        identifier:
-          type:
-          - integer
-          - 'null'
-          maximum: 9223372036854775807
-          minimum: -9223372036854775808
-          format: int64
-        name:
-          type: string
-          maxLength: 100
-        slug:
-          type: string
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        type:
-          type: object
-          properties:
-            value:
-              enum:
-              - vpws
-              - vpls
-              - vxlan
-              - vxlan-evpn
-              - mpls-evpn
-              - pbb-evpn
-              - evpn-vpws
-              - epl
-              - evpl
-              - ep-lan
-              - evp-lan
-              - ep-tree
-              - evp-tree
-              - spb
-              type: string
-              description: '* `vpws` - VPWS
-
-                * `vpls` - VPLS
-
-                * `vxlan` - VXLAN
-
-                * `vxlan-evpn` - VXLAN-EVPN
-
-                * `mpls-evpn` - MPLS EVPN
-
-                * `pbb-evpn` - PBB EVPN
-
-                * `evpn-vpws` - EVPN VPWS
-
-                * `epl` - EPL
-
-                * `evpl` - EVPL
-
-                * `ep-lan` - Ethernet Private LAN
-
-                * `evp-lan` - Ethernet Virtual Private LAN
-
-                * `ep-tree` - Ethernet Private Tree
-
-                * `evp-tree` - Ethernet Virtual Private Tree
-
-                * `spb` - SPB'
-              x-spec-enum-id: 0a46f8056d717efc
-            label:
-              type: string
-              enum:
-              - VPWS
-              - VPLS
-              - VXLAN
-              - VXLAN-EVPN
-              - MPLS EVPN
-              - PBB EVPN
-              - EVPN VPWS
-              - EPL
-              - EVPL
-              - Ethernet Private LAN
-              - Ethernet Virtual Private LAN
-              - Ethernet Private Tree
-              - Ethernet Virtual Private Tree
-              - SPB
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - display
-      - id
-      - name
-      - slug
-      - url
-    PaginatedIPSecProfileList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/IPSecProfile'
-    IPSecProposal:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display_url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          maxLength: 100
-        description:
-          type: string
-          maxLength: 200
-        encryption_algorithm:
-          type: object
-          properties:
-            value:
-              enum:
-              - aes-128-cbc
-              - aes-128-gcm
-              - aes-192-cbc
-              - aes-192-gcm
-              - aes-256-cbc
-              - aes-256-gcm
-              - 3des-cbc
-              - des-cbc
-              type: string
-              description: '* `aes-128-cbc` - 128-bit AES (CBC)
-
-                * `aes-128-gcm` - 128-bit AES (GCM)
-
-                * `aes-192-cbc` - 192-bit AES (CBC)
-
-                * `aes-192-gcm` - 192-bit AES (GCM)
-
-                * `aes-256-cbc` - 256-bit AES (CBC)
-
-                * `aes-256-gcm` - 256-bit AES (GCM)
-
-                * `3des-cbc` - 3DES
-
-                * `des-cbc` - DES'
-              x-spec-enum-id: ae3dabd7b2b3cba2
-            label:
-              type: string
-              enum:
-              - 128-bit AES (CBC)
-              - 128-bit AES (GCM)
-              - 192-bit AES (CBC)
-              - 192-bit AES (GCM)
-              - 256-bit AES (CBC)
-              - 256-bit AES (GCM)
-              - 3DES
-              - DES
-        authentication_algorithm:
-          type: object
-          properties:
-            value:
-              enum:
-              - hmac-sha1
-              - hmac-sha256
-              - hmac-sha384
-              - hmac-sha512
-              - hmac-md5
-              type: string
-              description: '* `hmac-sha1` - SHA-1 HMAC
-
-                * `hmac-sha256` - SHA-256 HMAC
-
-                * `hmac-sha384` - SHA-384 HMAC
-
-                * `hmac-sha512` - SHA-512 HMAC
-
-                * `hmac-md5` - MD5 HMAC'
-              x-spec-enum-id: 0a7ca69695b483a7
-            label:
-              type: string
-              enum:
-              - SHA-1 HMAC
-              - SHA-256 HMAC
-              - SHA-384 HMAC
-              - SHA-512 HMAC
-              - MD5 HMAC
-        sa_lifetime_seconds:
-          type:
-          - integer
-          - 'null'
-          maximum: 2147483647
-          minimum: 0
-          title: SA lifetime (seconds)
-          description: Security association lifetime (seconds)
-        sa_lifetime_data:
-          type:
-          - integer
-          - 'null'
-          maximum: 2147483647
-          minimum: 0
-          title: SA lifetime (KB)
-          description: Security association lifetime (in kilobytes)
-        owner:
-          allOf:
-          - $ref: '#/components/schemas/BriefOwner'
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTag'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-        created:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          readOnly: true
-        last_updated:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          readOnly: true
-      required:
-      - created
-      - display
-      - display_url
-      - id
-      - last_updated
-      - name
-      - url
-    NestedTagRequest:
-      type: object
-      description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
-
-        dictionary of attributes which can be used to uniquely identify the related object. This class should be
-
-        subclassed to return a full representation of the related object on read.'
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        slug:
-          type: string
-          minLength: 1
-          pattern: ^[-\w]+$
-          maxLength: 100
-        color:
-          type: string
-          minLength: 1
-          pattern: ^[0-9a-f]{6}$
-          maxLength: 6
-      required:
-      - name
-      - slug
     TunnelTerminationRequest:
       type: object
       description: Adds support for custom fields and tags.
@@ -13585,81 +15244,6 @@ components:
       - role
       - termination_type
       - tunnel
-    PaginatedTunnelTerminationList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/TunnelTermination'
-    BriefTunnel:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          maxLength: 100
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - display
-      - id
-      - name
-      - url
-    PaginatedL2VPNList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/L2VPN'
     PatchedWritableIKEPolicyRequest:
       type: object
       description: Base serializer class for models inheriting from PrimaryModel.
@@ -13716,185 +15300,31 @@ components:
         custom_fields:
           type: object
           additionalProperties: {}
-    PatchedWritableIPSecPolicyRequest:
+    PaginatedIKEPolicyList:
       type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        description:
-          type: string
-          maxLength: 200
-        proposals:
-          type: array
-          items:
-            type: integer
-        pfs_group:
-          enum:
-          - 1
-          - 2
-          - 5
-          - 14
-          - 15
-          - 16
-          - 17
-          - 18
-          - 19
-          - 20
-          - 21
-          - 22
-          - 23
-          - 24
-          - 25
-          - 26
-          - 27
-          - 28
-          - 29
-          - 30
-          - 31
-          - 32
-          - 33
-          - 34
-          - null
-          type:
-          - integer
-          - 'null'
-          x-spec-enum-id: dbef43be795462a8
-          description: 'Diffie-Hellman group for Perfect Forward Secrecy
-
-
-            * `1` - Group 1
-
-            * `2` - Group 2
-
-            * `5` - Group 5
-
-            * `14` - Group 14
-
-            * `15` - Group 15
-
-            * `16` - Group 16
-
-            * `17` - Group 17
-
-            * `18` - Group 18
-
-            * `19` - Group 19
-
-            * `20` - Group 20
-
-            * `21` - Group 21
-
-            * `22` - Group 22
-
-            * `23` - Group 23
-
-            * `24` - Group 24
-
-            * `25` - Group 25
-
-            * `26` - Group 26
-
-            * `27` - Group 27
-
-            * `28` - Group 28
-
-            * `29` - Group 29
-
-            * `30` - Group 30
-
-            * `31` - Group 31
-
-            * `32` - Group 32
-
-            * `33` - Group 33
-
-            * `34` - Group 34'
-          minimum: 0
-          maximum: 32767
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-    PatchedWritableTunnelTerminationRequest:
-      type: object
-      description: Adds support for custom fields and tags.
-      properties:
-        tunnel:
-          oneOf:
-          - type: integer
-          - $ref: '#/components/schemas/BriefTunnelRequest'
-        role:
-          enum:
-          - peer
-          - hub
-          - spoke
-          type: string
-          description: '* `peer` - Peer
-
-            * `hub` - Hub
-
-            * `spoke` - Spoke'
-          x-spec-enum-id: 0b3bfadcebd86b58
-        termination_type:
-          type: string
-        termination_id:
-          type:
-          - integer
-          - 'null'
-          maximum: 9223372036854775807
-          minimum: 0
-          format: int64
-        outside_ip:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefIPAddressRequest'
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-    L2VPNTerminationRequest:
-      type: object
-      description: Adds support for custom fields and tags.
-      properties:
-        l2vpn:
-          oneOf:
-          - type: integer
-          - $ref: '#/components/schemas/BriefL2VPNRequest'
-        assigned_object_type:
-          type: string
-        assigned_object_id:
-          type: integer
-          maximum: 9223372036854775807
-          minimum: 0
-          format: int64
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
       required:
-      - assigned_object_id
-      - assigned_object_type
-      - l2vpn
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/IKEPolicy'
     PaginatedIPSecProposalList:
       type: object
       required:
@@ -13920,1436 +15350,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/IPSecProposal'
-    PaginatedTunnelGroupList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/TunnelGroup'
-    IKEProposalRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        description:
-          type: string
-          maxLength: 200
-        authentication_method:
-          enum:
-          - preshared-keys
-          - certificates
-          - rsa-signatures
-          - dsa-signatures
-          type: string
-          description: '* `preshared-keys` - Pre-shared keys
-
-            * `certificates` - Certificates
-
-            * `rsa-signatures` - RSA signatures
-
-            * `dsa-signatures` - DSA signatures'
-          x-spec-enum-id: a21158c52d0c455a
-        encryption_algorithm:
-          enum:
-          - aes-128-cbc
-          - aes-128-gcm
-          - aes-192-cbc
-          - aes-192-gcm
-          - aes-256-cbc
-          - aes-256-gcm
-          - 3des-cbc
-          - des-cbc
-          type: string
-          description: '* `aes-128-cbc` - 128-bit AES (CBC)
-
-            * `aes-128-gcm` - 128-bit AES (GCM)
-
-            * `aes-192-cbc` - 192-bit AES (CBC)
-
-            * `aes-192-gcm` - 192-bit AES (GCM)
-
-            * `aes-256-cbc` - 256-bit AES (CBC)
-
-            * `aes-256-gcm` - 256-bit AES (GCM)
-
-            * `3des-cbc` - 3DES
-
-            * `des-cbc` - DES'
-          x-spec-enum-id: ae3dabd7b2b3cba2
-        authentication_algorithm:
-          enum:
-          - hmac-sha1
-          - hmac-sha256
-          - hmac-sha384
-          - hmac-sha512
-          - hmac-md5
-          type: string
-          description: '* `hmac-sha1` - SHA-1 HMAC
-
-            * `hmac-sha256` - SHA-256 HMAC
-
-            * `hmac-sha384` - SHA-384 HMAC
-
-            * `hmac-sha512` - SHA-512 HMAC
-
-            * `hmac-md5` - MD5 HMAC'
-          x-spec-enum-id: 0a7ca69695b483a7
-        group:
-          enum:
-          - 1
-          - 2
-          - 5
-          - 14
-          - 15
-          - 16
-          - 17
-          - 18
-          - 19
-          - 20
-          - 21
-          - 22
-          - 23
-          - 24
-          - 25
-          - 26
-          - 27
-          - 28
-          - 29
-          - 30
-          - 31
-          - 32
-          - 33
-          - 34
-          type: integer
-          description: '* `1` - Group 1
-
-            * `2` - Group 2
-
-            * `5` - Group 5
-
-            * `14` - Group 14
-
-            * `15` - Group 15
-
-            * `16` - Group 16
-
-            * `17` - Group 17
-
-            * `18` - Group 18
-
-            * `19` - Group 19
-
-            * `20` - Group 20
-
-            * `21` - Group 21
-
-            * `22` - Group 22
-
-            * `23` - Group 23
-
-            * `24` - Group 24
-
-            * `25` - Group 25
-
-            * `26` - Group 26
-
-            * `27` - Group 27
-
-            * `28` - Group 28
-
-            * `29` - Group 29
-
-            * `30` - Group 30
-
-            * `31` - Group 31
-
-            * `32` - Group 32
-
-            * `33` - Group 33
-
-            * `34` - Group 34'
-          x-spec-enum-id: dbef43be795462a8
-        sa_lifetime:
-          type:
-          - integer
-          - 'null'
-          maximum: 2147483647
-          minimum: 0
-          description: Security association lifetime (in seconds)
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-      required:
-      - authentication_method
-      - encryption_algorithm
-      - group
-      - name
-    PaginatedIKEProposalList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/IKEProposal'
-    NestedTag:
-      type: object
-      description: 'Represents an object related through a ForeignKey field. On write, it accepts a primary key (PK) value or a
-
-        dictionary of attributes which can be used to uniquely identify the related object. This class should be
-
-        subclassed to return a full representation of the related object on read.'
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display_url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          maxLength: 100
-        slug:
-          type: string
-          pattern: ^[-\w]+$
-          maxLength: 100
-        color:
-          type: string
-          pattern: ^[0-9a-f]{6}$
-          maxLength: 6
-      required:
-      - display
-      - display_url
-      - id
-      - name
-      - slug
-      - url
-    PatchedWritableIKEProposalRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        description:
-          type: string
-          maxLength: 200
-        authentication_method:
-          enum:
-          - preshared-keys
-          - certificates
-          - rsa-signatures
-          - dsa-signatures
-          type: string
-          description: '* `preshared-keys` - Pre-shared keys
-
-            * `certificates` - Certificates
-
-            * `rsa-signatures` - RSA signatures
-
-            * `dsa-signatures` - DSA signatures'
-          x-spec-enum-id: a21158c52d0c455a
-        encryption_algorithm:
-          enum:
-          - aes-128-cbc
-          - aes-128-gcm
-          - aes-192-cbc
-          - aes-192-gcm
-          - aes-256-cbc
-          - aes-256-gcm
-          - 3des-cbc
-          - des-cbc
-          type: string
-          description: '* `aes-128-cbc` - 128-bit AES (CBC)
-
-            * `aes-128-gcm` - 128-bit AES (GCM)
-
-            * `aes-192-cbc` - 192-bit AES (CBC)
-
-            * `aes-192-gcm` - 192-bit AES (GCM)
-
-            * `aes-256-cbc` - 256-bit AES (CBC)
-
-            * `aes-256-gcm` - 256-bit AES (GCM)
-
-            * `3des-cbc` - 3DES
-
-            * `des-cbc` - DES'
-          x-spec-enum-id: ae3dabd7b2b3cba2
-        authentication_algorithm:
-          enum:
-          - hmac-sha1
-          - hmac-sha256
-          - hmac-sha384
-          - hmac-sha512
-          - hmac-md5
-          - ''
-          - null
-          type:
-          - string
-          - 'null'
-          description: '* `hmac-sha1` - SHA-1 HMAC
-
-            * `hmac-sha256` - SHA-256 HMAC
-
-            * `hmac-sha384` - SHA-384 HMAC
-
-            * `hmac-sha512` - SHA-512 HMAC
-
-            * `hmac-md5` - MD5 HMAC'
-          x-spec-enum-id: 0a7ca69695b483a7
-        group:
-          enum:
-          - 1
-          - 2
-          - 5
-          - 14
-          - 15
-          - 16
-          - 17
-          - 18
-          - 19
-          - 20
-          - 21
-          - 22
-          - 23
-          - 24
-          - 25
-          - 26
-          - 27
-          - 28
-          - 29
-          - 30
-          - 31
-          - 32
-          - 33
-          - 34
-          type: integer
-          x-spec-enum-id: dbef43be795462a8
-          description: 'Diffie-Hellman group ID
-
-
-            * `1` - Group 1
-
-            * `2` - Group 2
-
-            * `5` - Group 5
-
-            * `14` - Group 14
-
-            * `15` - Group 15
-
-            * `16` - Group 16
-
-            * `17` - Group 17
-
-            * `18` - Group 18
-
-            * `19` - Group 19
-
-            * `20` - Group 20
-
-            * `21` - Group 21
-
-            * `22` - Group 22
-
-            * `23` - Group 23
-
-            * `24` - Group 24
-
-            * `25` - Group 25
-
-            * `26` - Group 26
-
-            * `27` - Group 27
-
-            * `28` - Group 28
-
-            * `29` - Group 29
-
-            * `30` - Group 30
-
-            * `31` - Group 31
-
-            * `32` - Group 32
-
-            * `33` - Group 33
-
-            * `34` - Group 34'
-          minimum: 0
-          maximum: 32767
-        sa_lifetime:
-          type:
-          - integer
-          - 'null'
-          maximum: 2147483647
-          minimum: 0
-          description: Security association lifetime (in seconds)
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-    PatchedL2VPNTerminationRequest:
-      type: object
-      description: Adds support for custom fields and tags.
-      properties:
-        l2vpn:
-          oneOf:
-          - type: integer
-          - $ref: '#/components/schemas/BriefL2VPNRequest'
-        assigned_object_type:
-          type: string
-        assigned_object_id:
-          type: integer
-          maximum: 9223372036854775807
-          minimum: 0
-          format: int64
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-    TunnelGroupRequest:
-      type: object
-      description: Base serializer class for models inheriting from OrganizationalModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        slug:
-          type: string
-          minLength: 1
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-      required:
-      - name
-      - slug
-    WritableIKEProposalRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        description:
-          type: string
-          maxLength: 200
-        authentication_method:
-          enum:
-          - preshared-keys
-          - certificates
-          - rsa-signatures
-          - dsa-signatures
-          type: string
-          description: '* `preshared-keys` - Pre-shared keys
-
-            * `certificates` - Certificates
-
-            * `rsa-signatures` - RSA signatures
-
-            * `dsa-signatures` - DSA signatures'
-          x-spec-enum-id: a21158c52d0c455a
-        encryption_algorithm:
-          enum:
-          - aes-128-cbc
-          - aes-128-gcm
-          - aes-192-cbc
-          - aes-192-gcm
-          - aes-256-cbc
-          - aes-256-gcm
-          - 3des-cbc
-          - des-cbc
-          type: string
-          description: '* `aes-128-cbc` - 128-bit AES (CBC)
-
-            * `aes-128-gcm` - 128-bit AES (GCM)
-
-            * `aes-192-cbc` - 192-bit AES (CBC)
-
-            * `aes-192-gcm` - 192-bit AES (GCM)
-
-            * `aes-256-cbc` - 256-bit AES (CBC)
-
-            * `aes-256-gcm` - 256-bit AES (GCM)
-
-            * `3des-cbc` - 3DES
-
-            * `des-cbc` - DES'
-          x-spec-enum-id: ae3dabd7b2b3cba2
-        authentication_algorithm:
-          enum:
-          - hmac-sha1
-          - hmac-sha256
-          - hmac-sha384
-          - hmac-sha512
-          - hmac-md5
-          - ''
-          - null
-          type:
-          - string
-          - 'null'
-          description: '* `hmac-sha1` - SHA-1 HMAC
-
-            * `hmac-sha256` - SHA-256 HMAC
-
-            * `hmac-sha384` - SHA-384 HMAC
-
-            * `hmac-sha512` - SHA-512 HMAC
-
-            * `hmac-md5` - MD5 HMAC'
-          x-spec-enum-id: 0a7ca69695b483a7
-        group:
-          enum:
-          - 1
-          - 2
-          - 5
-          - 14
-          - 15
-          - 16
-          - 17
-          - 18
-          - 19
-          - 20
-          - 21
-          - 22
-          - 23
-          - 24
-          - 25
-          - 26
-          - 27
-          - 28
-          - 29
-          - 30
-          - 31
-          - 32
-          - 33
-          - 34
-          type: integer
-          x-spec-enum-id: dbef43be795462a8
-          description: 'Diffie-Hellman group ID
-
-
-            * `1` - Group 1
-
-            * `2` - Group 2
-
-            * `5` - Group 5
-
-            * `14` - Group 14
-
-            * `15` - Group 15
-
-            * `16` - Group 16
-
-            * `17` - Group 17
-
-            * `18` - Group 18
-
-            * `19` - Group 19
-
-            * `20` - Group 20
-
-            * `21` - Group 21
-
-            * `22` - Group 22
-
-            * `23` - Group 23
-
-            * `24` - Group 24
-
-            * `25` - Group 25
-
-            * `26` - Group 26
-
-            * `27` - Group 27
-
-            * `28` - Group 28
-
-            * `29` - Group 29
-
-            * `30` - Group 30
-
-            * `31` - Group 31
-
-            * `32` - Group 32
-
-            * `33` - Group 33
-
-            * `34` - Group 34'
-          minimum: 0
-          maximum: 32767
-        sa_lifetime:
-          type:
-          - integer
-          - 'null'
-          maximum: 2147483647
-          minimum: 0
-          description: Security association lifetime (in seconds)
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-      required:
-      - authentication_method
-      - encryption_algorithm
-      - group
-      - name
-    IKEPolicy:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display_url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          maxLength: 100
-        description:
-          type: string
-          maxLength: 200
-        version:
-          type: object
-          properties:
-            value:
-              enum:
-              - 1
-              - 2
-              type: integer
-              description: '* `1` - IKEv1
-
-                * `2` - IKEv2'
-              x-spec-enum-id: 00872b77916a1fde
-            label:
-              type: string
-              enum:
-              - IKEv1
-              - IKEv2
-        mode:
-          type: object
-          properties:
-            value:
-              enum:
-              - aggressive
-              - main
-              type: string
-              description: '* `aggressive` - Aggressive
-
-                * `main` - Main'
-              x-spec-enum-id: 64c1be7bdb2548ca
-            label:
-              type: string
-              enum:
-              - Aggressive
-              - Main
-        proposals:
-          type: array
-          items:
-            $ref: '#/components/schemas/IKEProposal'
-        preshared_key:
-          type: string
-          title: Pre-shared key
-        owner:
-          allOf:
-          - $ref: '#/components/schemas/BriefOwner'
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTag'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-        created:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          readOnly: true
-        last_updated:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          readOnly: true
-      required:
-      - created
-      - display
-      - display_url
-      - id
-      - last_updated
-      - name
-      - url
-      - version
-    PatchedWritableIPSecProposalRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        description:
-          type: string
-          maxLength: 200
-        encryption_algorithm:
-          enum:
-          - aes-128-cbc
-          - aes-128-gcm
-          - aes-192-cbc
-          - aes-192-gcm
-          - aes-256-cbc
-          - aes-256-gcm
-          - 3des-cbc
-          - des-cbc
-          - ''
-          - null
-          type:
-          - string
-          - 'null'
-          description: '* `aes-128-cbc` - 128-bit AES (CBC)
-
-            * `aes-128-gcm` - 128-bit AES (GCM)
-
-            * `aes-192-cbc` - 192-bit AES (CBC)
-
-            * `aes-192-gcm` - 192-bit AES (GCM)
-
-            * `aes-256-cbc` - 256-bit AES (CBC)
-
-            * `aes-256-gcm` - 256-bit AES (GCM)
-
-            * `3des-cbc` - 3DES
-
-            * `des-cbc` - DES'
-          x-spec-enum-id: ae3dabd7b2b3cba2
-          title: Encryption
-        authentication_algorithm:
-          enum:
-          - hmac-sha1
-          - hmac-sha256
-          - hmac-sha384
-          - hmac-sha512
-          - hmac-md5
-          - ''
-          - null
-          type:
-          - string
-          - 'null'
-          description: '* `hmac-sha1` - SHA-1 HMAC
-
-            * `hmac-sha256` - SHA-256 HMAC
-
-            * `hmac-sha384` - SHA-384 HMAC
-
-            * `hmac-sha512` - SHA-512 HMAC
-
-            * `hmac-md5` - MD5 HMAC'
-          x-spec-enum-id: 0a7ca69695b483a7
-          title: Authentication
-        sa_lifetime_seconds:
-          type:
-          - integer
-          - 'null'
-          maximum: 2147483647
-          minimum: 0
-          title: SA lifetime (seconds)
-          description: Security association lifetime (seconds)
-        sa_lifetime_data:
-          type:
-          - integer
-          - 'null'
-          maximum: 2147483647
-          minimum: 0
-          title: SA lifetime (KB)
-          description: Security association lifetime (in kilobytes)
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-    Tunnel:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        url:
-          type: string
-          format: uri
-          readOnly: true
-        display_url:
-          type: string
-          format: uri
-          readOnly: true
-        display:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          maxLength: 100
-        status:
-          type: object
-          properties:
-            value:
-              enum:
-              - planned
-              - active
-              - disabled
-              type: string
-              description: '* `planned` - Planned
-
-                * `active` - Active
-
-                * `disabled` - Disabled'
-              x-spec-enum-id: 2431ef62c418f485
-            label:
-              type: string
-              enum:
-              - Planned
-              - Active
-              - Disabled
-        group:
-          allOf:
-          - $ref: '#/components/schemas/BriefTunnelGroup'
-        encapsulation:
-          type: object
-          properties:
-            value:
-              enum:
-              - ipsec-transport
-              - ipsec-tunnel
-              - ip-ip
-              - gre
-              - wireguard
-              - openvpn
-              - l2tp
-              - pptp
-              type: string
-              description: '* `ipsec-transport` - IPsec - Transport
-
-                * `ipsec-tunnel` - IPsec - Tunnel
-
-                * `ip-ip` - IP-in-IP
-
-                * `gre` - GRE
-
-                * `wireguard` - WireGuard
-
-                * `openvpn` - OpenVPN
-
-                * `l2tp` - L2TP
-
-                * `pptp` - PPTP'
-              x-spec-enum-id: 4f3254459f0e94f0
-            label:
-              type: string
-              enum:
-              - IPsec - Transport
-              - IPsec - Tunnel
-              - IP-in-IP
-              - GRE
-              - WireGuard
-              - OpenVPN
-              - L2TP
-              - PPTP
-        ipsec_profile:
-          allOf:
-          - $ref: '#/components/schemas/BriefIPSecProfile'
-        tenant:
-          allOf:
-          - $ref: '#/components/schemas/BriefTenant'
-        tunnel_id:
-          type:
-          - integer
-          - 'null'
-          maximum: 9223372036854775807
-          minimum: 0
-          format: int64
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          allOf:
-          - $ref: '#/components/schemas/BriefOwner'
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTag'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-        created:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          readOnly: true
-        last_updated:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          readOnly: true
-        terminations_count:
-          type: integer
-          format: int64
-          readOnly: true
-      required:
-      - created
-      - display
-      - display_url
-      - encapsulation
-      - id
-      - last_updated
-      - name
-      - status
-      - terminations_count
-      - url
-    WritableTunnelRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        status:
-          enum:
-          - planned
-          - active
-          - disabled
-          type: string
-          description: '* `planned` - Planned
-
-            * `active` - Active
-
-            * `disabled` - Disabled'
-          x-spec-enum-id: 2431ef62c418f485
-        group:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefTunnelGroupRequest'
-        encapsulation:
-          enum:
-          - ipsec-transport
-          - ipsec-tunnel
-          - ip-ip
-          - gre
-          - wireguard
-          - openvpn
-          - l2tp
-          - pptp
-          type: string
-          description: '* `ipsec-transport` - IPsec - Transport
-
-            * `ipsec-tunnel` - IPsec - Tunnel
-
-            * `ip-ip` - IP-in-IP
-
-            * `gre` - GRE
-
-            * `wireguard` - WireGuard
-
-            * `openvpn` - OpenVPN
-
-            * `l2tp` - L2TP
-
-            * `pptp` - PPTP'
-          x-spec-enum-id: 4f3254459f0e94f0
-        ipsec_profile:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefIPSecProfileRequest'
-        tenant:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefTenantRequest'
-        tunnel_id:
-          type:
-          - integer
-          - 'null'
-          maximum: 9223372036854775807
-          minimum: 0
-          format: int64
-        description:
-          type: string
-          maxLength: 200
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-      required:
-      - encapsulation
-      - name
-    PaginatedIPSecPolicyList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/IPSecPolicy'
-    WritableIPSecPolicyRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        description:
-          type: string
-          maxLength: 200
-        proposals:
-          type: array
-          items:
-            type: integer
-        pfs_group:
-          enum:
-          - 1
-          - 2
-          - 5
-          - 14
-          - 15
-          - 16
-          - 17
-          - 18
-          - 19
-          - 20
-          - 21
-          - 22
-          - 23
-          - 24
-          - 25
-          - 26
-          - 27
-          - 28
-          - 29
-          - 30
-          - 31
-          - 32
-          - 33
-          - 34
-          - null
-          type:
-          - integer
-          - 'null'
-          x-spec-enum-id: dbef43be795462a8
-          description: 'Diffie-Hellman group for Perfect Forward Secrecy
-
-
-            * `1` - Group 1
-
-            * `2` - Group 2
-
-            * `5` - Group 5
-
-            * `14` - Group 14
-
-            * `15` - Group 15
-
-            * `16` - Group 16
-
-            * `17` - Group 17
-
-            * `18` - Group 18
-
-            * `19` - Group 19
-
-            * `20` - Group 20
-
-            * `21` - Group 21
-
-            * `22` - Group 22
-
-            * `23` - Group 23
-
-            * `24` - Group 24
-
-            * `25` - Group 25
-
-            * `26` - Group 26
-
-            * `27` - Group 27
-
-            * `28` - Group 28
-
-            * `29` - Group 29
-
-            * `30` - Group 30
-
-            * `31` - Group 31
-
-            * `32` - Group 32
-
-            * `33` - Group 33
-
-            * `34` - Group 34'
-          minimum: 0
-          maximum: 32767
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-      required:
-      - name
-    IPSecProposalRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        description:
-          type: string
-          maxLength: 200
-        encryption_algorithm:
-          enum:
-          - aes-128-cbc
-          - aes-128-gcm
-          - aes-192-cbc
-          - aes-192-gcm
-          - aes-256-cbc
-          - aes-256-gcm
-          - 3des-cbc
-          - des-cbc
-          type: string
-          description: '* `aes-128-cbc` - 128-bit AES (CBC)
-
-            * `aes-128-gcm` - 128-bit AES (GCM)
-
-            * `aes-192-cbc` - 192-bit AES (CBC)
-
-            * `aes-192-gcm` - 192-bit AES (GCM)
-
-            * `aes-256-cbc` - 256-bit AES (CBC)
-
-            * `aes-256-gcm` - 256-bit AES (GCM)
-
-            * `3des-cbc` - 3DES
-
-            * `des-cbc` - DES'
-          x-spec-enum-id: ae3dabd7b2b3cba2
-        authentication_algorithm:
-          enum:
-          - hmac-sha1
-          - hmac-sha256
-          - hmac-sha384
-          - hmac-sha512
-          - hmac-md5
-          type: string
-          description: '* `hmac-sha1` - SHA-1 HMAC
-
-            * `hmac-sha256` - SHA-256 HMAC
-
-            * `hmac-sha384` - SHA-384 HMAC
-
-            * `hmac-sha512` - SHA-512 HMAC
-
-            * `hmac-md5` - MD5 HMAC'
-          x-spec-enum-id: 0a7ca69695b483a7
-        sa_lifetime_seconds:
-          type:
-          - integer
-          - 'null'
-          maximum: 2147483647
-          minimum: 0
-          title: SA lifetime (seconds)
-          description: Security association lifetime (seconds)
-        sa_lifetime_data:
-          type:
-          - integer
-          - 'null'
-          maximum: 2147483647
-          minimum: 0
-          title: SA lifetime (KB)
-          description: Security association lifetime (in kilobytes)
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-      required:
-      - name
-    PatchedWritableIPSecProfileRequest:
-      type: object
-      description: Base serializer class for models inheriting from PrimaryModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        description:
-          type: string
-          maxLength: 200
-        mode:
-          enum:
-          - esp
-          - ah
-          type: string
-          description: '* `esp` - ESP
-
-            * `ah` - AH'
-          x-spec-enum-id: 87ac6ada0da14ccf
-        ike_policy:
-          oneOf:
-          - type: integer
-          - $ref: '#/components/schemas/BriefIKEPolicyRequest'
-        ipsec_policy:
-          oneOf:
-          - type: integer
-          - $ref: '#/components/schemas/BriefIPSecPolicyRequest'
-        owner:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefOwnerRequest'
-        comments:
-          type: string
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-    WritableTunnelTerminationRequest:
-      type: object
-      description: Adds support for custom fields and tags.
-      properties:
-        tunnel:
-          oneOf:
-          - type: integer
-          - $ref: '#/components/schemas/BriefTunnelRequest'
-        role:
-          enum:
-          - peer
-          - hub
-          - spoke
-          type: string
-          description: '* `peer` - Peer
-
-            * `hub` - Hub
-
-            * `spoke` - Spoke'
-          x-spec-enum-id: 0b3bfadcebd86b58
-        termination_type:
-          type: string
-        termination_id:
-          type:
-          - integer
-          - 'null'
-          maximum: 9223372036854775807
-          minimum: 0
-          format: int64
-        outside_ip:
-          oneOf:
-          - type: integer
-          - allOf:
-            - $ref: '#/components/schemas/BriefIPAddressRequest'
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/NestedTagRequest'
-        custom_fields:
-          type: object
-          additionalProperties: {}
-      required:
-      - termination_type
-      - tunnel
-    BriefTunnelGroupRequest:
-      type: object
-      description: Base serializer class for models inheriting from OrganizationalModel.
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        slug:
-          type: string
-          minLength: 1
-          maxLength: 100
-          pattern: ^[-a-zA-Z0-9_]+$
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - name
-      - slug
   securitySchemes:
     cookieAuth:
       type: apiKey
