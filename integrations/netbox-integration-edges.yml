@@ -61,6 +61,24 @@ edges:
   category: Artifact Hub listing (Container image)
   badges:
   - 'Verified publisher (Artifact Hub verified publisher: repository ownership proven)'
+- partner_name: Ansible (ansible-galaxy)
+  partner: ansible
+  partner_match: mirror
+  mirror_match: register
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: ansible-galaxy
+  evidence: https://galaxy.ansible.com/ui/repo/published/netbox/netbox/
+  mirror_of: ansible/integrations/ansible-integration-edges.yml
+  apps:
+  - netbox.netbox
+  - netbox_community.ansible_modules
+  listing_count: 1
+  detected: '2026-10-22'
+  detected_by: mirror-platform-listings.py
+  category: configuration-management content listing (Ansible collection)
 generated: '2026-10-22'
 method: searched
 source:
@@ -70,3 +88,4 @@ checked:
 - https://api.apis.guru/v2/list.json
 - https://api.apis.guru/v2/providers.json
 - artifact-hub/integrations/artifact-hub-integration-edges.yml
+- ansible/integrations/ansible-integration-edges.yml
